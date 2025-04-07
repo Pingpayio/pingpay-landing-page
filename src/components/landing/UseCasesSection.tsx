@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ShoppingCart, Ticket, Repeat, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -86,10 +85,10 @@ const UseCasesSection: React.FC = () => {
                 {useCases.map((useCase, index) => (
                   <div 
                     key={`first-${index}`} 
-                    className="shrink-0 pl-4 inline-flex flex-col items-center"
-                    style={{ minWidth: "280px" }}
+                    className="shrink-0 pl-6 md:pl-8 inline-flex"
+                    style={{ minWidth: "33.333%" }}
                   >
-                    <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                    <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 w-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
@@ -106,10 +105,10 @@ const UseCasesSection: React.FC = () => {
                 {useCases.map((useCase, index) => (
                   <div 
                     key={`second-${index}`} 
-                    className="shrink-0 pl-4 inline-flex flex-col items-center"
-                    style={{ minWidth: "280px" }}
+                    className="shrink-0 pl-6 md:pl-8 inline-flex"
+                    style={{ minWidth: "33.333%" }}
                   >
-                    <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                    <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 w-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
