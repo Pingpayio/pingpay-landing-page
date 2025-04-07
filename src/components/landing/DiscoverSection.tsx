@@ -4,9 +4,9 @@ import SupplyBorrowTabs from "./SupplyBorrowTabs";
 
 const DiscoverSection: React.FC = () => {
   return (
-    <section className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-0 pb-40 md:pb-80 px-4 md:px-10 max-w-full">
+    <section className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-16 pb-40 md:pt-20 md:pb-80 px-4 md:px-10 max-w-full">
       <div className="flex mb-8 md:mb-12 w-full max-w-[777px] flex-col items-center">
-        <h2 className="text-[rgba(202,234,229,1)] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full mt-0">
+        <h2 className="text-[rgba(202,234,229,1)] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
           Discover HyperLend
         </h2>
         <p className="text-[rgba(202,234,229,1)] text-base md:text-xl font-normal leading-normal md:leading-none text-center mt-2 max-w-full px-4">

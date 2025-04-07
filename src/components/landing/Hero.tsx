@@ -17,11 +17,11 @@ const Hero: React.FC = () => {
         <span className="text-sm md:text-base">Coming Soon</span>
         <Timer size={16} className="md:size-18" />
       </button>
-      <div className="mt-10 md:mt-[60px] px-4 w-full mb-0">
+      <div className="mt-10 md:mt-[60px] px-4 w-full">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
           alt="HyperLend Platform"
-          className="aspect-[1.68] object-contain w-full max-w-[780px] mx-auto"
+          className="aspect-[1.68] object-contain w-full max-w-[780px] mx-auto hover:scale-105 transition-transform duration-500"
         />
       </div>
     </header>
