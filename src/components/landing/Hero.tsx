@@ -5,7 +5,7 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
-      <h1 className="text-[#000000] text-3xl md:text-[42px] font-bold leading-tight md:leading-[52px] text-center mt-20 md:mt-[140px] max-w-full text-shadow-sm">
+      <h1 className="text-[#000000] text-3xl md:text-[42px] font-bold leading-tight md:leading-[52px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         Your Abstracted
         <br className="md:block" />
         Payment Platform
@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
         <span className="text-sm md:text-base">Coming Soon</span>
         <Timer size={16} className="md:size-18" />
       </button>
-      <div className="mt-10 md:mt-[60px] px-4 w-full mb-0">
+      <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
           alt="HyperLend Platform"

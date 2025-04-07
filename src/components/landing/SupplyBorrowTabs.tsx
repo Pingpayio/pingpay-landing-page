@@ -1,6 +1,5 @@
 
 import React, { useState } from "react";
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 type TabType = "supply" | "borrow";
@@ -9,7 +8,7 @@ const SupplyBorrowTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("supply");
 
   return (
-    <div className="bg-[#100713] flex w-full max-w-[665px] flex-col items-stretch mt-10 md:mt-[66px] py-[5px] rounded-lg px-4 md:px-0">
+    <div className="bg-[#100713] flex w-full max-w-[665px] flex-col items-stretch mt-8 md:mt-[66px] py-[5px] rounded-lg px-4 md:px-0">
       <div className="self-center flex w-full max-w-[392px] items-stretch gap-5 text-base md:text-lg font-semibold whitespace-nowrap text-center justify-between">
         <button
           onClick={() => setActiveTab("supply")}
@@ -42,17 +41,15 @@ const SupplyBorrowTabs: React.FC = () => {
 
       <div className="w-full flex mt-[25px]">
         {activeTab === "supply" && (
-          <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-left w-1/2 pl-0">
+          <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-left w-full md:w-1/2 pl-0">
             Deposit your crypto assets to provide
-            <br />
-            liquidity and earn interest.
+            <br className="hidden md:block" /> liquidity and earn interest.
           </div>
         )}
         {activeTab === "borrow" && (
-          <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-right w-1/2 ml-auto pr-0">
+          <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-right w-full md:w-1/2 ml-auto pr-0">
             Borrow assets against your supplied collateral
-            <br />
-            with competitive interest rates.
+            <br className="hidden md:block" /> with competitive interest rates.
           </div>
         )}
       </div>

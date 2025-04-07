@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -47,7 +48,7 @@ const Navbar: React.FC = () => {
               <img
                 src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
                 alt="Ping Logo"
-                className="h-6" // 24px height (h-6 = 24px in Tailwind)
+                className="h-6" 
               />
             </div>
             
@@ -68,6 +69,7 @@ const Navbar: React.FC = () => {
                 <button 
                   onClick={toggleMobileMenu}
                   className="ml-2 text-white p-1.5 rounded-md hover:bg-[#1a1a1a]/40"
+                  aria-label="Toggle menu"
                 >
                   {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -77,15 +79,38 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
       
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#100713] bg-opacity-90 pt-[70px] flex flex-col animate-fade-in">
-          <div className="flex flex-col items-center gap-6 text-white text-lg p-6">
-            <button className="hover:opacity-80 transition-opacity py-2">Features</button>
-            <button className="hover:opacity-80 transition-opacity py-2">Docs</button>
-            <button className="hover:opacity-80 transition-opacity py-2">Security</button>
-            <button className="hover:opacity-80 transition-opacity py-2">FAQ</button>
-            <button className="hover:opacity-80 transition-opacity py-2">Community</button>
+        <div className="fixed inset-0 z-40 bg-[#100713] pt-[70px] flex flex-col animate-fade-in">
+          <div className="flex flex-col p-6 h-full">
+            <div className="flex flex-col space-y-6 text-white text-lg mt-4">
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span>Features</span>
+                <ChevronDown size={18} />
+              </div>
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span>Docs</span>
+                <ChevronDown size={18} />
+              </div>
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span>Security</span>
+                <ChevronDown size={18} />
+              </div>
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span>FAQ</span>
+                <ChevronDown size={18} />
+              </div>
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span>Community</span>
+                <ChevronDown size={18} />
+              </div>
+            </div>
+            
+            <div className="mt-auto mb-8">
+              <button className="w-full bg-[#AB9FF2] text-[#3D315E] font-medium text-center py-3 rounded-lg">
+                Launch App
+              </button>
+            </div>
           </div>
         </div>
       )}
