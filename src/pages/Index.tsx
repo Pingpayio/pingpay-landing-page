@@ -22,15 +22,15 @@ const Index: React.FC = () => {
     };
   }, []);
   
-  // Enhanced gradient with more prominent colors and reduced whiteness
+  // Enhanced gradient with brand colors and interactive effect
   const gradientStyle = {
     background: `
-      linear-gradient(135deg, #E5DEFF 0%, #C7B9F2 100%),
+      linear-gradient(135deg, #322442 0%, #1E1629 100%),
       radial-gradient(
         circle at ${50 + (mousePosition.x - 0.5) * 20}% ${50 + (mousePosition.y - 0.5) * 20}%, 
-        rgba(155, 135, 245, 0.6) 0%, 
-        rgba(171, 159, 242, 0.3) 50%, 
-        rgba(229, 222, 255, 0.1) 70%
+        rgba(155, 135, 245, 0.3) 0%, 
+        rgba(107, 87, 161, 0.2) 40%, 
+        rgba(46, 32, 78, 0.1) 80%
       )
     `,
     backgroundBlendMode: 'overlay',
