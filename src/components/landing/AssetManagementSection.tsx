@@ -23,7 +23,12 @@ const AssetManagementSection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-white py-16 md:py-24 px-4">
+    <section className="w-full py-16 md:py-24 px-4" style={{
+      background: `linear-gradient(45deg, 
+                #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
+      backgroundSize: '400% 400%',
+      animation: 'flowing-gradient 15s ease infinite'
+    }}>
       <div className="max-w-[1080px] mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">On-Chain Asset Management</h2>
@@ -34,7 +39,7 @@ const AssetManagementSection: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="border border-[#EFEFEF] shadow-sm hover:shadow-md transition-all duration-300">
+            <Card key={index} className="border border-[#EFEFEF] bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
               <CardContent className="p-6 md:p-8">
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-3 text-[#000000]">{feature.title}</h3>
