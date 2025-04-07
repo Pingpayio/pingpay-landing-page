@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X } from "lucide-react";
@@ -32,7 +31,7 @@ const Navbar: React.FC = () => {
       <nav 
         className={`fixed z-50 w-full transition-all duration-700 ease-in-out ${
           scrolled 
-            ? "top-0 bg-black" 
+            ? "top-0 bg-[#100713]" 
             : "top-[20px] md:top-[38px] bg-transparent flex justify-center"
         }`}
       >
@@ -41,7 +40,7 @@ const Navbar: React.FC = () => {
             scrolled 
               ? "w-full transition-all duration-1000 ease-in-out" 
               : "w-full max-w-[1080px] rounded-full transition-all duration-700 ease-in-out"
-          } bg-[#071311] px-4 md:px-8`}
+          } bg-[#100713] px-4 md:px-8`}
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center">
@@ -80,7 +79,7 @@ const Navbar: React.FC = () => {
       
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-black bg-opacity-90 pt-[70px] flex flex-col animate-fade-in">
+        <div className="fixed inset-0 z-40 bg-[#100713] bg-opacity-90 pt-[70px] flex flex-col animate-fade-in">
           <div className="flex flex-col items-center gap-6 text-white text-lg p-6">
             <button className="hover:opacity-80 transition-opacity py-2">Features</button>
             <button className="hover:opacity-80 transition-opacity py-2">Docs</button>
