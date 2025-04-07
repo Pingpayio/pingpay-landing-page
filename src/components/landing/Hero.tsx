@@ -5,11 +5,11 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-8 rounded-2xl">
-      <div className="mb-8 mt-[100px] flex flex-col items-center">
+      <div className="mb-8 mt-[140px] flex flex-col items-center">
         <img 
           src="/lovable-uploads/e64d957a-cf40-47f4-aa07-b820617b4ccb.png" 
           alt="Ping Icon" 
-          className="w-[80px] h-auto animate-pulse duration-[3000ms]"
+          className="w-[70px] h-auto animate-pulse duration-[3000ms]"
         />
       </div>
       <h1 className="text-[#3C315B] text-[46px] font-bold leading-[60px] text-center mt-6 max-md:max-w-full max-md:text-[40px] max-md:leading-[59px] max-md:mt-10 text-shadow-sm">
@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
       <img
         src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
         alt="HyperLend Platform"
-        className="aspect-[1.68] object-contain w-[806px] max-w-full mt-[50px] max-md:mt-10 hover:scale-105 transition-transform duration-500"
+        className="aspect-[1.68] object-contain w-[806px] max-w-full mt-[60px] max-md:mt-10 hover:scale-105 transition-transform duration-500"
       />
     </header>
   );
