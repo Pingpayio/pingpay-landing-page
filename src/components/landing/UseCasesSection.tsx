@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ShoppingCart, Ticket, Repeat, Rocket } from "lucide-react";
@@ -60,10 +61,16 @@ const UseCasesSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white self-stretch flex w-full flex-col items-center pt-16 md:pt-24 pb-16 md:pb-24 px-4 md:px-10 max-w-full">
+    <section 
+      className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 max-w-full"
+      style={{
+        minHeight: "auto",
+        maxHeight: "840px"
+      }}
+    >
       <div className="max-w-[1080px] mx-auto w-full">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-[#100713] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
+          <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
             Payments for All Use Cases
           </h2>
         </div>
@@ -89,12 +96,6 @@ const UseCasesSection: React.FC = () => {
               <CarouselNext className="right-0" />
             </div>
           </Carousel>
-        </div>
-        
-        <div className="flex justify-center mt-10">
-          <button className="bg-[#AB9FF2] hover:bg-[#9B87F5] text-white px-8 py-2 rounded-full text-sm font-medium transition-colors">
-            See all use cases
-          </button>
         </div>
       </div>
     </section>
