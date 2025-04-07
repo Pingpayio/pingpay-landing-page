@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import DiscoverSection from "@/components/landing/DiscoverSection";
@@ -7,16 +7,43 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index: React.FC = () => {
   const isMobile = useIsMobile();
+  const [gradientOption, setGradientOption] = useState<number>(2); // Default to option 2
   
-  // Enhanced gradient with colors closer to #F5F2FF
-  const gradientStyle = isMobile 
-    ? { background: `linear-gradient(to bottom, #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)` }
-    : {
-        background: `radial-gradient(circle at 50% 50%, 
-                     #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)`,
-        backgroundSize: '200% 200%',
-        animation: 'gradient-animation 15s ease infinite',
-      };
+  // Define gradient options
+  const gradientOptions = {
+    // Option 1: Smooth radial pulsing gradient
+    1: isMobile 
+      ? { background: `linear-gradient(to bottom, #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)` }
+      : {
+          background: `radial-gradient(circle at 50% 50%, 
+                      #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)`,
+          backgroundSize: '200% 200%',
+          animation: 'pulse-gradient 8s ease infinite',
+        },
+    
+    // Option 2: Flowing color waves
+    2: isMobile
+      ? { background: `linear-gradient(to bottom, #AB9FF2 0%, #C4B5FD 30%, #DDD6FE 60%, #F5F2FF 90%)` }
+      : {
+          background: `linear-gradient(45deg, 
+                      #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
+          backgroundSize: '400% 400%',
+          animation: 'flowing-gradient 15s ease infinite',
+        },
+        
+    // Option 3: Ambient color shift
+    3: isMobile
+      ? { background: `linear-gradient(to bottom, #9B87F5 0%, #AB9FF2 30%, #C4B5FD 60%, #DDD6FE 90%)` }
+      : {
+          background: `radial-gradient(circle at 50% 50%, 
+                      #9B87F5 0%, #AB9FF2 30%, #C4B5FD 60%, #DDD6FE 90%)`,
+          backgroundSize: '200% 200%',
+          animation: 'ambient-shift 20s ease-in-out infinite',
+        },
+  };
+
+  // Select the current gradient option
+  const gradientStyle = gradientOptions[gradientOption as keyof typeof gradientOptions];
 
   return (
     <div className="rounded-[0px_0px_0px_0px]">
@@ -27,7 +54,19 @@ const Index: React.FC = () => {
       >
         <style>
           {`
-            @keyframes gradient-animation {
+            @keyframes pulse-gradient {
+              0% {
+                background-position: 0% 0%;
+              }
+              50% {
+                background-position: 100% 100%;
+              }
+              100% {
+                background-position: 0% 0%;
+              }
+            }
+            
+            @keyframes flowing-gradient {
               0% {
                 background-position: 0% 50%;
               }
@@ -36,6 +75,24 @@ const Index: React.FC = () => {
               }
               100% {
                 background-position: 0% 50%;
+              }
+            }
+            
+            @keyframes ambient-shift {
+              0% {
+                background-position: 0% 0%;
+              }
+              25% {
+                background-position: 100% 0%;
+              }
+              50% {
+                background-position: 100% 100%;
+              }
+              75% {
+                background-position: 0% 100%;
+              }
+              100% {
+                background-position: 0% 0%;
               }
             }
           `}
