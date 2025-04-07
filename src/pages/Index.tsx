@@ -22,19 +22,10 @@ const Index: React.FC = () => {
     };
   }, []);
   
-  // Calculate gradient position based on mouse movement, but with a more subtle effect
-  // The gradient will always exist, but the mouse will slightly influence its appearance
+  // Calculate gradient position based on mouse movement
   const gradientStyle = {
-    background: `
-      linear-gradient(135deg, #F5F2FF 0%, #E5DEFF 100%),
-      radial-gradient(
-        circle at ${50 + (mousePosition.x - 0.5) * 20}% ${50 + (mousePosition.y - 0.5) * 20}%, 
-        rgba(171, 159, 242, 0.4) 0%, 
-        rgba(229, 222, 255, 0.1) 50%, 
-        rgba(245, 242, 255, 0) 70%
-      )
-    `,
-    backgroundBlendMode: 'overlay',
+    background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, 
+                 #E5DEFF 0%, #F5F2FF 30%, #F5F2FF 70%)`,
   };
 
   return (
