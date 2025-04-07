@@ -4,8 +4,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Bitcoin, Circle, DollarSign, Euro, JapaneseYen, PoundSterling } from "lucide-react";
 import Swiss from "../icons/Swiss";
@@ -37,6 +35,10 @@ const CryptoCarousel: React.FC = () => {
         opts={{
           align: "start",
           loop: true,
+          dragFree: true,
+          containScroll: "trimSnaps",
+          autoplay: true,
+          autoplayInterval: 3000,
         }}
         className="w-full"
       >
@@ -52,10 +54,6 @@ const CryptoCarousel: React.FC = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="flex justify-center mt-4 gap-4">
-          <CarouselPrevious className="relative static left-auto transform-none" />
-          <CarouselNext className="relative static right-auto transform-none" />
-        </div>
       </Carousel>
     </div>
   );
