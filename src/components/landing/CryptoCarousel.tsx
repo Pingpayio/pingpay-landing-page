@@ -1,9 +1,10 @@
 
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { 
   Carousel,
   CarouselContent,
   CarouselItem,
+  useCarousel
 } from "@/components/ui/carousel";
 import { Bitcoin, Circle, DollarSign, Euro, JapaneseYen, PoundSterling } from "lucide-react";
 import Swiss from "../icons/Swiss";
@@ -14,6 +15,29 @@ interface TokenInfo {
   name: string;
   icon: React.ReactNode;
 }
+
+const AutoScrollCarousel: React.FC = () => {
+  const { api } = useCarousel();
+  
+  const scrollNext = useCallback(() => {
+    if (api) {
+      api.scrollNext();
+    }
+  }, [api]);
+
+  // Set up auto-scrolling with useEffect
+  useEffect(() => {
+    if (!api) return;
+    
+    const interval = setInterval(() => {
+      scrollNext();
+    }, 3000); // Scroll every 3 seconds
+    
+    return () => clearInterval(interval);
+  }, [api, scrollNext]);
+  
+  return null;
+};
 
 const CryptoCarousel: React.FC = () => {
   // Token list based on supported tokens from the SDK
@@ -37,11 +61,10 @@ const CryptoCarousel: React.FC = () => {
           loop: true,
           dragFree: true,
           containScroll: "trimSnaps",
-          autoplay: true,
-          autoplayInterval: 3000,
         }}
         className="w-full"
       >
+        <AutoScrollCarousel />
         <CarouselContent className="-ml-2 md:-ml-4">
           {tokens.map((token) => (
             <CarouselItem key={token.id} className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/5">
