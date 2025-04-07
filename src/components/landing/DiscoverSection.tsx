@@ -1,6 +1,7 @@
 
 import React from "react";
 import SupplyBorrowTabs from "./SupplyBorrowTabs";
+import CryptoCarousel from "./CryptoCarousel";
 
 const DiscoverSection: React.FC = () => {
   return (
@@ -12,13 +13,12 @@ const DiscoverSection: React.FC = () => {
         <p className="text-[#AB9FF2] text-base md:text-xl font-normal leading-normal md:leading-none text-center mt-2 max-w-full px-4">
           Grow your assets. Access flexible borrowing.
         </p>
-        <div className="w-full px-4 md:px-0 mt-8 md:mt-16">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/e645f633500c3d6f5658dd477ec92eb681c57003?placeholderIfAbsent=true"
-            alt="HyperLend Features"
-            className="aspect-[4.98] object-contain w-full self-stretch"
-          />
+        
+        {/* Cryptocurrency Carousel */}
+        <div className="w-full my-8 md:my-16">
+          <CryptoCarousel />
         </div>
+        
         <SupplyBorrowTabs />
       </div>
     </section>
