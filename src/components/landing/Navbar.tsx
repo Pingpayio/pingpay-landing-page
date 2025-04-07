@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
             <img
-              src="/lovable-uploads/abfc9449-2e49-4495-91f6-5c6f1b30c07b.png" 
+              src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
               alt="Ping Logo"
               className="h-6" // 24px height (h-6 = 24px in Tailwind)
             />
