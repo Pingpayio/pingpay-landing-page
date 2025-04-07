@@ -23,10 +23,10 @@ const Navbar: React.FC = () => {
 
   return (
     <nav 
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ease-in-out ${
+      className={`fixed z-50 w-full transition-all duration-300 ease-in-out ${
         scrolled 
-          ? "bg-black" 
-          : "bg-transparent flex justify-center"
+          ? "top-0 bg-black" 
+          : "top-[38px] bg-transparent flex justify-center"
       }`}
     >
       <div 
