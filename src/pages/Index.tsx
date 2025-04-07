@@ -22,19 +22,23 @@ const Index: React.FC = () => {
     };
   }, []);
   
-  // Phantom-inspired dark background with interactive gradient overlay
+  // Create a marbled gradient background inspired by the reference image
+  // with subtle interactivity based on mouse position
   const gradientStyle = {
     background: `
-      linear-gradient(to bottom, #131823 0%, #0D1019 100%),
+      linear-gradient(135deg, #3C315B 0%, #6E4A8E 40%, #9B5CB8 70%, #AB9FF2 100%),
       radial-gradient(
         circle at ${50 + (mousePosition.x - 0.5) * 30}% ${50 + (mousePosition.y - 0.5) * 30}%, 
-        rgba(113, 91, 220, 0.3) 0%, 
-        rgba(87, 58, 207, 0.2) 25%, 
-        rgba(59, 48, 94, 0.1) 50%,
-        rgba(25, 21, 40, 0) 75%
+        rgba(210, 150, 255, 0.4) 5%, 
+        rgba(171, 93, 242, 0.3) 30%, 
+        rgba(110, 74, 142, 0.2) 60%,
+        rgba(60, 49, 91, 0.1) 90%
       )
     `,
     backgroundBlendMode: 'overlay',
+    backgroundSize: '200% 200%',
+    transition: 'background-position 0.5s ease',
+    backgroundPosition: `${mousePosition.x * 10}% ${mousePosition.y * 10}%`,
   };
 
   return (
