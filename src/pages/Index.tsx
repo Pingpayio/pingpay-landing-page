@@ -4,6 +4,7 @@ import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import DiscoverSection from "@/components/landing/DiscoverSection";
 import AssetManagementSection from "@/components/landing/AssetManagementSection";
+import UseCasesSection from "@/components/landing/UseCasesSection";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index: React.FC = () => {
@@ -69,6 +70,7 @@ const Index: React.FC = () => {
         </div>
         <DiscoverSection />
         <AssetManagementSection />
+        <UseCasesSection />
       </main>
     </div>
   );
