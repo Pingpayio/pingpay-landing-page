@@ -1,9 +1,37 @@
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 
 const Navbar: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
   return (
-    <nav className="w-full max-w-[1080px] text-base font-medium max-md:max-w-full">
-      <div className="bg-[rgba(7,19,17,1)] border flex w-full items-center gap-5 flex-wrap justify-between px-[31px] py-[9px] rounded-full border-[rgba(7,19,17,0.3)] border-solid max-md:max-w-full max-md:px-5">
+    <nav 
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ease-in-out ${
+        scrolled 
+          ? "bg-[rgba(7,19,17,1)] py-2 px-8 shadow-md" 
+          : "bg-transparent py-[9px] px-0 max-w-[1080px]"
+      }`}
+    >
+      <div className={`${
+        scrolled 
+          ? "w-full max-w-[1080px] mx-auto" 
+          : ""
+        } bg-[rgba(7,19,17,1)] border flex items-center gap-5 flex-wrap justify-between px-[31px] py-[9px] rounded-full border-[rgba(7,19,17,0.3)] border-solid max-md:max-w-full max-md:px-5`}>
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/2f6813c475c096bc3c474f6ac9c81e9296f3100e?placeholderIfAbsent=true"
           alt="HyperLend Logo"
