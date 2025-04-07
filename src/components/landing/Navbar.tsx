@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
             />
           </div>
           
-          <div className="hidden md:flex items-center gap-8 text-[#AB9FF2]">
+          <div className="hidden md:flex items-center gap-8 text-white">
             <button className="hover:opacity-80 transition-opacity">Features</button>
             <button className="hover:opacity-80 transition-opacity">Docs</button>
             <button className="hover:opacity-80 transition-opacity">Security</button>
