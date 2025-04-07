@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ShoppingCart, Ticket, Repeat, RocketLaunch } from "lucide-react";
+import { ShoppingCart, Ticket, Repeat, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface UseCaseCardProps {
@@ -55,7 +54,7 @@ const UseCasesSection: React.FC = () => {
     {
       title: "Pre-Sales",
       description: "Launch a Pre-Sale campaign for your NFT, token, or product ahead of your launch.",
-      icon: <RocketLaunch className="w-16 h-16 text-[#AB9FF2]" />,
+      icon: <Rocket className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-indigo-50"
     }
   ];
