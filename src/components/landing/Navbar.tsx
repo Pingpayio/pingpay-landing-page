@@ -38,6 +38,7 @@ const Navbar: React.FC = () => {
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
+            {/* Ensure the image path is correct and the image exists in the public folder */}
             <img
               src="/ping-logo.png" 
               alt="Ping Logo"
