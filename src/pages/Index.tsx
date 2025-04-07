@@ -39,7 +39,7 @@ const Index: React.FC = () => {
   return (
     <div className="rounded-[0px_0px_0px_0px]">
       <Navbar />
-      <main className="flex w-full flex-col items-center pt-[80px] md:pt-[100px] max-w-full min-h-screen transition-all duration-300 ease-in-out" style={gradientStyle}>
+      <main className="flex w-full flex-col items-center pt-[80px] md:pt-[100px] max-w-full min-h-screen transition-all duration-300 ease-in-out overflow-hidden" style={gradientStyle}>
         <div className="max-w-[1080px] w-full flex flex-col items-center px-4 md:px-6">
           <Hero />
         </div>
