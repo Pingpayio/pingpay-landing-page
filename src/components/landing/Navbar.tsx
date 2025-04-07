@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
             />
           </div>
           
-          <div className="hidden md:flex items-center gap-8 text-[rgba(202,234,229,1)]">
+          <div className="hidden md:flex items-center gap-8 text-white">
             <button className="hover:opacity-80 transition-opacity">Features</button>
             <button className="hover:opacity-80 transition-opacity">Docs</button>
             <button className="hover:opacity-80 transition-opacity">Security</button>
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
             <button className="hover:opacity-80 transition-opacity">Community</button>
           </div>
           
-          <button className="bg-[rgba(202,234,229,1)] text-[rgba(7,19,17,1)] text-center px-5 py-2 rounded-full hover:opacity-90 transition-opacity">
+          <button className="bg-[#AB9FF2] text-[#3D315E] text-center px-5 py-2 rounded-full hover:opacity-90 transition-opacity">
             Launch App
           </button>
         </div>
