@@ -6,9 +6,9 @@ const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[42px] font-bold leading-tight md:leading-[52px] text-center mt-20 md:mt-[140px] max-w-full text-shadow-sm">
-        The Liquidity Backbone
+        Your Abstracted
         <br className="md:block" />
-        of the Hyperliquid Ecosystem
+        Payment Platform
       </h1>
       <p className="text-[#000000] text-base md:text-xl font-normal text-center mt-4 max-w-full px-4">
         Earn interest, borrow assets & repeat!
