@@ -13,13 +13,17 @@ const SupplyBorrowTabs: React.FC = () => {
       <div className="self-center flex w-full max-w-[392px] items-stretch gap-5 text-base md:text-lg font-semibold whitespace-nowrap text-center justify-between">
         <button
           onClick={() => setActiveTab("supply")}
-          className={`leading-loose cursor-pointer transition-colors text-[#AB9FF2]`}
+          className={`leading-loose cursor-pointer transition-colors ${
+            activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
+          }`}
         >
           Supply
         </button>
         <button
           onClick={() => setActiveTab("borrow")}
-          className={`leading-loose cursor-pointer transition-colors text-[#AB9FF2]`}
+          className={`leading-loose cursor-pointer transition-colors ${
+            activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
+          }`}
         >
           Borrow
         </button>
