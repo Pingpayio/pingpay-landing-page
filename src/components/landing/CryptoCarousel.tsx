@@ -1,10 +1,5 @@
 
-import React, { useEffect, useRef } from "react";
-import { 
-  Carousel,
-  CarouselContent,
-  CarouselItem
-} from "@/components/ui/carousel";
+import React from "react";
 import { Bitcoin, Circle, DollarSign, Euro, JapaneseYen, PoundSterling } from "lucide-react";
 import Swiss from "../icons/Swiss";
 
@@ -29,79 +24,48 @@ const CryptoCarousel: React.FC = () => {
     { id: "chf", name: "Swiss Franc", icon: <Swiss className="h-8 w-8 text-red-500" /> }
   ];
 
-  // Use a ref to store the animation frame ID for cleanup
-  const animationRef = useRef<number | null>(null);
-  // Ref to access the carousel content directly
-  const carouselRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const content = carouselRef.current;
-    if (!content) return;
-    
-    let position = 0;
-    const speed = 0.5; // Adjust this value to control scrolling speed
-    
-    const animate = () => {
-      position += speed;
-      
-      // Reset position when we've scrolled one token width
-      // This creates the continuous effect
-      const firstItemWidth = content.querySelector('[role="group"]')?.clientWidth || 0;
-      if (position >= firstItemWidth) {
-        position = 0;
-        
-        // Move the first item to the end to create infinite scroll effect
-        const firstItem = content.firstElementChild;
-        if (firstItem) {
-          content.appendChild(firstItem.cloneNode(true));
-          content.removeChild(firstItem);
-        }
-      }
-      
-      // Apply the translation
-      content.style.transform = `translateX(-${position}px)`;
-      
-      // Continue the animation
-      animationRef.current = requestAnimationFrame(animate);
-    };
-    
-    // Start the animation
-    animationRef.current = requestAnimationFrame(animate);
-    
-    // Cleanup on component unmount
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, []);
-
-  // Duplicate the tokens to ensure continuous scrolling
-  const duplicatedTokens = [...tokens, ...tokens, ...tokens];
+  // Duplicate tokens to create a continuous scrolling effect
+  const duplicatedTokens = [...tokens, ...tokens];
 
   return (
     <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden">
       <div className="relative overflow-hidden">
-        <div 
-          ref={carouselRef}
-          className="flex transition-transform duration-1000"
-          style={{ willChange: "transform" }}
-        >
-          {duplicatedTokens.map((token, index) => (
-            <div 
-              key={`${token.id}-${index}`} 
-              role="group"
-              className="shrink-0 pl-4 basis-auto"
-              style={{ minWidth: "120px" }}
-            >
-              <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                <div className="rounded-full bg-white p-4 shadow-md flex items-center justify-center mb-3 size-16 md:size-20">
-                  {token.icon}
+        <div className="flex whitespace-nowrap">
+          {/* First set of tokens */}
+          <div className="flex continuous-scroll">
+            {tokens.map((token) => (
+              <div 
+                key={`first-${token.id}`} 
+                className="shrink-0 pl-4 inline-flex flex-col items-center"
+                style={{ minWidth: "120px" }}
+              >
+                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                  <div className="rounded-full bg-white p-4 shadow-md flex items-center justify-center mb-3 size-16 md:size-20">
+                    {token.icon}
+                  </div>
+                  <span className="text-white text-sm md:text-base font-medium">{token.name}</span>
                 </div>
-                <span className="text-white text-sm md:text-base font-medium">{token.name}</span>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Second set of tokens - creates the continuous effect */}
+          <div className="flex continuous-scroll">
+            {tokens.map((token) => (
+              <div 
+                key={`second-${token.id}`} 
+                className="shrink-0 pl-4 inline-flex flex-col items-center"
+                style={{ minWidth: "120px" }}
+              >
+                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                  <div className="rounded-full bg-white p-4 shadow-md flex items-center justify-center mb-3 size-16 md:size-20">
+                    {token.icon}
+                  </div>
+                  <span className="text-white text-sm md:text-base font-medium">{token.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
