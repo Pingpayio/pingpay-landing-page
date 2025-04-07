@@ -22,12 +22,12 @@ const Index: React.FC = () => {
     };
   }, []);
   
-  // Calculate gradient position based on mouse movement with enhanced colors
+  // Enhanced gradient with colors closer to #F5F2FF
   const gradientStyle = {
     background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, 
-                 #8B5CF6 0%, #AB9FF2 20%, #C4B5FD 50%, #F5F2FF 80%)`,
+                 #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)`,
     backgroundSize: '200% 200%',
-    transition: 'background-position 0.5s ease-out',
+    transition: 'background-position 0.3s ease-out',
   };
 
   return (

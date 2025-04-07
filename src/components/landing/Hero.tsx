@@ -4,7 +4,7 @@ import { Timer } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (
-    <header className="flex flex-col items-center backdrop-blur-sm p-8 rounded-2xl bg-white/5">
+    <header className="flex flex-col items-center p-8 rounded-2xl">
       <h1 className="text-[#3C315B] text-[46px] font-bold leading-[60px] text-center mt-[159px] max-md:max-w-full max-md:text-[40px] max-md:leading-[59px] max-md:mt-10 text-shadow-sm">
         The Liquidity Backbone
         <br />
