@@ -44,10 +44,10 @@ const AssetManagementSection: React.FC = () => {
       animation: 'flowing-gradient 15s ease infinite'
     }}>
       <div className="max-w-[1080px] mx-auto">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-10">
           <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">On-Chain Asset Management.</h2>
           <p className="text-base md:text-xl text-[#4A4A4A] max-w-[700px] mx-auto">
-            Comprehensive tools for managing your digital assets with confidence and precision
+            Comprehensive tools for managing your digital assets with confidence
           </p>
         </div>
 
