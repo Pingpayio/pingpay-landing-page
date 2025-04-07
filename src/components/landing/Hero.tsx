@@ -5,7 +5,7 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
-      <h1 className="text-[#000000] text-3xl md:text-[42px] font-bold leading-tight md:leading-[52px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
+      <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[58px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         Your Abstracted
         <br className="md:block" />
         Payment Platform
