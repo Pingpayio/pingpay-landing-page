@@ -1,24 +1,38 @@
 
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, BarChart3, ShieldCheck, Wallet } from "lucide-react";
+import { ArrowDown, ArrowUp, Building, RefreshCw, Shield, Wallet } from "lucide-react";
 
 const AssetManagementSection: React.FC = () => {
   const features = [
     {
+      icon: <Building className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Lend & Borrow",
+      description: "Provide liquidity or access capital while earning competitive interest."
+    },
+    {
+      icon: <RefreshCw className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Liquid Vaults",
+      description: "Automated yield strategies for steady, predictable growth and easy withdrawals."
+    },
+    {
+      icon: <ArrowUp className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Leveraged Positions",
+      description: "Maximize potential returns by continuously reinvesting borrowed assets into new assets."
+    },
+    {
+      icon: <Shield className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Isolated Markets",
+      description: "Manage risk by using isolated markets and limit your exposure to only certain assets."
+    },
+    {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Simplified Portfolio",
-      description: "Easily manage your assets with an intuitive interface designed for both novice and experienced users."
+      title: "Smart Vaults",
+      description: "Customizable automation for complex strategies with secure on-chain execution."
     },
     {
-      icon: <BarChart3 className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Performance Tracking",
-      description: "Monitor your investments with real-time analytics and comprehensive reporting tools."
-    },
-    {
-      icon: <ShieldCheck className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Secure Infrastructure",
-      description: "Built on robust blockchain technology to ensure the highest level of security for your assets."
+      icon: <ArrowDown className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Risk Management",
+      description: "Advanced tools to monitor your positions and automatically adjust based on market conditions."
     }
   ];
 
@@ -31,27 +45,26 @@ const AssetManagementSection: React.FC = () => {
     }}>
       <div className="max-w-[1080px] mx-auto">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">On-Chain Asset Management</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">On-Chain Asset Management.</h2>
           <p className="text-base md:text-xl text-[#4A4A4A] max-w-[700px] mx-auto">
             Comprehensive tools for managing your digital assets with confidence and precision
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="border border-[#EFEFEF] bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
-              <CardContent className="p-6 md:p-8">
-                <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-3 text-[#000000]">{feature.title}</h3>
-                <p className="text-[#4A4A4A] mb-4">{feature.description}</p>
-                <a 
-                  href="#" 
-                  className="inline-flex items-center text-[#AB9FF2] hover:text-[#9B87F5] font-medium"
-                >
-                  Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </CardContent>
-            </Card>
+            <div 
+              key={index} 
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30"
+            >
+              <div className="flex items-start gap-4">
+                <div className="mt-1">{feature.icon}</div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2 text-[#000000]">{feature.title}</h3>
+                  <p className="text-[#4A4A4A]">{feature.description}</p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
