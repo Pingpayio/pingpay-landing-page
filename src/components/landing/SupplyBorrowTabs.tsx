@@ -9,7 +9,7 @@ const SupplyBorrowTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>("supply");
 
   return (
-    <div className="bg-[rgba(7,19,17,1)] flex w-full max-w-[665px] flex-col items-stretch mt-10 md:mt-[66px] py-[5px] rounded-lg px-4 md:px-0">
+    <div className="bg-[#100713] flex w-full max-w-[665px] flex-col items-stretch mt-10 md:mt-[66px] py-[5px] rounded-lg px-4 md:px-0">
       <div className="self-center flex w-full max-w-[392px] items-stretch gap-5 text-base md:text-lg font-semibold whitespace-nowrap text-center justify-between">
         <button
           onClick={() => setActiveTab("supply")}
