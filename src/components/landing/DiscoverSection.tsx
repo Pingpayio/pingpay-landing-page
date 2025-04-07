@@ -6,10 +6,10 @@ const DiscoverSection: React.FC = () => {
   return (
     <section className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-20 md:pt-32 pb-40 md:pb-80 px-4 md:px-10 max-w-full">
       <div className="flex mb-8 md:mb-12 w-full max-w-[777px] flex-col items-center">
-        <h2 className="text-[rgba(202,234,229,1)] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full mt-0">
+        <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full mt-0">
           Discover HyperLend
         </h2>
-        <p className="text-[rgba(202,234,229,1)] text-base md:text-xl font-normal leading-normal md:leading-none text-center mt-2 max-w-full px-4">
+        <p className="text-[#AB9FF2] text-base md:text-xl font-normal leading-normal md:leading-none text-center mt-2 max-w-full px-4">
           Grow your assets. Access flexible borrowing.
         </p>
         <div className="w-full px-4 md:px-0 mt-8 md:mt-16">
