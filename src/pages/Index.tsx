@@ -8,7 +8,7 @@ const Index: React.FC = () => {
   return (
     <div className="rounded-[0px_0px_0px_0px]">
       <Navbar />
-      <main className="bg-[rgba(202,234,229,1)] flex w-full flex-col items-center pt-[105px] max-md:max-w-full">
+      <main className="bg-[rgba(202,234,229,1)] flex w-full flex-col items-center pt-[120px] max-md:max-w-full">
         <div className="max-w-[1080px] w-full flex flex-col items-center">
           <Hero />
         </div>
