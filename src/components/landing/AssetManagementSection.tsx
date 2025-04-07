@@ -51,7 +51,7 @@ const AssetManagementSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-10">
           {features.map((feature, index) => (
             <div 
               key={index} 
@@ -66,12 +66,6 @@ const AssetManagementSection: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 md:mt-16 text-center">
-          <button className="bg-[#AB9FF2] border border-[#AB9FF2] text-[#3D315E] font-medium px-6 py-3 rounded-[30px] hover:bg-[#9B87F5] hover:scale-105 transition-all duration-300">
-            Explore Asset Management
-          </button>
         </div>
       </div>
     </section>
