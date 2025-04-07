@@ -44,16 +44,16 @@ const SupplyBorrowTabs: React.FC = () => {
         />
       </div>
 
-      <div className="w-full grid grid-cols-2 mt-[25px] px-4 md:px-8">
+      <div className="w-full flex mt-[25px]">
         {activeTab === "supply" && (
-          <div className="text-[rgba(202,234,229,1)] text-sm md:text-base font-medium leading-6 text-left col-span-1">
+          <div className="text-[rgba(202,234,229,1)] text-sm md:text-base font-medium leading-6 text-left w-1/2 pl-0 md:pl-8">
             Deposit your crypto assets to provide
             <br />
             liquidity and earn interest.
           </div>
         )}
         {activeTab === "borrow" && (
-          <div className="text-[rgba(202,234,229,1)] text-sm md:text-base font-medium leading-6 text-right col-span-1 col-start-2">
+          <div className="text-[rgba(202,234,229,1)] text-sm md:text-base font-medium leading-6 text-right w-1/2 ml-auto pr-0 md:pr-8">
             Borrow assets against your supplied collateral
             <br />
             with competitive interest rates.
