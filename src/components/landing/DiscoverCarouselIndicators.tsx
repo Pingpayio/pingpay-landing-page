@@ -33,7 +33,9 @@ const DiscoverCarouselIndicators: React.FC<DiscoverCarouselIndicatorsProps> = ({
       {Array.from({ length: itemCount }).map((_, index) => (
         <button
           key={index}
-          onClick={() => api?.scrollTo(index)}
+          onClick={() => {
+            api?.scrollTo(index);
+          }}
           className={`w-2 h-2 rounded-full mx-1 transition-all ${
             activeIndex === index
               ? "bg-[rgba(202,234,229,1)] w-4"

@@ -27,11 +27,33 @@ const DiscoverSection: React.FC = () => {
     return () => clearInterval(interval);
   }, [api]);
 
-  // Images for the carousel
-  const featureImages = [
-    "https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/e645f633500c3d6f5658dd477ec92eb681c57003?placeholderIfAbsent=true",
-    "https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/e645f633500c3d6f5658dd477ec92eb681c57003?placeholderIfAbsent=true",
-    "https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/e645f633500c3d6f5658dd477ec92eb681c57003?placeholderIfAbsent=true"
+  // Content for the carousel - images and text
+  const carouselItems = [
+    {
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=1200&h=300",
+      title: "Earn Passive Income",
+      description: "Supply assets and earn attractive yields from borrowers."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&h=300",
+      title: "Flexible Borrowing",
+      description: "Access liquidity with your crypto as collateral."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=300",
+      title: "Low Transaction Fees",
+      description: "Enjoy minimal gas fees on our optimized protocol."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&h=300",
+      title: "Secure Protocol",
+      description: "Built with enterprise-grade security and fully audited."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&h=300",
+      title: "Multi-Chain Support",
+      description: "Use your preferred blockchain network seamlessly."
+    }
   ];
 
   return (
@@ -49,22 +71,33 @@ const DiscoverSection: React.FC = () => {
             opts={{ 
               loop: true,
               align: "center",
-              skipSnaps: false
+              skipSnaps: false,
+              dragFree: true
             }}
             className="w-full"
           >
             <CarouselContent>
-              {featureImages.map((image, index) => (
-                <CarouselItem key={index} className="flex justify-center">
-                  <img
-                    src={image}
-                    alt={`HyperLend Feature ${index + 1}`}
-                    className="aspect-[4.98] object-contain w-full"
-                  />
+              {carouselItems.map((item, index) => (
+                <CarouselItem key={index} className="flex justify-center flex-col">
+                  <div className="relative">
+                    <img
+                      src={item.image}
+                      alt={`HyperLend Feature ${index + 1}`}
+                      className="aspect-[4.98] object-cover w-full rounded-lg"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(16,7,19,0.8)] flex flex-col justify-end p-6">
+                      <h3 className="text-[rgba(202,234,229,1)] text-xl md:text-2xl font-bold">
+                        {item.title}
+                      </h3>
+                      <p className="text-[rgba(202,234,229,0.8)] text-sm md:text-base mt-2">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            {api && <DiscoverCarouselIndicators api={api} itemCount={featureImages.length} />}
+            {api && <DiscoverCarouselIndicators api={api} itemCount={carouselItems.length} />}
           </Carousel>
         </div>
         <SupplyBorrowTabs />
