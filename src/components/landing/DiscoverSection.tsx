@@ -4,7 +4,7 @@ import SupplyBorrowTabs from "./SupplyBorrowTabs";
 
 const DiscoverSection: React.FC = () => {
   return (
-    <section className="bg-[rgba(7,19,17,1)] self-stretch flex w-full flex-col items-center pt-20 pb-80 px-10 max-md:max-w-full max-md:px-5 max-md:py-16">
+    <section className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-20 pb-80 px-10 max-md:max-w-full max-md:px-5 max-md:py-16">
       <div className="flex mb-12 w-[777px] max-w-full flex-col items-center max-md:mb-2.5">
         <h2 className="text-[rgba(202,234,229,1)] text-4xl font-bold leading-relaxed text-center max-md:max-w-full max-md:text-3xl">
           Discover HyperLend
