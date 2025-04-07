@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import DiscoverSection from "@/components/landing/DiscoverSection";
@@ -9,6 +9,17 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Index: React.FC = () => {
   const isMobile = useIsMobile();
   const [gradientOption] = useState<number>(2); // Default to option 2
+  const [scrollPosition, setScrollPosition] = useState(0);
+  
+  // Track scroll position for potential parallax or scroll-based effects
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   // Define gradient options
   const gradientOptions = {
@@ -47,57 +58,12 @@ const Index: React.FC = () => {
   const gradientStyle = gradientOptions[gradientOption as keyof typeof gradientOptions];
 
   return (
-    <div className="rounded-[0px_0px_0px_0px]">
+    <div className="rounded-[0px_0px_0px_0px] overflow-hidden">
       <Navbar />
       <main 
-        className="flex w-full flex-col items-center pt-[70px] md:pt-[100px] max-w-full min-h-screen transition-all duration-300 ease-in-out overflow-hidden" 
+        className="flex w-full flex-col items-center pt-[70px] md:pt-[100px] max-w-full min-h-screen transition-all duration-700 ease-in-out" 
         style={gradientStyle}
       >
-        <style>
-          {`
-            @keyframes pulse-gradient {
-              0% {
-                background-position: 0% 0%;
-              }
-              50% {
-                background-position: 100% 100%;
-              }
-              100% {
-                background-position: 0% 0%;
-              }
-            }
-            
-            @keyframes flowing-gradient {
-              0% {
-                background-position: 0% 50%;
-              }
-              50% {
-                background-position: 100% 50%;
-              }
-              100% {
-                background-position: 0% 50%;
-              }
-            }
-            
-            @keyframes ambient-shift {
-              0% {
-                background-position: 0% 0%;
-              }
-              25% {
-                background-position: 100% 0%;
-              }
-              50% {
-                background-position: 100% 100%;
-              }
-              75% {
-                background-position: 0% 100%;
-              }
-              100% {
-                background-position: 0% 0%;
-              }
-            }
-          `}
-        </style>
         <div className="max-w-[1080px] w-full flex flex-col items-center px-4 md:px-6">
           <Hero />
         </div>
