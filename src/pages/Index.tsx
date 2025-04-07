@@ -22,15 +22,16 @@ const Index: React.FC = () => {
     };
   }, []);
   
-  // Enhanced gradient with more prominent colors and reduced whiteness
+  // Phantom-inspired dark background with interactive gradient overlay
   const gradientStyle = {
     background: `
-      linear-gradient(135deg, #E5DEFF 0%, #C7B9F2 100%),
+      linear-gradient(to bottom, #131823 0%, #0D1019 100%),
       radial-gradient(
-        circle at ${50 + (mousePosition.x - 0.5) * 20}% ${50 + (mousePosition.y - 0.5) * 20}%, 
-        rgba(155, 135, 245, 0.6) 0%, 
-        rgba(171, 159, 242, 0.3) 50%, 
-        rgba(229, 222, 255, 0.1) 70%
+        circle at ${50 + (mousePosition.x - 0.5) * 30}% ${50 + (mousePosition.y - 0.5) * 30}%, 
+        rgba(113, 91, 220, 0.3) 0%, 
+        rgba(87, 58, 207, 0.2) 25%, 
+        rgba(59, 48, 94, 0.1) 50%,
+        rgba(25, 21, 40, 0) 75%
       )
     `,
     backgroundBlendMode: 'overlay',
