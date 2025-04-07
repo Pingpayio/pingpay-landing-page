@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
           alt="HyperLend Platform"
-          className="aspect-[1.68] object-contain w-full max-w-[780px] mx-auto hover:scale-105 transition-transform duration-500 translate-y-[10px] md:translate-y-[20px]"
+          className="aspect-[1.68] object-contain w-full max-w-[780px] mx-auto transition-transform duration-500 translate-y-[30px] md:translate-y-[60px]"
         />
       </div>
     </header>
