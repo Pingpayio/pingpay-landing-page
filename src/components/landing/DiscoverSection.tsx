@@ -4,19 +4,21 @@ import SupplyBorrowTabs from "./SupplyBorrowTabs";
 
 const DiscoverSection: React.FC = () => {
   return (
-    <section className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-20 pb-80 px-10 max-md:max-w-full max-md:px-5 max-md:py-16">
-      <div className="flex mb-12 w-[777px] max-w-full flex-col items-center max-md:mb-2.5">
-        <h2 className="text-[rgba(202,234,229,1)] text-4xl font-bold leading-relaxed text-center max-md:max-w-full max-md:text-3xl">
+    <section className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-16 pb-40 md:pt-20 md:pb-80 px-4 md:px-10 max-w-full">
+      <div className="flex mb-8 md:mb-12 w-full max-w-[777px] flex-col items-center">
+        <h2 className="text-[rgba(202,234,229,1)] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
           Discover HyperLend
         </h2>
-        <p className="text-[rgba(202,234,229,1)] text-xl font-normal leading-none text-center mt-2 max-md:max-w-full">
+        <p className="text-[rgba(202,234,229,1)] text-base md:text-xl font-normal leading-normal md:leading-none text-center mt-2 max-w-full px-4">
           Grow your assets. Access flexible borrowing.
         </p>
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/e645f633500c3d6f5658dd477ec92eb681c57003?placeholderIfAbsent=true"
-          alt="HyperLend Features"
-          className="aspect-[4.98] object-contain w-full self-stretch mt-16 max-md:max-w-full max-md:mt-8"
-        />
+        <div className="w-full px-4 md:px-0 mt-8 md:mt-16">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/e645f633500c3d6f5658dd477ec92eb681c57003?placeholderIfAbsent=true"
+            alt="HyperLend Features"
+            className="aspect-[4.98] object-contain w-full self-stretch"
+          />
+        </div>
         <SupplyBorrowTabs />
       </div>
     </section>
