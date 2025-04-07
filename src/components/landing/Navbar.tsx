@@ -23,15 +23,15 @@ const Navbar: React.FC = () => {
     <nav 
       className={`fixed top-0 z-50 w-full transition-all duration-300 ease-in-out ${
         scrolled 
-          ? "bg-[rgba(7,19,17,1)] py-2 px-8 shadow-md" 
-          : "bg-transparent py-[9px] px-0 max-w-[1080px]"
+          ? "bg-[rgba(7,19,17,1)] py-0 px-8 shadow-md" 
+          : "bg-transparent py-0 px-0 flex justify-center"
       }`}
     >
       <div className={`${
         scrolled 
-          ? "w-full max-w-[1080px] mx-auto" 
-          : ""
-        } bg-[rgba(7,19,17,1)] border flex items-center gap-5 flex-wrap justify-between px-[31px] py-[9px] rounded-full border-[rgba(7,19,17,0.3)] border-solid max-md:max-w-full max-md:px-5`}>
+          ? "w-full max-w-[1080px] mx-auto h-[54px]" 
+          : "w-full max-w-[1080px] h-[54px]"
+        } bg-[rgba(7,19,17,1)] border flex items-center gap-5 flex-wrap justify-between px-[31px] rounded-full border-[rgba(7,19,17,0.3)] border-solid max-md:max-w-full max-md:px-5`}>
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/2f6813c475c096bc3c474f6ac9c81e9296f3100e?placeholderIfAbsent=true"
           alt="HyperLend Logo"
