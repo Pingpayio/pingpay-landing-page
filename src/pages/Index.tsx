@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import DiscoverSection from "@/components/landing/DiscoverSection";
@@ -23,25 +23,23 @@ const Index: React.FC = () => {
       <Navbar />
       <main 
         className="flex w-full flex-col items-center pt-[80px] md:pt-[100px] max-w-full min-h-screen transition-all duration-300 ease-in-out overflow-hidden" 
-        style={{
-          ...gradientStyle,
-          // Add keyframes animation for the gradient
-          '--tw-gradient-animation': 'gradient-animation 15s ease infinite',
-        }}
+        style={gradientStyle}
       >
-        <style jsx>{`
-          @keyframes gradient-animation {
-            0% {
-              background-position: 0% 50%;
+        <style>
+          {`
+            @keyframes gradient-animation {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
             }
-            50% {
-              background-position: 100% 50%;
-            }
-            100% {
-              background-position: 0% 50%;
-            }
-          }
-        `}</style>
+          `}
+        </style>
         <div className="max-w-[1080px] w-full flex flex-col items-center px-4 md:px-6">
           <Hero />
         </div>
