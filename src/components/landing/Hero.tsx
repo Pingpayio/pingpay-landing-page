@@ -5,12 +5,12 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center">
-      <h1 className="text-black text-[46px] font-bold leading-[60px] text-center mt-[159px] max-md:max-w-full max-md:text-[40px] max-md:leading-[59px] max-md:mt-10">
+      <h1 className="text-[#3C315B] text-[46px] font-bold leading-[60px] text-center mt-[159px] max-md:max-w-full max-md:text-[40px] max-md:leading-[59px] max-md:mt-10">
         The Liquidity Backbone
         <br />
         of the Hyperliquid Ecosystem
       </h1>
-      <p className="text-black text-2xl font-normal text-center mt-[21px] max-md:max-w-full">
+      <p className="text-[#3C315B] text-2xl font-normal text-center mt-[21px] max-md:max-w-full">
         Earn interest, borrow assets & repeat!
       </p>
       <button className="bg-[#AB9FF2] border flex w-[219px] h-[56px] max-w-full items-center justify-center gap-[17px] text-[#3D315E] font-medium text-center mt-[61px] px-11 rounded-[30px] border-[#AB9FF2] border-solid max-md:mt-10 max-md:px-5 cursor-pointer">
