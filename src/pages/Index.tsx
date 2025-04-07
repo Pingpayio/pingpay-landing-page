@@ -1,12 +1,16 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from "react";
+import Navbar from "@/components/landing/Navbar";
+import Hero from "@/components/landing/Hero";
+import DiscoverSection from "@/components/landing/DiscoverSection";
 
-const Index = () => {
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="rounded-[0px_0px_0px_0px]">
+      <main className="bg-[rgba(202,234,229,1)] flex w-full flex-col items-center pt-[37px] max-md:max-w-full">
+        <Navbar />
+        <Hero />
+        <DiscoverSection />
+      </main>
     </div>
   );
 };
