@@ -22,16 +22,15 @@ const Index: React.FC = () => {
     };
   }, []);
   
-  // Calculate gradient position based on mouse movement, but with a more subtle effect
-  // The gradient will always exist, but the mouse will slightly influence its appearance
+  // Enhanced gradient with more prominent colors and reduced whiteness
   const gradientStyle = {
     background: `
-      linear-gradient(135deg, #F5F2FF 0%, #E5DEFF 100%),
+      linear-gradient(135deg, #E5DEFF 0%, #C7B9F2 100%),
       radial-gradient(
         circle at ${50 + (mousePosition.x - 0.5) * 20}% ${50 + (mousePosition.y - 0.5) * 20}%, 
-        rgba(171, 159, 242, 0.4) 0%, 
-        rgba(229, 222, 255, 0.1) 50%, 
-        rgba(245, 242, 255, 0) 70%
+        rgba(155, 135, 245, 0.6) 0%, 
+        rgba(171, 159, 242, 0.3) 50%, 
+        rgba(229, 222, 255, 0.1) 70%
       )
     `,
     backgroundBlendMode: 'overlay',
