@@ -5,7 +5,14 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-8 rounded-2xl">
-      <h1 className="text-[#3C315B] text-[46px] font-bold leading-[60px] text-center mt-[159px] max-md:max-w-full max-md:text-[40px] max-md:leading-[59px] max-md:mt-10 text-shadow-sm">
+      <div className="mb-8 mt-[100px] flex flex-col items-center">
+        <img 
+          src="/lovable-uploads/e64d957a-cf40-47f4-aa07-b820617b4ccb.png" 
+          alt="Ping Icon" 
+          className="w-[80px] h-auto animate-pulse duration-[3000ms]"
+        />
+      </div>
+      <h1 className="text-[#3C315B] text-[46px] font-bold leading-[60px] text-center mt-6 max-md:max-w-full max-md:text-[40px] max-md:leading-[59px] max-md:mt-10 text-shadow-sm">
         The Liquidity Backbone
         <br />
         of the Hyperliquid Ecosystem
