@@ -1,6 +1,5 @@
-
 import React from "react";
-import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, ArrowUpDown } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
 
 const AssetManagementSection: React.FC = () => {
   const features = [
@@ -47,17 +46,13 @@ const AssetManagementSection: React.FC = () => {
   ];
 
   return (
-    <section id="asset-management" className="w-full py-16 md:py-24 px-4">
-      <div 
-        className="absolute inset-0 z-0 w-full h-full" 
-        style={{
-          background: `linear-gradient(45deg, 
-                    #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
-          backgroundSize: '400% 400%',
-          animation: 'flowing-gradient 15s ease infinite'
-        }}
-      />
-      <div className="max-w-[1080px] mx-auto relative z-10">
+    <section id="asset-management" className="w-full py-16 md:py-24 px-4" style={{
+      background: `linear-gradient(45deg, 
+                #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
+      backgroundSize: '400% 400%',
+      animation: 'flowing-gradient 15s ease infinite'
+    }}>
+      <div className="max-w-[1080px] mx-auto">
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">Ping Payment Solutions</h2>
           <p className="text-base md:text-xl text-[#4A4A4A] max-w-[700px] mx-auto">

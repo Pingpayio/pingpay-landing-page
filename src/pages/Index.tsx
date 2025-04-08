@@ -25,28 +25,34 @@ const Index: React.FC = () => {
   // Define gradient options
   const gradientOptions = {
     // Option 1: Smooth radial pulsing gradient
-    1: {
-      background: `radial-gradient(circle at 50% 50%, 
-                  #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)`,
-      backgroundSize: '200% 200%',
-      animation: 'pulse-gradient 8s ease infinite',
-    },
+    1: isMobile 
+      ? { background: `linear-gradient(to bottom, #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)` }
+      : {
+          background: `radial-gradient(circle at 50% 50%, 
+                      #C4B5FD 0%, #DDD6FE 30%, #EDE9FE 60%, #F5F2FF 90%)`,
+          backgroundSize: '200% 200%',
+          animation: 'pulse-gradient 8s ease infinite',
+        },
     
     // Option 2: Flowing color waves
-    2: {
-      background: `linear-gradient(45deg, 
-                  #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
-      backgroundSize: '400% 400%',
-      animation: 'flowing-gradient 15s ease infinite',
-    },
+    2: isMobile
+      ? { background: `linear-gradient(to bottom, #AB9FF2 0%, #C4B5FD 30%, #DDD6FE 60%, #F5F2FF 90%)` }
+      : {
+          background: `linear-gradient(45deg, 
+                      #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
+          backgroundSize: '400% 400%',
+          animation: 'flowing-gradient 15s ease infinite',
+        },
         
     // Option 3: Ambient color shift
-    3: {
-      background: `radial-gradient(circle at 50% 50%, 
-                  #9B87F5 0%, #AB9FF2 30%, #C4B5FD 60%, #DDD6FE 90%)`,
-      backgroundSize: '200% 200%',
-      animation: 'ambient-shift 20s ease-in-out infinite',
-    },
+    3: isMobile
+      ? { background: `linear-gradient(to bottom, #9B87F5 0%, #AB9FF2 30%, #C4B5FD 60%, #DDD6FE 90%)` }
+      : {
+          background: `radial-gradient(circle at 50% 50%, 
+                      #9B87F5 0%, #AB9FF2 30%, #C4B5FD 60%, #DDD6FE 90%)`,
+          backgroundSize: '200% 200%',
+          animation: 'ambient-shift 20s ease-in-out infinite',
+        },
   };
 
   // Select the current gradient option
@@ -55,15 +61,15 @@ const Index: React.FC = () => {
   return (
     <div className="rounded-[0px_0px_0px_0px] overflow-hidden">
       <Navbar />
-      <main className="flex w-full flex-col items-center pt-[70px] md:pt-[100px] max-w-full min-h-screen relative">
-        <div className="absolute inset-0 z-0 w-full h-full" style={gradientStyle} />
-        <div className="max-w-[1080px] w-full flex flex-col items-center px-4 md:px-6 relative z-10">
+      <main 
+        className="flex w-full flex-col items-center pt-[70px] md:pt-[100px] max-w-full min-h-screen transition-all duration-700 ease-in-out" 
+        style={gradientStyle}
+      >
+        <div className="max-w-[1080px] w-full flex flex-col items-center px-4 md:px-6">
           <Hero />
         </div>
         <DiscoverSection />
-        <div className="w-full relative">
-          <AssetManagementSection />
-        </div>
+        <AssetManagementSection />
         <UseCasesSection />
       </main>
     </div>

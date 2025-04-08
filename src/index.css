@@ -102,7 +102,6 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Prevent horizontal scroll */
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -123,7 +122,6 @@
   /* Enhanced smooth scrolling */
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Prevent horizontal scroll */
   }
   
   /* Smooth transition for navbar buttons */
@@ -203,11 +201,4 @@
 
 .continuous-scroll {
   animation: scroll 30s linear infinite; /* Updated from 15s to 30s for a slower, consistent speed */
-}
-
-/* Fix for mobile gradient issues */
-@media (max-width: 768px) {
-  .gradient-container {
-    background-attachment: scroll !important;
-  }
 }
