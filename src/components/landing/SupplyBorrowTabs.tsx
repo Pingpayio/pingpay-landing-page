@@ -16,7 +16,7 @@ const SupplyBorrowTabs: React.FC = () => {
             activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
           }`}
         >
-          Supply
+          Receiving Payments
         </button>
         <button
           onClick={() => setActiveTab("borrow")}
@@ -24,7 +24,7 @@ const SupplyBorrowTabs: React.FC = () => {
             activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
           }`}
         >
-          Borrow
+          Making Payments
         </button>
       </div>
       <div className="bg-[#2A2A37] flex flex-col mt-3.5 w-full relative h-0.5">
