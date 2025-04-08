@@ -11,7 +11,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Checkout & Product Widgets",
-      description: "Embed crypto payments for any use case, into any app with Ping's user-friendly, checkout and product widgets with minimal code required."
+      description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required."
     },
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
