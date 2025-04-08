@@ -6,10 +6,11 @@ import CryptoCarousel from "./CryptoCarousel";
 const DiscoverSection: React.FC = () => {
   return (
     <section 
-      className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 max-w-full" 
+      className="w-full flex flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 relative z-10" 
       style={{
         minHeight: "auto",
-        maxHeight: "840px"
+        maxHeight: "840px",
+        backgroundColor: "#100713"
       }}
     >
       <div className="flex mb-6 md:mb-12 w-full max-w-[777px] flex-col items-center">

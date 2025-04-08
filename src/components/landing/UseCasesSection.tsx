@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -92,10 +91,11 @@ const UseCasesSection: React.FC = () => {
   return (
     <section 
       id="use-cases"
-      className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 max-w-full"
+      className="w-full flex flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 relative z-10 overflow-hidden"
       style={{
         minHeight: "auto",
-        maxHeight: "840px"
+        maxHeight: "840px",
+        backgroundColor: "#100713"
       }}
     >
       <div className="max-w-[1080px] mx-auto w-full">
@@ -152,8 +152,6 @@ const UseCasesSection: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* No need for the local style tag since we're using the global CSS animation */}
     </section>
   );
 };
