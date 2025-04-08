@@ -42,7 +42,7 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "120px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center mb-3 size-16 md:size-20 overflow-hidden">
+                  <div className="flex items-center justify-center mb-3 size-24 md:size-30 overflow-hidden">
                     <img 
                       src={token.imagePath}
                       alt={token.name}
@@ -64,7 +64,7 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "120px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center mb-3 size-16 md:size-20 overflow-hidden">
+                  <div className="flex items-center justify-center mb-3 size-24 md:size-30 overflow-hidden">
                     <img 
                       src={token.imagePath}
                       alt={token.name}
