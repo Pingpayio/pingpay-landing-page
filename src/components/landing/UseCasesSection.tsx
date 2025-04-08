@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
+import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard, Link, CreditCard as CardIcon, User, Bot, ArrowUpRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface UseCaseCardProps {
@@ -34,58 +34,52 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
 const UseCasesSection: React.FC = () => {
   const useCases: UseCaseCardProps[] = [
     {
-      title: "E-Commerce",
-      description: "Accept crypto payments for any product or digital assets. Instant settlement to your account from any chain.",
-      icon: <ShoppingCart className="w-16 h-16 text-[#AB9FF2]" />,
+      title: "Ping Links",
+      description: "Launch a hosted checkout page for digital/physical products from a Ping Link, in a few clicks. Accept crypto payments online or in person from all chains. Ping Links can be fully customised for specific community activations and rewarding your community.",
+      icon: <Link className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     },
     {
-      title: "Event Ticketing",
-      description: "Sell tickets for events with instant crypto payments and the option to issue NFTs as tickets.",
-      icon: <Ticket className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-purple-50"
-    },
-    {
-      title: "AI-Commerce",
-      description: "Facilitate payments for AI-generated content and services with seamless crypto transactions.",
-      icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-blue-50"
-    },
-    {
-      title: "Payments for Enterprise",
-      description: "Streamlined cross-border payments for businesses with reduced fees and transparent tracking.",
-      icon: <Building2 className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-indigo-50"
-    },
-    {
-      title: "Digital Services + Freelancing",
-      description: "Secure payment solutions for freelancers and digital service providers with global reach.",
-      icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
-    },
-    {
-      title: "Subscriptions + Memberships",
-      description: "Enable recurring crypto payments from any chain for subscriptions to your products or services.",
-      icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-purple-50"
-    },
-    {
-      title: "In-App Purchases",
-      description: "Integrate crypto payment options for seamless in-app transactions and digital goods.",
+      title: "Checkout & Product Widgets",
+      description: "Embed crypto payments for any use case, into any app with Ping's user-friendly, checkout and product widgets with minimal code required.",
       icon: <ShoppingBag className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-purple-50"
+    },
+    {
+      title: "Automated Subscriptions",
+      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Ping's Shade Agent will handle renewal payments automatically on the user's behalf.",
+      icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-blue-50"
     },
     {
-      title: "Invoicing + Bill Splitting",
-      description: "Create and manage invoices with built-in bill splitting features for group expenses.",
-      icon: <FileText className="w-16 h-16 text-[#AB9FF2]" />,
+      title: "Intuitive, Robust, and User-friendly APIs",
+      description: "We package our payment solutions into easy to use APIs, to integrate into your platform. We empower teams to focus on their use cases, rather than the complexities of web3 payment infrastructure.",
+      icon: <Rocket className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-indigo-50"
     },
     {
-      title: "IRL Payments",
-      description: "Enable real-world crypto payments with quick point-of-sale solutions for physical businesses.",
-      icon: <CreditCard className="w-16 h-16 text-[#AB9FF2]" />,
+      title: "Pay With Card",
+      description: "Accept traditional payments from non-crypto users with Ping, while still receiving the crypto you want to receive - powered by NEAR Intents.",
+      icon: <CardIcon className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
+    },
+    {
+      title: "Ping Account",
+      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept crypto payments from any chain to your ping account.",
+      icon: <User className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-purple-50"
+    },
+    {
+      title: "Ping AI Payment Assistant",
+      description: "The personal payment assisstant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
+      icon: <Bot className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-blue-50"
+    },
+    {
+      title: "Ping Onramp",
+      description: "Seamlessly Onramp fiat to crypto on any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon.",
+      icon: <ArrowUpRight className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-indigo-50"
     }
   ];
 
@@ -152,8 +146,6 @@ const UseCasesSection: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* No need for the local style tag since we're using the global CSS animation */}
     </section>
   );
 };
