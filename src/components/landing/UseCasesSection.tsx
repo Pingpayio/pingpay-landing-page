@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,12 +19,16 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
 }) => {
   return (
     <Card className={`h-full border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl`}>
-      <CardContent className="p-6 flex flex-col items-center text-center">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square mb-6 flex items-center justify-center">
-          {icon}
+      <CardContent className="p-0">
+        <div className="flex flex-col items-center text-center">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square mb-6 flex items-center justify-center p-6 pt-9">
+            {icon}
+          </div>
+          <div className="px-6 pb-9">
+            <h3 className={`text-xl font-semibold ${textColor} mb-2`}>{title}</h3>
+            <p className="text-[#4A4A4A] text-sm">{description}</p>
+          </div>
         </div>
-        <h3 className={`text-xl font-semibold ${textColor} mb-2`}>{title}</h3>
-        <p className="text-[#4A4A4A] text-sm px-2 pb-4">{description}</p>
       </CardContent>
     </Card>
   );
@@ -35,55 +38,55 @@ const UseCasesSection: React.FC = () => {
   const useCases: UseCaseCardProps[] = [
     {
       title: "E-Commerce",
-      description: "Accept crypto payments for any product or digital assets. Instant settlement to your account from any chain.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <ShoppingCart className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     },
     {
       title: "Event Ticketing",
-      description: "Sell tickets for events with instant crypto payments and the option to issue NFTs as tickets.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <Ticket className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-purple-50"
     },
     {
       title: "AI-Commerce",
-      description: "Facilitate payments for AI-generated content and services with seamless crypto transactions.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-blue-50"
     },
     {
       title: "Payments for Enterprise",
-      description: "Streamlined cross-border payments for businesses with reduced fees and transparent tracking.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <Building2 className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-indigo-50"
     },
     {
       title: "Digital Services + Freelancing",
-      description: "Secure payment solutions for freelancers and digital service providers with global reach.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     },
     {
       title: "Subscriptions + Memberships",
-      description: "Enable recurring crypto payments from any chain for subscriptions to your products or services.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-purple-50"
     },
     {
       title: "In-App Purchases",
-      description: "Integrate crypto payment options for seamless in-app transactions and digital goods.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <ShoppingBag className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-blue-50"
     },
     {
       title: "Invoicing + Bill Splitting",
-      description: "Create and manage invoices with built-in bill splitting features for group expenses.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <FileText className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-indigo-50"
     },
     {
       title: "IRL Payments",
-      description: "Enable real-world crypto payments with quick point-of-sale solutions for physical businesses.",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
       icon: <CreditCard className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     }
