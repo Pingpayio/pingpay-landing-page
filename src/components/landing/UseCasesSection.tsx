@@ -25,7 +25,7 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
           {icon}
         </div>
         <h3 className={`text-xl font-semibold ${textColor} mb-2`}>{title}</h3>
-        <p className="text-[#4A4A4A] text-sm">{description}</p>
+        <p className="text-[#4A4A4A] text-sm px-2 pb-4">{description}</p>
       </CardContent>
     </Card>
   );
