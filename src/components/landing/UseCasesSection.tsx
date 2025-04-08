@@ -1,7 +1,7 @@
 
-import React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ShoppingCart, Ticket, Repeat, Rocket } from "lucide-react";
+import React, { useEffect } from "react";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface UseCaseCardProps {
@@ -47,18 +47,59 @@ const UseCasesSection: React.FC = () => {
       bgColor: "bg-purple-50"
     },
     {
-      title: "Subscriptions",
-      description: "Enable recurring crypto payments from any chain for subscriptions to your products or services.",
-      icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
+      title: "AI-Commerce",
+      description: "Facilitate payments for AI-generated content and services with seamless crypto transactions.",
+      icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-blue-50"
     },
     {
-      title: "Pre-Sales",
-      description: "Launch a Pre-Sale campaign for your NFT, token, or product ahead of your launch.",
-      icon: <Rocket className="w-16 h-16 text-[#AB9FF2]" />,
+      title: "Payments for Enterprise",
+      description: "Streamlined cross-border payments for businesses with reduced fees and transparent tracking.",
+      icon: <Building2 className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-indigo-50"
+    },
+    {
+      title: "Digital Services + Freelancing",
+      description: "Secure payment solutions for freelancers and digital service providers with global reach.",
+      icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-green-50"
+    },
+    {
+      title: "Subscriptions + Memberships",
+      description: "Enable recurring crypto payments from any chain for subscriptions to your products or services.",
+      icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-purple-50"
+    },
+    {
+      title: "In-App Purchases",
+      description: "Integrate crypto payment options for seamless in-app transactions and digital goods.",
+      icon: <ShoppingBag className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-blue-50"
+    },
+    {
+      title: "Invoicing + Bill Splitting",
+      description: "Create and manage invoices with built-in bill splitting features for group expenses.",
+      icon: <FileText className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-indigo-50"
+    },
+    {
+      title: "IRL Payments",
+      description: "Enable real-world crypto payments with quick point-of-sale solutions for physical businesses.",
+      icon: <CreditCard className="w-16 h-16 text-[#AB9FF2]" />,
+      bgColor: "bg-green-50"
     }
   ];
+
+  // Add animation effect similar to CryptoCarousel
+  useEffect(() => {
+    const carousel = document.querySelector('.use-cases-carousel');
+    if (carousel) {
+      const addAnimation = () => {
+        carousel.classList.add('animate-carousel');
+      };
+      addAnimation();
+    }
+  }, []);
 
   return (
     <section 
@@ -75,29 +116,70 @@ const UseCasesSection: React.FC = () => {
           </h2>
         </div>
         
-        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto">
-          <Carousel className="w-full">
-            <CarouselContent className="-ml-6 md:-ml-8">
-              {useCases.map((useCase, index) => (
-                <CarouselItem key={index} className="pl-6 md:pl-8 md:basis-1/2 lg:basis-1/3">
-                  <div className="h-full">
-                    <UseCaseCard
-                      title={useCase.title}
-                      description={useCase.description}
-                      icon={useCase.icon}
-                      bgColor={useCase.bgColor}
-                    />
+        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden">
+          <div className="relative overflow-hidden">
+            {/* Continuous scrolling carousel, similar to CryptoCarousel */}
+            <div className="use-cases-carousel flex whitespace-nowrap">
+              {/* First set of use cases */}
+              <div className="flex continuous-scroll">
+                {useCases.map((useCase, index) => (
+                  <div 
+                    key={`first-${index}`} 
+                    className="shrink-0 pl-6 md:pl-8 inline-flex flex-col items-center"
+                    style={{ minWidth: "300px" }}
+                  >
+                    <div className="h-full">
+                      <UseCaseCard
+                        title={useCase.title}
+                        description={useCase.description}
+                        icon={useCase.icon}
+                        bgColor={useCase.bgColor}
+                      />
+                    </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="hidden md:block">
-              <CarouselPrevious className="left-0" />
-              <CarouselNext className="right-0" />
+                ))}
+              </div>
+
+              {/* Second set of use cases - creates the continuous effect */}
+              <div className="flex continuous-scroll">
+                {useCases.map((useCase, index) => (
+                  <div 
+                    key={`second-${index}`} 
+                    className="shrink-0 pl-6 md:pl-8 inline-flex flex-col items-center"
+                    style={{ minWidth: "300px" }}
+                  >
+                    <div className="h-full">
+                      <UseCaseCard
+                        title={useCase.title}
+                        description={useCase.description}
+                        icon={useCase.icon}
+                        bgColor={useCase.bgColor}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </Carousel>
+          </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-carousel {
+          animation: scroll 40s linear infinite;
+        }
+        .continuous-scroll {
+          flex-shrink: 0;
+        }
+      `}</style>
     </section>
   );
 };
