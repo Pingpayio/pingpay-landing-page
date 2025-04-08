@@ -27,7 +27,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Pay With Card",
-      description: "Accept traditional payments from non-crypto users with Ping, while still receiving the crypto you want to receive - powered by NEAR Intents."
+      description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents."
     },
     {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
