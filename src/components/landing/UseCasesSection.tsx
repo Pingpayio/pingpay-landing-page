@@ -126,9 +126,9 @@ const UseCasesSection: React.FC = () => {
                   <div 
                     key={`first-${index}`} 
                     className="shrink-0 pl-6 md:pl-8 inline-flex flex-col items-center"
-                    style={{ minWidth: "300px" }}
+                    style={{ width: "280px", height: "400px" }}
                   >
-                    <div className="h-full">
+                    <div className="h-full w-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
@@ -146,9 +146,9 @@ const UseCasesSection: React.FC = () => {
                   <div 
                     key={`second-${index}`} 
                     className="shrink-0 pl-6 md:pl-8 inline-flex flex-col items-center"
-                    style={{ minWidth: "300px" }}
+                    style={{ width: "280px", height: "400px" }}
                   >
-                    <div className="h-full">
+                    <div className="h-full w-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
@@ -164,7 +164,6 @@ const UseCasesSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Fix: Removed jsx and global attributes from style tag */}
       <style>
         {`
         @keyframes scroll {
