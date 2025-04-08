@@ -16,20 +16,16 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
   description, 
   icon, 
   bgColor,
-  textColor = "text-[#1F2937]" 
+  textColor = "text-[#3D315E]" 
 }) => {
   return (
     <Card className={`h-full border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl`}>
-      <CardContent className="p-0">
-        <div className="flex flex-col items-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square flex items-center justify-center p-9 pt-9">
-            {icon}
-          </div>
-          <div className="px-9 pb-9 pt-6 text-center">
-            <h3 className={`text-2xl font-semibold ${textColor} mb-4`}>{title}</h3>
-            <p className={`${textColor} text-base leading-relaxed`}>{description}</p>
-          </div>
+      <CardContent className="p-6 flex flex-col items-center text-center">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square mb-6 flex items-center justify-center">
+          {icon}
         </div>
+        <h3 className={`text-xl font-semibold ${textColor} mb-2`}>{title}</h3>
+        <p className="text-[#4A4A4A] text-sm px-2 pb-4">{description}</p>
       </CardContent>
     </Card>
   );
@@ -45,49 +41,49 @@ const UseCasesSection: React.FC = () => {
     },
     {
       title: "Event Ticketing",
-      description: "Accept crypto payments for tickets to your events. Instant settlement to your account from any chain with low fees.",
+      description: "Sell tickets for events with instant crypto payments and the option to issue NFTs as tickets.",
       icon: <Ticket className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
+      bgColor: "bg-purple-50"
     },
     {
       title: "AI-Commerce",
-      description: "Accept crypto payments for AI services. Instant settlement to your account from any chain for AI-powered products.",
+      description: "Facilitate payments for AI-generated content and services with seamless crypto transactions.",
       icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
+      bgColor: "bg-blue-50"
     },
     {
       title: "Payments for Enterprise",
-      description: "Accept crypto payments at enterprise scale. Secure, reliable settlement to your account from any blockchain.",
+      description: "Streamlined cross-border payments for businesses with reduced fees and transparent tracking.",
       icon: <Building2 className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
+      bgColor: "bg-indigo-50"
     },
     {
       title: "Digital Services + Freelancing",
-      description: "Accept crypto payments for digital services. Instant settlement to your account for freelance work from any chain.",
+      description: "Secure payment solutions for freelancers and digital service providers with global reach.",
       icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     },
     {
       title: "Subscriptions + Memberships",
-      description: "Accept recurring crypto payments for subscriptions. Reliable settlement to your account for membership fees.",
+      description: "Enable recurring crypto payments from any chain for subscriptions to your products or services.",
       icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
+      bgColor: "bg-purple-50"
     },
     {
       title: "In-App Purchases",
-      description: "Accept crypto payments within your application. Instant settlement to your account for in-app purchases.",
+      description: "Integrate crypto payment options for seamless in-app transactions and digital goods.",
       icon: <ShoppingBag className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
+      bgColor: "bg-blue-50"
     },
     {
       title: "Invoicing + Bill Splitting",
-      description: "Accept crypto payments for invoices. Easily split bills and receive instant settlement to your account.",
+      description: "Create and manage invoices with built-in bill splitting features for group expenses.",
       icon: <FileText className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-green-50"
+      bgColor: "bg-indigo-50"
     },
     {
       title: "IRL Payments",
-      description: "Accept crypto payments in real-life scenarios. Instant settlement to your account for in-person transactions.",
+      description: "Enable real-world crypto payments with quick point-of-sale solutions for physical businesses.",
       icon: <CreditCard className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     }
