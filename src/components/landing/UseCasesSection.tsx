@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,18 +16,18 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
   description, 
   icon, 
   bgColor,
-  textColor = "text-[#3D315E]" 
+  textColor = "text-[#1F2937]" 
 }) => {
   return (
     <Card className={`h-full border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl`}>
       <CardContent className="p-0">
-        <div className="flex flex-col items-center text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square mb-6 flex items-center justify-center p-6 pt-9">
+        <div className="flex flex-col items-center">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square flex items-center justify-center p-9 pt-9">
             {icon}
           </div>
-          <div className="px-6 pb-9">
-            <h3 className={`text-xl font-semibold ${textColor} mb-2`}>{title}</h3>
-            <p className="text-[#4A4A4A] text-sm">{description}</p>
+          <div className="px-9 pb-9 pt-6 text-center">
+            <h3 className={`text-2xl font-semibold ${textColor} mb-4`}>{title}</h3>
+            <p className={`${textColor} text-base leading-relaxed`}>{description}</p>
           </div>
         </div>
       </CardContent>
@@ -38,55 +39,55 @@ const UseCasesSection: React.FC = () => {
   const useCases: UseCaseCardProps[] = [
     {
       title: "E-Commerce",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments for any product or digital assets. Instant settlement to your account from any chain.",
       icon: <ShoppingCart className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     },
     {
       title: "Event Ticketing",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments for tickets to your events. Instant settlement to your account from any chain with low fees.",
       icon: <Ticket className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-purple-50"
+      bgColor: "bg-green-50"
     },
     {
       title: "AI-Commerce",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments for AI services. Instant settlement to your account from any chain for AI-powered products.",
       icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-blue-50"
+      bgColor: "bg-green-50"
     },
     {
       title: "Payments for Enterprise",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments at enterprise scale. Secure, reliable settlement to your account from any blockchain.",
       icon: <Building2 className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-indigo-50"
+      bgColor: "bg-green-50"
     },
     {
       title: "Digital Services + Freelancing",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments for digital services. Instant settlement to your account for freelance work from any chain.",
       icon: <Laptop className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     },
     {
       title: "Subscriptions + Memberships",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept recurring crypto payments for subscriptions. Reliable settlement to your account for membership fees.",
       icon: <Repeat className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-purple-50"
+      bgColor: "bg-green-50"
     },
     {
       title: "In-App Purchases",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments within your application. Instant settlement to your account for in-app purchases.",
       icon: <ShoppingBag className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-blue-50"
+      bgColor: "bg-green-50"
     },
     {
       title: "Invoicing + Bill Splitting",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments for invoices. Easily split bills and receive instant settlement to your account.",
       icon: <FileText className="w-16 h-16 text-[#AB9FF2]" />,
-      bgColor: "bg-indigo-50"
+      bgColor: "bg-green-50"
     },
     {
       title: "IRL Payments",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, nisl vel ultricies lacinia, nunc est dignissim nunc, in blandit magna nisi vel magna.",
+      description: "Accept crypto payments in real-life scenarios. Instant settlement to your account for in-person transactions.",
       icon: <CreditCard className="w-16 h-16 text-[#AB9FF2]" />,
       bgColor: "bg-green-50"
     }
