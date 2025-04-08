@@ -1,11 +1,11 @@
 
 import React from "react";
-import { CreditCard, Code2, Repeat, ShoppingCart, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
 
 const AssetManagementSection: React.FC = () => {
   const features = [
     {
-      icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
+      icon: <LinkIcon className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Links",
       description: "Launch a hosted checkout page for payments from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases."
     },
