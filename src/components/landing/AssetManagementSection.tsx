@@ -22,7 +22,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Intuitive APIs & SDKs",
-      description: "We package our payment solutions into easy to use APIs, to integrate into your platform. We empower teams to focus on their use cases, rather than the complexities of web3 payment infrastructure."
+      description: "We package our payment solutions into easy to use APIs and SDKs. Focus on your payment use cases, rather than the complexities of the infrastructure."
     },
     {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
