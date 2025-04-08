@@ -16,7 +16,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Automated Subscriptions",
-      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Ping's Shade Agent will handle payments automatically."
+      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending."
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
