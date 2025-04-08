@@ -42,7 +42,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Onramp",
-      description: "Seamlessly Onramp fiat to crypto on any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon."
+      description: "Seamlessly Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon."
     }
   ];
 
