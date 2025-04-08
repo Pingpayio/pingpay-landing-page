@@ -55,9 +55,9 @@ const AssetManagementSection: React.FC = () => {
     }}>
       <div className="max-w-[1080px] mx-auto relative z-10">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">Ping Payment Solutions</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">The Easiest Tools for Crypto Payments</h2>
           <p className="text-base md:text-xl text-[#4A4A4A] max-w-[700px] mx-auto">
-            Comprehensive tools for managing crypto payments with confidence
+            Payments in a few clicks, on any chain - curated for your use case
           </p>
         </div>
 
