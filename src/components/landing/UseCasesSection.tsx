@@ -164,7 +164,9 @@ const UseCasesSection: React.FC = () => {
         </div>
       </div>
 
-      <style jsx global>{`
+      {/* Fix: Removed jsx and global attributes from style tag */}
+      <style>
+        {`
         @keyframes scroll {
           0% {
             transform: translateX(0);
@@ -179,7 +181,8 @@ const UseCasesSection: React.FC = () => {
         .continuous-scroll {
           flex-shrink: 0;
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };
