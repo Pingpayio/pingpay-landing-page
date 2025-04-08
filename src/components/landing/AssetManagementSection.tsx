@@ -57,8 +57,10 @@ const AssetManagementSection: React.FC = () => {
               key={index} 
               className="bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30"
             >
-              <div className="flex items-start gap-4">
-                <div className="mt-1">{feature.icon}</div>
+              <div className="flex items-center gap-4">
+                <div className="flex-shrink-0 flex items-center justify-center">
+                  {feature.icon}
+                </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2 text-[#000000]">{feature.title}</h3>
                   <p className="text-[#4A4A4A]">{feature.description}</p>
