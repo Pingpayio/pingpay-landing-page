@@ -20,8 +20,8 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
   return (
     <Card className={`h-full border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl`}>
       <CardContent className="p-6 flex flex-col items-center text-center">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square mb-6 flex items-center justify-center">
-          <img src={imageSrc} alt={title} className="w-[70%] h-[70%] object-contain" />
+        <div className="rounded-2xl w-full aspect-square mb-6 flex items-center justify-center bg-transparent">
+          <img src={imageSrc} alt={title} className="w-[90%] h-[90%] object-contain" />
         </div>
         <h3 className={`text-xl font-semibold ${textColor} mb-2 whitespace-normal break-words`}>{title}</h3>
         <p className="text-[#4A4A4A] text-sm pb-4 whitespace-normal break-words">{description}</p>
