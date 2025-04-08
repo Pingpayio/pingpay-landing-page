@@ -1,13 +1,6 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
 
 interface UseCaseCardProps {
   title: string;
@@ -89,6 +82,9 @@ const UseCasesSection: React.FC = () => {
     }
   ];
 
+  // Duplicate the use cases to create a continuous scrolling effect
+  const duplicatedUseCases = [...useCases, ...useCases];
+
   return (
     <section 
       id="use-cases"
@@ -106,31 +102,50 @@ const UseCasesSection: React.FC = () => {
           </h2>
         </div>
         
-        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {useCases.map((useCase, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <div className="h-full">
-                    <UseCaseCard
-                      title={useCase.title}
-                      description={useCase.description}
-                      imageSrc={useCase.imageSrc}
-                      bgColor={useCase.bgColor}
-                    />
+        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden">
+          <div className="relative overflow-hidden">
+            <div className="flex whitespace-nowrap">
+              {/* First set of use cases */}
+              <div className="flex continuous-scroll">
+                {useCases.map((useCase, index) => (
+                  <div 
+                    key={`first-${index}`} 
+                    className="shrink-0 pl-4 inline-flex flex-col items-center"
+                    style={{ minWidth: "300px" }}
+                  >
+                    <div className="h-full">
+                      <UseCaseCard
+                        title={useCase.title}
+                        description={useCase.description}
+                        imageSrc={useCase.imageSrc}
+                        bgColor={useCase.bgColor}
+                      />
+                    </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2 md:left-4" />
-            <CarouselNext className="right-2 md:right-4" />
-          </Carousel>
+                ))}
+              </div>
+
+              {/* Second set of use cases - creates the continuous effect */}
+              <div className="flex continuous-scroll">
+                {useCases.map((useCase, index) => (
+                  <div 
+                    key={`second-${index}`} 
+                    className="shrink-0 pl-4 inline-flex flex-col items-center"
+                    style={{ minWidth: "300px" }}
+                  >
+                    <div className="h-full">
+                      <UseCaseCard
+                        title={useCase.title}
+                        description={useCase.description}
+                        imageSrc={useCase.imageSrc}
+                        bgColor={useCase.bgColor}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
