@@ -1,6 +1,6 @@
 
 import React from "react";
-import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart } from "lucide-react";
 
 const AssetManagementSection: React.FC = () => {
   const features = [
@@ -10,7 +10,7 @@ const AssetManagementSection: React.FC = () => {
       description: "Launch a hosted checkout page for payments from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases."
     },
     {
-      icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
+      icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Checkout & Product Widgets",
       description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required."
     },
