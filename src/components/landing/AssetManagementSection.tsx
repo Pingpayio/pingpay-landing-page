@@ -54,23 +54,23 @@ const AssetManagementSection: React.FC = () => {
       animation: 'flowing-gradient 15s ease infinite'
     }}>
       <div className="max-w-[1080px] mx-auto relative z-10">
-        <div className="text-center mb-10 md:mb-12">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl font-bold text-[#000000]">The Easiest Tools for Crypto Payments</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30"
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
             >
-              <div className="flex items-center gap-4">
-                <div className="flex-shrink-0 flex items-center justify-center">
+              <div className="flex items-start gap-5">
+                <div className="flex-shrink-0 bg-white/30 rounded-lg p-3 flex items-center justify-center">
                   {feature.icon}
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2 text-[#000000]">{feature.title}</h3>
-                  <p className="text-[#4A4A4A]">{feature.description}</p>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-3 text-[#000000]">{feature.title}</h3>
+                  <p className="text-[#4A4A4A] text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             </div>
