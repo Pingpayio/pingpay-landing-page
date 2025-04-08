@@ -91,6 +91,7 @@ const UseCasesSection: React.FC = () => {
 
   return (
     <section 
+      id="use-cases"
       className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 max-w-full"
       style={{
         minHeight: "auto",

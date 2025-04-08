@@ -37,7 +37,7 @@ const AssetManagementSection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full py-16 md:py-24 px-4" style={{
+    <section id="asset-management" className="w-full py-16 md:py-24 px-4" style={{
       background: `linear-gradient(45deg, 
                 #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
       backgroundSize: '400% 400%',

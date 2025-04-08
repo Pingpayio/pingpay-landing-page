@@ -27,6 +27,18 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // Smooth scroll function
+  const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false); // Close mobile menu after clicking
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80, // Offset to account for navbar height
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <>
       <nav 
@@ -53,11 +65,20 @@ const Navbar: React.FC = () => {
             </div>
             
             <div className="hidden md:flex items-center gap-8 text-white">
-              <button className="hover:opacity-80 transition-opacity">Features</button>
-              <button className="hover:opacity-80 transition-opacity">Docs</button>
-              <button className="hover:opacity-80 transition-opacity">Security</button>
-              <button className="hover:opacity-80 transition-opacity">FAQ</button>
-              <button className="hover:opacity-80 transition-opacity">Community</button>
+              <button 
+                onClick={() => scrollToSection('asset-management')} 
+                className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => scrollToSection('use-cases')} 
+                className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+              >
+                Use Cases
+              </button>
+              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Docs</button>
+              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Community</button>
             </div>
             
             <div className="flex items-center gap-2">
@@ -84,23 +105,25 @@ const Navbar: React.FC = () => {
         <div className="fixed inset-0 z-40 bg-[#100713] pt-[70px] flex flex-col animate-fade-in">
           <div className="flex flex-col p-6 h-full">
             <div className="flex flex-col space-y-6 text-white text-lg mt-4">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+              <div 
+                onClick={() => scrollToSection('asset-management')} 
+                className="flex items-center justify-between border-b border-white/10 pb-2 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
+              >
                 <span>Features</span>
                 <ChevronDown size={18} />
               </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+              <div 
+                onClick={() => scrollToSection('use-cases')} 
+                className="flex items-center justify-between border-b border-white/10 pb-2 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
+              >
+                <span>Use Cases</span>
+                <ChevronDown size={18} />
+              </div>
+              <div className="flex items-center justify-between border-b border-white/10 pb-2 hover:text-[#AB9FF2] transition-colors duration-300">
                 <span>Docs</span>
                 <ChevronDown size={18} />
               </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <span>Security</span>
-                <ChevronDown size={18} />
-              </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <span>FAQ</span>
-                <ChevronDown size={18} />
-              </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+              <div className="flex items-center justify-between border-b border-white/10 pb-2 hover:text-[#AB9FF2] transition-colors duration-300">
                 <span>Community</span>
                 <ChevronDown size={18} />
               </div>

@@ -118,6 +118,32 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  
+  /* Enhanced smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Smooth transition for navbar buttons */
+  .navbar-button {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-button::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #AB9FF2;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-button:hover::after {
+    width: 100%;
+  }
 }
 
 /* Gradient Animations */
@@ -176,4 +202,3 @@
 .continuous-scroll {
   animation: scroll 30s linear infinite; /* Updated from 15s to 30s for a slower, consistent speed */
 }
-
