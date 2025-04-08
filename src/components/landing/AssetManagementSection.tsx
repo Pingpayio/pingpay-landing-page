@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
 
@@ -54,11 +53,8 @@ const AssetManagementSection: React.FC = () => {
       animation: 'flowing-gradient 15s ease infinite'
     }}>
       <div className="max-w-[1080px] mx-auto relative z-10">
-        <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">The Easiest Tools for Crypto Payments</h2>
-          <p className="text-base md:text-xl text-[#4A4A4A] max-w-[700px] mx-auto">
-            Payments in a few clicks, on any chain - curated for your use case
-          </p>
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#000000]">The Easiest Tools for Crypto Payments</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-10">
