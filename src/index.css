@@ -174,5 +174,6 @@
 }
 
 .continuous-scroll {
-  animation: scroll 15s linear infinite;
+  animation: scroll 30s linear infinite; /* Updated from 15s to 30s for a slower, consistent speed */
 }
+

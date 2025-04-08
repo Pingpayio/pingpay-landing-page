@@ -106,7 +106,7 @@ const UseCasesSection: React.FC = () => {
         
         <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden">
           <div className="relative overflow-hidden">
-            {/* Matching CryptoCarousel animation style */}
+            {/* Using the same animation style as CryptoCarousel */}
             <div className="flex whitespace-nowrap">
               {/* First set of use cases */}
               <div className="flex continuous-scroll">
