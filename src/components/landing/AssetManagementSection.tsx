@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
 
@@ -17,7 +16,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Automated Subscriptions",
-      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Ping's Shade Agent will handle renewal payments automatically on the user's behalf."
+      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Ping's Shade Agent will handle payments automatically."
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
