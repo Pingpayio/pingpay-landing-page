@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -23,8 +24,8 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl w-full aspect-square mb-6 flex items-center justify-center">
           {icon}
         </div>
-        <h3 className={`text-xl font-semibold ${textColor} mb-2 w-full break-words`}>{title}</h3>
-        <p className="text-[#4A4A4A] text-sm pb-4 w-full">{description}</p>
+        <h3 className={`text-xl font-semibold ${textColor} mb-2 w-full break-words overflow-wrap`}>{title}</h3>
+        <p className="text-[#4A4A4A] text-sm pb-4 w-full overflow-wrap break-words">{description}</p>
       </CardContent>
     </Card>
   );
