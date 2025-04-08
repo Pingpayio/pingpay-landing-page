@@ -6,7 +6,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <LinkIcon className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Links",
-      description: "Launch a hosted checkout page for digital/physical products from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases."
+      description: "Launch a hosted checkout page for payments from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases."
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
