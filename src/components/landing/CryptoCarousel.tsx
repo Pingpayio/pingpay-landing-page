@@ -1,27 +1,29 @@
 
 import React from "react";
-import { Bitcoin, Circle, DollarSign, Euro, JapaneseYen, PoundSterling } from "lucide-react";
-import Swiss from "../icons/Swiss";
 
 // Token data structure
 interface TokenInfo {
   id: string;
   name: string;
-  icon: React.ReactNode;
+  imagePath: string;
 }
 
 const CryptoCarousel: React.FC = () => {
-  // Token list based on supported tokens from the SDK
+  // Token list with proper image paths
   const tokens: TokenInfo[] = [
-    { id: "near", name: "NEAR", icon: <Circle className="h-8 w-8 text-cyan-500" /> },
-    { id: "usdc", name: "USDC", icon: <DollarSign className="h-8 w-8 text-blue-600" /> },
-    { id: "usdt", name: "USDT", icon: <DollarSign className="h-8 w-8 text-green-500" /> },
-    { id: "btc", name: "Bitcoin", icon: <Bitcoin className="h-8 w-8 text-orange-500" /> },
-    { id: "eth", name: "Ethereum", icon: <Circle className="h-8 w-8 text-purple-600" /> },
-    { id: "eur", name: "Euro", icon: <Euro className="h-8 w-8 text-blue-700" /> },
-    { id: "gbp", name: "British Pound", icon: <PoundSterling className="h-8 w-8 text-blue-800" /> },
-    { id: "jpy", name: "Japanese Yen", icon: <JapaneseYen className="h-8 w-8 text-red-600" /> },
-    { id: "chf", name: "Swiss Franc", icon: <Swiss className="h-8 w-8 text-red-500" /> }
+    { id: "near", name: "NEAR", imagePath: "/lovable-uploads/90633e1d-04fe-43f3-b2a4-a95cbd296b2b.png" },
+    { id: "usdc", name: "USDC", imagePath: "/lovable-uploads/a7e6dbf3-9584-40ce-bf87-479d4f04fc18.png" },
+    { id: "usdt", name: "USDT", imagePath: "/lovable-uploads/c604dab3-c20d-486c-9450-77969cbf616e.png" },
+    { id: "btc", name: "Bitcoin", imagePath: "/lovable-uploads/6853e676-7e50-4200-b7df-7c86f6a7d996.png" },
+    { id: "eth", name: "Ethereum", imagePath: "/lovable-uploads/2e580af0-9cac-4ddf-8e9e-a30d2665100d.png" },
+    { id: "eur", name: "Euro", imagePath: "/lovable-uploads/881030f8-ed6c-49cb-ad52-cc009f383859.png" },
+    { id: "gbp", name: "British Pound", imagePath: "/lovable-uploads/ee3d231f-51a3-4655-9de3-4e51afbe3dc2.png" },
+    { id: "jpy", name: "Japanese Yen", imagePath: "/lovable-uploads/8acabdbc-d36f-40cf-9772-ac75c5a13965.png" },
+    { id: "chf", name: "Swiss Franc", imagePath: "/lovable-uploads/2a6effa1-10aa-4415-bb94-7fffb7a54429.png" },
+    { id: "sol", name: "Solana", imagePath: "/lovable-uploads/eadbfcb0-7e73-4c3d-92a5-93aa2a87156f.png" },
+    { id: "doge", name: "Dogecoin", imagePath: "/lovable-uploads/9ff1701c-bdf0-4b73-b406-23ed3ebb61ac.png" },
+    { id: "xrp", name: "XRP", imagePath: "/lovable-uploads/e064f9bf-617b-452b-9cda-1e339b98d9c5.png" },
+    { id: "usdt", name: "Tether", imagePath: "/lovable-uploads/aae3b923-8e1f-4e29-bb9a-1588c592cdf4.png" },
   ];
 
   // Duplicate tokens to create a continuous scrolling effect
@@ -40,8 +42,12 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "120px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="rounded-full bg-white p-4 shadow-md flex items-center justify-center mb-3 size-16 md:size-20">
-                    {token.icon}
+                  <div className="rounded-full bg-white p-2 shadow-md flex items-center justify-center mb-3 size-16 md:size-20 overflow-hidden">
+                    <img 
+                      src={token.imagePath}
+                      alt={token.name}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <span className="text-white text-sm md:text-base font-medium">{token.name}</span>
                 </div>
@@ -58,8 +64,12 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "120px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="rounded-full bg-white p-4 shadow-md flex items-center justify-center mb-3 size-16 md:size-20">
-                    {token.icon}
+                  <div className="rounded-full bg-white p-2 shadow-md flex items-center justify-center mb-3 size-16 md:size-20 overflow-hidden">
+                    <img 
+                      src={token.imagePath}
+                      alt={token.name}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <span className="text-white text-sm md:text-base font-medium">{token.name}</span>
                 </div>
