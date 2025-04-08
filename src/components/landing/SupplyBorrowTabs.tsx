@@ -9,46 +9,34 @@ const SupplyBorrowTabs: React.FC = () => {
 
   return (
     <div className="bg-[#100713] flex w-full max-w-[665px] flex-col items-stretch mt-8 md:mt-[66px] py-[5px] rounded-lg px-4 md:px-0">
-      <div className="w-full max-w-[392px] mx-auto">
-        {/* Tab buttons container */}
-        <div className="flex w-full">
-          {/* Left tab (Receiving Payments) */}
-          <div className="w-1/2 text-center">
-            <button
-              onClick={() => setActiveTab("supply")}
-              className={`transition-colors ${
-                activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
-              } text-base md:text-lg font-semibold whitespace-nowrap`}
-            >
-              Receiving Payments
-            </button>
-          </div>
-          
-          {/* Right tab (Making Payments) */}
-          <div className="w-1/2 text-center">
-            <button
-              onClick={() => setActiveTab("borrow")}
-              className={`transition-colors ${
-                activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
-              } text-base md:text-lg font-semibold whitespace-nowrap`}
-            >
-              Making Payments
-            </button>
-          </div>
-        </div>
-        
-        {/* Tab indicator line */}
-        <div className="bg-[#2A2A37] w-full mt-3.5 relative h-0.5">
-          <motion.div
-            className="bg-[#AB9FF2] absolute h-full"
-            initial={{ width: "50%", left: activeTab === "supply" ? "0%" : "50%" }}
-            animate={{ 
-              width: "50%", 
-              left: activeTab === "supply" ? "0%" : "50%" 
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-        </div>
+      <div className="self-center flex w-full max-w-[392px] items-stretch gap-5 text-base md:text-lg font-semibold whitespace-nowrap text-center justify-between">
+        <button
+          onClick={() => setActiveTab("supply")}
+          className={`leading-loose cursor-pointer transition-colors ${
+            activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
+          }`}
+        >
+          Supply
+        </button>
+        <button
+          onClick={() => setActiveTab("borrow")}
+          className={`leading-loose cursor-pointer transition-colors ${
+            activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
+          }`}
+        >
+          Borrow
+        </button>
+      </div>
+      <div className="bg-[#2A2A37] flex flex-col mt-3.5 w-full relative h-0.5">
+        <motion.div
+          className="bg-[#AB9FF2] absolute h-full"
+          initial={{ width: "50%", left: activeTab === "supply" ? "0%" : "50%" }}
+          animate={{ 
+            width: "50%", 
+            left: activeTab === "supply" ? "0%" : "50%" 
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
       </div>
 
       <div className="w-full flex mt-[25px]">
