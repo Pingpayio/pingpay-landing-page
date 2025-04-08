@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -51,7 +50,7 @@ const UseCasesSection: React.FC = () => {
       bgColor: "bg-[#f3eaff]" // Light purple that matches the AI-commerce image
     },
     {
-      title: "Enterprise Payments",
+      title: "Enterprise",
       description: "Streamlined cross-border payments for businesses with reduced fees and transparent tracking.",
       imageSrc: "/lovable-uploads/747eded5-8780-48f1-91df-a0e7a66058d3.png",
       bgColor: "bg-[#f3eaff]" // Light purple that matches the enterprise payments image
@@ -69,7 +68,7 @@ const UseCasesSection: React.FC = () => {
       bgColor: "bg-[#f3eaff]" // Light purple that matches the subscriptions image
     },
     {
-      title: "In Person Payments",
+      title: "IRL Payments",
       description: "Enable real-world crypto payments with quick point-of-sale solutions for physical businesses.",
       imageSrc: "/lovable-uploads/cabfa6c9-dd1b-495f-9622-b5b81477d03e.png",
       bgColor: "bg-[#f3eaff]" // Light purple that matches the in-person payments image
