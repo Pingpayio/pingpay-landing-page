@@ -1,6 +1,5 @@
 
-import React, { useEffect } from "react";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import React from "react";
 import { ShoppingCart, Ticket, Repeat, Rocket, Building2, Laptop, ShoppingBag, FileText, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -90,17 +89,6 @@ const UseCasesSection: React.FC = () => {
     }
   ];
 
-  // Add animation effect similar to CryptoCarousel
-  useEffect(() => {
-    const carousel = document.querySelector('.use-cases-carousel');
-    if (carousel) {
-      const addAnimation = () => {
-        carousel.classList.add('animate-carousel');
-      };
-      addAnimation();
-    }
-  }, []);
-
   return (
     <section 
       className="bg-[#100713] self-stretch flex w-full flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 max-w-full"
@@ -118,14 +106,14 @@ const UseCasesSection: React.FC = () => {
         
         <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden">
           <div className="relative overflow-hidden">
-            {/* Continuous scrolling carousel, similar to CryptoCarousel */}
-            <div className="use-cases-carousel flex whitespace-nowrap">
+            {/* Matching CryptoCarousel animation style */}
+            <div className="flex whitespace-nowrap">
               {/* First set of use cases */}
               <div className="flex continuous-scroll">
                 {useCases.map((useCase, index) => (
                   <div 
                     key={`first-${index}`} 
-                    className="shrink-0 pl-6 md:pl-8 inline-flex flex-col items-center"
+                    className="shrink-0 pl-4 inline-flex flex-col items-center"
                     style={{ width: "280px", height: "400px" }}
                   >
                     <div className="h-full w-full">
@@ -145,7 +133,7 @@ const UseCasesSection: React.FC = () => {
                 {useCases.map((useCase, index) => (
                   <div 
                     key={`second-${index}`} 
-                    className="shrink-0 pl-6 md:pl-8 inline-flex flex-col items-center"
+                    className="shrink-0 pl-4 inline-flex flex-col items-center"
                     style={{ width: "280px", height: "400px" }}
                   >
                     <div className="h-full w-full">
@@ -164,24 +152,7 @@ const UseCasesSection: React.FC = () => {
         </div>
       </div>
 
-      <style>
-        {`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-carousel {
-          animation: scroll 40s linear infinite;
-        }
-        .continuous-scroll {
-          flex-shrink: 0;
-        }
-        `}
-      </style>
+      {/* No need for the local style tag since we're using the global CSS animation */}
     </section>
   );
 };
