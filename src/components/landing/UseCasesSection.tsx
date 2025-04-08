@@ -111,7 +111,7 @@ const UseCasesSection: React.FC = () => {
                   <div 
                     key={`first-${index}`} 
                     className="shrink-0 pl-4 inline-flex flex-col items-center"
-                    style={{ minWidth: "300px" }}
+                    style={{ minWidth: "240px", maxWidth: "240px" }}
                   >
                     <div className="h-full">
                       <UseCaseCard
@@ -131,7 +131,7 @@ const UseCasesSection: React.FC = () => {
                   <div 
                     key={`second-${index}`} 
                     className="shrink-0 pl-4 inline-flex flex-col items-center"
-                    style={{ minWidth: "300px" }}
+                    style={{ minWidth: "240px", maxWidth: "240px" }}
                   >
                     <div className="h-full">
                       <UseCaseCard
