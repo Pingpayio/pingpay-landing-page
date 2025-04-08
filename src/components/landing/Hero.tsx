@@ -5,11 +5,18 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
-      <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
-        The Abstracted Payment
-        <br className="md:block" />
-        Engine for the Future of Commerce
-      </h1>
+      <div className="flex flex-col items-center">
+        <img
+          src="/lovable-uploads/20369f52-b96a-496b-ae8d-1078cd3ab125.png"
+          alt="Ping Logo"
+          className="w-10 h-10 mb-4 mt-12 md:mt-[100px]"
+        />
+        <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-4 md:mt-8 max-w-full text-shadow-sm">
+          The Abstracted Payment
+          <br className="md:block" />
+          Engine for the Future of Commerce
+        </h1>
+      </div>
       <p className="text-[#000000] text-base md:text-2xl font-normal text-center mt-4 max-w-full px-4 md:leading-9">
         Make & Receive Instant Borderless Payments
       </p>
