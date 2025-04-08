@@ -1,38 +1,48 @@
 
 import React from "react";
-import { ArrowDown, ArrowUp, Building, RefreshCw, Shield, Wallet } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
 
 const AssetManagementSection: React.FC = () => {
   const features = [
     {
-      icon: <Building className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Lend & Borrow",
-      description: "Provide liquidity or access capital while earning competitive interest."
+      icon: <LinkIcon className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Ping Links",
+      description: "Launch a hosted checkout page for digital/physical products from a Ping Link, in a few clicks. Accept crypto payments online or in person from all chains. Ping Links can be fully customised for specific community activations and rewarding your community."
     },
     {
-      icon: <RefreshCw className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Liquid Vaults",
-      description: "Automated yield strategies for steady, predictable growth and easy withdrawals."
+      icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Checkout & Product Widgets",
+      description: "Embed crypto payments for any use case, into any app with Ping's user-friendly, checkout and product widgets with minimal code required."
     },
     {
-      icon: <ArrowUp className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Leveraged Positions",
-      description: "Maximize potential returns by continuously reinvesting borrowed assets into new assets."
+      icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Automated Subscriptions",
+      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Ping's Shade Agent will handle renewal payments automatically on the user's behalf."
     },
     {
-      icon: <Shield className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Isolated Markets",
-      description: "Manage risk by using isolated markets and limit your exposure to only certain assets."
+      icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Intuitive, Robust, and User-friendly APIs",
+      description: "We package our payment solutions into easy to use APIs, to integrate into your platform. We empower teams to focus on their use cases, rather than the complexities of web3 payment infrastructure."
+    },
+    {
+      icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Pay With Card",
+      description: "Accept traditional payments from non-crypto users with Ping, while still receiving the crypto you want to receive - powered by NEAR Intents."
     },
     {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Smart Vaults",
-      description: "Customizable automation for complex strategies with secure on-chain execution."
+      title: "Ping Account",
+      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept crypto payments from any chain to your ping account."
     },
     {
-      icon: <ArrowDown className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Risk Management",
-      description: "Advanced tools to monitor your positions and automatically adjust based on market conditions."
+      icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Ping AI Payment Assistant",
+      description: "The personal payment assisstant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading."
+    },
+    {
+      icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Ping Onramp",
+      description: "Seamlessly Onramp fiat to crypto on any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon."
     }
   ];
 
@@ -45,9 +55,9 @@ const AssetManagementSection: React.FC = () => {
     }}>
       <div className="max-w-[1080px] mx-auto">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">On-Chain Asset Management.</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-[#000000] mb-4">Ping Payment Solutions</h2>
           <p className="text-base md:text-xl text-[#4A4A4A] max-w-[700px] mx-auto">
-            Comprehensive tools for managing your digital assets with confidence
+            Comprehensive tools for managing crypto payments with confidence
           </p>
         </div>
 
