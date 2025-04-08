@@ -1,3 +1,4 @@
+
 import React from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown } from "lucide-react";
 
@@ -20,7 +21,7 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Intuitive, User-friendly APIs",
+      title: "Intuitive, User-friendly APIs & SDKs",
       description: "We package our payment solutions into easy to use APIs, to integrate into your platform. We empower teams to focus on their use cases, rather than the complexities of web3 payment infrastructure."
     },
     {
