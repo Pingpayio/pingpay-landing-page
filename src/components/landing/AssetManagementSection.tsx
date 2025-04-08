@@ -65,7 +65,7 @@ const AssetManagementSection: React.FC = () => {
               className="bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
             >
               <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 bg-white/30 rounded-lg p-3 flex items-center justify-center">
+                <div className="flex-shrink-0 flex items-center justify-center">
                   {feature.icon}
                 </div>
                 <div className="flex-1">
