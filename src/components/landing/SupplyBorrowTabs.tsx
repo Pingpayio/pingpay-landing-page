@@ -9,23 +9,27 @@ const SupplyBorrowTabs: React.FC = () => {
 
   return (
     <div className="bg-[#100713] flex w-full max-w-[665px] flex-col items-stretch mt-8 md:mt-[66px] py-[5px] rounded-lg px-4 md:px-0">
-      <div className="self-center flex w-full max-w-[392px] items-stretch justify-center gap-5 text-base md:text-lg font-semibold whitespace-nowrap text-center">
-        <button
-          onClick={() => setActiveTab("supply")}
-          className={`flex-1 text-center leading-loose cursor-pointer transition-colors ${
-            activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
-          }`}
-        >
-          Receiving Payments
-        </button>
-        <button
-          onClick={() => setActiveTab("borrow")}
-          className={`flex-1 text-center leading-loose cursor-pointer transition-colors ${
-            activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
-          }`}
-        >
-          Making Payments
-        </button>
+      <div className="self-center flex w-full max-w-[392px] items-stretch justify-between gap-5 text-base md:text-lg font-semibold whitespace-nowrap">
+        <div className="flex-1 flex justify-center">
+          <button
+            onClick={() => setActiveTab("supply")}
+            className={`text-center leading-loose cursor-pointer transition-colors ${
+              activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
+            }`}
+          >
+            Receiving Payments
+          </button>
+        </div>
+        <div className="flex-1 flex justify-center">
+          <button
+            onClick={() => setActiveTab("borrow")}
+            className={`text-center leading-loose cursor-pointer transition-colors ${
+              activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
+            }`}
+          >
+            Making Payments
+          </button>
+        </div>
       </div>
       <div className="bg-[#2A2A37] flex flex-col mt-3.5 w-full relative h-0.5">
         <motion.div
