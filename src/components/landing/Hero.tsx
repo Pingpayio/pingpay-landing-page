@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Timer } from "lucide-react";
 
@@ -63,8 +62,7 @@ const Hero: React.FC = () => {
         for the Future of{" "}
         <span className="relative">
           <span 
-            className="inline-block min-w-[80px] md:min-w-[180px]"
-            style={{ color: index === 0 ? "#000000" : "#AB9FF2" }} // Match Launch App button color for all words except "Commerce"
+            className="inline-block min-w-[80px] md:min-w-[180px] text-[#AB9FF2]"
           >
             {displayText}
           </span>
