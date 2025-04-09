@@ -5,14 +5,7 @@ import { Timer } from "lucide-react";
 const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
-      <div className="mb-6 mt-14 md:mt-[100px]">
-        <img 
-          src="/lovable-uploads/0d81fb82-bcea-4fe8-bb4c-5835c47e9818.png" 
-          alt="Ping Logo" 
-          className="h-14 md:h-16 w-auto"
-        />
-      </div>
-      <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-4 md:mt-6 max-w-full text-shadow-sm">
+      <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
         <br className="md:block" />
         for the Future of Commerce
