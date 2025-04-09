@@ -8,31 +8,22 @@ interface TokenInfo {
 }
 
 const CryptoCarousel: React.FC = () => {
-  // Token list with all the images (original ones + newly uploaded ones)
+  // Token list with the newly uploaded images
   const tokens: TokenInfo[] = [
-    // New uploaded images
-    { id: "pepe-coin", imagePath: "/lovable-uploads/32392d84-711d-46b9-a3ed-4efb0a7f73df.png" },
-    { id: "dog-coin", imagePath: "/lovable-uploads/03381f3c-d4f0-453c-8bd9-7826e24aefcd.png" },
-    { id: "solana", imagePath: "/lovable-uploads/1f781480-77eb-44eb-98ff-b07710351962.png" },
-    { id: "usd-coin", imagePath: "/lovable-uploads/c74e6c36-409e-4745-8bb2-fdcbd6d7d9f1.png" },
-    { id: "uniswap", imagePath: "/lovable-uploads/adce3f0a-a94c-42a9-9b48-dae916ed3395.png" },
-    { id: "unicorn", imagePath: "/lovable-uploads/a97a962d-5373-4595-a678-cdc2359e82ce.png" },
-    { id: "dollar", imagePath: "/lovable-uploads/3c5425ec-5dd5-49a5-9677-2f4d5c82b5c9.png" },
-    { id: "tether", imagePath: "/lovable-uploads/c1087241-8714-4aec-bfcb-bfdebd2979ab.png" },
-    { id: "xrp", imagePath: "/lovable-uploads/776aa779-6df3-4213-974c-1d86f64ae36e.png" },
-    // Original images
-    { id: "near", imagePath: "/lovable-uploads/a3afc788-dae9-4614-8708-6f353fb92e7d.png" },
-    { id: "maticpolygon", imagePath: "/lovable-uploads/fb8736a4-287c-45c8-974e-e67b8e28c535.png" },
-    { id: "apecoin", imagePath: "/lovable-uploads/2f909375-ec08-4b20-8a8d-34deac4397a1.png" },
-    { id: "bitcoin", imagePath: "/lovable-uploads/14e29b50-9414-4c53-a490-fb8127c56cd1.png" },
-    { id: "ethereum", imagePath: "/lovable-uploads/fe1f7beb-4d5e-480f-a58c-2ecab8aff459.png" },
-    { id: "euro", imagePath: "/lovable-uploads/578b723a-599d-41e6-8e2b-760de110e2fb.png" },
-    { id: "dogecoin", imagePath: "/lovable-uploads/dc4e8bef-3b60-46ca-a566-69d4b464b5dc.png" },
-    { id: "pepe", imagePath: "/lovable-uploads/97c3e5ac-2952-4048-9ca4-59bb4290659a.png" },
-    { id: "ufo", imagePath: "/lovable-uploads/cb202eb4-9e8f-426a-9ff7-0c461af2840a.png" },
-    { id: "coolcat", imagePath: "/lovable-uploads/566eefb9-32d5-4d76-9f3c-7a5f6aa42409.png" },
-    { id: "frog", imagePath: "/lovable-uploads/af6c55cd-3b20-4722-a17d-548e8624aa20.png" },
-    { id: "venom", imagePath: "/lovable-uploads/ddeb5091-3b23-440f-bd59-c4c7d2d449e4.png" },
+    { id: "coin1", imagePath: "/lovable-uploads/e6f8b545-fa42-4e22-9ad8-1e99474862b2.png" },
+    { id: "coin2", imagePath: "/lovable-uploads/6d4ff297-c8d2-4651-9da4-14185bef8a7f.png" },
+    { id: "coin3", imagePath: "/lovable-uploads/2dd79dd2-c23f-4f1e-b1bd-73afcae0ea29.png" },
+    { id: "coin4", imagePath: "/lovable-uploads/b45c55a9-c1d6-485c-8707-54c039d4d5ef.png" },
+    { id: "coin5", imagePath: "/lovable-uploads/abef287a-5b0e-4e3d-9328-d41f5096d7a3.png" },
+    { id: "coin6", imagePath: "/lovable-uploads/2b3aa215-b6e5-4c4b-8514-f0d3106135cd.png" },
+    { id: "coin7", imagePath: "/lovable-uploads/34df4987-58fd-4221-a4b5-52f3acc57d2a.png" },
+    { id: "coin8", imagePath: "/lovable-uploads/830f9d36-f9b7-4860-aaa8-511a963d1a4c.png" },
+    { id: "coin9", imagePath: "/lovable-uploads/0eeaec2e-d7af-42fe-b6f2-8956118e5523.png" },
+    { id: "coin10", imagePath: "/lovable-uploads/0833e98a-f70e-46ef-b6ce-1a04dff38d0f.png" },
+    { id: "coin11", imagePath: "/lovable-uploads/3487923f-3750-4d2d-9729-3093d309d810.png" },
+    { id: "coin12", imagePath: "/lovable-uploads/c0f0f9f5-318d-4cf4-b6ee-1d864a05d9a5.png" },
+    { id: "coin13", imagePath: "/lovable-uploads/30212935-4627-41da-88eb-c62982a9dffe.png" },
+    { id: "coin14", imagePath: "/lovable-uploads/5b60922e-f63b-4e8f-a95e-e584727f8b0a.png" },
   ];
 
   return (
