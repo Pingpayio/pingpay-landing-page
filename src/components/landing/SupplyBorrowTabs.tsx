@@ -59,7 +59,7 @@ const SupplyBorrowTabs: React.FC = () => {
         )}
         {activeTab === "borrow" && (
           <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-right w-full md:w-1/2 ml-auto pr-0 whitespace-normal">
-            Pay Your Way. No friction of different currencies, blockchains or wallets. Global payments made simple.
+            Pay Your Way. Removing the complexity and friction of different currencies, blockchains or wallets. Global payments made simple with the power of Ping.
           </div>
         )}
       </div>
