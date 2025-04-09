@@ -38,9 +38,6 @@ const CommunitySection: React.FC = () => {
                 alt="Ping Logo"
                 className="h-6 mb-2" 
               />
-              <p className="text-[#AB9FF2] text-sm opacity-70 text-center md:text-left">
-                &copy; {new Date().getFullYear()} PING. All rights reserved.
-              </p>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3">
