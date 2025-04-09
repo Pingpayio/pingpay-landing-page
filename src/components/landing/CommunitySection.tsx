@@ -57,9 +57,6 @@ const CommunitySection: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between w-full">
             <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
               <span className="text-[#AB9FF2] text-xl font-bold mb-2">PING</span>
-              <p className="text-[#AB9FF2] text-sm opacity-70 text-center md:text-left">
-                &copy; {new Date().getFullYear()} PING. All rights reserved.
-              </p>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3">
