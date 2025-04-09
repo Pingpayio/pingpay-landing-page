@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -68,7 +69,7 @@ const CryptoCarousel: React.FC = () => {
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
                 style={{ minWidth: "140px" }}
               >
-                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center p-4 bg-gradient-to-br from-[#dfd7fc] to-[#f0e8ff] rounded-2xl transition-all duration-300 hover:scale-105">
                   <div className="flex items-center justify-center overflow-hidden size-36 md:size-48">
                     <img 
                       src={token.imagePath}
@@ -89,7 +90,7 @@ const CryptoCarousel: React.FC = () => {
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
                 style={{ minWidth: "140px" }}
               >
-                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center p-4 bg-gradient-to-br from-[#dfd7fc] to-[#f0e8ff] rounded-2xl transition-all duration-300 hover:scale-105">
                   <div className="flex items-center justify-center overflow-hidden size-36 md:size-48">
                     <img 
                       src={token.imagePath}
