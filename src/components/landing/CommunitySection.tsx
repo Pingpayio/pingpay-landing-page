@@ -29,18 +29,18 @@ const CommunitySection: React.FC = () => {
           </a>
         </div>
         
-        {/* Footer Links */}
-        <div className="w-full border-t border-[#AB9FF2] border-opacity-10 pt-12">
-          <div className="flex flex-col md:flex-row justify-between w-full">
-            <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
+        {/* Footer Links - Reduced vertical spacing and improved alignment */}
+        <div className="w-full border-t border-[#AB9FF2] border-opacity-10 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-center w-full">
+            <div className="mb-6 md:mb-0">
               <img
                 src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
                 alt="Ping Logo"
-                className="h-6 mb-2" 
+                className="h-6" 
               />
             </div>
             
-            <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
               <Link to="/privacy" className="text-[#AB9FF2] text-sm hover:text-white transition-colors">
                 Privacy Policy
               </Link>
