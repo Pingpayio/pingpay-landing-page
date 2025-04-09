@@ -61,14 +61,14 @@ const Hero: React.FC = () => {
         The Payment Layer
         <br className="md:block" />
         for the Future of{" "}
-        <span className="relative">
+        <span className="relative inline-flex">
           <span 
-            className="inline-block min-w-[80px] md:min-w-[180px]"
+            className="min-w-[80px] md:min-w-[180px]"
             style={{ color: index === 0 ? "#000000" : words[index].color }}
           >
             {displayText}
           </span>
-          <span className="absolute -right-[4px] top-0 h-full w-[2px] bg-black animate-blink"></span>
+          <span className="absolute h-full w-[2px] bg-black animate-blink" style={{ left: `calc(${displayText.length}ch)` }}></span>
         </span>
       </h1>
       <p className="text-[#000000] text-base md:text-2xl font-normal text-center mt-4 max-w-full px-4 md:leading-9">
