@@ -27,13 +27,19 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Smooth scroll function
+  // Updated scroll function with section-specific offsets
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
     if (element) {
+      // Define custom offsets for specific sections
+      const offset = id === 'use-cases' ? 100 : 80;
+      
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
       window.scrollTo({
-        top: element.offsetTop - 80, // Offset to account for navbar height
+        top: offsetPosition,
         behavior: 'smooth'
       });
     }

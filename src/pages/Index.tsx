@@ -68,8 +68,8 @@ const Index: React.FC = () => {
         
         {/* Sections with specific background colors */}
         <DiscoverSection />
-        <AssetManagementSection />
-        <UseCasesSection />
+        <AssetManagementSection id="asset-management" />
+        <UseCasesSection id="use-cases" />
       </main>
     </div>
   );
