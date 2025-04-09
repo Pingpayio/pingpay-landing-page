@@ -5,7 +5,6 @@ import Hero from "@/components/landing/Hero";
 import DiscoverSection from "@/components/landing/DiscoverSection";
 import AssetManagementSection from "@/components/landing/AssetManagementSection";
 import UseCasesSection from "@/components/landing/UseCasesSection";
-import Footer from "@/components/landing/Footer";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index: React.FC = () => {
@@ -72,7 +71,6 @@ const Index: React.FC = () => {
         <AssetManagementSection />
         <UseCasesSection />
       </main>
-      <Footer />
     </div>
   );
 };
