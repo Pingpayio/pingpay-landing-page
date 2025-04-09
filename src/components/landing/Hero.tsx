@@ -6,9 +6,9 @@ const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
-        The Abstracted Payment
+        The Payment Layer
         <br className="md:block" />
-        Engine for the Future of Commerce
+        for the Future of Commerce
       </h1>
       <p className="text-[#000000] text-base md:text-2xl font-normal text-center mt-4 max-w-full px-4 md:leading-9">
         Make & Receive Instant Borderless Payments
