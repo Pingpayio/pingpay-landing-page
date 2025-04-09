@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface UseCaseCardProps {
@@ -31,59 +31,93 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
 };
 
 const UseCasesSection: React.FC = () => {
-  const useCases: UseCaseCardProps[] = [
+  // All 11 use cases with new images
+  const allUseCases: UseCaseCardProps[] = [
     {
-      title: "E-Commerce",
-      description: "Accept crypto payments for digital and physical products. Quick settlement from any blockchain network.",
-      imageSrc: "/lovable-uploads/09d92c44-0c0f-420a-ada8-98dc2e90279b.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the e-commerce image
-    },
-    {
-      title: "Event Ticketing",
-      description: "Sell event tickets with instant crypto payments. Optional NFT tickets for enhanced security and collectibility.",
-      imageSrc: "/lovable-uploads/02221691-f97d-47be-9365-e7afe8fdc1c6.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the event ticketing image
-    },
-    {
-      title: "AI-Commerce",
+      title: "AI-commerce",
       description: "Enable payments for AI services and content. Seamless transactions for next-gen digital offerings.",
-      imageSrc: "/lovable-uploads/efc9a025-def3-4f5e-934a-c696de8a7f26.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the AI-commerce image
+      imageSrc: "/lovable-uploads/051f5c43-8963-4df7-b8e0-00f5da2d23b5.png", // AI-commerce image
+      bgColor: "bg-[#f3eaff]"
     },
     {
       title: "Enterprise",
       description: "Streamlined cross-border B2B payments. Reduce fees and gain full transaction transparency.",
-      imageSrc: "/lovable-uploads/747eded5-8780-48f1-91df-a0e7a66058d3.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the enterprise payments image
+      imageSrc: "/lovable-uploads/bbd8fd07-bc11-4018-b211-42785e570fb4.png", // Enterprise image
+      bgColor: "bg-[#f3eaff]"
     },
     {
       title: "Digital Services",
       description: "Secure payment solutions for freelancers. Reach clients globally with instant settlements.",
-      imageSrc: "/lovable-uploads/75531257-3124-4ed2-bbfa-d8ecece7b30a.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the digital services image
+      imageSrc: "/lovable-uploads/723d566c-634a-449e-acdd-467d35704424.png", // Digital Services image
+      bgColor: "bg-[#f3eaff]"
     },
     {
       title: "Subscriptions",
       description: "Enable recurring crypto payments. Support multiple chains for subscription-based offerings.",
-      imageSrc: "/lovable-uploads/caf4473a-ce87-466c-b031-f724bf54199c.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the subscriptions image
+      imageSrc: "/lovable-uploads/adecacb6-2b8d-42b8-83b7-e96ffd927ecc.png", // Subscriptions image
+      bgColor: "bg-[#f3eaff]"
     },
     {
       title: "IRL Payments",
       description: "Quick point-of-sale crypto payments. Bring blockchain to physical retail environments.",
-      imageSrc: "/lovable-uploads/cabfa6c9-dd1b-495f-9622-b5b81477d03e.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the in-person payments image
+      imageSrc: "/lovable-uploads/bf2c7584-3ae7-4197-a814-36fed986bd64.png", // IRL Payments image
+      bgColor: "bg-[#f3eaff]"
     },
     {
       title: "Bill Splitting",
       description: "Create and manage group expenses. Split bills efficiently with integrated payment tracking.",
-      imageSrc: "/lovable-uploads/db5378b9-bcfa-418b-ac28-91443b335ee9.png",
-      bgColor: "bg-[#f3eaff]" // Light purple that matches the bill splitting image
+      imageSrc: "/lovable-uploads/9fc4b611-658a-4925-b1fa-31640038cc6e.png", // Bill Splitting image
+      bgColor: "bg-[#f3eaff]"
+    },
+    {
+      title: "E-Commerce",
+      description: "Accept crypto payments for digital and physical products. Quick settlement from any blockchain network.",
+      imageSrc: "/lovable-uploads/dc224d9f-ab71-4d25-bbdf-2a8d39dfb720.png", // E-commerce image
+      bgColor: "bg-[#f3eaff]"
+    },
+    {
+      title: "Event Ticketing",
+      description: "Sell event tickets with instant crypto payments. Optional NFT tickets for enhanced security and collectibility.",
+      imageSrc: "/lovable-uploads/63efbc89-1e9e-442d-a1ae-c65a3fbc6846.png", // Event Ticketing image
+      bgColor: "bg-[#f3eaff]"
+    },
+    {
+      title: "Invoicing",
+      description: "Generate and send professional crypto invoices. Automated payment tracking and reconciliation.",
+      imageSrc: "/lovable-uploads/f3ae69a7-9b8c-44d4-a32d-76c482fe4f70.png", // Invoicing image
+      bgColor: "bg-[#f3eaff]"
+    },
+    {
+      title: "Savings Pots",
+      description: "Create dedicated crypto savings funds. Set goals and track progress with automated allocations.",
+      imageSrc: "/lovable-uploads/0943ab13-2c96-4b77-8de0-cb1b123d7c5d.png", // Savings Pots image
+      bgColor: "bg-[#f3eaff]"
+    },
+    {
+      title: "In-app Purchases",
+      description: "Integrate seamless in-app crypto payments. Enhance user experience with quick transaction flows.",
+      imageSrc: "/lovable-uploads/c1a66de4-1adf-438b-a944-54d5fc1c0a16.png", // In-app Purchases image
+      bgColor: "bg-[#f3eaff]"
     }
   ];
 
-  // Duplicate the use cases to create a continuous scrolling effect
-  const duplicatedUseCases = [...useCases, ...useCases];
+  // State to store randomized use cases
+  const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
+
+  // Randomize use cases on component mount
+  useEffect(() => {
+    // Fisher-Yates shuffle algorithm
+    const shuffleUseCases = (array: UseCaseCardProps[]): UseCaseCardProps[] => {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
+    setUseCases(shuffleUseCases(allUseCases));
+  }, []);
 
   return (
     <section 
