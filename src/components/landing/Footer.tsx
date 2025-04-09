@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Github, Linkedin, Twitter, Discord } from "lucide-react";
+import { Github, Linkedin, Twitter, MessageSquare } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Footer: React.FC = () => {
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
                 <Github size={20} />
               </a>
               <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                <Discord size={20} />
+                <MessageSquare size={20} />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 <Linkedin size={20} />
