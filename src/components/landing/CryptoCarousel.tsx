@@ -1,5 +1,5 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 // Token data structure
 interface TokenInfo {
@@ -8,8 +8,9 @@ interface TokenInfo {
 }
 
 const CryptoCarousel: React.FC = () => {
-  // Token list with the newly uploaded images
-  const tokens: TokenInfo[] = [
+  // All tokens including the new ones
+  const allTokens: TokenInfo[] = [
+    // Existing tokens
     { id: "coin1", imagePath: "/lovable-uploads/e6f8b545-fa42-4e22-9ad8-1e99474862b2.png" },
     { id: "coin2", imagePath: "/lovable-uploads/6d4ff297-c8d2-4651-9da4-14185bef8a7f.png" },
     { id: "coin3", imagePath: "/lovable-uploads/2dd79dd2-c23f-4f1e-b1bd-73afcae0ea29.png" },
@@ -24,7 +25,36 @@ const CryptoCarousel: React.FC = () => {
     { id: "coin12", imagePath: "/lovable-uploads/c0f0f9f5-318d-4cf4-b6ee-1d864a05d9a5.png" },
     { id: "coin13", imagePath: "/lovable-uploads/30212935-4627-41da-88eb-c62982a9dffe.png" },
     { id: "coin14", imagePath: "/lovable-uploads/5b60922e-f63b-4e8f-a95e-e584727f8b0a.png" },
+    
+    // New tokens from the uploaded images
+    { id: "coin15", imagePath: "/lovable-uploads/2e4bdbc8-b725-41ca-b2d8-4281234435f6.png" }, // Dog coin
+    { id: "coin16", imagePath: "/lovable-uploads/a6debefc-797f-4e48-92d8-6bff8224cae6.png" }, // Solana coin
+    { id: "coin17", imagePath: "/lovable-uploads/19b83477-b528-4649-9821-dbd84fbcf0c0.png" }, // Ox coin
+    { id: "coin18", imagePath: "/lovable-uploads/6443065c-4ef1-4166-858a-0b3a3d16152f.png" }, // Unicorn coin
+    { id: "coin19", imagePath: "/lovable-uploads/f3b935de-e4db-4807-b3fc-c84ba81f8d95.png" }, // USD coin
+    { id: "coin20", imagePath: "/lovable-uploads/5248b9e5-d6ed-4e1a-a022-e0ee1aa4e09f.png" }, // Tether coin
+    { id: "coin21", imagePath: "/lovable-uploads/bcf32a69-4562-4179-93db-ceb746386d60.png" }, // Dog with hat coin
+    { id: "coin22", imagePath: "/lovable-uploads/9b36567e-97a5-4aac-a103-a487e2b62540.png" }, // XRP coin
+    { id: "coin23", imagePath: "/lovable-uploads/fc76b8fb-ff5c-4967-896f-eb1cdc083088.png" }, // Z coin
   ];
+
+  // State to store randomized tokens
+  const [tokens, setTokens] = useState<TokenInfo[]>([]);
+
+  // Randomize tokens on component mount
+  useEffect(() => {
+    // Fisher-Yates shuffle algorithm
+    const shuffleTokens = (array: TokenInfo[]): TokenInfo[] => {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
+
+    setTokens(shuffleTokens(allTokens));
+  }, []);
 
   return (
     <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden">
