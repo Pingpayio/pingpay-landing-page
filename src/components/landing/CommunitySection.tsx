@@ -1,7 +1,9 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Github, MessageSquare, Send, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const CommunitySection: React.FC = () => {
   return <section className="w-full flex flex-col items-center py-16 md:py-24 px-4 md:px-10 relative z-10" style={{
     background: "#100713",
@@ -31,7 +33,11 @@ const CommunitySection: React.FC = () => {
         <div className="w-full border-t border-[#AB9FF2] border-opacity-10 pt-12">
           <div className="flex flex-col md:flex-row justify-between w-full">
             <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
-              <span className="text-[#AB9FF2] text-xl font-bold mb-2">PING</span>
+              <img
+                src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
+                alt="Ping Logo"
+                className="h-6 mb-2" 
+              />
               <p className="text-[#AB9FF2] text-sm opacity-70 text-center md:text-left">
                 &copy; {new Date().getFullYear()} PING. All rights reserved.
               </p>
@@ -56,4 +62,5 @@ const CommunitySection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default CommunitySection;
