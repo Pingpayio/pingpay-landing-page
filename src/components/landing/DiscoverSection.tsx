@@ -9,7 +9,7 @@ const DiscoverSection: React.FC = () => {
     backgroundColor: "#100713"
   }}>
       <div className="flex mb-6 md:mb-12 w-full max-w-[777px] flex-col items-center">
-        <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full mt-0">Abstracted Payments</h2>
+        <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full mt-0">Multi-currency Payment Support</h2>
         <p className="text-[#AB9FF2] text-base md:text-xl font-normal leading-normal md:leading-none text-center mt-2 max-w-full px-4">Settling cross-chain intents in seconds.</p>
         
         {/* Cryptocurrency Carousel */}
