@@ -26,25 +26,26 @@ const AssetManagementSection: React.FC = () => {
       description: "We package our payment solutions into easy to use APIs and SDKs. Focus on your payment use cases, rather than the complexities of the infrastructure."
     },
     {
-      icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Pay With Card",
-      description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents."
-    },
-    {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Account",
       description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments from any chain to your account."
     },
     {
-      icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Ping Payment Assistant",
-      description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
+      icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Pay With Card",
+      description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents.",
       comingSoon: true
     },
     {
       icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Onramp",
       description: "Seamlessly Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon.",
+      comingSoon: true
+    },
+    {
+      icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "AI Assistant",
+      description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
       comingSoon: true
     }
   ];
