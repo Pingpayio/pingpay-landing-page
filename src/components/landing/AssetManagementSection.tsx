@@ -16,8 +16,8 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "AI Automated Subscriptions",
-      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Our AI agent will handle payments automatically."
+      title: "Automated Subscriptions",
+      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Our agent will handle payments automatically."
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
@@ -36,8 +36,8 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Ping AI Payment Assistant",
-      description: "The personal payment assisstant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading."
+      title: "Ping Payment Assistant",
+      description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading."
     },
     {
       icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
