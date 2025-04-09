@@ -54,7 +54,7 @@ const SupplyBorrowTabs: React.FC = () => {
       <div className="w-full flex mt-[25px]">
         {activeTab === "supply" && (
           <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-left w-full md:w-1/2 pl-0 whitespace-normal">
-            Always receive your preferred asset, while offering universal payment options. Without high gas fees, slow settlement times or chargeback fraud.
+            Always receive your preferred asset. Accept universal crypto payments with zero custody, instant peer-to-peer payments, and drastically lower fees.
           </div>
         )}
         {activeTab === "borrow" && (
