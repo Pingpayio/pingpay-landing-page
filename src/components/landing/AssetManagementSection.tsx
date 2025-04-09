@@ -1,6 +1,7 @@
 
 import React from "react";
-import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const AssetManagementSection: React.FC = () => {
   const features = [
@@ -37,12 +38,14 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Payment Assistant",
-      description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading."
+      description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
+      comingSoon: true
     },
     {
       icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Onramp",
-      description: "Seamlessly Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon."
+      description: "Seamlessly Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Cash, Gnosis and Blackdragon.",
+      comingSoon: true
     }
   ];
 
@@ -69,7 +72,18 @@ const AssetManagementSection: React.FC = () => {
                   {feature.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-3 text-[#000000]">{feature.title}</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <h3 className="text-xl font-semibold text-[#000000]">{feature.title}</h3>
+                    {feature.comingSoon && (
+                      <Badge 
+                        variant="outline" 
+                        className="bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 flex items-center gap-1 px-2 py-0.5 text-xs font-medium animate-pulse"
+                      >
+                        <Clock className="h-3 w-3" />
+                        Coming Soon
+                      </Badge>
+                    )}
+                  </div>
                   <p className="text-[#4A4A4A] text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </div>
