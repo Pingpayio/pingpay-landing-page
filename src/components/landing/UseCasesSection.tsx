@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface UseCaseCardProps {
   title: string;
@@ -31,6 +32,7 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
 };
 
 const UseCasesSection: React.FC = () => {
+  const isMobile = useIsMobile();
   // All 11 use cases with new images
   const allUseCases: UseCaseCardProps[] = [
     {
@@ -124,20 +126,19 @@ const UseCasesSection: React.FC = () => {
       id="use-cases"
       className="w-full flex flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 relative z-10 overflow-hidden"
       style={{
-        minHeight: "auto",
-        maxHeight: "840px",
+        minHeight: isMobile ? "auto" : "900px",
         backgroundColor: "#100713"
       }}
     >
-      <div className="max-w-[1080px] mx-auto w-full">
-        <div className="text-center mb-12 md:mb-16">
+      <div className="max-w-[1080px] mx-auto w-full h-full flex flex-col">
+        <div className="text-center mb-12 md:mb-20">
           <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
             Payments for All Use Cases
           </h2>
         </div>
         
-        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden">
-          <div className="relative overflow-hidden">
+        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center">
+          <div className="relative overflow-hidden w-full">
             <div className="flex whitespace-nowrap">
               {/* First set of use cases */}
               <div className="flex continuous-scroll">
