@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Timer } from "lucide-react";
 
@@ -8,24 +7,24 @@ const Hero: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(150);
   
-  // Array of words with their associated colors
+  // Array of words (keeping only the text, removing color assignments)
   const words = [
-    { text: "Commerce", color: "#000000" }, // Black (matches the rest of the heading)
-    { text: "AI Agents", color: "#9B87F5" }, // Primary Purple
-    { text: "Subscriptions", color: "#7E69AB" }, // Secondary Purple
-    { text: "Enterprise", color: "#6E59A5" }, // Tertiary Purple
-    { text: "Savings", color: "#8B5CF6" }, // Vivid Purple
-    { text: "Bill Splitting", color: "#AB9FF2" }, // Button Purple
-    { text: "Ticketing", color: "#D6BCFA" }, // Light Purple
-    { text: "Invoicing", color: "#E5DEFF" }, // Soft Purple
-    { text: "Freelancing", color: "#0EA5E9" }, // Ocean Blue
-    { text: "Services", color: "#1EAEDB" }, // Bright Blue
+    "Commerce",
+    "AI Agents",
+    "Subscriptions",
+    "Enterprise",
+    "Savings",
+    "Bill Splitting",
+    "Ticketing",
+    "Invoicing",
+    "Freelancing",
+    "Services",
   ];
 
   useEffect(() => {
     const timer = setTimeout(() => {
       // Current complete word
-      const currentWord = words[index].text;
+      const currentWord = words[index];
       
       // If deleting
       if (isDeleting) {
@@ -62,10 +61,7 @@ const Hero: React.FC = () => {
         <br className="md:block" />
         for the Future of{" "}
         <span className="relative">
-          <span 
-            className="inline-block min-w-[80px] md:min-w-[180px]"
-            style={{ color: index === 0 ? "#000000" : words[index].color }}
-          >
+          <span className="inline-block min-w-[80px] md:min-w-[180px]">
             {displayText}
           </span>
           <span className="absolute -right-[4px] top-0 h-full w-[2px] bg-black animate-blink"></span>
