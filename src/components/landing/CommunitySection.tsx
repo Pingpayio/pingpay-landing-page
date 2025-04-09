@@ -1,53 +1,28 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Github, MessageSquare, Send, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const CommunitySection: React.FC = () => {
-  return (
-    <section className="w-full flex flex-col items-center py-16 md:py-24 px-4 md:px-10 relative z-10" style={{
-      background: "#100713",
-      borderTop: "1px solid rgba(171, 159, 242, 0.1)"
-    }}>
+  return <section className="w-full flex flex-col items-center py-16 md:py-24 px-4 md:px-10 relative z-10" style={{
+    background: "#100713",
+    borderTop: "1px solid rgba(171, 159, 242, 0.1)"
+  }}>
       <div className="max-w-[900px] flex flex-col items-center text-center">
         <h2 className="text-[#AB9FF2] text-3xl md:text-4xl font-bold mb-4">Join the community</h2>
-        <p className="text-[#AB9FF2] text-base md:text-lg font-normal mb-12 max-w-[700px]">
-          Connect with the team, engage with the community, and play a role in shaping the future of decentralized finance.
-        </p>
+        <p className="text-[#AB9FF2] text-base md:text-lg font-normal mb-12 max-w-[700px]">Tap into the future of commerce, one Ping at a time.</p>
         
         {/* Social Links */}
         <div className="flex justify-center gap-6 mb-16">
-          <a 
-            href="https://twitter.com" 
-            target="_blank" 
-            rel="noreferrer"
-            className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all"
-          >
+          <a href="https://twitter.com" target="_blank" rel="noreferrer" className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all">
             <Twitter size={24} className="text-[#AB9FF2]" />
           </a>
-          <a 
-            href="https://telegram.org" 
-            target="_blank" 
-            rel="noreferrer"
-            className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all"
-          >
+          <a href="https://telegram.org" target="_blank" rel="noreferrer" className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all">
             <Send size={24} className="text-[#AB9FF2]" />
           </a>
-          <a 
-            href="https://github.com" 
-            target="_blank" 
-            rel="noreferrer"
-            className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all"
-          >
+          <a href="https://github.com" target="_blank" rel="noreferrer" className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all">
             <Github size={24} className="text-[#AB9FF2]" />
           </a>
-          <a 
-            href="https://discord.com" 
-            target="_blank" 
-            rel="noreferrer"
-            className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all"
-          >
+          <a href="https://discord.com" target="_blank" rel="noreferrer" className="bg-opacity-10 bg-[#AB9FF2] rounded-full p-3 hover:bg-opacity-20 transition-all">
             <MessageSquare size={24} className="text-[#AB9FF2]" />
           </a>
         </div>
@@ -57,6 +32,9 @@ const CommunitySection: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between w-full">
             <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
               <span className="text-[#AB9FF2] text-xl font-bold mb-2">PING</span>
+              <p className="text-[#AB9FF2] text-sm opacity-70 text-center md:text-left">
+                &copy; {new Date().getFullYear()} PING. All rights reserved.
+              </p>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-3">
@@ -76,8 +54,6 @@ const CommunitySection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CommunitySection;
