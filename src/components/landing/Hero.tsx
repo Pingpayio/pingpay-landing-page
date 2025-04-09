@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
           alt="HyperLend Platform"
-          className="aspect-[1.68] object-contain w-full max-w-[1080px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]"
+          className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]"
           style={{ marginBottom: "-25px" }} // Keep negative margin to ensure no gap
         />
       </div>
