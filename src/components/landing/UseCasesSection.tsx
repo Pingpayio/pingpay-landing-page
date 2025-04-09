@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -9,6 +8,10 @@ interface UseCaseCardProps {
   imageSrc: string;
   bgColor: string;
   textColor?: string;
+}
+
+interface UseCasesSectionProps {
+  id?: string;
 }
 
 const UseCaseCard: React.FC<UseCaseCardProps> = ({ 
@@ -31,7 +34,7 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
   );
 };
 
-const UseCasesSection: React.FC = () => {
+const UseCasesSection: React.FC<UseCasesSectionProps> = ({ id }) => {
   const isMobile = useIsMobile();
   // All 11 use cases with new images
   const allUseCases: UseCaseCardProps[] = [
@@ -123,7 +126,7 @@ const UseCasesSection: React.FC = () => {
 
   return (
     <section 
-      id="use-cases"
+      id={id}
       className="w-full flex flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 relative z-10 overflow-hidden"
       style={{
         minHeight: isMobile ? "auto" : "900px",
