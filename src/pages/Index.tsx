@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
@@ -67,7 +66,7 @@ const Index: React.FC = () => {
         </div>
         
         {/* Sections with specific background colors */}
-        <DiscoverSection />
+        <DiscoverSection id="discover" />
         <AssetManagementSection id="asset-management" />
         <UseCasesSection id="use-cases" />
       </main>

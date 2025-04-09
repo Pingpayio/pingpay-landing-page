@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -27,14 +26,22 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Updated scroll function with section-specific offsets
+  // Updated scroll function with better section-specific offsets
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
     if (element) {
       // Define custom offsets for specific sections
-      const offset = id === 'use-cases' ? 100 : 80;
+      let offset = 80; // Default offset
       
+      // Apply specific offsets based on section ID
+      if (id === 'use-cases') {
+        offset = 90;
+      } else if (id === 'asset-management') {
+        offset = 100;
+      }
+      
+      // Calculate position with window dimensions in mind
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       
