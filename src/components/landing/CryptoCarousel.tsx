@@ -60,33 +60,63 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
+  // CSS for removing all borders and backgrounds
+  const containerStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+    boxShadow: 'none'
+  };
+
+  const imageStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+    boxShadow: 'none',
+    maxWidth: '100%',
+    maxHeight: '100%',
+    mixBlendMode: 'normal',
+    objectFit: 'contain',
+    display: 'block'
+  };
+
   return (
-    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" style={{ background: 'transparent' }}>
-      <div className="relative overflow-hidden" style={{ background: 'transparent' }}>
-        <div className="flex whitespace-nowrap" style={{ background: 'transparent' }}>
+    <div 
+      className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
+      style={containerStyle}
+    >
+      <div 
+        className="relative overflow-hidden" 
+        style={containerStyle}
+      >
+        <div 
+          className="flex whitespace-nowrap" 
+          style={containerStyle}
+        >
           {/* First set of tokens */}
-          <div className="flex continuous-scroll" style={{ background: 'transparent' }}>
+          <div 
+            className="flex continuous-scroll" 
+            style={containerStyle}
+          >
             {tokens.map((token) => (
               <div 
                 key={`first-${token.id}`} 
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px", background: 'transparent' }}
+                style={{ minWidth: "140px", ...containerStyle }}
               >
-                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" style={{ background: 'transparent' }}>
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48" style={{ background: 'transparent' }}>
+                <div 
+                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
+                  style={containerStyle}
+                >
+                  <div 
+                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
+                    style={containerStyle}
+                  >
                     <img 
                       src={token.imagePath}
                       alt={token.id}
-                      className="w-full h-full object-contain"
-                      style={{ 
-                        background: 'transparent',
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        mixBlendMode: 'normal',
-                        WebkitBackgroundClip: 'padding-box',
-                        backgroundClip: 'padding-box',
-                        backdropFilter: 'none'
-                      }}
+                      className="w-full h-full"
+                      style={imageStyle}
                     />
                   </div>
                 </div>
@@ -95,28 +125,29 @@ const CryptoCarousel: React.FC = () => {
           </div>
 
           {/* Second set of tokens - creates the continuous effect */}
-          <div className="flex continuous-scroll" style={{ background: 'transparent' }}>
+          <div 
+            className="flex continuous-scroll" 
+            style={containerStyle}
+          >
             {tokens.map((token) => (
               <div 
                 key={`second-${token.id}`} 
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px", background: 'transparent' }}
+                style={{ minWidth: "140px", ...containerStyle }}
               >
-                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" style={{ background: 'transparent' }}>
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48" style={{ background: 'transparent' }}>
+                <div 
+                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
+                  style={containerStyle}
+                >
+                  <div 
+                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
+                    style={containerStyle}
+                  >
                     <img 
                       src={token.imagePath}
                       alt={token.id}
-                      className="w-full h-full object-contain"
-                      style={{ 
-                        background: 'transparent',
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        mixBlendMode: 'normal',
-                        WebkitBackgroundClip: 'padding-box',
-                        backgroundClip: 'padding-box',
-                        backdropFilter: 'none'
-                      }}
+                      className="w-full h-full"
+                      style={imageStyle}
                     />
                   </div>
                 </div>
