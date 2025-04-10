@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -59,7 +60,7 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
-  // Enhanced CSS with circular mask
+  // Enhanced CSS with improved circular mask
   const containerStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
@@ -68,6 +69,7 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '0'
   };
 
+  // Adjusted image container for tighter masking
   const imageContainerStyle: React.CSSProperties = {
     ...containerStyle,
     padding: '0',
@@ -75,8 +77,8 @@ const CryptoCarousel: React.FC = () => {
     background: 'transparent',
     isolation: 'isolate',
     position: 'relative',
-    width: '170px',  // Changed from 180px to 170px
-    height: '170px', // Changed from 180px to 170px
+    width: '180px',  // Increased from 170px to 180px for better masking
+    height: '180px', // Increased from 170px to 180px for better masking
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -84,25 +86,26 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '50%', // Circular mask
   };
 
+  // Improved image positioning to cover any purple lines
   const imageStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
     outline: 'none',
     boxShadow: 'none',
-    width: '100%',
-    height: '100%',
+    width: '110%', // Increased from 100% to 110% to fill mask better
+    height: '110%', // Increased from 100% to 110% to fill mask better
     objectFit: 'contain',
     display: 'block',
     mixBlendMode: 'normal',
     position: 'absolute',
-    left: '0',
-    top: '50%',
+    left: '-5%', // Shifted left by 5% to center the scaled-up image
+    top: '45%', // Adjusted to 45% from 50% for better vertical alignment
     transform: 'translateY(-50%)', // Center vertically
   };
 
   return (
     <>
-      {/* CSS to remove purple boxes */}
+      {/* CSS to remove purple boxes with improved masking */}
       <style>
         {`
           .carousel-item, .carousel-item img {
@@ -118,14 +121,28 @@ const CryptoCarousel: React.FC = () => {
           }
           
           .token-mask {
-            width: 170px;  /* Changed from 180px to 170px */
-            height: 170px; /* Changed from 180px to 170px */
+            width: 180px;  /* Increased from 170px to 180px */
+            height: 180px; /* Increased from 170px to 180px */
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center; /* Changed from flex-start to center */
             background-color: transparent;
+            position: relative; /* Added position relative */
+          }
+
+          /* Added inner mask to ensure no purple lines are visible */
+          .token-mask::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px #000; /* Black shadow to cover any lines */
+            pointer-events: none;
           }
         `}
       </style>
