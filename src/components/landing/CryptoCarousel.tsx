@@ -73,13 +73,15 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "140px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48 rounded-full">
+                  <div className="inline-flex items-center justify-center overflow-hidden rounded-full">
                     <img 
                       src={token.imagePath}
                       alt={token.id}
-                      className="w-full h-full object-contain mix-blend-normal"
+                      className="object-contain mix-blend-normal"
                       style={{ 
                         background: 'transparent',
+                        width: '100px',
+                        height: '100px',
                         maxWidth: '100%',
                         maxHeight: '100%'
                       }}
@@ -99,13 +101,15 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "140px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48 rounded-full">
+                  <div className="inline-flex items-center justify-center overflow-hidden rounded-full">
                     <img 
                       src={token.imagePath}
                       alt={token.id}
-                      className="w-full h-full object-contain mix-blend-normal"
+                      className="object-contain mix-blend-normal"
                       style={{ 
                         background: 'transparent',
+                        width: '100px',
+                        height: '100px',
                         maxWidth: '100%',
                         maxHeight: '100%'
                       }}
