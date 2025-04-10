@@ -23,6 +23,9 @@ const Navbar: React.FC = () => {
     };
   }, [scrolled]);
 
+  // Force scrolled state to true on mobile devices
+  const isNavScrolled = isMobile ? true : scrolled;
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -43,14 +46,14 @@ const Navbar: React.FC = () => {
     <>
       <nav 
         className={`fixed z-50 w-full transition-all duration-700 ease-in-out ${
-          scrolled 
+          isNavScrolled 
             ? "top-0 bg-[#100713]" 
             : "top-[20px] md:top-[38px] bg-transparent flex justify-center"
         }`}
       >
         <div 
           className={`flex items-center h-[54px] ${
-            scrolled 
+            isNavScrolled 
               ? "w-full transition-all duration-1000 ease-in-out" 
               : "w-full max-w-[1080px] rounded-full transition-all duration-700 ease-in-out"
           } bg-[#100713] px-4 md:px-8`}
