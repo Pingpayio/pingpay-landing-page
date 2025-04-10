@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
 
 interface UseCaseCardProps {
   title: string;
@@ -10,19 +8,13 @@ interface UseCaseCardProps {
   imageSrc: string;
   bgColor?: string; // Make this optional since we'll use a consistent one
   textColor?: string;
-  isVisible?: boolean;
-  onLoad?: () => void;
-  isLoaded?: boolean;
 }
 
 const UseCaseCard: React.FC<UseCaseCardProps> = ({ 
   title, 
   description, 
   imageSrc,
-  textColor = "text-[#3D315E]",
-  isVisible = true,
-  onLoad,
-  isLoaded = false
+  textColor = "text-[#3D315E]" 
 }) => {
   // Use a consistent gradient background for all cards
   const bgColor = "bg-gradient-to-br from-[#e5deff] to-[#f3eaff]";
@@ -31,27 +23,7 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
     <Card className={`h-full border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl`}>
       <CardContent className="py-5 px-4 flex flex-col items-center text-center">
         <div className="rounded-2xl w-full aspect-square mb-4 flex items-center justify-center bg-transparent">
-          {isVisible ? (
-            <>
-              {!isLoaded && (
-                <Skeleton className="absolute inset-0 w-[95%] h-[95%] rounded-xl bg-slate-200/30" />
-              )}
-              <img 
-                src={imageSrc} 
-                alt={title} 
-                className={cn(
-                  "w-[95%] h-[95%] object-contain",
-                  !isLoaded && "invisible"
-                )}
-                loading="lazy" 
-                onLoad={onLoad}
-                width={240}
-                height={240}
-              />
-            </>
-          ) : (
-            <Skeleton className="w-[95%] h-[95%] rounded-xl bg-slate-200/30" />
-          )}
+          <img src={imageSrc} alt={title} className="w-[95%] h-[95%] object-contain" />
         </div>
         <h3 className={`text-xl font-semibold ${textColor} mb-1 whitespace-normal break-words`}>{title}</h3>
         <p className="text-[#4A4A4A] text-sm whitespace-normal break-words max-h-[4.5em] line-clamp-3">{description}</p>
@@ -62,8 +34,6 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
-  const carouselRef = useRef<HTMLDivElement>(null);
-  
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
     {
@@ -123,44 +93,10 @@ const UseCasesSection: React.FC = () => {
     }
   ];
 
-  // State to store randomized use cases, visible items, and loaded states
+  // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
-  const [visibleItems, setVisibleItems] = useState<string[]>([]);
-  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
 
-  // Setup intersection observer for lazy loading
-  useEffect(() => {
-    // Create observer to detect when carousel items enter viewport
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute('data-card-id');
-          if (entry.isIntersecting && id && !visibleItems.includes(id)) {
-            setVisibleItems((prev) => [...prev, id]);
-          }
-        });
-      },
-      { rootMargin: '200px' } // Start loading images when they're 200px from viewport
-    );
-
-    // Observe all carousel items
-    const elements = document.querySelectorAll('.usecase-card-container');
-    elements.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
-  }, [useCases, visibleItems]);
-
-  // Handle image loaded events
-  const handleImageLoaded = (id: string) => {
-    setLoadedImages(prev => ({
-      ...prev,
-      [id]: true
-    }));
-  };
-
-  // Randomize use cases on component mount with performance optimization
+  // Randomize use cases on component mount
   useEffect(() => {
     // Fisher-Yates shuffle algorithm
     const shuffleUseCases = (array: UseCaseCardProps[]): UseCaseCardProps[] => {
@@ -169,8 +105,7 @@ const UseCasesSection: React.FC = () => {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
-      // Only use 8 items for better performance
-      return shuffled.slice(0, 8);
+      return shuffled;
     };
 
     setUseCases(shuffleUseCases(allUseCases));
@@ -192,29 +127,22 @@ const UseCasesSection: React.FC = () => {
           </h2>
         </div>
         
-        <div 
-          className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center"
-          ref={carouselRef}
-        >
+        <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center">
           <div className="relative overflow-hidden w-full">
             <div className="flex whitespace-nowrap">
               {/* First set of use cases */}
-              <div className="flex continuous-scroll optimized-carousel">
+              <div className="flex continuous-scroll">
                 {useCases.map((useCase, index) => (
                   <div 
                     key={`first-${index}`} 
-                    className="shrink-0 pl-4 inline-flex flex-col items-center usecase-card-container"
+                    className="shrink-0 pl-4 inline-flex flex-col items-center"
                     style={{ minWidth: "240px", maxWidth: "240px" }}
-                    data-card-id={`first-${index}`}
                   >
                     <div className="h-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
                         imageSrc={useCase.imageSrc}
-                        isVisible={visibleItems.includes(`first-${index}`)}
-                        onLoad={() => handleImageLoaded(`first-${index}`)}
-                        isLoaded={loadedImages[`first-${index}`]}
                       />
                     </div>
                   </div>
@@ -222,22 +150,18 @@ const UseCasesSection: React.FC = () => {
               </div>
 
               {/* Second set of use cases - creates the continuous effect */}
-              <div className="flex continuous-scroll optimized-carousel">
+              <div className="flex continuous-scroll">
                 {useCases.map((useCase, index) => (
                   <div 
                     key={`second-${index}`} 
-                    className="shrink-0 pl-4 inline-flex flex-col items-center usecase-card-container"
+                    className="shrink-0 pl-4 inline-flex flex-col items-center"
                     style={{ minWidth: "240px", maxWidth: "240px" }}
-                    data-card-id={`second-${index}`}
                   >
                     <div className="h-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
                         imageSrc={useCase.imageSrc}
-                        isVisible={visibleItems.includes(`second-${index}`)}
-                        onLoad={() => handleImageLoaded(`second-${index}`)}
-                        isLoaded={loadedImages[`second-${index}`]}
                       />
                     </div>
                   </div>

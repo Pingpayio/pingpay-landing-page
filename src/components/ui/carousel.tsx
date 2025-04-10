@@ -57,18 +57,13 @@ const Carousel = React.forwardRef<
     },
     ref
   ) => {
-    // Default options for better performance
-    const defaultOpts: CarouselOptions = {
-      ...opts,
-      axis: orientation === "horizontal" ? "x" : "y",
-      // Performance options
-      dragFree: false,
-      watchDrag: true,
-      inViewThreshold: 0.5,
-      skipSnaps: true,
-    }
-
-    const [carouselRef, api] = useEmblaCarousel(defaultOpts, plugins)
+    const [carouselRef, api] = useEmblaCarousel(
+      {
+        ...opts,
+        axis: orientation === "horizontal" ? "x" : "y",
+      },
+      plugins
+    )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
@@ -115,20 +110,12 @@ const Carousel = React.forwardRef<
         return
       }
 
-      // Use the requestAnimationFrame to optimize performance
-      let animationFrameId: number;
-      const handleSelect = () => {
-        animationFrameId = requestAnimationFrame(() => {
-          onSelect(api);
-        });
-      };
-
-      api.on("reInit", handleSelect)
-      api.on("select", handleSelect)
+      onSelect(api)
+      api.on("reInit", onSelect)
+      api.on("select", onSelect)
 
       return () => {
-        cancelAnimationFrame(animationFrameId);
-        api?.off("select", handleSelect)
+        api?.off("select", onSelect)
       }
     }, [api, onSelect])
 
@@ -137,9 +124,9 @@ const Carousel = React.forwardRef<
         value={{
           carouselRef,
           api: api,
-          opts: defaultOpts,
+          opts,
           orientation:
-            orientation || (defaultOpts?.axis === "y" ? "vertical" : "horizontal"),
+            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
           scrollNext,
           canScrollPrev,
@@ -149,11 +136,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn(
-            "relative", 
-            className,
-            "will-change-transform backface-visibility-hidden"
-          )}
+          className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -179,8 +162,7 @@ const CarouselContent = React.forwardRef<
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
-          className,
-          "will-change-transform backface-visibility-hidden"
+          className
         )}
         {...props}
       />
