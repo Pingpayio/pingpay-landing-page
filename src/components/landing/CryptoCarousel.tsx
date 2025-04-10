@@ -1,6 +1,9 @@
-
 import React, { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 // Token data structure
 interface TokenInfo {
@@ -60,114 +63,65 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
-  // Enhanced CSS for more aggressive border removal
-  const containerStyle: React.CSSProperties = {
-    backgroundColor: 'transparent',
-    border: 'none',
-    outline: 'none',
-    boxShadow: 'none',
-    borderRadius: '0'
-  };
-
-  const imageStyle: React.CSSProperties = {
-    backgroundColor: 'transparent',
-    border: 'none',
-    outline: 'none',
-    boxShadow: 'none',
-    borderRadius: '0',
-    maxWidth: '100%',
-    maxHeight: '100%',
-    objectFit: 'contain',
-    display: 'block',
-    mixBlendMode: 'normal'
-  };
-
-  const imageContainerStyle: React.CSSProperties = {
-    ...containerStyle,
-    padding: '0',
-    margin: '0',
-    background: 'transparent',
-    isolation: 'isolate' // Creates a new stacking context
-  };
-
   return (
-    <div 
-      className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
-      style={containerStyle}
-    >
-      <div 
-        className="relative overflow-hidden" 
-        style={containerStyle}
+    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto">
+      <style jsx>{`
+        .fix-image-container {
+          background-color: transparent !important;
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+        
+        .fix-image {
+          background-color: transparent !important;
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          display: block;
+        }
+      `}</style>
+      
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+          skipSnaps: false,
+          dragFree: true,
+        }}
+        className="w-full"
       >
-        <div 
-          className="flex whitespace-nowrap" 
-          style={containerStyle}
-        >
-          {/* First set of tokens */}
-          <div 
-            className="flex continuous-scroll" 
-            style={containerStyle}
-          >
-            {tokens.map((token) => (
-              <div 
-                key={`first-${token.id}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px", ...containerStyle }}
-              >
-                <div 
-                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
-                  style={imageContainerStyle}
-                >
-                  <div 
-                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
-                    style={imageContainerStyle}
-                  >
-                    <img 
-                      src={token.imagePath}
-                      alt={token.id}
-                      className="w-full h-full"
-                      style={imageStyle}
-                      loading="lazy"
-                    />
-                  </div>
+        <CarouselContent className="-ml-2 md:-ml-4">
+          {tokens.map((token) => (
+            <CarouselItem 
+              key={token.id} 
+              className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/6"
+            >
+              <div className="fix-image-container flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
+                <div className="fix-image-container flex items-center justify-center overflow-hidden size-36 md:size-48">
+                  <img
+                    src={token.imagePath}
+                    alt={token.id}
+                    className="fix-image w-full h-full"
+                    style={{
+                      // Double-ensuring styles are applied
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      outline: 'none',
+                      boxShadow: 'none',
+                      borderRadius: '0'
+                    }}
+                    loading="lazy"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Second set of tokens - creates the continuous effect */}
-          <div 
-            className="flex continuous-scroll" 
-            style={containerStyle}
-          >
-            {tokens.map((token) => (
-              <div 
-                key={`second-${token.id}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px", ...containerStyle }}
-              >
-                <div 
-                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
-                  style={imageContainerStyle}
-                >
-                  <div 
-                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
-                    style={imageContainerStyle}
-                  >
-                    <img 
-                      src={token.imagePath}
-                      alt={token.id}
-                      className="w-full h-full"
-                      style={imageStyle}
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 };
