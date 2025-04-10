@@ -61,19 +61,19 @@ const CryptoCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden">
-      <div className="relative overflow-hidden">
-        <div className="flex whitespace-nowrap">
+    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" style={{ background: 'transparent' }}>
+      <div className="relative overflow-hidden" style={{ background: 'transparent' }}>
+        <div className="flex whitespace-nowrap" style={{ background: 'transparent' }}>
           {/* First set of tokens */}
-          <div className="flex continuous-scroll">
+          <div className="flex continuous-scroll" style={{ background: 'transparent' }}>
             {tokens.map((token) => (
               <div 
                 key={`first-${token.id}`} 
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px" }}
+                style={{ minWidth: "140px", background: 'transparent' }}
               >
-                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48">
+                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" style={{ background: 'transparent' }}>
+                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48" style={{ background: 'transparent' }}>
                     <img 
                       src={token.imagePath}
                       alt={token.id}
@@ -82,7 +82,10 @@ const CryptoCarousel: React.FC = () => {
                         background: 'transparent',
                         maxWidth: '100%',
                         maxHeight: '100%',
-                        mixBlendMode: 'normal'
+                        mixBlendMode: 'normal',
+                        WebkitBackgroundClip: 'padding-box',
+                        backgroundClip: 'padding-box',
+                        backdropFilter: 'none'
                       }}
                     />
                   </div>
@@ -92,15 +95,15 @@ const CryptoCarousel: React.FC = () => {
           </div>
 
           {/* Second set of tokens - creates the continuous effect */}
-          <div className="flex continuous-scroll">
+          <div className="flex continuous-scroll" style={{ background: 'transparent' }}>
             {tokens.map((token) => (
               <div 
                 key={`second-${token.id}`} 
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px" }}
+                style={{ minWidth: "140px", background: 'transparent' }}
               >
-                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48">
+                <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" style={{ background: 'transparent' }}>
+                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48" style={{ background: 'transparent' }}>
                     <img 
                       src={token.imagePath}
                       alt={token.id}
@@ -109,7 +112,10 @@ const CryptoCarousel: React.FC = () => {
                         background: 'transparent',
                         maxWidth: '100%',
                         maxHeight: '100%',
-                        mixBlendMode: 'normal'
+                        mixBlendMode: 'normal',
+                        WebkitBackgroundClip: 'padding-box',
+                        backgroundClip: 'padding-box',
+                        backdropFilter: 'none'
                       }}
                     />
                   </div>
