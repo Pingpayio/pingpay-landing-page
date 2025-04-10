@@ -30,13 +30,17 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Smooth scroll function
+  // Smooth scroll function with dynamic offset calculation
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
     if (element) {
+      // Calculate the navbar height dynamically
+      const navbar = document.querySelector('nav');
+      const navbarHeight = navbar ? navbar.offsetHeight : 54; // Default to 54px if nav element not found
+      
       window.scrollTo({
-        top: element.offsetTop - 80, // Offset to account for navbar height
+        top: element.offsetTop - navbarHeight, // Offset exactly by navbar height
         behavior: 'smooth'
       });
     }
