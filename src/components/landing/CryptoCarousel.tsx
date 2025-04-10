@@ -91,84 +91,103 @@ const CryptoCarousel: React.FC = () => {
   };
 
   return (
-    <div 
-      className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
-      style={containerStyle}
-    >
+    <>
+      {/* Add explicit CSS to fix the purple box issue */}
+      <style>
+        {`
+          .carousel-item, .carousel-item img {
+            background-color: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+          }
+          
+          img {
+            background-color: transparent !important;
+            mix-blend-mode: normal !important;
+          }
+        `}
+      </style>
+    
       <div 
-        className="relative overflow-hidden" 
+        className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
         style={containerStyle}
       >
         <div 
-          className="flex whitespace-nowrap" 
+          className="relative overflow-hidden" 
           style={containerStyle}
         >
-          {/* First set of tokens */}
           <div 
-            className="flex continuous-scroll" 
+            className="flex whitespace-nowrap" 
             style={containerStyle}
           >
-            {tokens.map((token) => (
-              <div 
-                key={`first-${token.id}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px", ...containerStyle }}
-              >
+            {/* First set of tokens */}
+            <div 
+              className="flex continuous-scroll" 
+              style={containerStyle}
+            >
+              {tokens.map((token) => (
                 <div 
-                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
-                  style={imageContainerStyle}
+                  key={`first-${token.id}`} 
+                  className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+                  style={{ minWidth: "140px", ...containerStyle }}
                 >
                   <div 
-                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
+                    className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
                     style={imageContainerStyle}
                   >
-                    <img 
-                      src={token.imagePath}
-                      alt={token.id}
-                      className="w-full h-full"
-                      style={imageStyle}
-                      loading="lazy"
-                    />
+                    <div 
+                      className="flex items-center justify-center overflow-hidden size-36 md:size-48 carousel-item" 
+                      style={imageContainerStyle}
+                    >
+                      <img 
+                        src={token.imagePath}
+                        alt={token.id}
+                        className="w-full h-full"
+                        style={imageStyle}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Second set of tokens - creates the continuous effect */}
-          <div 
-            className="flex continuous-scroll" 
-            style={containerStyle}
-          >
-            {tokens.map((token) => (
-              <div 
-                key={`second-${token.id}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "140px", ...containerStyle }}
-              >
+            {/* Second set of tokens - creates the continuous effect */}
+            <div 
+              className="flex continuous-scroll" 
+              style={containerStyle}
+            >
+              {tokens.map((token) => (
                 <div 
-                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
-                  style={imageContainerStyle}
+                  key={`second-${token.id}`} 
+                  className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+                  style={{ minWidth: "140px", ...containerStyle }}
                 >
                   <div 
-                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
+                    className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
                     style={imageContainerStyle}
                   >
-                    <img 
-                      src={token.imagePath}
-                      alt={token.id}
-                      className="w-full h-full"
-                      style={imageStyle}
-                      loading="lazy"
-                    />
+                    <div 
+                      className="flex items-center justify-center overflow-hidden size-36 md:size-48 carousel-item" 
+                      style={imageContainerStyle}
+                    >
+                      <img 
+                        src={token.imagePath}
+                        alt={token.id}
+                        className="w-full h-full"
+                        style={imageStyle}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
