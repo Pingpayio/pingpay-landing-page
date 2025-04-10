@@ -75,8 +75,8 @@ const CryptoCarousel: React.FC = () => {
     background: 'transparent',
     isolation: 'isolate',
     position: 'relative',
-    width: '180px',
-    height: '180px',
+    width: '170px',  // Changed from 180px to 170px
+    height: '170px', // Changed from 180px to 170px
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -118,8 +118,8 @@ const CryptoCarousel: React.FC = () => {
           }
           
           .token-mask {
-            width: 180px;
-            height: 180px;
+            width: 170px;  /* Changed from 180px to 170px */
+            height: 170px; /* Changed from 180px to 170px */
             border-radius: 50%;
             overflow: hidden;
             display: flex;
