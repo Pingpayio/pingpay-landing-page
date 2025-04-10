@@ -69,16 +69,16 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '0'
   };
 
-  // Enhanced container size for all tokens with better masking
+  // Further increased container size for all tokens with better masking
   const imageContainerStyle: React.CSSProperties = {
     ...containerStyle,
     padding: '0',
     margin: '0',
-    background: 'transparent',
+    background: 'black', // Changed from transparent to black
     isolation: 'isolate',
     position: 'relative',
-    width: '200px', // Increased from 180px to 200px for better masking
-    height: '200px', // Increased from 180px to 200px for better masking
+    width: '220px', // Increased from 200px to 220px for better masking
+    height: '220px', // Increased from 200px to 220px for better masking
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -86,14 +86,14 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '50%', // Circular mask
   };
 
-  // Improved image style with consistent sizing
+  // Further reduced image size with consistent sizing
   const imageStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
     outline: 'none',
     boxShadow: 'none',
-    width: '70%', // Reduced from 75% to 70% to keep images away from edges
-    height: '70%', // Reduced from 75% to 70% to keep images away from edges
+    width: '65%', // Reduced from 70% to 65% to keep images away from edges
+    height: '65%', // Reduced from 70% to 65% to keep images away from edges
     objectFit: 'contain',
     display: 'block',
     mixBlendMode: 'normal',
@@ -121,75 +121,93 @@ const CryptoCarousel: React.FC = () => {
           }
           
           .token-mask {
-            width: 200px; /* Increased from 180px to 200px */
-            height: 200px; /* Increased from 180px to 200px */
+            width: 220px; /* Increased from 200px to 220px */
+            height: 220px; /* Increased from 200px to 220px */
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #000; /* Changed from transparent to black */
+            background-color: #000 !important; /* Enforce black background */
             position: relative;
+            isolation: isolate; /* Create a new stacking context */
           }
 
-          /* Enhanced inner mask with thicker shadow to ensure no purple lines are visible */
+          /* Enhanced inner mask with much thicker shadow to ensure no purple lines are visible */
           .token-mask::after {
             content: '';
             position: absolute;
-            top: -5px; /* Increased from -2px to -5px */
-            left: -5px; /* Increased from -2px to -5px */
-            right: -5px; /* Increased from -2px to -5px */
-            bottom: -5px; /* Increased from -2px to -5px */
+            top: -10px; /* Increased from -5px to -10px */
+            left: -10px; /* Increased from -5px to -10px */
+            right: -10px; /* Increased from -5px to -10px */
+            bottom: -10px; /* Increased from -5px to -10px */
             border-radius: 50%;
-            box-shadow: 0 0 0 10px #000; /* Increased from 5px to 10px */
+            box-shadow: 0 0 0 15px #000; /* Increased from 10px to 15px */
             pointer-events: none;
             opacity: 1; /* Ensure full opacity */
+            z-index: 5; /* Ensure shadow displays on top */
           }
           
-          /* Further enhanced token image styling for consistency */
+          /* Further reduced token image size */
           .token-image {
-            width: 70% !important; /* Reduced from 75% to 70% */
-            height: 70% !important; /* Reduced from 75% to 70% */
-            max-width: 70% !important; /* Reduced from 75% to 70% */
-            max-height: 70% !important; /* Reduced from 75% to 70% */
+            width: 65% !important; /* Reduced from 70% to 65% */
+            height: 65% !important; /* Reduced from 70% to 65% */
+            max-width: 65% !important; /* Reduced from 70% to 65% */
+            max-height: 65% !important; /* Reduced from 70% to 65% */
             object-fit: contain !important;
             position: absolute !important;
             left: 50% !important;
             top: 50% !important;
             transform: translate(-50%, -50%) !important;
             z-index: 1; /* Ensure image stays above background */
+            background-color: transparent !important;
+            mix-blend-mode: normal !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
           }
           
-          /* Additional wrapper to prevent any bleeding */
+          /* Additional wrapper with increased padding to prevent any bleeding */
           .carousel-item-wrapper {
-            padding: 10px;
-            background-color: transparent;
+            padding: 20px; /* Increased from 10px to 20px */
+            background-color: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+          }
+          
+          /* Ensure the outer container is fully transparent too */
+          .crypto-carousel-container {
+            background-color: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
           }
         `}
       </style>
     
       <div 
-        className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
+        className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden crypto-carousel-container" 
         style={containerStyle}
       >
         <div 
-          className="relative overflow-hidden" 
+          className="relative overflow-hidden crypto-carousel-container" 
           style={containerStyle}
         >
           <div 
-            className="flex whitespace-nowrap" 
+            className="flex whitespace-nowrap crypto-carousel-container" 
             style={containerStyle}
           >
             {/* First set of tokens */}
             <div 
-              className="flex continuous-scroll" 
+              className="flex continuous-scroll crypto-carousel-container" 
               style={containerStyle}
             >
               {tokens.map((token) => (
                 <div 
                   key={`first-${token.id}`} 
                   className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
-                  style={{ minWidth: "150px", ...containerStyle }} // Increased from 140px to 150px
+                  style={{ minWidth: "160px", ...containerStyle }} // Increased from 150px to 160px
                 >
                   <div 
                     className="carousel-item-wrapper"
@@ -218,14 +236,14 @@ const CryptoCarousel: React.FC = () => {
 
             {/* Second set of tokens - creates the continuous effect */}
             <div 
-              className="flex continuous-scroll" 
+              className="flex continuous-scroll crypto-carousel-container" 
               style={containerStyle}
             >
               {tokens.map((token) => (
                 <div 
                   key={`second-${token.id}`} 
                   className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
-                  style={{ minWidth: "150px", ...containerStyle }} // Increased from 140px to 150px
+                  style={{ minWidth: "160px", ...containerStyle }} // Increased from 150px to 160px
                 >
                   <div 
                     className="carousel-item-wrapper"
