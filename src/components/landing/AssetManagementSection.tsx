@@ -62,7 +62,7 @@ const AssetManagementSection: React.FC = () => {
             const iconElement = entry.target.querySelector('.feature-icon');
             if (iconElement) {
               // Add animation classes to the icon
-              iconElement.classList.add('animate-in');
+              iconElement.classList.add('icon-animate');
             }
             // Stop observing once animation is applied
             observer.unobserve(entry.target);
