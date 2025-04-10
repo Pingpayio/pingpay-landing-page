@@ -149,6 +149,28 @@
   .navbar-button:hover::after {
     width: 100%;
   }
+
+  /* Circular mask for token images */
+  .token-image-mask {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: transparent;
+  }
+
+  .token-image-mask img {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
 }
 
 /* Gradient Animations */
