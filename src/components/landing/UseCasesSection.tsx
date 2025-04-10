@@ -1,7 +1,7 @@
+
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface UseCaseCardProps {
   title: string;
@@ -21,12 +21,10 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
   const bgColor = "bg-gradient-to-br from-[#e5deff] to-[#f3eaff]";
   
   return (
-    <Card className={`border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl h-full`}>
-      <CardContent className="py-5 px-4 flex flex-col items-center text-center h-full">
-        <div className="w-full mb-4 flex items-center justify-center bg-transparent">
-          <AspectRatio ratio={1 / 1} className="w-full">
-            <img src={imageSrc} alt={title} className="w-[95%] h-[95%] object-contain mx-auto" />
-          </AspectRatio>
+    <Card className={`h-full border-0 shadow-none ${bgColor} overflow-hidden rounded-3xl`}>
+      <CardContent className="py-5 px-4 flex flex-col items-center text-center">
+        <div className="rounded-2xl w-full aspect-square mb-4 flex items-center justify-center bg-transparent">
+          <img src={imageSrc} alt={title} className="w-[95%] h-[95%] object-contain" />
         </div>
         <h3 className={`text-lg sm:text-xl font-semibold ${textColor} mb-1`}>{title}</h3>
         <p className="text-[#4A4A4A] text-xs sm:text-sm whitespace-normal break-words max-h-[4.5em] line-clamp-3">{description}</p>
@@ -139,9 +137,9 @@ const UseCasesSection: React.FC = () => {
                   <div 
                     key={`first-${index}`} 
                     className="shrink-0 pl-4 inline-flex flex-col items-center"
-                    style={{ minWidth: "240px", maxWidth: "240px", height: "320px" }}
+                    style={{ minWidth: "240px", maxWidth: "240px" }}
                   >
-                    <div className="h-full w-full">
+                    <div className="h-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}
@@ -158,9 +156,9 @@ const UseCasesSection: React.FC = () => {
                   <div 
                     key={`second-${index}`} 
                     className="shrink-0 pl-4 inline-flex flex-col items-center"
-                    style={{ minWidth: "240px", maxWidth: "240px", height: "320px" }}
+                    style={{ minWidth: "240px", maxWidth: "240px" }}
                   >
-                    <div className="h-full w-full">
+                    <div className="h-full">
                       <UseCaseCard
                         title={useCase.title}
                         description={useCase.description}

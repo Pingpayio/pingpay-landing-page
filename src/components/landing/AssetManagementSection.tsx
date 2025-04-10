@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const AssetManagementSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -114,31 +113,28 @@ const AssetManagementSection: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="feature-card bg-white/20 backdrop-blur-sm rounded-lg border border-white/30 hover:bg-white/30 transition-all duration-300 h-full"
-              style={{ minHeight: "240px" }}
+              className="feature-card bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
             >
-              <div className="p-6 md:p-8 h-full flex flex-col">
-                <div className="flex items-start gap-5 h-full">
-                  <div className="feature-icon flex-shrink-0">
-                    {React.cloneElement(feature.icon as React.ReactElement, {
-                      className: `h-10 w-10 text-[#AB9FF2] transition-all duration-700 ease-out`,
-                    })}
+              <div className="flex items-start gap-5">
+                <div className="feature-icon flex-shrink-0">
+                  {React.cloneElement(feature.icon as React.ReactElement, {
+                    className: `h-10 w-10 text-[#AB9FF2] transition-all duration-700 ease-out`,
+                  })}
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <h3 className="text-xl font-semibold text-[#000000] mr-auto">{feature.title}</h3>
+                    {feature.comingSoon && (
+                      <Badge 
+                        variant="outline" 
+                        className={`bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 whitespace-nowrap flex items-center gap-1 px-2 py-0.5 text-xs font-medium ${isMobile ? 'ml-0 mt-1' : ''} animate-pulse`}
+                      >
+                        <Clock className="h-3 w-3 flex-shrink-0" />
+                        <span className="whitespace-nowrap">Coming Soon</span>
+                      </Badge>
+                    )}
                   </div>
-                  <div className="flex-1 flex flex-col h-full">
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <h3 className="text-xl font-semibold text-[#000000] mr-auto">{feature.title}</h3>
-                      {feature.comingSoon && (
-                        <Badge 
-                          variant="outline" 
-                          className={`bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 whitespace-nowrap flex items-center gap-1 px-2 py-0.5 text-xs font-medium ${isMobile ? 'ml-0 mt-1' : ''} animate-pulse`}
-                        >
-                          <Clock className="h-3 w-3 flex-shrink-0" />
-                          <span className="whitespace-nowrap">Coming Soon</span>
-                        </Badge>
-                      )}
-                    </div>
-                    <p className="text-[#4A4A4A] text-sm leading-relaxed">{feature.description}</p>
-                  </div>
+                  <p className="text-[#4A4A4A] text-sm leading-relaxed">{feature.description}</p>
                 </div>
               </div>
             </div>
