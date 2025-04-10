@@ -1,9 +1,11 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const AssetManagementSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
   const features = [
     {
       icon: <LinkIcon className="h-10 w-10 text-[#AB9FF2]" />,
@@ -50,13 +52,56 @@ const AssetManagementSection: React.FC = () => {
     }
   ];
 
+  useEffect(() => {
+    // Create an intersection observer to detect when feature cards come into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Find the icon element in the card
+            const iconElement = entry.target.querySelector('.feature-icon');
+            if (iconElement) {
+              // Add animation classes to the icon
+              iconElement.classList.add('animate-in');
+            }
+            // Stop observing once animation is applied
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null, // Use viewport as root
+        rootMargin: '0px',
+        threshold: 0.2, // Trigger when 20% of the element is visible
+      }
+    );
+
+    // Observe all feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    // Clean up observer on component unmount
+    return () => {
+      featureCards.forEach((card) => {
+        observer.unobserve(card);
+      });
+    };
+  }, []);
+
   return (
-    <section id="asset-management" className="w-full py-16 md:py-24 px-4 relative overflow-hidden" style={{
-      backgroundImage: `linear-gradient(45deg, 
-                #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
-      backgroundSize: '400% 400%',
-      animation: 'flowing-gradient 15s ease infinite'
-    }}>
+    <section 
+      id="asset-management" 
+      className="w-full py-16 md:py-24 px-4 relative overflow-hidden" 
+      style={{
+        backgroundImage: `linear-gradient(45deg, 
+                  #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
+        backgroundSize: '400% 400%',
+        animation: 'flowing-gradient 15s ease infinite'
+      }}
+      ref={sectionRef}
+    >
       <div className="max-w-[1080px] mx-auto relative z-10">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-2xl md:text-4xl font-bold text-[#000000]">The Easiest Tools for Crypto Payments</h2>
@@ -66,11 +111,13 @@ const AssetManagementSection: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
+              className="feature-card bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
             >
               <div className="flex items-start gap-5">
-                <div className="flex-shrink-0">
-                  {feature.icon}
+                <div className="feature-icon flex-shrink-0 opacity-0 transform translate-y-4">
+                  {React.cloneElement(feature.icon as React.ReactElement, {
+                    className: `h-10 w-10 text-[#AB9FF2] transition-all duration-700 ease-out`,
+                  })}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-3">
