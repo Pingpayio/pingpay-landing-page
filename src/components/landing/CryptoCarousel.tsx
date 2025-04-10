@@ -60,12 +60,13 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
-  // CSS for removing all borders and backgrounds
+  // Enhanced CSS for more aggressive border removal
   const containerStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
     outline: 'none',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    borderRadius: '0'
   };
 
   const imageStyle: React.CSSProperties = {
@@ -73,11 +74,20 @@ const CryptoCarousel: React.FC = () => {
     border: 'none',
     outline: 'none',
     boxShadow: 'none',
+    borderRadius: '0',
     maxWidth: '100%',
     maxHeight: '100%',
-    mixBlendMode: 'normal',
     objectFit: 'contain',
-    display: 'block'
+    display: 'block',
+    mixBlendMode: 'normal'
+  };
+
+  const imageContainerStyle: React.CSSProperties = {
+    ...containerStyle,
+    padding: '0',
+    margin: '0',
+    background: 'transparent',
+    isolation: 'isolate' // Creates a new stacking context
   };
 
   return (
@@ -106,17 +116,18 @@ const CryptoCarousel: React.FC = () => {
               >
                 <div 
                   className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
-                  style={containerStyle}
+                  style={imageContainerStyle}
                 >
                   <div 
                     className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
-                    style={containerStyle}
+                    style={imageContainerStyle}
                   >
                     <img 
                       src={token.imagePath}
                       alt={token.id}
                       className="w-full h-full"
                       style={imageStyle}
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -137,17 +148,18 @@ const CryptoCarousel: React.FC = () => {
               >
                 <div 
                   className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
-                  style={containerStyle}
+                  style={imageContainerStyle}
                 >
                   <div 
                     className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
-                    style={containerStyle}
+                    style={imageContainerStyle}
                   >
                     <img 
                       src={token.imagePath}
                       alt={token.id}
                       className="w-full h-full"
                       style={imageStyle}
+                      loading="lazy"
                     />
                   </div>
                 </div>
