@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Smooth scroll function with dynamic offset calculation
+  // Improved smooth scroll function with padding adjustment
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
@@ -39,8 +39,11 @@ const Navbar: React.FC = () => {
       const navbar = document.querySelector('nav');
       const navbarHeight = navbar ? navbar.offsetHeight : 54; // Default to 54px if nav element not found
       
+      // Add additional offset to ensure no overlap (depends on section padding)
+      const additionalOffset = 20; // Added to ensure there's visible space between navbar and section content
+      
       window.scrollTo({
-        top: element.offsetTop - navbarHeight, // Offset exactly by navbar height
+        top: element.offsetTop - navbarHeight - additionalOffset,
         behavior: 'smooth'
       });
     }
