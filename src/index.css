@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 @tailwind base;
@@ -166,9 +167,22 @@
 
 /* Mobile menu animations */
 .animate-in {
-  animation-duration: 300ms;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+  animation: fadeInAndScale 0.5s ease-out forwards;
+}
+
+@keyframes fadeInAndScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .slide-in-from-right {

@@ -114,7 +114,7 @@ const AssetManagementSection: React.FC = () => {
               className="feature-card bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
             >
               <div className="flex items-start gap-5">
-                <div className="feature-icon flex-shrink-0 opacity-0 transform translate-y-4">
+                <div className="feature-icon flex-shrink-0">
                   {React.cloneElement(feature.icon as React.ReactElement, {
                     className: `h-10 w-10 text-[#AB9FF2] transition-all duration-700 ease-out`,
                   })}
