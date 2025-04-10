@@ -2,11 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const AssetManagementSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
   
   const features = [
     {
@@ -122,15 +120,15 @@ const AssetManagementSection: React.FC = () => {
                   })}
                 </div>
                 <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2 mb-3">
-                    <h3 className="text-xl font-semibold text-[#000000] mr-auto">{feature.title}</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <h3 className="text-xl font-semibold text-[#000000]">{feature.title}</h3>
                     {feature.comingSoon && (
                       <Badge 
                         variant="outline" 
-                        className={`bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 whitespace-nowrap flex items-center gap-1 px-2 py-0.5 text-xs font-medium ${isMobile ? 'ml-0 mt-1' : ''} animate-pulse`}
+                        className="bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 flex items-center gap-1 px-2 py-0.5 text-xs font-medium animate-pulse"
                       >
-                        <Clock className="h-3 w-3 flex-shrink-0" />
-                        <span className="whitespace-nowrap">Coming Soon</span>
+                        <Clock className="h-3 w-3" />
+                        Coming Soon
                       </Badge>
                     )}
                   </div>

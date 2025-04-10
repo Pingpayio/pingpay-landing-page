@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -26,8 +25,8 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
         <div className="rounded-2xl w-full aspect-square mb-4 flex items-center justify-center bg-transparent">
           <img src={imageSrc} alt={title} className="w-[95%] h-[95%] object-contain" />
         </div>
-        <h3 className={`text-lg sm:text-xl font-semibold ${textColor} mb-1`}>{title}</h3>
-        <p className="text-[#4A4A4A] text-xs sm:text-sm whitespace-normal break-words max-h-[4.5em] line-clamp-3">{description}</p>
+        <h3 className={`text-xl font-semibold ${textColor} mb-1 whitespace-normal break-words`}>{title}</h3>
+        <p className="text-[#4A4A4A] text-sm whitespace-normal break-words max-h-[4.5em] line-clamp-3">{description}</p>
       </CardContent>
     </Card>
   );
