@@ -30,7 +30,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Account",
-      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments from any chain to your account."
+      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments to your account."
     },
     {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
