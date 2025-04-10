@@ -69,7 +69,7 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '0'
   };
 
-  // Standardized container size for all tokens
+  // Enhanced container size for all tokens with better masking
   const imageContainerStyle: React.CSSProperties = {
     ...containerStyle,
     padding: '0',
@@ -77,8 +77,8 @@ const CryptoCarousel: React.FC = () => {
     background: 'transparent',
     isolation: 'isolate',
     position: 'relative',
-    width: '180px',
-    height: '180px',
+    width: '200px', // Increased from 180px to 200px for better masking
+    height: '200px', // Increased from 180px to 200px for better masking
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -86,14 +86,14 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '50%', // Circular mask
   };
 
-  // Standardized image style for consistent appearance
+  // Improved image style with consistent sizing
   const imageStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
     outline: 'none',
     boxShadow: 'none',
-    width: '75%', // Fixed percentage for all images
-    height: '75%', // Fixed percentage for all images
+    width: '70%', // Reduced from 75% to 70% to keep images away from edges
+    height: '70%', // Reduced from 75% to 70% to keep images away from edges
     objectFit: 'contain',
     display: 'block',
     mixBlendMode: 'normal',
@@ -105,7 +105,7 @@ const CryptoCarousel: React.FC = () => {
 
   return (
     <>
-      {/* CSS to ensure consistent token sizing and remove purple lines */}
+      {/* Enhanced CSS to completely eliminate purple lines */}
       <style>
         {`
           .carousel-item, .carousel-item img {
@@ -121,41 +121,49 @@ const CryptoCarousel: React.FC = () => {
           }
           
           .token-mask {
-            width: 180px;
-            height: 180px;
+            width: 200px; /* Increased from 180px to 200px */
+            height: 200px; /* Increased from 180px to 200px */
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
+            background-color: #000; /* Changed from transparent to black */
             position: relative;
           }
 
-          /* Inner mask to ensure no purple lines are visible */
+          /* Enhanced inner mask with thicker shadow to ensure no purple lines are visible */
           .token-mask::after {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
+            top: -5px; /* Increased from -2px to -5px */
+            left: -5px; /* Increased from -2px to -5px */
+            right: -5px; /* Increased from -2px to -5px */
+            bottom: -5px; /* Increased from -2px to -5px */
             border-radius: 50%;
-            box-shadow: 0 0 0 5px #000; /* Black shadow to cover any lines */
+            box-shadow: 0 0 0 10px #000; /* Increased from 5px to 10px */
             pointer-events: none;
+            opacity: 1; /* Ensure full opacity */
           }
           
-          /* Ensure all token images have consistent size */
+          /* Further enhanced token image styling for consistency */
           .token-image {
-            width: 75% !important;
-            height: 75% !important;
-            max-width: 75% !important;
-            max-height: 75% !important;
+            width: 70% !important; /* Reduced from 75% to 70% */
+            height: 70% !important; /* Reduced from 75% to 70% */
+            max-width: 70% !important; /* Reduced from 75% to 70% */
+            max-height: 70% !important; /* Reduced from 75% to 70% */
             object-fit: contain !important;
             position: absolute !important;
             left: 50% !important;
             top: 50% !important;
             transform: translate(-50%, -50%) !important;
+            z-index: 1; /* Ensure image stays above background */
+          }
+          
+          /* Additional wrapper to prevent any bleeding */
+          .carousel-item-wrapper {
+            padding: 10px;
+            background-color: transparent;
           }
         `}
       </style>
@@ -181,23 +189,27 @@ const CryptoCarousel: React.FC = () => {
                 <div 
                   key={`first-${token.id}`} 
                   className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
-                  style={{ minWidth: "140px", ...containerStyle }}
+                  style={{ minWidth: "150px", ...containerStyle }} // Increased from 140px to 150px
                 >
                   <div 
-                    className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
-                    style={containerStyle}
+                    className="carousel-item-wrapper"
                   >
                     <div 
-                      className="token-mask"
-                      style={imageContainerStyle}
+                      className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
+                      style={containerStyle}
                     >
-                      <img 
-                        src={token.imagePath}
-                        alt={token.id}
-                        className="token-image"
-                        style={imageStyle}
-                        loading="lazy"
-                      />
+                      <div 
+                        className="token-mask"
+                        style={imageContainerStyle}
+                      >
+                        <img 
+                          src={token.imagePath}
+                          alt={token.id}
+                          className="token-image"
+                          style={imageStyle}
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -213,23 +225,27 @@ const CryptoCarousel: React.FC = () => {
                 <div 
                   key={`second-${token.id}`} 
                   className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
-                  style={{ minWidth: "140px", ...containerStyle }}
+                  style={{ minWidth: "150px", ...containerStyle }} // Increased from 140px to 150px
                 >
                   <div 
-                    className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
-                    style={containerStyle}
+                    className="carousel-item-wrapper"
                   >
                     <div 
-                      className="token-mask"
-                      style={imageContainerStyle}
+                      className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
+                      style={containerStyle}
                     >
-                      <img 
-                        src={token.imagePath}
-                        alt={token.id}
-                        className="token-image"
-                        style={imageStyle}
-                        loading="lazy"
-                      />
+                      <div 
+                        className="token-mask"
+                        style={imageContainerStyle}
+                      >
+                        <img 
+                          src={token.imagePath}
+                          alt={token.id}
+                          className="token-image"
+                          style={imageStyle}
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
