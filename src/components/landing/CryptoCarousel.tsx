@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import {
   Carousel,
@@ -64,31 +63,8 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
-  // CSS styles for removing outlines and borders
-  const removeOutlinesStyle = `
-    .fix-image-container {
-      background-color: transparent !important;
-      border: none !important;
-      outline: none !important;
-      box-shadow: none !important;
-    }
-    
-    .fix-image {
-      background-color: transparent !important;
-      border: none !important;
-      outline: none !important;
-      box-shadow: none !important;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-  `;
-
   return (
-    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto">
-      <style>{removeOutlinesStyle}</style>
-      
+    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto" style={{ isolation: 'isolate' }}>
       <Carousel
         opts={{
           align: "start",
@@ -104,21 +80,30 @@ const CryptoCarousel: React.FC = () => {
               key={token.id} 
               className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/6"
             >
-              <div className="fix-image-container flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                <div className="fix-image-container flex items-center justify-center overflow-hidden size-36 md:size-48">
-                  <img
-                    src={token.imagePath}
-                    alt={token.id}
-                    className="fix-image w-full h-full"
+              <div 
+                className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: 'transparent' }}
+              >
+                <div 
+                  className="flex items-center justify-center overflow-hidden size-36 md:size-48"
+                  style={{ backgroundColor: 'transparent' }}
+                >
+                  {/* Completely different approach: Use div with background image instead of img */}
+                  <div
                     style={{
-                      // Double-ensuring styles are applied
+                      width: '100%',
+                      height: '100%',
+                      backgroundImage: `url(${token.imagePath})`,
+                      backgroundSize: 'contain',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
                       backgroundColor: 'transparent',
-                      border: 'none',
                       outline: 'none',
+                      border: 'none',
                       boxShadow: 'none',
-                      borderRadius: '0'
                     }}
-                    loading="lazy"
+                    aria-label={token.id}
+                    role="img"
                   />
                 </div>
               </div>
