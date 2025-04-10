@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import {
   Carousel,
@@ -63,27 +64,30 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
+  // CSS styles for removing outlines and borders
+  const removeOutlinesStyle = `
+    .fix-image-container {
+      background-color: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    
+    .fix-image {
+      background-color: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+  `;
+
   return (
     <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto">
-      <style jsx>{`
-        .fix-image-container {
-          background-color: transparent !important;
-          border: none !important;
-          outline: none !important;
-          box-shadow: none !important;
-        }
-        
-        .fix-image {
-          background-color: transparent !important;
-          border: none !important;
-          outline: none !important;
-          box-shadow: none !important;
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
-          display: block;
-        }
-      `}</style>
+      <style>{removeOutlinesStyle}</style>
       
       <Carousel
         opts={{
