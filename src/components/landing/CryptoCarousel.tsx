@@ -69,7 +69,7 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '0'
   };
 
-  // Adjusted image container for tighter masking
+  // Standardized container size for all tokens
   const imageContainerStyle: React.CSSProperties = {
     ...containerStyle,
     padding: '0',
@@ -77,8 +77,8 @@ const CryptoCarousel: React.FC = () => {
     background: 'transparent',
     isolation: 'isolate',
     position: 'relative',
-    width: '180px',  // Increased from 170px to 180px for better masking
-    height: '180px', // Increased from 170px to 180px for better masking
+    width: '180px',
+    height: '180px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -86,26 +86,26 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '50%', // Circular mask
   };
 
-  // Improved image positioning to cover any purple lines
+  // Standardized image style for consistent appearance
   const imageStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
     outline: 'none',
     boxShadow: 'none',
-    width: '110%', // Increased from 100% to 110% to fill mask better
-    height: '110%', // Increased from 100% to 110% to fill mask better
+    width: '75%', // Fixed percentage for all images
+    height: '75%', // Fixed percentage for all images
     objectFit: 'contain',
     display: 'block',
     mixBlendMode: 'normal',
     position: 'absolute',
-    left: '-5%', // Shifted left by 5% to center the scaled-up image
-    top: '45%', // Adjusted to 45% from 50% for better vertical alignment
-    transform: 'translateY(-50%)', // Center vertically
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)', // Center both horizontally and vertically
   };
 
   return (
     <>
-      {/* CSS to remove purple boxes with improved masking */}
+      {/* CSS to ensure consistent token sizing and remove purple lines */}
       <style>
         {`
           .carousel-item, .carousel-item img {
@@ -121,18 +121,18 @@ const CryptoCarousel: React.FC = () => {
           }
           
           .token-mask {
-            width: 180px;  /* Increased from 170px to 180px */
-            height: 180px; /* Increased from 170px to 180px */
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             align-items: center;
-            justify-content: center; /* Changed from flex-start to center */
+            justify-content: center;
             background-color: transparent;
-            position: relative; /* Added position relative */
+            position: relative;
           }
 
-          /* Added inner mask to ensure no purple lines are visible */
+          /* Inner mask to ensure no purple lines are visible */
           .token-mask::after {
             content: '';
             position: absolute;
@@ -143,6 +143,19 @@ const CryptoCarousel: React.FC = () => {
             border-radius: 50%;
             box-shadow: 0 0 0 5px #000; /* Black shadow to cover any lines */
             pointer-events: none;
+          }
+          
+          /* Ensure all token images have consistent size */
+          .token-image {
+            width: 75% !important;
+            height: 75% !important;
+            max-width: 75% !important;
+            max-height: 75% !important;
+            object-fit: contain !important;
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
           }
         `}
       </style>
