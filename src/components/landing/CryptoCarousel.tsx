@@ -73,15 +73,16 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "140px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48 rounded-full">
+                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48">
                     <img 
                       src={token.imagePath}
                       alt={token.id}
-                      className="w-full h-full object-contain mix-blend-normal"
+                      className="w-full h-full object-contain"
                       style={{ 
                         background: 'transparent',
                         maxWidth: '100%',
-                        maxHeight: '100%'
+                        maxHeight: '100%',
+                        mixBlendMode: 'normal'
                       }}
                     />
                   </div>
@@ -99,15 +100,16 @@ const CryptoCarousel: React.FC = () => {
                 style={{ minWidth: "140px" }}
               >
                 <div className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48 rounded-full">
+                  <div className="flex items-center justify-center overflow-hidden size-36 md:size-48">
                     <img 
                       src={token.imagePath}
                       alt={token.id}
-                      className="w-full h-full object-contain mix-blend-normal"
+                      className="w-full h-full object-contain"
                       style={{ 
                         background: 'transparent',
                         maxWidth: '100%',
-                        maxHeight: '100%'
+                        maxHeight: '100%',
+                        mixBlendMode: 'normal'
                       }}
                     />
                   </div>
