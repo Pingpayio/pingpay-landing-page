@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
             
             <div className="flex items-center gap-2">
               <button className="bg-[#AB9FF2] text-[#3D315E] text-center px-4 py-1.5 text-sm md:text-base md:px-5 md:py-2 rounded-full hover:opacity-90 transition-opacity">
-                Launch App
+                Coming Soon
               </button>
               
               {isMobile && (
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
             
             <div className="mt-auto mb-8">
               <button className="w-full bg-[#AB9FF2] text-[#3D315E] font-medium text-center py-3 rounded-lg">
-                Launch App
+                Coming Soon
               </button>
             </div>
           </div>
