@@ -102,29 +102,29 @@ const Navbar: React.FC = () => {
       
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#100713] pt-[70px] flex flex-col animate-fade-in">
+        <div className="fixed inset-0 z-40 bg-[#100713] pt-[54px] flex flex-col animate-in slide-in-from-right duration-300">
           <div className="flex flex-col p-6 h-full">
             <div className="flex flex-col space-y-6 text-white text-lg mt-4">
               <div 
                 onClick={() => scrollToSection('asset-management')} 
-                className="flex items-center justify-between border-b border-white/10 pb-2 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
+                className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
-                <span>Features</span>
+                <span className="text-base font-medium">Features</span>
                 <ChevronDown size={18} />
               </div>
               <div 
                 onClick={() => scrollToSection('use-cases')} 
-                className="flex items-center justify-between border-b border-white/10 pb-2 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
+                className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
-                <span>Use Cases</span>
+                <span className="text-base font-medium">Use Cases</span>
                 <ChevronDown size={18} />
               </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-2 hover:text-[#AB9FF2] transition-colors duration-300">
-                <span>Docs</span>
+              <div className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300">
+                <span className="text-base font-medium">Docs</span>
                 <ChevronDown size={18} />
               </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-2 hover:text-[#AB9FF2] transition-colors duration-300">
-                <span>Community</span>
+              <div className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300">
+                <span className="text-base font-medium">Community</span>
                 <ChevronDown size={18} />
               </div>
             </div>

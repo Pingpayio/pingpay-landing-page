@@ -164,6 +164,35 @@
   }
 }
 
+/* Mobile menu animations */
+.animate-in {
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.slide-in-from-right {
+  animation-name: slideInFromRight;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
 /* Gradient Animations */
 @keyframes pulse-gradient {
   0% {
