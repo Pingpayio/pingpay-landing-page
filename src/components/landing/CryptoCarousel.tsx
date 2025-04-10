@@ -1,5 +1,8 @@
+
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Token data structure
 interface TokenInfo {
@@ -41,8 +44,34 @@ const CryptoCarousel: React.FC = () => {
     { id: "coin23", imagePath: "/lovable-uploads/2dd8366c-5a0f-462e-b9b3-1520c4e42c72.png" }, 
   ];
 
-  // State to store randomized tokens
+  // State to store randomized tokens and loading state
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
+  const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
+  const [visibleImages, setVisibleImages] = useState<string[]>([]);
+
+  // Handle intersection observer for lazy loading
+  useEffect(() => {
+    // Create observer to detect when carousel images enter viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute('data-image-id');
+          if (entry.isIntersecting && id && !visibleImages.includes(id)) {
+            setVisibleImages((prev) => [...prev, id]);
+          }
+        });
+      },
+      { rootMargin: '200px' } // Start loading images when they're 200px from viewport
+    );
+
+    // Observe all carousel items
+    const elements = document.querySelectorAll('.token-container');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, [tokens, visibleImages]);
 
   // Randomize tokens on component mount
   useEffect(() => {
@@ -53,7 +82,8 @@ const CryptoCarousel: React.FC = () => {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
-      return shuffled;
+      // Only use the first 12 tokens for better performance
+      return shuffled.slice(0, 12);
     };
 
     setTokens(shuffleTokens(allTokens));
@@ -75,8 +105,8 @@ const CryptoCarousel: React.FC = () => {
     background: 'transparent',
     isolation: 'isolate',
     position: 'relative',
-    width: '170px',  // Changed from 180px to 170px
-    height: '170px', // Changed from 180px to 170px
+    width: '170px',
+    height: '170px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -84,20 +114,12 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '50%', // Circular mask
   };
 
-  const imageStyle: React.CSSProperties = {
-    backgroundColor: 'transparent',
-    border: 'none',
-    outline: 'none',
-    boxShadow: 'none',
-    width: '100%',
-    height: '100%',
-    objectFit: 'contain',
-    display: 'block',
-    mixBlendMode: 'normal',
-    position: 'absolute',
-    left: '0',
-    top: '50%',
-    transform: 'translateY(-50%)', // Center vertically
+  // Handle image load event
+  const handleImageLoaded = (id: string) => {
+    setImagesLoaded(prev => ({
+      ...prev,
+      [id]: true
+    }));
   };
 
   return (
@@ -118,14 +140,26 @@ const CryptoCarousel: React.FC = () => {
           }
           
           .token-mask {
-            width: 170px;  /* Changed from 180px to 170px */
-            height: 170px; /* Changed from 180px to 170px */
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             background-color: transparent;
+          }
+
+          .optimized-carousel {
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .continuous-scroll {
+              animation: none !important;
+            }
           }
         `}
       </style>
@@ -139,7 +173,7 @@ const CryptoCarousel: React.FC = () => {
           style={containerStyle}
         >
           <div 
-            className="flex whitespace-nowrap" 
+            className="flex whitespace-nowrap optimized-carousel" 
             style={containerStyle}
           >
             {/* First set of tokens */}
@@ -150,8 +184,9 @@ const CryptoCarousel: React.FC = () => {
               {tokens.map((token) => (
                 <div 
                   key={`first-${token.id}`} 
-                  className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+                  className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item token-container"
                   style={{ minWidth: "140px", ...containerStyle }}
+                  data-image-id={token.id}
                 >
                   <div 
                     className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
@@ -161,13 +196,33 @@ const CryptoCarousel: React.FC = () => {
                       className="token-mask"
                       style={imageContainerStyle}
                     >
-                      <img 
-                        src={token.imagePath}
-                        alt={token.id}
-                        className="token-image"
-                        style={imageStyle}
-                        loading="lazy"
-                      />
+                      {visibleImages.includes(token.id) ? (
+                        <AspectRatio ratio={1}>
+                          {!imagesLoaded[token.id] && (
+                            <Skeleton className="absolute inset-0 rounded-full bg-slate-200/30" />
+                          )}
+                          <img 
+                            src={token.imagePath}
+                            alt={token.id}
+                            className={cn(
+                              "token-image w-full h-full object-contain",
+                              !imagesLoaded[token.id] && "invisible"
+                            )}
+                            style={{
+                              position: 'absolute',
+                              left: '0',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                            }}
+                            loading="lazy"
+                            onLoad={() => handleImageLoaded(token.id)}
+                            width={170}
+                            height={170}
+                          />
+                        </AspectRatio>
+                      ) : (
+                        <Skeleton className="w-full h-full rounded-full bg-slate-200/30" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -182,8 +237,9 @@ const CryptoCarousel: React.FC = () => {
               {tokens.map((token) => (
                 <div 
                   key={`second-${token.id}`} 
-                  className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+                  className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item token-container"
                   style={{ minWidth: "140px", ...containerStyle }}
+                  data-image-id={`second-${token.id}`}
                 >
                   <div 
                     className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
@@ -193,13 +249,33 @@ const CryptoCarousel: React.FC = () => {
                       className="token-mask"
                       style={imageContainerStyle}
                     >
-                      <img 
-                        src={token.imagePath}
-                        alt={token.id}
-                        className="token-image"
-                        style={imageStyle}
-                        loading="lazy"
-                      />
+                      {visibleImages.includes(`second-${token.id}`) ? (
+                        <AspectRatio ratio={1}>
+                          {!imagesLoaded[`second-${token.id}`] && (
+                            <Skeleton className="absolute inset-0 rounded-full bg-slate-200/30" />
+                          )}
+                          <img 
+                            src={token.imagePath}
+                            alt={token.id}
+                            className={cn(
+                              "token-image w-full h-full object-contain",
+                              !imagesLoaded[`second-${token.id}`] && "invisible"
+                            )}
+                            style={{
+                              position: 'absolute',
+                              left: '0',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                            }}
+                            loading="lazy"
+                            onLoad={() => handleImageLoaded(`second-${token.id}`)}
+                            width={170}
+                            height={170}
+                          />
+                        </AspectRatio>
+                      ) : (
+                        <Skeleton className="w-full h-full rounded-full bg-slate-200/30" />
+                      )}
                     </div>
                   </div>
                 </div>

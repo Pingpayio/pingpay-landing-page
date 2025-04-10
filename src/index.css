@@ -161,6 +161,31 @@
   img {
     background-color: transparent !important;
     mix-blend-mode: normal !important;
+    content-visibility: auto; /* Improve rendering performance */
+  }
+
+  /* Performance optimizations */
+  .optimized-carousel {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .continuous-scroll {
+      animation: none !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
+    
+    * {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
 }
 
