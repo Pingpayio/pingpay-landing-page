@@ -1,9 +1,6 @@
+
 import React, { useEffect, useState } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 
 // Token data structure
 interface TokenInfo {
@@ -63,54 +60,114 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
+  // Enhanced CSS for more aggressive border removal
+  const containerStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+    boxShadow: 'none',
+    borderRadius: '0'
+  };
+
+  const imageStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+    boxShadow: 'none',
+    borderRadius: '0',
+    maxWidth: '100%',
+    maxHeight: '100%',
+    objectFit: 'contain',
+    display: 'block',
+    mixBlendMode: 'normal'
+  };
+
+  const imageContainerStyle: React.CSSProperties = {
+    ...containerStyle,
+    padding: '0',
+    margin: '0',
+    background: 'transparent',
+    isolation: 'isolate' // Creates a new stacking context
+  };
+
   return (
-    <div className="w-full max-w-[1000px] px-8 md:px-4 mx-auto" style={{ isolation: 'isolate' }}>
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-          skipSnaps: false,
-          dragFree: true,
-        }}
-        className="w-full"
+    <div 
+      className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
+      style={containerStyle}
+    >
+      <div 
+        className="relative overflow-hidden" 
+        style={containerStyle}
       >
-        <CarouselContent className="-ml-2 md:-ml-4">
-          {tokens.map((token) => (
-            <CarouselItem 
-              key={token.id} 
-              className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/6"
-            >
+        <div 
+          className="flex whitespace-nowrap" 
+          style={containerStyle}
+        >
+          {/* First set of tokens */}
+          <div 
+            className="flex continuous-scroll" 
+            style={containerStyle}
+          >
+            {tokens.map((token) => (
               <div 
-                className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105"
-                style={{ backgroundColor: 'transparent' }}
+                key={`first-${token.id}`} 
+                className="shrink-0 pl-4 inline-flex flex-col items-center"
+                style={{ minWidth: "140px", ...containerStyle }}
               >
                 <div 
-                  className="flex items-center justify-center overflow-hidden size-36 md:size-48"
-                  style={{ backgroundColor: 'transparent' }}
+                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
+                  style={imageContainerStyle}
                 >
-                  {/* Completely different approach: Use div with background image instead of img */}
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      backgroundImage: `url(${token.imagePath})`,
-                      backgroundSize: 'contain',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundColor: 'transparent',
-                      outline: 'none',
-                      border: 'none',
-                      boxShadow: 'none',
-                    }}
-                    aria-label={token.id}
-                    role="img"
-                  />
+                  <div 
+                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
+                    style={imageContainerStyle}
+                  >
+                    <img 
+                      src={token.imagePath}
+                      alt={token.id}
+                      className="w-full h-full"
+                      style={imageStyle}
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+            ))}
+          </div>
+
+          {/* Second set of tokens - creates the continuous effect */}
+          <div 
+            className="flex continuous-scroll" 
+            style={containerStyle}
+          >
+            {tokens.map((token) => (
+              <div 
+                key={`second-${token.id}`} 
+                className="shrink-0 pl-4 inline-flex flex-col items-center"
+                style={{ minWidth: "140px", ...containerStyle }}
+              >
+                <div 
+                  className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105" 
+                  style={imageContainerStyle}
+                >
+                  <div 
+                    className="flex items-center justify-center overflow-hidden size-36 md:size-48" 
+                    style={imageContainerStyle}
+                  >
+                    <img 
+                      src={token.imagePath}
+                      alt={token.id}
+                      className="w-full h-full"
+                      style={imageStyle}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
