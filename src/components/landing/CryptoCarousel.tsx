@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -60,7 +59,7 @@ const CryptoCarousel: React.FC = () => {
     setTokens(shuffleTokens(allTokens));
   }, []);
 
-  // Enhanced CSS for more aggressive border removal
+  // Enhanced CSS with circular mask
   const containerStyle: React.CSSProperties = {
     backgroundColor: 'transparent',
     border: 'none',
@@ -69,30 +68,41 @@ const CryptoCarousel: React.FC = () => {
     borderRadius: '0'
   };
 
-  const imageStyle: React.CSSProperties = {
-    backgroundColor: 'transparent',
-    border: 'none',
-    outline: 'none',
-    boxShadow: 'none',
-    borderRadius: '0',
-    maxWidth: '100%',
-    maxHeight: '100%',
-    objectFit: 'contain',
-    display: 'block',
-    mixBlendMode: 'normal'
-  };
-
   const imageContainerStyle: React.CSSProperties = {
     ...containerStyle,
     padding: '0',
     margin: '0',
     background: 'transparent',
-    isolation: 'isolate' // Creates a new stacking context
+    isolation: 'isolate',
+    position: 'relative',
+    width: '180px',
+    height: '180px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    borderRadius: '50%', // Circular mask
+  };
+
+  const imageStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+    boxShadow: 'none',
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',
+    display: 'block',
+    mixBlendMode: 'normal',
+    position: 'absolute',
+    left: '0',
+    top: '50%',
+    transform: 'translateY(-50%)', // Center vertically
   };
 
   return (
     <>
-      {/* Add explicit CSS to fix the purple box issue */}
+      {/* CSS to remove purple boxes */}
       <style>
         {`
           .carousel-item, .carousel-item img {
@@ -105,6 +115,17 @@ const CryptoCarousel: React.FC = () => {
           img {
             background-color: transparent !important;
             mix-blend-mode: normal !important;
+          }
+          
+          .token-mask {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: transparent;
           }
         `}
       </style>
@@ -134,16 +155,16 @@ const CryptoCarousel: React.FC = () => {
                 >
                   <div 
                     className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
-                    style={imageContainerStyle}
+                    style={containerStyle}
                   >
                     <div 
-                      className="flex items-center justify-center overflow-hidden size-36 md:size-48 carousel-item" 
+                      className="token-mask"
                       style={imageContainerStyle}
                     >
                       <img 
                         src={token.imagePath}
                         alt={token.id}
-                        className="w-full h-full"
+                        className="token-image"
                         style={imageStyle}
                         loading="lazy"
                       />
@@ -166,16 +187,16 @@ const CryptoCarousel: React.FC = () => {
                 >
                   <div 
                     className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
-                    style={imageContainerStyle}
+                    style={containerStyle}
                   >
                     <div 
-                      className="flex items-center justify-center overflow-hidden size-36 md:size-48 carousel-item" 
+                      className="token-mask"
                       style={imageContainerStyle}
                     >
                       <img 
                         src={token.imagePath}
                         alt={token.id}
-                        className="w-full h-full"
+                        className="token-image"
                         style={imageStyle}
                         loading="lazy"
                       />
