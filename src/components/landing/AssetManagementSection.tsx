@@ -90,6 +90,40 @@ const AssetManagementSection: React.FC = () => {
     };
   }, []);
 
+  // Function to find the card with the most content and adjust heights accordingly
+  useEffect(() => {
+    const adjustCardHeights = () => {
+      // Reset heights first to get natural heights
+      const featureCards = document.querySelectorAll('.feature-card');
+      featureCards.forEach((card) => {
+        (card as HTMLElement).style.height = 'auto';
+      });
+      
+      // Get the tallest card height
+      let maxHeight = 0;
+      featureCards.forEach((card) => {
+        const height = (card as HTMLElement).offsetHeight;
+        maxHeight = Math.max(maxHeight, height);
+      });
+      
+      // Set all cards to the height of the tallest card
+      if (maxHeight > 0) {
+        featureCards.forEach((card) => {
+          (card as HTMLElement).style.height = `${maxHeight}px`;
+        });
+      }
+    };
+    
+    // Adjust heights initially and on window resize
+    adjustCardHeights();
+    window.addEventListener('resize', adjustCardHeights);
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', adjustCardHeights);
+    };
+  }, []);
+
   return (
     <section 
       id="asset-management" 
@@ -111,15 +145,15 @@ const AssetManagementSection: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="feature-card bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 h-full flex flex-col"
+              className="feature-card bg-white/20 backdrop-blur-sm rounded-lg p-6 md:p-8 hover:bg-white/30 transition-all duration-300 border border-white/30 flex flex-col"
             >
-              <div className="flex items-start gap-5">
+              <div className="flex items-start gap-5 h-full">
                 <div className="feature-icon flex-shrink-0">
                   {React.cloneElement(feature.icon as React.ReactElement, {
                     className: `h-10 w-10 text-[#AB9FF2] transition-all duration-700 ease-out`,
                   })}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-3">
                     <h3 className="text-xl font-semibold text-[#000000]">{feature.title}</h3>
                     {feature.comingSoon && (
@@ -132,7 +166,7 @@ const AssetManagementSection: React.FC = () => {
                       </Badge>
                     )}
                   </div>
-                  <p className="text-[#4A4A4A] text-sm leading-relaxed">{feature.description}</p>
+                  <p className="text-[#4A4A4A] text-sm leading-relaxed flex-grow">{feature.description}</p>
                 </div>
               </div>
             </div>
