@@ -3,6 +3,7 @@ import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import UseCasesCarousel from "./UseCasesCarousel";
 import ComingSoonButton from "./ComingSoonButton";
+import SectionHeader from "./SectionHeader";
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
@@ -18,9 +19,11 @@ const UseCasesSection: React.FC = () => {
     >
       <div className="max-w-[1080px] mx-auto w-full h-full flex flex-col">
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
-            Payments for All Use Cases
-          </h2>
+          <SectionHeader
+            title="Payments for All Use Cases"
+            description=""
+            maxWidth="full"
+          />
         </div>
         
         <UseCasesCarousel />

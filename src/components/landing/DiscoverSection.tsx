@@ -18,6 +18,8 @@ const DiscoverSection: React.FC = () => {
         <SectionHeader 
           title="Multi-currency Payment Support" 
           description="Settling cross-chain intents in seconds."
+          centered={true}
+          maxWidth="full"
         />
         
         {/* Cryptocurrency Carousel */}
