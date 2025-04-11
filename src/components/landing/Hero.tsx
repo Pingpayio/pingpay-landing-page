@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Timer } from "lucide-react";
 
@@ -57,7 +58,7 @@ const Hero: React.FC = () => {
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
-        The Payment Layer
+        Ping Payment Layer
         <br className="md:block" />
         for the Future of{" "}
         <span className="relative">
@@ -79,7 +80,7 @@ const Hero: React.FC = () => {
       <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
-          alt="HyperLend Platform"
+          alt="Ping Payment Platform"
           className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]"
           style={{ marginBottom: "-25px" }}
         />

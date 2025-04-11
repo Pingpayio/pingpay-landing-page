@@ -14,17 +14,17 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Checkout & Product Widgets",
+      title: "Ping Checkout Widgets",
       description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required."
     },
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Automated Subscriptions",
+      title: "Ping Subscriptions",
       description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Our agent will handle payments automatically."
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Intuitive APIs & SDKs",
+      title: "Ping APIs & SDKs",
       description: "We package our payment solutions into easy to use APIs and SDKs. Focus on your payment use cases, rather than the complexities of the infrastructure."
     },
     {
@@ -34,7 +34,7 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Pay With Card",
+      title: "Ping Card",
       description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents.",
       comingSoon: true
     },
@@ -46,7 +46,7 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "AI Assistant",
+      title: "Ping Assistant",
       description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
       comingSoon: true
     }
@@ -104,7 +104,7 @@ const AssetManagementSection: React.FC = () => {
     >
       <div className="max-w-[1080px] mx-auto relative z-10">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#000000]">The Easiest Tools for Crypto Payments</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-[#000000]">The Easiest Tools for Ping Payments</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
