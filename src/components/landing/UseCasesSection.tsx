@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -35,60 +34,60 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
-  // All use cases with consistent background color and Ping-specific terminology
+  // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
     {
-      title: "Ping AI-commerce",
+      title: "AI-commerce",
       description: "Enable payments for AI services and content. Seamless transactions for next-gen digital offerings.",
       imageSrc: "/lovable-uploads/051f5c43-8963-4df7-b8e0-00f5da2d23b5.png", // AI-commerce image
     },
     {
-      title: "Ping for Enterprise",
+      title: "Enterprise",
       description: "Streamlined cross-border B2B payments. Reduce fees and gain full transaction transparency.",
       imageSrc: "/lovable-uploads/bbd8fd07-bc11-4018-b211-42785e570fb4.png", // Enterprise image
     },
     {
-      title: "Ping Digital Services",
+      title: "Digital Services",
       description: "Secure payment solutions for freelancers. Reach clients globally with instant settlements.",
       imageSrc: "/lovable-uploads/723d566c-634a-449e-acdd-467d35704424.png", // Digital Services image
     },
     {
-      title: "Ping Subscriptions",
+      title: "Subscriptions",
       description: "Enable recurring crypto payments. Support multiple chains for subscription-based offerings.",
       imageSrc: "/lovable-uploads/adecacb6-2b8d-42b8-83b7-e96ffd927ecc.png", // Subscriptions image
     },
     {
-      title: "Ping IRL",
+      title: "IRL Payments",
       description: "Quick point-of-sale crypto payments. Bring blockchain to physical retail environments.",
       imageSrc: "/lovable-uploads/bf2c7584-3ae7-4197-a814-36fed986bd64.png", // IRL Payments image
     },
     {
-      title: "Ping Split",
+      title: "Bill Splitting",
       description: "Create and manage group expenses. Split bills efficiently with integrated payment tracking.",
       imageSrc: "/lovable-uploads/9fc4b611-658a-4925-b1fa-31640038cc6e.png", // Bill Splitting image
     },
     {
-      title: "Ping Commerce",
+      title: "E-Commerce",
       description: "Accept crypto payments for digital and physical products. Quick settlement from any blockchain network.",
       imageSrc: "/lovable-uploads/dc224d9f-ab71-4d25-bbdf-2a8d39dfb720.png", // E-commerce image
     },
     {
-      title: "Ping Tickets",
+      title: "Event Ticketing",
       description: "Sell event tickets with instant crypto payments. Optional NFT tickets for enhanced security and collectibility.",
       imageSrc: "/lovable-uploads/63efbc89-1e9e-442d-a1ae-c65a3fbc6846.png", // Event Ticketing image
     },
     {
-      title: "Ping Invoices",
+      title: "Invoicing",
       description: "Generate and send professional crypto invoices. Automated payment tracking and reconciliation.",
       imageSrc: "/lovable-uploads/f3ae69a7-9b8c-44d4-a32d-76c482fe4f70.png", // Invoicing image
     },
     {
-      title: "Ping Savings",
+      title: "Savings Pots",
       description: "Create dedicated crypto savings funds. Set goals and track progress with automated allocations.",
       imageSrc: "/lovable-uploads/0943ab13-2c96-4b77-8de0-cb1b123d7c5d.png", // Savings Pots image
     },
     {
-      title: "Ping In-app",
+      title: "In-app Purchases",
       description: "Integrate seamless in-app crypto payments. Enhance user experience with quick transaction flows.",
       imageSrc: "/lovable-uploads/c1a66de4-1adf-438b-a944-54d5fc1c0a16.png", // In-app Purchases image
     }
@@ -124,7 +123,7 @@ const UseCasesSection: React.FC = () => {
       <div className="max-w-[1080px] mx-auto w-full h-full flex flex-col">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-[#AB9FF2] text-2xl md:text-4xl font-bold leading-relaxed text-center max-w-full">
-            Ping Payment Solutions
+            Payments for All Use Cases
           </h2>
         </div>
         

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -78,16 +79,16 @@ const Navbar: React.FC = () => {
                 onClick={() => scrollToSection('asset-management')} 
                 className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
               >
-                Ping Features
+                Features
               </button>
               <button 
                 onClick={() => scrollToSection('use-cases')} 
                 className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
               >
-                Ping Solutions
+                Use Cases
               </button>
-              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Ping Docs</button>
-              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Ping Community</button>
+              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Docs</button>
+              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Community</button>
             </div>
             
             <div className="flex items-center gap-2">
@@ -109,6 +110,7 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
       
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-[#100713] pt-[54px] flex flex-col animate-in slide-in-from-right duration-300">
           <div className="flex flex-col p-6 h-full">
@@ -117,22 +119,22 @@ const Navbar: React.FC = () => {
                 onClick={() => scrollToSection('asset-management')} 
                 className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
-                <span className="text-base font-medium">Ping Features</span>
+                <span className="text-base font-medium">Features</span>
                 <ChevronDown size={18} />
               </div>
               <div 
                 onClick={() => scrollToSection('use-cases')} 
                 className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
-                <span className="text-base font-medium">Ping Solutions</span>
+                <span className="text-base font-medium">Use Cases</span>
                 <ChevronDown size={18} />
               </div>
               <div className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300">
-                <span className="text-base font-medium">Ping Docs</span>
+                <span className="text-base font-medium">Docs</span>
                 <ChevronDown size={18} />
               </div>
               <div className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300">
-                <span className="text-base font-medium">Ping Community</span>
+                <span className="text-base font-medium">Community</span>
                 <ChevronDown size={18} />
               </div>
             </div>

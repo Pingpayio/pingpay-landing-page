@@ -12,7 +12,7 @@ const SupplyBorrowTabs: React.FC = () => {
       <div className="relative w-full">
         {/* Tab buttons container */}
         <div className="flex w-full">
-          {/* Left tab - Ping Receiving */}
+          {/* Left tab - Receiving Payments */}
           <div className="w-1/2 text-center">
             <button
               onClick={() => setActiveTab("supply")}
@@ -20,11 +20,11 @@ const SupplyBorrowTabs: React.FC = () => {
                 activeTab === "supply" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
               }`}
             >
-              Ping Receiving
+              Receiving Payments
             </button>
           </div>
           
-          {/* Right tab - Ping Payments */}
+          {/* Right tab - Making Payments */}
           <div className="w-1/2 text-center">
             <button
               onClick={() => setActiveTab("borrow")}
@@ -32,7 +32,7 @@ const SupplyBorrowTabs: React.FC = () => {
                 activeTab === "borrow" ? "text-[#AB9FF2]" : "text-[#2A2A37]"
               }`}
             >
-              Ping Payments
+              Making Payments
             </button>
           </div>
         </div>
@@ -54,12 +54,12 @@ const SupplyBorrowTabs: React.FC = () => {
       <div className="w-full flex mt-[25px]">
         {activeTab === "supply" && (
           <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-left w-full md:w-1/2 pl-0 whitespace-normal">
-            Always receive your preferred asset. Accept universal crypto payments with zero custody, instant peer-to-peer Ping transfers, and drastically lower fees.
+            Always receive your preferred asset. Accept universal crypto payments with zero custody, instant peer-to-peer payments, and drastically lower fees.
           </div>
         )}
         {activeTab === "borrow" && (
           <div className="text-[#AB9FF2] text-sm md:text-base font-medium leading-6 text-right w-full md:w-1/2 ml-auto pr-0 whitespace-normal">
-            Ping Your Way. Removing the complexity and friction of different currencies, blockchains or wallets. Global payments made simple with the power of Ping.
+            Pay Your Way. Removing the complexity and friction of different currencies, blockchains or wallets. Global payments made simple with the power of Ping.
           </div>
         )}
       </div>
