@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
-import DiscoverSection from "@/components/landing/DiscoverSection";
-import AssetManagementSection from "@/components/landing/AssetManagementSection";
-import UseCasesSection from "@/components/landing/UseCasesSection";
+import FeatureSection from "@/components/landing/DiscoverSection";
+import AnalyticsSection from "@/components/landing/AssetManagementSection";
+import ApplicationsSection from "@/components/landing/UseCasesSection";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const Index: React.FC = () => {
+const HomePage: React.FC = () => {
   const isMobile = useIsMobile();
   const [gradientOption] = useState<number>(2); // Default to option 2
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -67,12 +67,12 @@ const Index: React.FC = () => {
         </div>
         
         {/* Sections with specific background colors */}
-        <DiscoverSection />
-        <AssetManagementSection />
-        <UseCasesSection />
+        <FeatureSection />
+        <AnalyticsSection />
+        <ApplicationsSection />
       </main>
     </div>
   );
 };
 
-export default Index;
+export default HomePage;
