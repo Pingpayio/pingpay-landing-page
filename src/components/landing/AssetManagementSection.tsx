@@ -127,7 +127,7 @@ const AssetManagementSection: React.FC = () => {
   return (
     <section 
       id="asset-management" 
-      className="w-full py-16 md:py-24 px-4 relative overflow-hidden" 
+      className="w-full py-16 md:py-24 lg:py-28 xl:py-32 px-4 md:px-6 lg:px-8 relative overflow-hidden" 
       style={{
         backgroundImage: `linear-gradient(45deg, 
                   #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
@@ -136,12 +136,12 @@ const AssetManagementSection: React.FC = () => {
       }}
       ref={sectionRef}
     >
-      <div className="max-w-[1080px] mx-auto relative z-10">
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#000000]">The Easiest Tools for Crypto Payments</h2>
+      <div className="max-w-[1280px] mx-auto relative z-10">
+        <div className="text-center mb-10 md:mb-16 lg:mb-20">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#000000]">The Easiest Tools for Crypto Payments</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
           {features.map((feature, index) => (
             <div 
               key={index} 
@@ -150,12 +150,12 @@ const AssetManagementSection: React.FC = () => {
               <div className="flex items-start gap-5 h-full">
                 <div className="feature-icon flex-shrink-0">
                   {React.cloneElement(feature.icon as React.ReactElement, {
-                    className: `h-10 w-10 text-[#AB9FF2] transition-all duration-700 ease-out`,
+                    className: `h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 text-[#AB9FF2] transition-all duration-700 ease-out`,
                   })}
                 </div>
                 <div className="flex-1 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-3">
-                    <h3 className="text-xl font-semibold text-[#000000]">{feature.title}</h3>
+                    <h3 className="text-xl md:text-2xl lg:text-2xl font-semibold text-[#000000]">{feature.title}</h3>
                     {feature.comingSoon && (
                       <Badge 
                         variant="outline" 
@@ -166,7 +166,7 @@ const AssetManagementSection: React.FC = () => {
                       </Badge>
                     )}
                   </div>
-                  <p className="text-[#4A4A4A] text-sm leading-relaxed flex-grow">{feature.description}</p>
+                  <p className="text-[#4A4A4A] text-sm md:text-base lg:text-base leading-relaxed flex-grow">{feature.description}</p>
                 </div>
               </div>
             </div>

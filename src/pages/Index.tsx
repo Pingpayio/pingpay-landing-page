@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
           style={gradientStyle}
         ></div>
         
-        <div className="max-w-[1080px] w-full flex flex-col items-center px-4 md:px-6 relative z-10">
+        <div className="max-w-[1280px] w-full flex flex-col items-center px-4 md:px-6 lg:px-8 xl:px-10 relative z-10 mx-auto">
           <Hero />
         </div>
         
