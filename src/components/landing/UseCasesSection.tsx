@@ -28,7 +28,7 @@ const UseCasesSection: React.FC = () => {
         
         <UseCasesCarousel />
 
-        {/* CTA section */}
+        {/* Final CTA section, duplicated heading/subheading, placed above the Join Waitlist button */}
         <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-4 md:mb-12">
           <SectionHeader
             title="Multi-currency Payment Support"
