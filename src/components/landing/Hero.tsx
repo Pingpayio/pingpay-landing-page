@@ -1,79 +1,140 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Timer, FileText } from "lucide-react";
 
-const Hero: React.FC = () => {
-  const [displayText, setDisplayText] = useState("Commerce");
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);  // Added comma and corrected initialization
-  const [typingSpeed, setTypingSpeed] = useState(150);  // Added comma and corrected initialization
-  
-  // Array of words (keeping only the text, removing color assignments)
-  const words = [
-    "Commerce",
-    "AI Agents",
-    "Subscriptions",
-    "Enterprise",
-    "Savings",
-    "Bill Splitting",
-    "Ticketing",
-    "Invoicing",
-    "Freelancing",
-    "Services",
-  ];
+const words = [
+  "Commerce",
+  "AI Agents",
+  "Subscriptions",
+  "Enterprise",
+  "Savings",
+  "Bill Splitting",
+  "Ticketing",
+  "Invoicing",
+  "Freelancing",
+  "Services",
+];
 
+// Get longest word for minWidth calculation (for mono font, but set extra to be safe)
+const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), "");
+const minWidthStyle = {
+  minWidth: `calc(${longestWord.length + 2}ch)`,
+  display: "inline-block",
+  fontVariantLigatures: "none",
+};
+
+/**
+ * Custom blinking cursor animation for mono/variable width text.
+ * Keeps the cursor attached directly after text.
+ */
+const blinkAnimation = `
+@keyframes hero-blink {
+  0% { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  80% { opacity: 0; }
+  100% { opacity: 1; }
+}
+`;
+
+const Hero: React.FC = () => {
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentWordIdx, setCurrentWordIdx] = useState(0);
+  const [speed, setSpeed] = useState(90); // Control consistent typing/deleting speed
+  const isMounted = useRef(true);
+
+  // Typing animation logic
   useEffect(() => {
-    const timer = setTimeout(() => {
-      // Current complete word
-      const currentWord = words[index];
-      
-      // If deleting
-      if (isDeleting) {
-        setDisplayText(currentWord.substring(0, displayText.length - 1));
-        setTypingSpeed(80); // Faster when deleting
-        
-        // If completely deleted, start typing next word
-        if (displayText.length === 0) {
-          setIsDeleting(false);
-          setIndex((prev) => (prev + 1) % words.length);
-          setTypingSpeed(150);
-        }
-      } 
-      // If typing
-      else {
-        setDisplayText(currentWord.substring(0, displayText.length + 1));
-        setTypingSpeed(150); // Normal typing speed
-        
-        // If completed typing the word, pause then start deleting
-        if (displayText === currentWord) {
-          setTypingSpeed(2000); // Pause before starting to delete
-          setIsDeleting(true);
-        }
+    isMounted.current = true;
+    const currentWord = words[currentWordIdx];
+    let timeout: number | undefined;
+    if (!isDeleting) {
+      // Typing forward
+      if (displayText.length < currentWord.length) {
+        timeout = window.setTimeout(() => {
+          if (isMounted.current) setDisplayText(currentWord.slice(0, displayText.length + 1));
+        }, speed);
+      } else {
+        // Pause at fully typed word
+        timeout = window.setTimeout(() => {
+          if (isMounted.current) setIsDeleting(true);
+        }, 1300); // Pause before deleting (pause duration)
       }
-    }, typingSpeed);
-    
-    return () => clearTimeout(timer);
-  }, [displayText, index, isDeleting, typingSpeed, words]);
+    } else {
+      // Deleting
+      if (displayText.length > 0) {
+        timeout = window.setTimeout(() => {
+          if (isMounted.current) setDisplayText(currentWord.slice(0, displayText.length - 1));
+        }, speed);
+      } else {
+        // Move to next word, pause before typing
+        timeout = window.setTimeout(() => {
+          if (isMounted.current) {
+            setIsDeleting(false);
+            setCurrentWordIdx((prev) => (prev + 1) % words.length);
+          }
+        }, 450);
+      }
+    }
+    return () => {
+      isMounted.current = false;
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [displayText, isDeleting, currentWordIdx, speed]);
+
+  // On word change, reset displayText to ""
+  useEffect(() => {
+    setDisplayText("");
+  }, [currentWordIdx]);
 
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
+      {/* Inject custom cursor blink animation */}
+      <style>{blinkAnimation}</style>
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
         <br className="md:block" />
         for the Future of{" "}
         <span className="relative">
-          <span 
-            className="inline-block min-w-[80px] md:min-w-[180px] text-[#AB9FF2]"
+          <span
+            className="
+              inline-flex items-center 
+              font-mono 
+              text-[#AB9FF2] 
+              transition-[width] 
+              min-w-0
+              text-nowrap 
+              text-shadow-md
+              "
+            style={{
+              ...minWidthStyle,
+              fontSize: "inherit",
+              whiteSpace: "nowrap",
+              verticalAlign: "baseline"
+            }}
+            aria-live="off"
+            aria-label={words[currentWordIdx]}
           >
             {displayText}
           </span>
-          <span className="absolute -right-[4px] top-0 h-full w-[2px] bg-black animate-blink"></span>
+          {/* Animated cursor RIGHT AFTER variable displayText */}
+          <span
+            className="ml-0 h-[1em] w-[0.07em] bg-black"
+            style={{
+              display: "inline-block",
+              verticalAlign: "middle",
+              marginLeft: "-0.05em",
+              animation: "hero-blink 1s step-end infinite"
+            }}
+            aria-hidden="true"
+          ></span>
         </span>
       </h1>
       <p className="text-[#000000] text-base md:text-2xl font-normal text-center mt-4 max-w-full px-4 md:leading-9">
-        Make & Receive Instant Borderless Payments
+        Make &amp; Receive Instant Borderless Payments
       </p>
-      
+
       <div className="flex gap-4 mt-6 md:mt-8">
         <button className="bg-[#AB9FF2] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#AB9FF2] border-solid cursor-pointer whitespace-nowrap hover:bg-[#9B87F5] hover:scale-105 transition-all duration-300">
           <span className="text-sm md:text-base">Coming Soon</span>
