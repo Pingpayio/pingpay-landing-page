@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Timer } from "lucide-react";
 
@@ -75,9 +74,8 @@ const Hero: React.FC = () => {
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
         <br className="md:block" />
-        for the Future of
-        {/* Only show <br> before the animated text on mobile (hidden on md+) */}
-        <br className="block md:hidden" />
+        for the Future of{" "}
+        {/* Added space after "of" to ensure visual separation */}
         <span className="relative">
           <span
             className="inline-flex items-center whitespace-nowrap text-[#AB9FF2]"
@@ -128,4 +126,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-
