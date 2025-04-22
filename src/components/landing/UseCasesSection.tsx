@@ -31,8 +31,8 @@ const UseCasesSection: React.FC = () => {
         {/* Final CTA section, duplicated heading/subheading, placed above the Join Waitlist button */}
         <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-4 md:mb-12">
           <SectionHeader
-            title="Multi-currency Payment Support"
-            description="Settling cross-chain intents in seconds."
+            title="Ready to transform your payment experience?"
+            description="Where humans and AI agents transact, one ping at a time"
             centered={true}
             maxWidth="lg"
             titleColor="#AB9FF2"
@@ -53,4 +53,3 @@ const UseCasesSection: React.FC = () => {
 };
 
 export default UseCasesSection;
-
