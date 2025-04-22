@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import UseCasesCarousel from "./UseCasesCarousel";
 import ComingSoonButton from "./ComingSoonButton";
 import SectionHeader from "./SectionHeader";
+import FinalCTASection from "./FinalCTASection";
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
@@ -29,12 +30,15 @@ const UseCasesSection: React.FC = () => {
         <UseCasesCarousel />
         
         {/* "Coming Soon" button */}
-        <div className="flex justify-center mt-8 md:mt-16">
+        <div className="flex justify-center mt-8 md:mt-16 mb-6 md:mb-12">
           <ComingSoonButton />
         </div>
       </div>
+      {/* CTA Section below carousel and button */}
+      <FinalCTASection />
     </section>
   );
 };
 
 export default UseCasesSection;
+
