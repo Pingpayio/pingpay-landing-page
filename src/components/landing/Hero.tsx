@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect, useRef } from "react";
-import { Timer, FileText } from "lucide-react";
+import { Timer } from "lucide-react";
 
 const words = [
   "Commerce",
@@ -69,16 +70,14 @@ const Hero: React.FC = () => {
     if (phase === "typing") setCharIndex(0);
   }, [wordIndex]);
 
-  // Responsive: Ensure changing word fits and doesn't wrap (white-space: nowrap)
-  // Cursor: Hug the text (inline, not absolutely positioned), with its own blinking animation.
-  // No min-width hack.
-
   return (
     <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
         <br className="md:block" />
-        for the Future of{" "}
+        for the Future of
+        {/* Only show <br> before the animated text on mobile (hidden on md+) */}
+        <br className="block md:hidden" />
         <span className="relative">
           <span
             className="inline-flex items-center whitespace-nowrap text-[#AB9FF2]"
@@ -86,9 +85,7 @@ const Hero: React.FC = () => {
               maxWidth: "100vw",
             }}
           >
-            {/* Typed Text */}
             {displayText}
-            {/* Blinking Cursor */}
             <span
               key={displayText.length + "-" + wordIndex + "-" + phase}
               className="ml-0.5 w-[2px] h-[1em] bg-black inline-block align-middle animate-blink"
@@ -131,3 +128,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
