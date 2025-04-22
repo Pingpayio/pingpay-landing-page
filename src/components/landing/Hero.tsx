@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Timer, FileText } from "lucide-react";
 
 const words = [
@@ -16,7 +16,7 @@ const words = [
 ];
 
 const TYPING_SPEED = 70; // ms per character
-const DELETING_SPEED = 50; // ms per character
+const DELETING_SPEED = 100; // Increased from 50 to slow down deletion
 const PAUSE_AFTER_TYPED = 900; // ms pause after type
 const PAUSE_AFTER_DELETED = 350; // ms pause after delete
 
