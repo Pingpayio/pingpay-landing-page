@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Timer, FileText } from "lucide-react";
 
@@ -101,14 +100,10 @@ const Hero: React.FC = () => {
       <p className="text-[#000000] text-base md:text-2xl font-normal text-center mt-4 max-w-full px-4 md:leading-9">
         Make & Receive Instant Borderless Payments
       </p>
-      <div className="flex gap-4 mt-6 md:mt-8">
+      <div className="flex gap-4 mt-6 md:mt-8 justify-center w-full">
         <button className="bg-[#AB9FF2] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#AB9FF2] border-solid cursor-pointer whitespace-nowrap hover:bg-[#9B87F5] hover:scale-105 transition-all duration-300">
           <span className="text-sm md:text-base">Coming Soon</span>
           <Timer size={16} className="md:size-18" />
-        </button>
-        <button className="bg-[#F0F1FF] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#F0F1FF] border-solid cursor-pointer whitespace-nowrap hover:bg-[#E0E1EE] hover:scale-105 transition-all duration-300">
-          <span className="text-sm md:text-base">Documentation</span>
-          <FileText size={16} className="md:size-18" />
         </button>
       </div>
       <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
