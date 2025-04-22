@@ -38,8 +38,8 @@ const UseCasesSection: React.FC = () => {
           />
         </div>
         
-        {/* "Coming Soon" button with reduced top margin */}
-        <div className="flex justify-center mt-4 md:mt-8">
+        {/* "Coming Soon" button with spacing added */}
+        <div className="flex justify-center mt-6 md:mt-8">
           <ComingSoonButton />
         </div>
       </div>
@@ -48,3 +48,4 @@ const UseCasesSection: React.FC = () => {
 };
 
 export default UseCasesSection;
+
