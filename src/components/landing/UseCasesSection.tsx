@@ -27,6 +27,21 @@ const UseCasesSection: React.FC = () => {
         </div>
         
         <UseCasesCarousel />
+
+        {/* CTA section */}
+        <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-4 md:mb-12">
+          <SectionHeader
+            title="Multi-currency Payment Support"
+            description="Settling cross-chain intents in seconds."
+            centered={true}
+            maxWidth="lg"
+            titleColor="#AB9FF2"
+            descriptionColor="#AB9FF2"
+            className="px-4 py-6 rounded-xl shadow-md bg-[#191128] bg-opacity-70 border border-[#AB9FF2]/20"
+            titleClassName="md:text-3xl"
+            descriptionClassName="md:text-lg"
+          />
+        </div>
         
         {/* "Coming Soon" button */}
         <div className="flex justify-center mt-8 md:mt-16">
@@ -38,3 +53,4 @@ const UseCasesSection: React.FC = () => {
 };
 
 export default UseCasesSection;
+
