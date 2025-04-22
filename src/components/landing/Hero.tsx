@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import ComingSoonButton from "./ComingSoonButton";
 const words = [
@@ -70,21 +69,36 @@ const Hero: React.FC = () => {
         The Payment Layer
         <br className="md:block" />
         for the Future of
-        {/* Add a custom space below for better separation */}
-        <span className="inline-block w-[0.5em] md:w-2" aria-hidden="true"></span>
-        <span className="relative">
-          <span
-            className="inline-flex items-center whitespace-nowrap text-[#AB9FF2]"
-            style={{
-              maxWidth: "100vw",
-            }}
-          >
-            {displayText}
+        {/* On mobile, animated text always on new line. On md+, keep inline with a space. */}
+        <span className="block md:inline" />
+        <span className="block md:inline"></span>
+        <span
+          className="
+            block
+            md:inline
+            mt-2
+            md:mt-0
+            mb-0
+            px-0
+            md:pl-2
+            transition-all
+            min-h-[1.4em] md:min-h-0
+            "
+        >
+          <span className="relative">
             <span
-              key={displayText.length + "-" + wordIndex + "-" + phase}
-              className="ml-0.5 w-[2px] h-[1em] bg-black inline-block align-middle animate-blink"
-              aria-hidden="true"
-            />
+              className="inline-flex items-center whitespace-nowrap text-[#AB9FF2]"
+              style={{
+                maxWidth: "100vw",
+              }}
+            >
+              {displayText}
+              <span
+                key={displayText.length + "-" + wordIndex + "-" + phase}
+                className="ml-0.5 w-[2px] h-[1em] bg-black inline-block align-middle animate-blink"
+                aria-hidden="true"
+              />
+            </span>
           </span>
         </span>
       </h1>
