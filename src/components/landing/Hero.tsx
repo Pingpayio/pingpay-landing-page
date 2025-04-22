@@ -1,11 +1,12 @@
+
 import React, { useState, useEffect } from "react";
 import { Timer, FileText } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState("Commerce");
   const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting = useState(false);
-  const [typingSpeed, setTypingSpeed = useState(150);
+  const [isDeleting, setIsDeleting] = useState(false);  // Added comma and corrected initialization
+  const [typingSpeed, setTypingSpeed] = useState(150);  // Added comma and corrected initialization
   
   // Array of words (keeping only the text, removing color assignments)
   const words = [
