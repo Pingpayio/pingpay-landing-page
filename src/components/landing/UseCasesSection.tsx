@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import UseCasesCarousel from "./UseCasesCarousel";
 import ComingSoonButton from "./ComingSoonButton";
 import SectionHeader from "./SectionHeader";
+import { FileText } from "lucide-react";
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
@@ -28,9 +29,16 @@ const UseCasesSection: React.FC = () => {
         
         <UseCasesCarousel />
         
-        {/* "Coming Soon" button */}
-        <div className="flex justify-center mt-8 md:mt-16">
+        {/* Buttons container */}
+        <div className="flex justify-center mt-8 md:mt-16 space-x-4">
           <ComingSoonButton />
+          
+          <button 
+            className="bg-[#F0F1FF] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#F0F1FF] border-solid cursor-pointer whitespace-nowrap hover:bg-[#E0E1FF] hover:scale-105 transition-all duration-300"
+          >
+            <span className="text-sm md:text-base">Documentation</span>
+            <FileText size={16} className="md:size-18" />
+          </button>
         </div>
       </div>
     </section>
@@ -38,3 +46,4 @@ const UseCasesSection: React.FC = () => {
 };
 
 export default UseCasesSection;
+
