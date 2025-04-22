@@ -1,19 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Timer } from "lucide-react";
-
-const words = [
-  "Commerce",
-  "AI Agents",
-  "Subscriptions",
-  "Enterprise",
-  "Savings",
-  "Bill Splitting",
-  "Ticketing",
-  "Invoicing",
-  "Freelancing",
-  "Services",
-];
-
+const words = ["Commerce", "AI Agents", "Subscriptions", "Enterprise", "Savings", "Bill Splitting", "Ticketing", "Invoicing", "Freelancing", "Services"];
 const TYPING_SPEED = 70; // ms per character
 const DELETING_SPEED = 100; // Increased from 50 to slow down deletion
 const PAUSE_AFTER_TYPED = 900; // ms pause after type
@@ -24,18 +11,16 @@ const Hero: React.FC = () => {
   const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-
   const timeoutRef = useRef<number | null>(null);
 
   // Typing effect state machine
   useEffect(() => {
     const currentWord = words[wordIndex];
-
     if (phase === "typing") {
       if (charIndex < currentWord.length) {
         timeoutRef.current = window.setTimeout(() => {
           setDisplayText(currentWord.slice(0, charIndex + 1));
-          setCharIndex((i) => i + 1);
+          setCharIndex(i => i + 1);
         }, TYPING_SPEED);
       } else {
         timeoutRef.current = window.setTimeout(() => {
@@ -46,11 +31,11 @@ const Hero: React.FC = () => {
       if (charIndex > 0) {
         timeoutRef.current = window.setTimeout(() => {
           setDisplayText(currentWord.slice(0, charIndex - 1));
-          setCharIndex((i) => i - 1);
+          setCharIndex(i => i - 1);
         }, DELETING_SPEED);
       } else {
         timeoutRef.current = window.setTimeout(() => {
-          setWordIndex((i) => (i + 1) % words.length);
+          setWordIndex(i => (i + 1) % words.length);
           setPhase("typing");
         }, PAUSE_AFTER_DELETED);
       }
@@ -68,27 +53,18 @@ const Hero: React.FC = () => {
   useEffect(() => {
     if (phase === "typing") setCharIndex(0);
   }, [wordIndex]);
-
-  return (
-    <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
+  return <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
         <br className="md:block" />
         for the Future of{" "}
         {/* Added space after "of" to ensure visual separation */}
         <span className="relative">
-          <span
-            className="inline-flex items-center whitespace-nowrap text-[#AB9FF2]"
-            style={{
-              maxWidth: "100vw",
-            }}
-          >
+          <span className="inline-flex items-center whitespace-nowrap text-[#AB9FF2]" style={{
+          maxWidth: "100vw"
+        }}>
             {displayText}
-            <span
-              key={displayText.length + "-" + wordIndex + "-" + phase}
-              className="ml-0.5 w-[2px] h-[1em] bg-black inline-block align-middle animate-blink"
-              aria-hidden="true"
-            />
+            <span key={displayText.length + "-" + wordIndex + "-" + phase} className="ml-0.5 w-[2px] h-[1em] bg-black inline-block align-middle animate-blink" aria-hidden="true" />
           </span>
         </span>
       </h1>
@@ -97,17 +73,14 @@ const Hero: React.FC = () => {
       </p>
       <div className="flex gap-4 mt-6 md:mt-8 justify-center w-full">
         <button className="bg-[#AB9FF2] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#AB9FF2] border-solid cursor-pointer whitespace-nowrap hover:bg-[#9B87F5] hover:scale-105 transition-all duration-300">
-          <span className="text-sm md:text-base">Coming Soon</span>
+          <span className="text-sm md:text-base">Join Waitlist</span>
           <Timer size={16} className="md:size-18" />
         </button>
       </div>
       <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
-          alt="HyperLend Platform"
-          className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]"
-          style={{ marginBottom: "-25px" }}
-        />
+        <img src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true" alt="HyperLend Platform" className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]" style={{
+        marginBottom: "-25px"
+      }} />
       </div>
       {/* Add the blinking animation to tailwind via index.css if not already */}
       <style>
@@ -121,8 +94,6 @@ const Hero: React.FC = () => {
         }
         `}
       </style>
-    </header>
-  );
+    </header>;
 };
-
 export default Hero;
