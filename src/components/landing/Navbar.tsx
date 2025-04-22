@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -49,6 +48,18 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Close mobile menu if it's open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <>
       <nav 
@@ -67,11 +78,17 @@ const Navbar: React.FC = () => {
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center">
-              <img
-                src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
-                alt="Ping Logo"
-                className="h-6" 
-              />
+              <button 
+                onClick={scrollToTop} 
+                className="cursor-pointer"
+                aria-label="Scroll to top"
+              >
+                <img
+                  src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
+                  alt="Ping Logo"
+                  className="h-6" 
+                />
+              </button>
             </div>
             
             <div className="hidden md:flex items-center gap-8 text-white">
