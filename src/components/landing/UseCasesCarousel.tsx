@@ -9,7 +9,7 @@ const UseCasesCarousel: React.FC = () => {
   const allUseCases: UseCaseCardProps[] = [
     {
       title: "E-Commerce",
-      description: "Accept crypto payments on your online store from any chain, with instant settlement.",
+      description: "Accept crypto payments on your online store from any chain, settled instantly.",
       imageSrc: "/lovable-uploads/dc224d9f-ab71-4d25-bbdf-2a8d39dfb720.png",
     },
     {
