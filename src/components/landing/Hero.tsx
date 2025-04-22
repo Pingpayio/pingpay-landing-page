@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Timer } from "lucide-react";
+import { Timer, FileText } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState("Commerce");
   const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [isDeleting, setIsDeleting = useState(false);
+  const [typingSpeed, setTypingSpeed = useState(150);
   
   // Array of words (keeping only the text, removing color assignments)
   const words = [
@@ -72,10 +72,18 @@ const Hero: React.FC = () => {
       <p className="text-[#000000] text-base md:text-2xl font-normal text-center mt-4 max-w-full px-4 md:leading-9">
         Make & Receive Instant Borderless Payments
       </p>
-      <button className="bg-[#AB9FF2] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center mt-6 md:mt-8 px-4 py-2 rounded-[30px] border-[#AB9FF2] border-solid cursor-pointer whitespace-nowrap hover:bg-[#9B87F5] hover:scale-105 transition-all duration-300">
-        <span className="text-sm md:text-base">Coming Soon</span>
-        <Timer size={16} className="md:size-18" />
-      </button>
+      
+      <div className="flex gap-4 mt-6 md:mt-8">
+        <button className="bg-[#AB9FF2] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#AB9FF2] border-solid cursor-pointer whitespace-nowrap hover:bg-[#9B87F5] hover:scale-105 transition-all duration-300">
+          <span className="text-sm md:text-base">Coming Soon</span>
+          <Timer size={16} className="md:size-18" />
+        </button>
+        <button className="bg-[#F0F1FF] border h-[56px] w-[219px] flex items-center justify-center gap-2 text-[#3D315E] font-medium text-center px-4 py-2 rounded-[30px] border-[#F0F1FF] border-solid cursor-pointer whitespace-nowrap hover:bg-[#E0E1EE] hover:scale-105 transition-all duration-300">
+          <span className="text-sm md:text-base">Documentation</span>
+          <FileText size={16} className="md:size-18" />
+        </button>
+      </div>
+
       <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true"
