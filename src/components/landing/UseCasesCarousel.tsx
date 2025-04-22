@@ -9,22 +9,22 @@ const UseCasesCarousel: React.FC = () => {
   const allUseCases: UseCaseCardProps[] = [
     {
       title: "E-Commerce",
-      description: "Accept crypto payments on your online store, with instant settlement and zero chargebacks.",
+      description: "Accept crypto payments on your online store from any chain, with instant settlement.",
       imageSrc: "/lovable-uploads/dc224d9f-ab71-4d25-bbdf-2a8d39dfb720.png",
     },
     {
       title: "IRL Payments",
-      description: "Enable fast, wallet-to-wallet crypto payments for in-person purchases at shops, cafes, and more.",
+      description: "Enable fast, wallet-to-wallet crypto payments for in-person purchases anywhere.",
       imageSrc: "/lovable-uploads/bf2c7584-3ae7-4197-a814-36fed986bd64.png",
     },
     {
       title: "Savings Pots",
-      description: "Create automated recurring payments to organise and grow your crypto savings for any goal.",
+      description: "Create automated recurring payments to organise and grow your crypto savings.",
       imageSrc: "/lovable-uploads/0943ab13-2c96-4b77-8de0-cb1b123d7c5d.png",
     },
     {
       title: "Digital Services",
-      description: "Sell digital goods or services and get paid directly in crypto; no middlemen, no delays.",
+      description: "Sell digital goods or services and get paid directly in crypto instantly.",
       imageSrc: "/lovable-uploads/723d566c-634a-449e-acdd-467d35704424.png",
     },
     {
@@ -39,27 +39,27 @@ const UseCasesCarousel: React.FC = () => {
     },
     {
       title: "Subscriptions",
-      description: "Automate recurring crypto payments for SaaS, creators, or memberships, with custom gating.",
+      description: "Automate recurring crypto payments for SaaS, creators, or memberships.",
       imageSrc: "/lovable-uploads/adecacb6-2b8d-42b8-83b7-e96ffd927ecc.png",
     },
     {
       title: "Enterprise",
-      description: "Custom payment flows and dashboards for teams handling high-volume crypto transactions.",
+      description: "Custom payment flows and dashboards for teams leveraging crypto.",
       imageSrc: "/lovable-uploads/bbd8fd07-bc11-4018-b211-42785e570fb4.png",
     },
     {
       title: "Event Ticketing",
-      description: "Sell, mint, and scan crypto-based event tickets with built-in resale and anti-fraud tools.",
+      description: "Sell, mint, and scan event tickets with crypto through NFT tickets.",
       imageSrc: "/lovable-uploads/63efbc89-1e9e-442d-a1ae-c65a3fbc6846.png",
     },
     {
       title: "AI-commerce",
-      description: "Let AI agents buy, sell, or subscribe on your behalf using smart, secure crypto logic.",
+      description: "Enabling secure agent-to-agent payment flows, to get agents paid.",
       imageSrc: "/lovable-uploads/051f5c43-8963-4df7-b8e0-00f5da2d23b5.png",
     },
     {
       title: "Invoicing",
-      description: "Send branded crypto invoices with due dates, itemisation, and one-click wallet payment.",
+      description: "Send branded crypto invoices with due dates, itemisation, and checkout.",
       imageSrc: "/lovable-uploads/f3ae69a7-9b8c-44d4-a32d-76c482fe4f70.png",
     }
   ];
