@@ -16,8 +16,8 @@ const Footer: React.FC = () => (
       paddingBottom: 32,
     }}
   >
-    {/* Left: Logo & wordmark */}
-    <div className="flex items-center gap-4 flex-shrink-0">
+    {/* Left: Logo & subtext stacked */}
+    <div className="flex flex-col gap-2 flex-shrink-0">
       <div className="flex items-center gap-2">
         <img
           src={PING_LOGO}
@@ -27,16 +27,15 @@ const Footer: React.FC = () => (
           draggable={false}
         />
       </div>
-      <div className="flex items-center">
-        <span className="text-xs text-[#E9DFFC] font-normal select-none flex items-center">
+      <div>
+        <span className="text-sm text-[#E9DFFC] font-normal select-none block leading-[1.4]">
           The Payment Layer for the Future of Commerce
         </span>
       </div>
     </div>
-
-    {/* Right: Headings + Icons */}
+    {/* Right: Headings + icons with vertical alignment */}
     <div className="flex flex-col h-full justify-between items-end flex-1 pl-8">
-      <div className="flex flex-row gap-8 mt-0">
+      <div className="flex flex-row gap-8">
         <button 
           className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
         >
@@ -53,9 +52,8 @@ const Footer: React.FC = () => (
           Terms &amp; Conditions
         </button>
       </div>
-      {/* Social Icons under headings, right aligned */}
-      <div className="flex flex-row gap-4 mt-2 justify-end items-center">
-        {/* X social */}
+      {/* Social Icons (aligned horizontally w/ subtext) */}
+      <div className="flex flex-row gap-4 mt-2 justify-end items-center" style={{ minHeight: 28 }}>
         <a
           href="https://x.com/pingpay_io"
           target="_blank"
@@ -66,12 +64,11 @@ const Footer: React.FC = () => (
           <img
             src={X_ICON}
             alt="X Icon"
-            className="h-4 w-4"
-            style={{ height: 16, width: 16 }}
+            className="h-[20px] w-[20px]"
+            style={{ height: 20, width: 20 }}
             draggable={false}
           />
         </a>
-        {/* GitBook */}
         <a
           href="https://app.gitbook.com/o/JZWLv0QExumDT4rlFzE4/s/ping"
           target="_blank"
@@ -82,8 +79,8 @@ const Footer: React.FC = () => (
           <img
             src={GITBOOK_ICON}
             alt="GitBook Icon"
-            className="h-4 w-4"
-            style={{ height: 16, width: 16 }}
+            className="h-[20px] w-[20px]"
+            style={{ height: 20, width: 20 }}
             draggable={false}
           />
         </a>
@@ -93,3 +90,4 @@ const Footer: React.FC = () => (
 );
 
 export default Footer;
+
