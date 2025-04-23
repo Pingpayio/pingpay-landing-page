@@ -2,9 +2,6 @@
 import React from "react";
 import { X, Book, Rss, Package, Shield, ShieldCheck } from "lucide-react";
 
-// PING logo: use /favicon.ico or a public path logo
-const LOGO_SRC = "/favicon.ico"; // You can replace with a more specific Ping logo if you have one
-
 const footerLinks = [
   {
     heading: "Blog",
@@ -50,7 +47,11 @@ const Footer: React.FC = () => {
         {/* Left: Logo and Socials */}
         <div className="flex flex-col items-center md:items-start gap-4 md:gap-3">
           <div className="flex items-center gap-2">
-            <img src={LOGO_SRC} alt="Ping Logo" className="h-8 w-8 rounded-[6px] shadow-lg" />
+            <img 
+              src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
+              alt="Ping Logo" 
+              className="h-8 w-8 rounded-[6px] shadow-lg" 
+            />
             <span className="font-bold text-lg tracking-tight text-white">Ping</span>
           </div>
           <div className="flex gap-4 mt-2">
