@@ -1,6 +1,6 @@
 
 import React from "react";
-import { X, Gitbook, Rss, Package, Shield, ShieldCheck } from "lucide-react";
+import { X, Book, Rss, Package, Shield, ShieldCheck } from "lucide-react";
 
 // PING logo: use /favicon.ico or a public path logo
 const LOGO_SRC = "/favicon.ico"; // You can replace with a more specific Ping logo if you have one
@@ -35,8 +35,8 @@ const SOCIALS = [
     href: "https://x.com/ping_payments"
   },
   {
-    icon: Gitbook,
-    label: "Gitbook",
+    icon: Book,
+    label: "Documentation",
     href: "https://ping.gitbook.io"
   }
 ];
