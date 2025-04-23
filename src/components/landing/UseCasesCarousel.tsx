@@ -5,6 +5,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const UseCasesCarousel: React.FC = () => {
@@ -108,12 +110,14 @@ const UseCasesCarousel: React.FC = () => {
   }
 
   return (
-    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow">
+    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow relative">
       <Carousel
         className="w-full"
         opts={{
           align: "start",
           loop: true,
+          dragFree: true,
+          containScroll: "trimSnaps",
         }}
       >
         <CarouselContent className="-ml-2 md:-ml-4">
@@ -130,6 +134,10 @@ const UseCasesCarousel: React.FC = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <div className="hidden md:block">
+          <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2" />
+          <CarouselNext className="absolute -right-2 top-1/2 -translate-y-1/2" />
+        </div>
       </Carousel>
     </div>
   );

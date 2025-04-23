@@ -68,6 +68,11 @@ export const CarouselStyles: React.FC = () => (
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
       }
+
+      /* Make sure the embla carousel is properly scrollable on touch devices */
+      .embla__container {
+        touch-action: pan-y !important;
+      }
     `}
   </style>
 );

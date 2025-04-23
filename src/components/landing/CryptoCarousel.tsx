@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { TokenInfo } from "@/types/token";
 import { allTokens } from "@/data/tokenData";
-import { CarouselStyles, imageContainerStyle } from "./CryptoCarouselStyles";
-import TokenItem from "./TokenItem";
+import { CarouselStyles } from "./CryptoCarouselStyles";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const CryptoCarousel: React.FC = () => {
@@ -55,12 +56,14 @@ const CryptoCarousel: React.FC = () => {
     <>
       <CarouselStyles />
       
-      <div className="w-full max-w-[1000px] px-4 md:px-8 mx-auto overflow-hidden">
+      <div className="w-full max-w-[1000px] px-4 md:px-8 mx-auto overflow-hidden relative">
         <Carousel 
           className="w-full"
           opts={{
             align: "start",
             loop: true,
+            dragFree: true,
+            containScroll: "trimSnaps",
           }}
         >
           <CarouselContent className="-ml-2 md:-ml-4">
@@ -70,7 +73,7 @@ const CryptoCarousel: React.FC = () => {
                 className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5"
               >
                 <div className="flex flex-col items-center p-2 md:p-4 transition-all duration-300 hover:scale-105">
-                  <div className="token-mask" style={imageContainerStyle}>
+                  <div className="token-mask">
                     <img 
                       src={token.imagePath}
                       alt={token.id}
@@ -82,6 +85,10 @@ const CryptoCarousel: React.FC = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
+          <div className="hidden md:block">
+            <CarouselPrevious className="absolute -left-2 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute -right-2 top-1/2 -translate-y-1/2" />
+          </div>
         </Carousel>
       </div>
     </>
