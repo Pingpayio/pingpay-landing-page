@@ -1,30 +1,34 @@
-
 import { TokenInfo } from '@/types/token';
 
-// All tokens now point to the newly uploaded images.
-// You can adjust order as needed (using a representative sample for display).
+// All tokens including the new ones
 export const allTokens: TokenInfo[] = [
-  { id: "bitcoin", imagePath: "/lovable-uploads/93046b38-329c-48cf-92d0-5d4828e8d710.png" }, // BTC
-  { id: "ethereum", imagePath: "/lovable-uploads/7b05667c-345c-40ab-ad81-4dd952e7742e.png" }, // ETH
-  { id: "usdc", imagePath: "/lovable-uploads/2156a1e9-d058-4cb1-9f44-7c6d9b06f41f.png" }, // USDC
-  { id: "usdt", imagePath: "/lovable-uploads/95413ea6-173e-4676-9e26-4c26f611b4ff.png" }, // USDT
-  { id: "dai", imagePath: "/lovable-uploads/c37d4c9b-4e0b-411c-a5ec-16032c6d2438.png" }, // DAI
-  { id: "doge", imagePath: "/lovable-uploads/1a4eb4f3-cb29-48e3-b0d4-47658c382b13.png" }, // DOGE
-  { id: "pepe", imagePath: "/lovable-uploads/e60ad6c5-4750-48ae-adc3-0463c4035a05.png" }, // PEPE
-  { id: "uni", imagePath: "/lovable-uploads/6624cbf5-0782-4583-a989-7d511ecbb566.png" }, // Uniswap
-  { id: "cat", imagePath: "/lovable-uploads/3db7480b-d394-493f-9b5c-9833a7bb5331.png" }, // Cat meme
-  { id: "chain", imagePath: "/lovable-uploads/7462e7e0-9d28-4712-9410-015ea857527a.png" }, // Chain
-  { id: "owl", imagePath: "/lovable-uploads/7b05667c-345c-40ab-ad81-4dd952e7742e.png" }, // Owl
-  { id: "fart", imagePath: "/lovable-uploads/74fb6eed-24ae-447e-ab59-23955f6d1491.png" }, // Fartcoin
-  { id: "moon", imagePath: "/lovable-uploads/a8ed66c6-e637-4e22-93fc-c68b7b37a834.png" }, // To the moon
-  { id: "dragon", imagePath: "/lovable-uploads/5bd39e50-4262-4dac-acea-9b3e7a062f24.png" }, // Dragon
-  { id: "sol", imagePath: "/lovable-uploads/b8bfcb76-54ff-44a7-967c-7df110672bd2.png" }, // Solana
-  { id: "dog-alt", imagePath: "/lovable-uploads/414af7ba-d1e9-479e-a9f4-fc1daea61fe5.png" }, // Another dog
-  { id: "near", imagePath: "/lovable-uploads/867c7ab3-e10a-4c05-9d8d-4a3868db08ac.png" }, // NEAR
-  { id: "arbitrum", imagePath: "/lovable-uploads/1a4eb4f3-cb29-48e3-b0d4-47658c382b13.png" }, // Arbitrum - reused image
-  { id: "z", imagePath: "/lovable-uploads/74fb6eed-24ae-447e-ab59-23955f6d1491.png" }, // Z token
-  { id: "meme", imagePath: "/lovable-uploads/a979859d-662c-4323-84c5-d6adae5831ee.png" }, // Meme
-  { id: "owl-alt", imagePath: "/lovable-uploads/7462e7e0-9d28-4712-9410-015ea857527a.png" }, // Owl alt
-  { id: "xrp", imagePath: "/lovable-uploads/43f019c9-3eef-4569-8031-88e52aae07b5.png" }, // XRP
-  { id: "zcash", imagePath: "/lovable-uploads/d07cd7e2-b7db-4360-82c8-353ce6a8595e.png" }, // Zcash
+  // Existing tokens with updates for Bitcoin (coin1), Doge (coin15 & coin21), XRP (coin22), Zcash (coin23)
+  { id: "coin1", imagePath: "/lovable-uploads/6d492b84-cccd-40f7-98ed-8d6bda294b26.png" }, // Updated Bitcoin
+  { id: "coin2", imagePath: "/lovable-uploads/6d4ff297-c8d2-4651-9da4-14185bef8a7f.png" },
+  { id: "coin3", imagePath: "/lovable-uploads/2dd79dd2-c23f-4f1e-b1bd-73afcae0ea29.png" },
+  { id: "coin4", imagePath: "/lovable-uploads/b45c55a9-c1d6-485c-8707-54c039d4d5ef.png" },
+  { id: "coin5", imagePath: "/lovable-uploads/abef287a-5b0e-4e3d-9328-d41f5096d7a3.png" },
+  { id: "coin6", imagePath: "/lovable-uploads/2b3aa215-b6e5-4c4b-8514-f0d3106135cd.png" },
+  { id: "coin7", imagePath: "/lovable-uploads/34df4987-58fd-4221-a4b5-52f3acc57d2a.png" },
+  { id: "coin8", imagePath: "/lovable-uploads/830f9d36-f9b7-4860-aaa8-511a963d1a4c.png" },
+  { id: "coin9", imagePath: "/lovable-uploads/0eeaec2e-d7af-42fe-b6f2-8956118e5523.png" },
+  { id: "coin10", imagePath: "/lovable-uploads/0833e98a-f70e-46ef-b6ce-1a04dff38d0f.png" },
+  { id: "coin11", imagePath: "/lovable-uploads/3487923f-3750-4d2d-9729-3093d309d810.png" },
+  { id: "coin12", imagePath: "/lovable-uploads/c0f0f9f5-318d-4cf4-b6ee-1d864a05d9a5.png" },
+  { id: "coin13", imagePath: "/lovable-uploads/30212935-4627-41da-88eb-c62982a9dffe.png" },
+  { id: "coin14", imagePath: "/lovable-uploads/5b60922e-f63b-4e8f-a95e-e584727f8b0a.png" },
+  
+  // Updated Dog coin (Doge)
+  { id: "coin15", imagePath: "/lovable-uploads/2af6591e-0b29-448e-88e5-33224165fbf9.png" }, 
+  { id: "coin16", imagePath: "/lovable-uploads/a6debefc-797f-4e48-92d8-6bff8224cae6.png" }, 
+  { id: "coin17", imagePath: "/lovable-uploads/19b83477-b528-4649-9821-dbd84fbcf0c0.png" }, 
+  { id: "coin18", imagePath: "/lovable-uploads/6443065c-4ef1-4166-858a-0b3a3d16152f.png" }, 
+  { id: "coin19", imagePath: "/lovable-uploads/f3b935de-e4db-4807-b3fc-c84ba81f8d95.png" }, 
+  { id: "coin20", imagePath: "/lovable-uploads/5248b9e5-d6ed-4e1a-a022-e0ee1aa4e09f.png" }, 
+  // Updated Dog with hat coin
+  { id: "coin21", imagePath: "/lovable-uploads/1c0b518e-a843-4ee5-8c42-39e92469ba62.png" }, 
+  // Updated XRP coin
+  { id: "coin22", imagePath: "/lovable-uploads/e5b0cc20-427d-4ab7-838c-2d8fa200e8ab.png" }, 
+  // Updated Z coin (Zcash)
+  { id: "coin23", imagePath: "/lovable-uploads/2dd8366c-5a0f-462e-b9b3-1520c4e42c72.png" }, 
 ];
