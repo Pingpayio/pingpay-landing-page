@@ -42,7 +42,7 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       padding: 0,
       margin: 0,
       filter: 'none',
-      webkitFilter: 'none'
+      WebkitFilter: 'none'
     }}
     draggable={false}
     decoding="async"
