@@ -11,7 +11,7 @@ interface CarouselImageProps {
 }
 
 /**
- * Basic image component for use in carousels with optimized loading and optional radial mask.
+ * Basic image component for use in carousels with optimized loading.
  */
 const CarouselImage: React.FC<CarouselImageProps> = ({
   src,
@@ -43,8 +43,7 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       margin: 0,
       filter: 'none',
       WebkitFilter: 'none',
-      WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
-      maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
+      WebkitMaskImage: 'none',
     }}
     draggable={false}
     decoding="async"
@@ -53,4 +52,3 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
 );
 
 export default CarouselImage;
-
