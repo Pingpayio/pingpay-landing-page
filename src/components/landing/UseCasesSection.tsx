@@ -31,8 +31,8 @@ const UseCasesSection: React.FC = () => {
         {/* Final CTA section, matching heading/subheading style of Multi-currency Payment Support */}
         <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-4 md:mb-12">
           <SectionHeader
-            title="Ready to transform your payment experience?"
-            description="Where humans and AI agents transact, one ping at a time"
+            title="Get Paid. Everywhere. Instantly."
+            description="Send and Receive Payments from Any Chain, One Ping at a Time"
             centered={true}
             maxWidth="full"
           />
@@ -48,4 +48,3 @@ const UseCasesSection: React.FC = () => {
 };
 
 export default UseCasesSection;
-
