@@ -1,3 +1,4 @@
+
 import React from "react";
 
 // Paths to logo & icons
@@ -63,8 +64,8 @@ const Footer: React.FC = () => (
           <img
             src={X_ICON}
             alt="X Icon"
-            className="h-[20px] w-[20px]"
-            style={{ height: 20, width: 20 }}
+            className="h-4 w-4"
+            style={{ height: 16, width: 16 }}
             draggable={false}
           />
         </a>
@@ -78,8 +79,8 @@ const Footer: React.FC = () => (
           <img
             src={GITBOOK_ICON}
             alt="GitBook Icon"
-            className="h-[20px] w-[20px]"
-            style={{ height: 20, width: 20 }}
+            className="h-4 w-4"
+            style={{ height: 16, width: 16 }}
             draggable={false}
           />
         </a>
