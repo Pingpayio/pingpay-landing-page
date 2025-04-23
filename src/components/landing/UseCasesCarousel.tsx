@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
 import {
   Carousel,
@@ -7,12 +7,16 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  type CarouselApi
 } from "@/components/ui/carousel";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
+  const [isPaused, setIsPaused] = useState(false);
+  const autoScrollIntervalRef = useRef<number | null>(null);
 
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
@@ -85,16 +89,62 @@ const UseCasesCarousel: React.FC = () => {
       return shuffled;
     };
 
-    setUseCases(shuffleUseCases(allUseCases));
+    // Create a repeated array for continuous scrolling effect
+    const repeatedUseCases = [...shuffleUseCases(allUseCases), ...shuffleUseCases(allUseCases)];
+    setUseCases(repeatedUseCases);
     
     // Set loaded state after a small delay to ensure DOM is ready
     setTimeout(() => setIsLoaded(true), 100);
   }, []);
 
+  const startAutoScroll = useCallback(() => {
+    if (api && autoScrollIntervalRef.current === null && !isPaused) {
+      autoScrollIntervalRef.current = window.setInterval(() => {
+        api.scrollNext();
+      }, 3500); // Scroll every 3.5 seconds (slightly different from crypto carousel for variety)
+    }
+  }, [api, isPaused]);
+
+  const stopAutoScroll = useCallback(() => {
+    if (autoScrollIntervalRef.current !== null) {
+      clearInterval(autoScrollIntervalRef.current);
+      autoScrollIntervalRef.current = null;
+    }
+  }, []);
+
+  // Set up auto-scrolling when API is ready
+  useEffect(() => {
+    if (api) {
+      startAutoScroll();
+    }
+    
+    return () => {
+      stopAutoScroll();
+    };
+  }, [api, startAutoScroll, stopAutoScroll]);
+
+  // Handle mouse interactions
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+    stopAutoScroll();
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+    startAutoScroll();
+  };
+
   return (
-    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden">
+    <div 
+      className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleMouseEnter}
+      onTouchEnd={handleMouseLeave}
+    >
       {isLoaded && (
         <Carousel
+          setApi={setApi}
           opts={{
             align: "start",
             loop: true,
@@ -107,7 +157,7 @@ const UseCasesCarousel: React.FC = () => {
           <CarouselContent className="-ml-2 md:-ml-4">
             {useCases.map((useCase, index) => (
               <CarouselItem 
-                key={index}
+                key={`${useCase.title}-${index}`}
                 className="pl-2 md:pl-4 basis-3/4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
                 <div className="h-full use-case-card">
