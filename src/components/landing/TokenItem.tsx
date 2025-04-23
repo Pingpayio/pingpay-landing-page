@@ -12,11 +12,11 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
   return (
     <div 
       key={`${prefix}-${token.id}`} 
-      className="flex flex-col items-center h-full"
-      style={containerStyle}
+      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+      style={{ minWidth: "140px", ...containerStyle }}
     >
       <div 
-        className="flex flex-col items-center p-2 transition-all duration-300 hover:scale-105 w-full" 
+        className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item" 
         style={containerStyle}
       >
         <div 

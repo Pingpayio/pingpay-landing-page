@@ -1,22 +1,9 @@
-
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-  type CarouselApi
-} from "@/components/ui/carousel";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [api, setApi] = useState<CarouselApi>();
-  const [isPaused, setIsPaused] = useState(false);
-  const autoScrollIntervalRef = useRef<number | null>(null);
 
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
@@ -89,76 +76,63 @@ const UseCasesCarousel: React.FC = () => {
       return shuffled;
     };
 
-    // Create a repeated array for continuous scrolling effect
-    const repeatedUseCases = [...shuffleUseCases(allUseCases), ...shuffleUseCases(allUseCases)];
-    setUseCases(repeatedUseCases);
-    
-    // Set loaded state after a small delay to ensure DOM is ready
-    setTimeout(() => setIsLoaded(true), 100);
+    setUseCases(shuffleUseCases(allUseCases));
   }, []);
 
-  const startAutoScroll = useCallback(() => {
-    if (api && autoScrollIntervalRef.current === null && !isPaused) {
-      autoScrollIntervalRef.current = window.setInterval(() => {
-        api.scrollNext();
-      }, 3500); // Scroll every 3.5 seconds (slightly different from crypto carousel for variety)
-    }
-  }, [api, isPaused]);
-
-  const stopAutoScroll = useCallback(() => {
-    if (autoScrollIntervalRef.current !== null) {
-      clearInterval(autoScrollIntervalRef.current);
-      autoScrollIntervalRef.current = null;
-    }
-  }, []);
-
-  // Set up auto-scrolling when API is ready
+  // Function to ensure all use case cards have the same height
   useEffect(() => {
-    if (api) {
-      startAutoScroll();
-    }
+    const adjustCardHeights = () => {
+      // Reset heights first
+      const cards = document.querySelectorAll('.use-case-card');
+      cards.forEach((card) => {
+        (card as HTMLElement).style.height = 'auto';
+      });
+      
+      // Group cards by their container (first/second set)
+      const firstSet = document.querySelectorAll('[data-set="first"] .use-case-card');
+      const secondSet = document.querySelectorAll('[data-set="second"] .use-case-card');
+      
+      // Find max height in each set
+      let maxHeightFirst = 0;
+      firstSet.forEach((card) => {
+        maxHeightFirst = Math.max(maxHeightFirst, (card as HTMLElement).offsetHeight);
+      });
+      
+      let maxHeightSecond = 0;
+      secondSet.forEach((card) => {
+        maxHeightSecond = Math.max(maxHeightSecond, (card as HTMLElement).offsetHeight);
+      });
+      
+      // Use the overall max height for all cards
+      const maxHeight = Math.max(maxHeightFirst, maxHeightSecond);
+      
+      if (maxHeight > 0) {
+        cards.forEach((card) => {
+          (card as HTMLElement).style.height = `${maxHeight}px`;
+        });
+      }
+    };
+    
+    // Run the adjustment after cards render
+    setTimeout(adjustCardHeights, 100);
+    window.addEventListener('resize', adjustCardHeights);
     
     return () => {
-      stopAutoScroll();
+      window.removeEventListener('resize', adjustCardHeights);
     };
-  }, [api, startAutoScroll, stopAutoScroll]);
-
-  // Handle mouse interactions
-  const handleMouseEnter = () => {
-    setIsPaused(true);
-    stopAutoScroll();
-  };
-
-  const handleMouseLeave = () => {
-    setIsPaused(false);
-    startAutoScroll();
-  };
+  }, [useCases]);
 
   return (
-    <div 
-      className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onTouchStart={handleMouseEnter}
-      onTouchEnd={handleMouseLeave}
-    >
-      {isLoaded && (
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: "start",
-            loop: true,
-            dragFree: true,
-            containScroll: "trimSnaps",
-            slidesToScroll: 1
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
+    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center">
+      <div className="relative overflow-hidden w-full">
+        <div className="flex whitespace-nowrap">
+          {/* First set of use cases */}
+          <div className="flex continuous-scroll" data-set="first">
             {useCases.map((useCase, index) => (
-              <CarouselItem 
-                key={`${useCase.title}-${index}`}
-                className="pl-2 md:pl-4 basis-3/4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+              <div 
+                key={`first-${index}`} 
+                className="shrink-0 pl-4 inline-flex flex-col items-center"
+                style={{ minWidth: "240px", maxWidth: "240px" }}
               >
                 <div className="h-full use-case-card">
                   <UseCaseCard
@@ -167,15 +141,30 @@ const UseCasesCarousel: React.FC = () => {
                     imageSrc={useCase.imageSrc}
                   />
                 </div>
-              </CarouselItem>
+              </div>
             ))}
-          </CarouselContent>
-          <div className="hidden md:flex">
-            <CarouselPrevious className="absolute -left-8 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute -right-8 top-1/2 -translate-y-1/2" />
           </div>
-        </Carousel>
-      )}
+
+          {/* Second set of use cases - creates the continuous effect */}
+          <div className="flex continuous-scroll" data-set="second">
+            {useCases.map((useCase, index) => (
+              <div 
+                key={`second-${index}`} 
+                className="shrink-0 pl-4 inline-flex flex-col items-center"
+                style={{ minWidth: "240px", maxWidth: "240px" }}
+              >
+                <div className="h-full use-case-card">
+                  <UseCaseCard
+                    title={useCase.title}
+                    description={useCase.description}
+                    imageSrc={useCase.imageSrc}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
