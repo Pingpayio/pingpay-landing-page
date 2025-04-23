@@ -30,18 +30,33 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Improved smooth scroll function to align section flush below navbar
-  const scrollToSection = (id: string) => {
+  /**
+   * Scrolls to a section, and optionally aligns the
+   * bottom of the navbar with the top of the section.
+   * @param id string - section id
+   * @param alignNavbarBottom boolean - if true, bottom of navbar aligns with top of section
+   */
+  const scrollToSection = (id: string, alignNavbarBottom: boolean = false) => {
     setMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
+    const navbar = document.querySelector('nav');
+    const navbarHeight = navbar ? navbar.offsetHeight : 54;
+
     if (element) {
-      const navbar = document.querySelector('nav');
-      const navbarHeight = navbar ? navbar.offsetHeight : 54;
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        // Now move the scroll up by the navbar's height so the section is flush beneath
-        window.scrollBy({ top: -navbarHeight, behavior: 'instant' as ScrollBehavior });
-      }, 400); // Give time for smooth scroll (tweak delay if necessary)
+      const sectionTop = element.getBoundingClientRect().top + window.scrollY;
+      if (alignNavbarBottom) {
+        // Scroll so that bottom of navbar coincides with top of section
+        window.scrollTo({
+          top: sectionTop - navbarHeight,
+          behavior: 'smooth'
+        });
+      } else {
+        // Default: classic smooth scroll but adjust to avoid navbar overlap
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+          window.scrollBy({ top: -navbarHeight, behavior: 'instant' as ScrollBehavior });
+        }, 400);
+      }
     }
   };
 
@@ -50,8 +65,7 @@ const Navbar: React.FC = () => {
       top: 0,
       behavior: 'smooth'
     });
-    
-    // Close mobile menu if it's open
+
     if (mobileMenuOpen) {
       setMobileMenuOpen(false);
     }
@@ -90,13 +104,13 @@ const Navbar: React.FC = () => {
             
             <div className="hidden md:flex items-center gap-8 text-white">
               <button 
-                onClick={() => scrollToSection('asset-management')} 
+                onClick={() => scrollToSection('asset-management', true)} 
                 className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
               >
                 Features
               </button>
               <button 
-                onClick={() => scrollToSection('use-cases')} 
+                onClick={() => scrollToSection('use-cases', true)} 
                 className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
               >
                 Use Cases
@@ -130,14 +144,14 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col p-6 h-full">
             <div className="flex flex-col space-y-6 text-white text-lg mt-4">
               <div 
-                onClick={() => scrollToSection('asset-management')} 
+                onClick={() => scrollToSection('asset-management', true)} 
                 className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
                 <span className="text-base font-medium">Features</span>
                 <ChevronDown size={18} />
               </div>
               <div 
-                onClick={() => scrollToSection('use-cases')} 
+                onClick={() => scrollToSection('use-cases', true)} 
                 className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
                 <span className="text-base font-medium">Use Cases</span>
@@ -166,3 +180,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
