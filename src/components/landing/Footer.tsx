@@ -1,4 +1,3 @@
-
 import React from "react";
 
 // Paths to logo & icons
@@ -12,7 +11,7 @@ const Footer: React.FC = () => (
     style={{
       minHeight: 120,
       backgroundColor: "#100713",
-      paddingTop: 28, // extra space for alignment
+      paddingTop: 28,
       paddingBottom: 32,
     }}
   >
@@ -32,12 +31,24 @@ const Footer: React.FC = () => (
       </span>
     </div>
 
-    {/* Right: Headings & icons - split into two cols for vertical alignment */}
+    {/* Right: Headings & icons */}
     <div className="flex flex-col h-full justify-between items-end flex-1 pl-8">
       <div className="flex flex-row gap-8 mt-0">
-        <span className="text-white font-medium text-base select-none">Brand Kit</span>
-        <span className="text-white font-medium text-base select-none">Privacy Policy</span>
-        <span className="text-white font-medium text-base select-none">Terms &amp; Conditions</span>
+        <button 
+          className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+        >
+          Brand Kit
+        </button>
+        <button 
+          className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+        >
+          Privacy Policy
+        </button>
+        <button 
+          className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+        >
+          Terms &amp; Conditions
+        </button>
       </div>
       <div className="flex items-center gap-4 mt-6 md:mt-8">
         {/* X social */}
