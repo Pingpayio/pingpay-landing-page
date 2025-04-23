@@ -1,4 +1,3 @@
-
 import React from "react";
 
 // Paths to logo & icons
@@ -37,17 +36,17 @@ const Footer: React.FC = () => (
     <div className="flex flex-col h-full justify-between items-end flex-1 pl-8">
       <div className="flex flex-row gap-8">
         <button 
-          className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+          className="text-sm text-white font-medium select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
         >
           Brand Kit
         </button>
         <button 
-          className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+          className="text-sm text-white font-medium select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
         >
           Privacy Policy
         </button>
         <button 
-          className="text-white font-medium text-base select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+          className="text-sm text-white font-medium select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
         >
           Terms &amp; Conditions
         </button>
@@ -90,4 +89,3 @@ const Footer: React.FC = () => (
 );
 
 export default Footer;
-
