@@ -4,6 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import UseCasesCarousel from "./UseCasesCarousel";
 import ComingSoonButton from "./ComingSoonButton";
 import SectionHeader from "./SectionHeader";
+import Footer from "./Footer";
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
@@ -11,7 +12,7 @@ const UseCasesSection: React.FC = () => {
   return (
     <section 
       id="use-cases"
-      className="w-full flex flex-col items-center pt-12 md:pt-28 pb-12 md:pb-20 px-4 md:px-10 relative z-10 overflow-hidden"
+      className="w-full flex flex-col items-center pt-12 md:pt-28 pb-0 md:pb-0 px-4 md:px-10 relative z-10 overflow-hidden"
       style={{
         minHeight: isMobile ? "auto" : "900px",
         backgroundColor: "#100713"
@@ -28,7 +29,6 @@ const UseCasesSection: React.FC = () => {
         
         <UseCasesCarousel />
 
-        {/* Final CTA section, matching heading/subheading style of Multi-currency Payment Support */}
         <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-4 md:mb-12">
           <SectionHeader
             title="Get Paid. Everywhere. Instantly."
@@ -38,13 +38,15 @@ const UseCasesSection: React.FC = () => {
           />
         </div>
         
-        {/* "Coming Soon" button with spacing added */}
         <div className="flex justify-center mt-6 md:mt-8">
           <ComingSoonButton />
         </div>
       </div>
+      {/* Footer: sticks to bottom of this section */}
+      <Footer />
     </section>
   );
 };
 
 export default UseCasesSection;
+
