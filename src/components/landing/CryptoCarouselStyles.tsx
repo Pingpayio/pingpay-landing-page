@@ -1,25 +1,27 @@
 
 import React from 'react';
 
-// CSS styles for the carousel
+// CSS-in-JS styles for the carousel, provided to the page as a <style> tag.
 export const CarouselStyles: React.FC = () => (
   <style>
     {`
       @media (max-width: 768px) {
-        .carousel-item, .carousel-item img {
+        .carousel-item,
+        .carousel-item img {
           display: flex !important;
           visibility: visible !important;
           opacity: 1 !important;
         }
-        
-        .token-mask, .token-image {
+        .token-mask,
+        .token-image {
           display: block !important;
           visibility: visible !important;
           opacity: 1 !important;
         }
       }
-      
-      .carousel-item, .carousel-item img {
+
+      .carousel-item,
+      .carousel-item img {
         background-color: transparent !important;
         border: none !important;
         outline: none !important;
@@ -27,7 +29,7 @@ export const CarouselStyles: React.FC = () => (
         display: flex !important;
         min-height: 180px !important;
       }
-      
+
       img {
         background-color: transparent !important;
         mix-blend-mode: normal !important;
@@ -35,7 +37,7 @@ export const CarouselStyles: React.FC = () => (
         outline: none !important;
         box-shadow: none !important;
       }
-      
+
       .token-mask {
         width: 180px;
         height: 180px;
@@ -57,7 +59,7 @@ export const CarouselStyles: React.FC = () => (
       .token-mask::after {
         display: none;
       }
-      
+
       /* Ensure all token images have consistent size */
       .token-image {
         width: 75% !important;
@@ -82,7 +84,7 @@ export const CarouselStyles: React.FC = () => (
   </style>
 );
 
-// Container styles for transparent elements
+// Style objects for use in inline React styles elsewhere
 export const containerStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
   border: 'none',
@@ -91,10 +93,9 @@ export const containerStyle: React.CSSProperties = {
   borderRadius: '0',
   display: 'flex',
   visibility: 'visible',
-  opacity: 1
+  opacity: 1,
 };
 
-// Standardized container size for all tokens
 export const imageContainerStyle: React.CSSProperties = {
   ...containerStyle,
   padding: '0',
@@ -108,29 +109,28 @@ export const imageContainerStyle: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
-  borderRadius: '50%', // Circular mask
+  borderRadius: '50%',
   visibility: 'visible',
   opacity: 1,
   border: 'none',
   outline: 'none',
-  boxShadow: 'none'
+  boxShadow: 'none',
 };
 
-// Standardized image style for consistent appearance
 export const imageStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
   border: 'none',
   outline: 'none',
   boxShadow: 'none',
-  width: '75%', // Fixed percentage for all images
-  height: '75%', // Fixed percentage for all images
+  width: '75%',
+  height: '75%',
   objectFit: 'contain',
   display: 'block',
-  mixBlendMode: 'normal',
+  mixBlendMode: 'normal' as const, // Ensures TS compatibility
   position: 'absolute',
   left: '50%',
   top: '50%',
-  transform: 'translate(-50%, -50%)', // Center both horizontally and vertically
+  transform: 'translate(-50%, -50%)',
   visibility: 'visible',
-  opacity: 1
+  opacity: 1,
 };
