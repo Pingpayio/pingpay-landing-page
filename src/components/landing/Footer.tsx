@@ -1,4 +1,3 @@
-
 import React from "react";
 
 // Paths to logo & icons
@@ -8,7 +7,7 @@ const GITBOOK_ICON = "/lovable-uploads/b82a9879-1700-4db3-b219-6012eb839715.png"
 
 const Footer: React.FC = () => (
   <footer
-    className="w-full flex items-start justify-between px-4 md:px-10 bg-[#100713] border-t border-[#24113d] max-w-[1080px] mx-auto"
+    className="w-full flex items-start justify-between px-4 md:px-10 bg-[#100713] border-t border-[#AB9FF2] max-w-[1080px] mx-auto"
     style={{
       minHeight: 120,
       backgroundColor: "#100713",
