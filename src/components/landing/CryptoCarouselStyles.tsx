@@ -31,6 +31,9 @@ export const CarouselStyles: React.FC = () => (
       img {
         background-color: transparent !important;
         mix-blend-mode: normal !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
       }
       
       .token-mask {
@@ -41,23 +44,18 @@ export const CarouselStyles: React.FC = () => (
         display: flex !important;
         align-items: center;
         justify-content: center;
-        background-color: transparent;
+        background-color: transparent !important;
         position: relative;
         visibility: visible !important;
         opacity: 1 !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
       }
 
-      /* Inner mask to ensure no purple lines are visible */
+      /* Remove the inner mask that may be causing the faint line */
       .token-mask::after {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        border-radius: 50%;
-        box-shadow: 0 0 0 5px #000; /* Black shadow to cover any lines */
-        pointer-events: none;
+        display: none;
       }
       
       /* Ensure all token images have consistent size */
@@ -74,6 +72,11 @@ export const CarouselStyles: React.FC = () => (
         visibility: visible !important;
         opacity: 1 !important;
         display: block !important;
+        background-color: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        mix-blend-mode: normal !important;
       }
     `}
   </style>
@@ -107,7 +110,10 @@ export const imageContainerStyle: React.CSSProperties = {
   overflow: 'hidden',
   borderRadius: '50%', // Circular mask
   visibility: 'visible',
-  opacity: 1
+  opacity: 1,
+  border: 'none',
+  outline: 'none',
+  boxShadow: 'none'
 };
 
 // Standardized image style for consistent appearance

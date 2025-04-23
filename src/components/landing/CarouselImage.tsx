@@ -28,7 +28,14 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
     width={width}
     height={height}
     loading="lazy"
-    style={style}
+    style={{
+      ...style,
+      backgroundColor: 'transparent',
+      border: 'none',
+      outline: 'none',
+      boxShadow: 'none',
+      mixBlendMode: 'normal'
+    }}
     draggable={false}
     decoding="async"
     fetchPriority="low"

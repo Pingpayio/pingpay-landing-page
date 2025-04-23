@@ -14,19 +14,36 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
     <div
       key={`${prefix}-${token.id}`}
       className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
-      style={{ minWidth: "140px", ...containerStyle }}
+      style={{ 
+        minWidth: "140px", 
+        ...containerStyle,
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        border: 'none',
+        outline: 'none'
+      }}
     >
       <div
         className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item"
-        style={containerStyle}
+        style={{
+          ...containerStyle,
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+          border: 'none',
+          outline: 'none'
+        }}
       >
         <div
           className="token-mask relative"
           style={{
             ...imageContainerStyle,
-            visibility: "visible", // Ensure visibility
-            opacity: 1, // Ensure opacity
-            display: "flex" // Ensure display
+            visibility: "visible",
+            opacity: 1,
+            display: "flex",
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+            border: 'none',
+            outline: 'none'
           }}
         >
           <CarouselImage
@@ -35,8 +52,12 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
             className="token-image relative z-10"
             style={{
               ...imageStyle,
-              visibility: "visible", // Ensure visibility
-              opacity: 1 // Ensure opacity
+              visibility: "visible",
+              opacity: 1,
+              backgroundColor: 'transparent',
+              boxShadow: 'none',
+              border: 'none',
+              outline: 'none'
             }}
             width={120}
             height={120}
