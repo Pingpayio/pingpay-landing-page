@@ -1,9 +1,16 @@
+
 import React, { useEffect, useState } from "react";
 import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
@@ -77,94 +84,53 @@ const UseCasesCarousel: React.FC = () => {
     };
 
     setUseCases(shuffleUseCases(allUseCases));
+    // Use a small timeout to ensure cards are loaded before displaying
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+    
+    return () => clearTimeout(timer);
   }, []);
 
-  // Function to ensure all use case cards have the same height
-  useEffect(() => {
-    const adjustCardHeights = () => {
-      // Reset heights first
-      const cards = document.querySelectorAll('.use-case-card');
-      cards.forEach((card) => {
-        (card as HTMLElement).style.height = 'auto';
-      });
-      
-      // Group cards by their container (first/second set)
-      const firstSet = document.querySelectorAll('[data-set="first"] .use-case-card');
-      const secondSet = document.querySelectorAll('[data-set="second"] .use-case-card');
-      
-      // Find max height in each set
-      let maxHeightFirst = 0;
-      firstSet.forEach((card) => {
-        maxHeightFirst = Math.max(maxHeightFirst, (card as HTMLElement).offsetHeight);
-      });
-      
-      let maxHeightSecond = 0;
-      secondSet.forEach((card) => {
-        maxHeightSecond = Math.max(maxHeightSecond, (card as HTMLElement).offsetHeight);
-      });
-      
-      // Use the overall max height for all cards
-      const maxHeight = Math.max(maxHeightFirst, maxHeightSecond);
-      
-      if (maxHeight > 0) {
-        cards.forEach((card) => {
-          (card as HTMLElement).style.height = `${maxHeight}px`;
-        });
-      }
-    };
-    
-    // Run the adjustment after cards render
-    setTimeout(adjustCardHeights, 100);
-    window.addEventListener('resize', adjustCardHeights);
-    
-    return () => {
-      window.removeEventListener('resize', adjustCardHeights);
-    };
-  }, [useCases]);
-
-  return (
-    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center">
-      <div className="relative overflow-hidden w-full">
-        <div className="flex whitespace-nowrap">
-          {/* First set of use cases */}
-          <div className="flex continuous-scroll" data-set="first">
-            {useCases.map((useCase, index) => (
-              <div 
-                key={`first-${index}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "240px", maxWidth: "240px" }}
-              >
-                <div className="h-full use-case-card">
-                  <UseCaseCard
-                    title={useCase.title}
-                    description={useCase.description}
-                    imageSrc={useCase.imageSrc}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Second set of use cases - creates the continuous effect */}
-          <div className="flex continuous-scroll" data-set="second">
-            {useCases.map((useCase, index) => (
-              <div 
-                key={`second-${index}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "240px", maxWidth: "240px" }}
-              >
-                <div className="h-full use-case-card">
-                  <UseCaseCard
-                    title={useCase.title}
-                    description={useCase.description}
-                    imageSrc={useCase.imageSrc}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+  if (isLoading) {
+    return (
+      <div className="w-full flex justify-center py-8">
+        <div className="animate-pulse flex space-x-4 overflow-x-auto px-4">
+          {[...Array(4)].map((_, i) => (
+            <div 
+              key={`skeleton-${i}`} 
+              className="bg-purple-100 rounded-3xl h-64 w-[240px] shrink-0"
+            ></div>
+          ))}
         </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow">
+      <Carousel
+        className="w-full"
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+      >
+        <CarouselContent className="-ml-2 md:-ml-4">
+          {useCases.map((useCase, index) => (
+            <CarouselItem 
+              key={index} 
+              className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+            >
+              <UseCaseCard
+                title={useCase.title}
+                description={useCase.description}
+                imageSrc={useCase.imageSrc}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 };

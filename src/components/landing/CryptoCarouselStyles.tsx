@@ -18,8 +18,8 @@ export const CarouselStyles: React.FC = () => (
       }
       
       .token-mask {
-        width: 180px;
-        height: 180px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         overflow: hidden;
         display: flex;
@@ -27,6 +27,20 @@ export const CarouselStyles: React.FC = () => (
         justify-content: center;
         background-color: transparent;
         position: relative;
+      }
+      
+      @media (min-width: 768px) {
+        .token-mask {
+          width: 140px;
+          height: 140px;
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        .token-mask {
+          width: 180px;
+          height: 180px;
+        }
       }
 
       /* Inner mask to ensure no purple lines are visible */
@@ -75,8 +89,6 @@ export const imageContainerStyle: React.CSSProperties = {
   background: 'transparent',
   isolation: 'isolate',
   position: 'relative',
-  width: '180px',
-  height: '180px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
