@@ -18,8 +18,8 @@ export const CarouselStyles: React.FC = () => (
       }
       
       .token-mask {
-        width: 100px;
-        height: 100px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
         overflow: hidden;
         display: flex;
@@ -27,20 +27,6 @@ export const CarouselStyles: React.FC = () => (
         justify-content: center;
         background-color: transparent;
         position: relative;
-      }
-      
-      @media (min-width: 768px) {
-        .token-mask {
-          width: 140px;
-          height: 140px;
-        }
-      }
-      
-      @media (min-width: 1024px) {
-        .token-mask {
-          width: 180px;
-          height: 180px;
-        }
       }
 
       /* Inner mask to ensure no purple lines are visible */
@@ -68,11 +54,6 @@ export const CarouselStyles: React.FC = () => (
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
       }
-
-      /* Make sure the embla carousel is properly scrollable on touch devices */
-      .embla__container {
-        touch-action: pan-y !important;
-      }
     `}
   </style>
 );
@@ -94,6 +75,8 @@ export const imageContainerStyle: React.CSSProperties = {
   background: 'transparent',
   isolation: 'isolate',
   position: 'relative',
+  width: '180px',
+  height: '180px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
