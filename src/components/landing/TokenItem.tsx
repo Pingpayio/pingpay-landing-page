@@ -23,7 +23,7 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
         border: 'none',
         outline: 'none',
         padding: 0,
-        transform: 'translateZ(0)',
+        transform: 'translate3d(0, 0, 0)',
       }}
     >
       <div
@@ -35,7 +35,7 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
           boxShadow: 'none',
           border: 'none',
           outline: 'none',
-          transform: 'translateZ(0)',
+          transform: 'translate3d(0, 0, 0)',
         }}
       >
         <div
@@ -50,6 +50,7 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
             boxShadow: 'none',
             border: 'none',
             outline: 'none',
+            transform: 'translate3d(0, 0, 0)',
           }}
         >
           <CarouselImage
@@ -65,6 +66,9 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
               boxShadow: 'none',
               border: 'none',
               outline: 'none',
+              transform: 'translate3d(0, 0, 0)',
+              imageRendering: 'crisp-edges',
+              WebkitMaskImage: 'none',
             }}
             width={120}
             height={120}

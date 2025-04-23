@@ -42,6 +42,29 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* User-suggested styles for fixing rendering artifacts */
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0); /* Force GPU rendering */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-mask-image: none;
+}
+
+.carousel-slide {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 .carousel-item,
 .carousel-item img {
   display: flex !important;
@@ -116,5 +139,6 @@ img {
 
 .continuous-scroll {
   animation: scroll 30s linear infinite; /* Slower, consistent speed */
+  transform: translate3d(0, 0, 0); /* Force GPU acceleration */
+  will-change: transform; /* Hint for browser optimization */
 }
-
