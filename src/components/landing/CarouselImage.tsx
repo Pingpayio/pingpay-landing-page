@@ -31,7 +31,7 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
     style={style}
     draggable={false}
     decoding="async"
-    fetchPriority="low"
+    fetchpriority="low"
   />
 );
 

@@ -5,11 +5,27 @@ import React from 'react';
 export const CarouselStyles: React.FC = () => (
   <style>
     {`
+      @media (max-width: 768px) {
+        .carousel-item, .carousel-item img {
+          display: flex !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        
+        .token-mask, .token-image {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+      }
+      
       .carousel-item, .carousel-item img {
         background-color: transparent !important;
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
+        display: flex !important;
+        min-height: 180px !important;
       }
       
       img {
@@ -22,11 +38,13 @@ export const CarouselStyles: React.FC = () => (
         height: 180px;
         border-radius: 50%;
         overflow: hidden;
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: center;
         background-color: transparent;
         position: relative;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
 
       /* Inner mask to ensure no purple lines are visible */
@@ -53,6 +71,9 @@ export const CarouselStyles: React.FC = () => (
         left: 50% !important;
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: block !important;
       }
     `}
   </style>
@@ -64,7 +85,10 @@ export const containerStyle: React.CSSProperties = {
   border: 'none',
   outline: 'none',
   boxShadow: 'none',
-  borderRadius: '0'
+  borderRadius: '0',
+  display: 'flex',
+  visibility: 'visible',
+  opacity: 1
 };
 
 // Standardized container size for all tokens
@@ -82,6 +106,8 @@ export const imageContainerStyle: React.CSSProperties = {
   justifyContent: 'center',
   overflow: 'hidden',
   borderRadius: '50%', // Circular mask
+  visibility: 'visible',
+  opacity: 1
 };
 
 // Standardized image style for consistent appearance
@@ -99,4 +125,6 @@ export const imageStyle: React.CSSProperties = {
   left: '50%',
   top: '50%',
   transform: 'translate(-50%, -50%)', // Center both horizontally and vertically
+  visibility: 'visible',
+  opacity: 1
 };

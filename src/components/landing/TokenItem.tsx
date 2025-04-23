@@ -22,13 +22,22 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
       >
         <div
           className="token-mask relative"
-          style={imageContainerStyle}
+          style={{
+            ...imageContainerStyle,
+            visibility: "visible", // Ensure visibility
+            opacity: 1, // Ensure opacity
+            display: "flex" // Ensure display
+          }}
         >
           <CarouselImage
             src={token.imagePath}
             alt={token.id}
             className="token-image relative z-10"
-            style={imageStyle}
+            style={{
+              ...imageStyle,
+              visibility: "visible", // Ensure visibility
+              opacity: 1 // Ensure opacity
+            }}
             width={120}
             height={120}
           />
