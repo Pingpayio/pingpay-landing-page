@@ -1,3 +1,4 @@
+
 import React from "react";
 
 // Paths to logo & icons
@@ -26,12 +27,48 @@ const Footer: React.FC = () => (
           draggable={false}
         />
       </div>
-      <span className="text-sm text-[#E9DFFC] font-normal ml-0.5 mt-1 select-none">
-        The Payment Layer for the Future of Commerce
-      </span>
+      <div className="flex items-center justify-between w-full">
+        <span className="text-sm text-[#E9DFFC] font-normal ml-0.5 mt-1 select-none">
+          The Payment Layer for the Future of Commerce
+        </span>
+        <div className="flex items-center gap-4">
+          {/* X social */}
+          <a
+            href="https://x.com/pingpay_io"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ping on X"
+            className="hover:scale-110 transition-transform"
+          >
+            <img
+              src={X_ICON}
+              alt="X Icon"
+              className="h-5 w-5"
+              style={{ height: 20, width: 20 }}
+              draggable={false}
+            />
+          </a>
+          {/* GitBook */}
+          <a
+            href="https://app.gitbook.com/o/JZWLv0QExumDT4rlFzE4/s/ping"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ping on GitBook"
+            className="hover:scale-110 transition-transform"
+          >
+            <img
+              src={GITBOOK_ICON}
+              alt="GitBook Icon"
+              className="h-5 w-5"
+              style={{ height: 20, width: 20 }}
+              draggable={false}
+            />
+          </a>
+        </div>
+      </div>
     </div>
 
-    {/* Right: Headings & icons */}
+    {/* Right: Headings */}
     <div className="flex flex-col h-full justify-between items-end flex-1 pl-8">
       <div className="flex flex-row gap-8 mt-0">
         <button 
@@ -49,40 +86,6 @@ const Footer: React.FC = () => (
         >
           Terms &amp; Conditions
         </button>
-      </div>
-      <div className="flex items-center gap-4 mt-6 md:mt-8">
-        {/* X social */}
-        <a
-          href="https://x.com/pingpay_io"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ping on X"
-          className="hover:scale-110 transition-transform"
-        >
-          <img
-            src={X_ICON}
-            alt="X Icon"
-            className="h-6 w-6"
-            style={{ height: 24, width: 24 }}
-            draggable={false}
-          />
-        </a>
-        {/* GitBook */}
-        <a
-          href="https://app.gitbook.com/o/JZWLv0QExumDT4rlFzE4/s/ping"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ping on GitBook"
-          className="hover:scale-110 transition-transform"
-        >
-          <img
-            src={GITBOOK_ICON}
-            alt="GitBook Icon"
-            className="h-6 w-6"
-            style={{ height: 24, width: 24 }}
-            draggable={false}
-          />
-        </a>
       </div>
     </div>
   </footer>
