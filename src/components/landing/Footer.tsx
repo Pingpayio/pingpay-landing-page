@@ -17,7 +17,7 @@ const Footer: React.FC = () => (
     }}
   >
     {/* Left: Logo & wordmark */}
-    <div className="flex flex-col items-start gap-2 pt-0">
+    <div className="flex flex-col items-start gap-2 pt-0 flex-shrink-0">
       <div className="flex items-center gap-2">
         <img
           src={PING_LOGO}
@@ -27,48 +27,14 @@ const Footer: React.FC = () => (
           draggable={false}
         />
       </div>
-      <div className="flex items-center justify-between w-full">
+      <div className="flex items-center w-full">
         <span className="text-sm text-[#E9DFFC] font-normal ml-0.5 mt-1 select-none">
           The Payment Layer for the Future of Commerce
         </span>
-        <div className="flex items-center gap-4">
-          {/* X social */}
-          <a
-            href="https://x.com/pingpay_io"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Ping on X"
-            className="hover:scale-110 transition-transform"
-          >
-            <img
-              src={X_ICON}
-              alt="X Icon"
-              className="h-5 w-5"
-              style={{ height: 16, width: 16 }}
-              draggable={false}
-            />
-          </a>
-          {/* GitBook */}
-          <a
-            href="https://app.gitbook.com/o/JZWLv0QExumDT4rlFzE4/s/ping"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Ping on GitBook"
-            className="hover:scale-110 transition-transform"
-          >
-            <img
-              src={GITBOOK_ICON}
-              alt="GitBook Icon"
-              className="h-5 w-5"
-              style={{ height: 16, width: 16 }}
-              draggable={false}
-            />
-          </a>
-        </div>
       </div>
     </div>
 
-    {/* Right: Headings */}
+    {/* Right: Headings + Icons */}
     <div className="flex flex-col h-full justify-between items-end flex-1 pl-8">
       <div className="flex flex-row gap-8 mt-0">
         <button 
@@ -87,8 +53,44 @@ const Footer: React.FC = () => (
           Terms &amp; Conditions
         </button>
       </div>
+      {/* Social Icons under headings, right aligned */}
+      <div className="flex flex-row gap-4 mt-4 justify-end">
+        {/* X social */}
+        <a
+          href="https://x.com/pingpay_io"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ping on X"
+          className="hover:scale-110 transition-transform"
+        >
+          <img
+            src={X_ICON}
+            alt="X Icon"
+            className="h-6 w-6"
+            style={{ height: 24, width: 24 }}
+            draggable={false}
+          />
+        </a>
+        {/* GitBook */}
+        <a
+          href="https://app.gitbook.com/o/JZWLv0QExumDT4rlFzE4/s/ping"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ping on GitBook"
+          className="hover:scale-110 transition-transform"
+        >
+          <img
+            src={GITBOOK_ICON}
+            alt="GitBook Icon"
+            className="h-6 w-6"
+            style={{ height: 24, width: 24 }}
+            draggable={false}
+          />
+        </a>
+      </div>
     </div>
   </footer>
 );
 
 export default Footer;
+
