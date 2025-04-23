@@ -31,10 +31,16 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
     style={{
       ...style,
       backgroundColor: 'transparent',
+      background: 'transparent',
       border: 'none',
       outline: 'none',
       boxShadow: 'none',
-      mixBlendMode: 'normal'
+      mixBlendMode: 'normal',
+      transform: 'translateZ(0)',
+      imageRendering: '-webkit-optimize-contrast',
+      backfaceVisibility: 'hidden',
+      padding: 0,
+      margin: 0,
     }}
     draggable={false}
     decoding="async"

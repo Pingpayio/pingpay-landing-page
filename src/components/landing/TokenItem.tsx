@@ -13,37 +13,43 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
   return (
     <div
       key={`${prefix}-${token.id}`}
-      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item carousel-slide"
       style={{ 
         minWidth: "140px", 
         ...containerStyle,
         backgroundColor: 'transparent',
+        background: 'transparent',
         boxShadow: 'none',
         border: 'none',
-        outline: 'none'
+        outline: 'none',
+        padding: 0,
+        transform: 'translateZ(0)',
       }}
     >
       <div
-        className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item"
+        className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item carousel-slide"
         style={{
           ...containerStyle,
           backgroundColor: 'transparent',
+          background: 'transparent',
           boxShadow: 'none',
           border: 'none',
-          outline: 'none'
+          outline: 'none',
+          transform: 'translateZ(0)',
         }}
       >
         <div
-          className="token-mask relative"
+          className="token-mask relative carousel-slide"
           style={{
             ...imageContainerStyle,
             visibility: "visible",
             opacity: 1,
             display: "flex",
             backgroundColor: 'transparent',
+            background: 'transparent',
             boxShadow: 'none',
             border: 'none',
-            outline: 'none'
+            outline: 'none',
           }}
         >
           <CarouselImage
@@ -55,9 +61,10 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
               visibility: "visible",
               opacity: 1,
               backgroundColor: 'transparent',
+              background: 'transparent',
               boxShadow: 'none',
               border: 'none',
-              outline: 'none'
+              outline: 'none',
             }}
             width={120}
             height={120}

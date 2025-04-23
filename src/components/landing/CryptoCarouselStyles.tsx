@@ -20,12 +20,31 @@ export const CarouselStyles: React.FC = () => (
         }
       }
 
+      /* Enhanced global carousel styling with GPU acceleration */
       .carousel-item,
-      .carousel-item img {
+      .carousel-item img,
+      .carousel-slide img,
+      .carousel-slide,
+      .carousel-slide > div,
+      .token-mask,
+      .token-image {
         background-color: transparent !important;
+        background: transparent !important;
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-box-shadow: none !important;
+        image-rendering: -webkit-optimize-contrast;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .carousel-item,
+      .carousel-item img {
         display: flex !important;
         min-height: 180px !important;
       }
@@ -36,6 +55,9 @@ export const CarouselStyles: React.FC = () => (
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
+        image-rendering: -webkit-optimize-contrast;
+        transform: translateZ(0);
+        backface-visibility: hidden;
       }
 
       .token-mask {
@@ -56,8 +78,10 @@ export const CarouselStyles: React.FC = () => (
       }
 
       /* Remove the inner mask that may be causing the faint line */
-      .token-mask::after {
-        display: none;
+      .token-mask::after,
+      .token-mask::before {
+        display: none !important;
+        content: none !important;
       }
 
       /* Ensure all token images have consistent size */
@@ -87,6 +111,7 @@ export const CarouselStyles: React.FC = () => (
 // Style objects for use in inline React styles elsewhere
 export const containerStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
+  background: 'transparent',
   border: 'none',
   outline: 'none',
   boxShadow: 'none',
@@ -94,6 +119,8 @@ export const containerStyle: React.CSSProperties = {
   display: 'flex',
   visibility: 'visible',
   opacity: 1,
+  padding: 0,
+  margin: 0,
 };
 
 export const imageContainerStyle: React.CSSProperties = {
@@ -101,6 +128,7 @@ export const imageContainerStyle: React.CSSProperties = {
   padding: '0',
   margin: '0',
   background: 'transparent',
+  backgroundColor: 'transparent',
   isolation: 'isolate',
   position: 'relative',
   width: '180px',
@@ -115,10 +143,13 @@ export const imageContainerStyle: React.CSSProperties = {
   border: 'none',
   outline: 'none',
   boxShadow: 'none',
+  transform: 'translateZ(0)',
+  backfaceVisibility: 'hidden',
 };
 
 export const imageStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
+  background: 'transparent',
   border: 'none',
   outline: 'none',
   boxShadow: 'none',
@@ -130,7 +161,11 @@ export const imageStyle: React.CSSProperties = {
   position: 'absolute',
   left: '50%',
   top: '50%',
-  transform: 'translate(-50%, -50%)',
+  transform: 'translate(-50%, -50%) translateZ(0)',
   visibility: 'visible',
   opacity: 1,
+  padding: 0,
+  margin: 0,
+  imageRendering: '-webkit-optimize-contrast',
+  backfaceVisibility: 'hidden',
 };
