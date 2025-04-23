@@ -5,10 +5,18 @@ import { allTokens } from "@/data/tokenData";
 import { containerStyle } from "./CryptoCarouselStyles";
 import { CarouselStyles } from "./CryptoCarouselStyles";
 import TokenItem from "./TokenItem";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 const CryptoCarousel: React.FC = () => {
   // State to store randomized tokens
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Randomize tokens on component mount
   useEffect(() => {
@@ -23,6 +31,9 @@ const CryptoCarousel: React.FC = () => {
     };
 
     setTokens(shuffleTokens(allTokens));
+    
+    // Set loaded state after a small delay to ensure DOM is ready
+    setTimeout(() => setIsLoaded(true), 100);
   }, []);
 
   return (
@@ -30,38 +41,36 @@ const CryptoCarousel: React.FC = () => {
       <CarouselStyles />
     
       <div 
-        className="w-full max-w-[1000px] px-8 md:px-4 mx-auto overflow-hidden" 
+        className="w-full max-w-[1000px] px-4 md:px-4 mx-auto overflow-hidden" 
         style={containerStyle}
       >
-        <div 
-          className="relative overflow-hidden" 
-          style={containerStyle}
-        >
-          <div 
-            className="flex whitespace-nowrap" 
-            style={containerStyle}
+        {isLoaded && (
+          <Carousel 
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+              containScroll: "trimSnaps",
+              slidesToScroll: 1
+            }}
+            className="w-full"
           >
-            {/* First set of tokens */}
-            <div 
-              className="flex continuous-scroll" 
-              style={containerStyle}
-            >
+            <CarouselContent className="-ml-2 md:-ml-4">
               {tokens.map((token) => (
-                <TokenItem key={`first-${token.id}`} token={token} prefix="first" />
+                <CarouselItem 
+                  key={token.id}
+                  className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5"
+                >
+                  <TokenItem token={token} prefix="carousel" />
+                </CarouselItem>
               ))}
+            </CarouselContent>
+            <div className="hidden md:flex">
+              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
             </div>
-
-            {/* Second set of tokens - creates the continuous effect */}
-            <div 
-              className="flex continuous-scroll" 
-              style={containerStyle}
-            >
-              {tokens.map((token) => (
-                <TokenItem key={`second-${token.id}`} token={token} prefix="second" />
-              ))}
-            </div>
-          </div>
-        </div>
+          </Carousel>
+        )}
       </div>
     </>
   );

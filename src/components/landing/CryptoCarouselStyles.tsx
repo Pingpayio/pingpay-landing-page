@@ -18,8 +18,8 @@ export const CarouselStyles: React.FC = () => (
       }
       
       .token-mask {
-        width: 180px;
-        height: 180px;
+        width: 140px;
+        height: 140px;
         border-radius: 50%;
         overflow: hidden;
         display: flex;
@@ -27,6 +27,13 @@ export const CarouselStyles: React.FC = () => (
         justify-content: center;
         background-color: transparent;
         position: relative;
+      }
+
+      @media (min-width: 768px) {
+        .token-mask {
+          width: 180px;
+          height: 180px;
+        }
       }
 
       /* Inner mask to ensure no purple lines are visible */
@@ -54,6 +61,23 @@ export const CarouselStyles: React.FC = () => (
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
       }
+
+      /* Fix embla carousel on mobile */
+      .embla__viewport {
+        overflow: visible;
+        width: 100%;
+      }
+
+      .embla__container {
+        display: flex;
+        will-change: transform;
+      }
+
+      .embla__slide {
+        flex: 0 0 auto;
+        min-width: 0;
+        touch-action: pan-y;
+      }
     `}
   </style>
 );
@@ -75,8 +99,8 @@ export const imageContainerStyle: React.CSSProperties = {
   background: 'transparent',
   isolation: 'isolate',
   position: 'relative',
-  width: '180px',
-  height: '180px',
+  width: '140px',
+  height: '140px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -100,3 +124,9 @@ export const imageStyle: React.CSSProperties = {
   top: '50%',
   transform: 'translate(-50%, -50%)', // Center both horizontally and vertically
 };
+
+// Media query for larger screens
+if (typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches) {
+  imageContainerStyle.width = '180px';
+  imageContainerStyle.height = '180px';
+}
