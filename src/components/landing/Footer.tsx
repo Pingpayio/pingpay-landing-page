@@ -28,7 +28,7 @@ const Footer: React.FC = () => (
         />
       </div>
       <div className="flex items-center w-full">
-        <span className="text-xs text-[#E9DFFC] font-normal ml-0.5 mt-1 select-none">
+        <span className="text-sm text-[#E9DFFC] font-normal ml-0.5 mt-1 select-none">
           The Payment Layer for the Future of Commerce
         </span>
       </div>
