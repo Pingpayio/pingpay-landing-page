@@ -38,7 +38,7 @@ const UseCasesSection: React.FC = () => {
           />
         </div>
         
-        <div className="flex justify-center mt-6 md:mt-8">
+        <div className="flex justify-center mt-6 md:mt-8 mb-16">
           <ComingSoonButton />
         </div>
       </div>
@@ -49,4 +49,3 @@ const UseCasesSection: React.FC = () => {
 };
 
 export default UseCasesSection;
-
