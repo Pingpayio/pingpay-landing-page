@@ -4,7 +4,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import UseCasesCarousel from "./UseCasesCarousel";
 import ComingSoonButton from "./ComingSoonButton";
 import SectionHeader from "./SectionHeader";
-import Footer from "./Footer";
 
 const UseCasesSection: React.FC = () => {
   const isMobile = useIsMobile();
@@ -30,7 +29,7 @@ const UseCasesSection: React.FC = () => {
         <UseCasesCarousel />
 
         {/* Final CTA section, matching heading/subheading style of Multi-currency Payment Support */}
-        <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-2 md:mb-6">
+        <div className="w-full flex flex-col items-center mt-8 md:mt-16 mb-4 md:mb-12">
           <SectionHeader
             title="Get Paid. Everywhere. Instantly."
             description="Send and Receive Payments from Any Chain, One Ping at a Time"
@@ -39,13 +38,11 @@ const UseCasesSection: React.FC = () => {
           />
         </div>
         
-        {/* "Coming Soon" button with spacing to match hero section */}
-        <div className="flex justify-center mt-4">
+        {/* "Coming Soon" button with spacing added */}
+        <div className="flex justify-center mt-6 md:mt-8">
           <ComingSoonButton />
         </div>
       </div>
-      {/* Footer at section bottom */}
-      <Footer />
     </section>
   );
 };
