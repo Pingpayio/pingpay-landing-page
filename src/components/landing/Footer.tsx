@@ -3,8 +3,8 @@ import React from "react";
 
 // Paths to logo & icons
 const PING_LOGO = "/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png";
-const X_ICON = "/lovable-uploads/03381f3c-d4f0-453c-8bd9-7826e24aefcd.png";
-const GITBOOK_ICON = "/lovable-uploads/02221691-f97d-47be-9365-e7afe8fdc1c6.png";
+const X_ICON = "/lovable-uploads/305c55f4-2e66-48de-81d8-26fcf0ac08d7.png";
+const GITBOOK_ICON = "/lovable-uploads/b82a9879-1700-4db3-b219-6012eb839715.png";
 
 const Footer: React.FC = () => (
   <footer
@@ -44,7 +44,7 @@ const Footer: React.FC = () => (
               src={X_ICON}
               alt="X Icon"
               className="h-5 w-5"
-              style={{ height: 20, width: 20 }}
+              style={{ height: 16, width: 16 }}
               draggable={false}
             />
           </a>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => (
               src={GITBOOK_ICON}
               alt="GitBook Icon"
               className="h-5 w-5"
-              style={{ height: 20, width: 20 }}
+              style={{ height: 16, width: 16 }}
               draggable={false}
             />
           </a>
