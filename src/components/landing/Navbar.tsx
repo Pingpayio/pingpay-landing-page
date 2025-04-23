@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -29,22 +30,18 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Improved smooth scroll function with padding adjustment
+  // Improved smooth scroll function to align section flush below navbar
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
     if (element) {
-      // Calculate the navbar height dynamically
       const navbar = document.querySelector('nav');
-      const navbarHeight = navbar ? navbar.offsetHeight : 54; // Default to 54px if nav element not found
-      
-      // Add additional offset to ensure no overlap (depends on section padding)
-      const additionalOffset = 20; // Added to ensure there's visible space between navbar and section content
-      
-      window.scrollTo({
-        top: element.offsetTop - navbarHeight - additionalOffset,
-        behavior: 'smooth'
-      });
+      const navbarHeight = navbar ? navbar.offsetHeight : 54;
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        // Now move the scroll up by the navbar's height so the section is flush beneath
+        window.scrollBy({ top: -navbarHeight, behavior: 'instant' as ScrollBehavior });
+      }, 400); // Give time for smooth scroll (tweak delay if necessary)
     }
   };
 
