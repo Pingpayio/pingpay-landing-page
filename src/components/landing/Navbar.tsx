@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
             
             <div className="hidden md:flex items-center gap-8 text-white">
               <button 
-                onClick={() => scrollToSection('discover-section', true)} 
+                onClick={() => scrollToSection('asset-management', true)} 
                 className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
               >
                 Features
@@ -144,7 +144,7 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col p-6 h-full">
             <div className="flex flex-col space-y-6 text-white text-lg mt-4">
               <div 
-                onClick={() => scrollToSection('discover-section', true)} 
+                onClick={() => scrollToSection('asset-management', true)} 
                 className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
                 <span className="text-base font-medium">Features</span>

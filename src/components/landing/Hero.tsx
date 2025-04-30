@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import ComingSoonButton from "./ComingSoonButton";
 
@@ -94,13 +93,12 @@ const Hero: React.FC = () => {
         
         {/* Coming Soon Overlay */}
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <div className="coming-soon-banner bg-[#AB9FF2]/80 backdrop-blur-sm py-3 px-8 rounded-lg transform rotate-[-12deg] shadow-lg border border-white/30 animate-pulse">
+          <div className="coming-soon-banner bg-[#AB9FF2]/80 backdrop-blur-sm py-3 px-8 rounded-lg transform rotate-[-12deg] shadow-lg border border-white/30">
             <span className="text-white font-bold text-2xl md:text-4xl tracking-wide">Coming Soon</span>
           </div>
         </div>
       </div>
-      <style>
-        {`
+      <style jsx>{`
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
@@ -113,11 +111,10 @@ const Hero: React.FC = () => {
           50% { opacity: 1; transform: rotate(-10deg) scale(1.05); }
           100% { opacity: 0.8; transform: rotate(-12deg) scale(1); }
         }
-        .animate-pulse {
+        .coming-soon-banner {
           animation: pulse 2s ease-in-out infinite;
         }
-        `}
-      </style>
+      `}</style>
     </header>;
 };
 
