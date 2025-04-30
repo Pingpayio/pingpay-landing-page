@@ -16,6 +16,8 @@
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    border: none !important;
+    outline: none !important;
   }
 }
 
@@ -41,6 +43,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
 }
 
 /* User-suggested styles for fixing rendering artifacts */
@@ -50,6 +54,7 @@
   height: auto;
   background-color: transparent !important;
   border: none !important;
+  outline: none !important;
   box-shadow: none !important;
   image-rendering: crisp-edges;
   backface-visibility: hidden;
@@ -57,12 +62,15 @@
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-mask-image: none;
   border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
 }
 
 .carousel-slide {
   background-color: transparent !important;
   box-shadow: none !important;
   border: none !important;
+  outline: none !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 !important;
@@ -72,6 +80,8 @@
 .carousel-item img {
   display: flex !important;
   min-height: 180px !important;
+  border: none !important;
+  outline: none !important;
 }
 
 img {
@@ -84,6 +94,8 @@ img {
   transform: translateZ(0);
   backface-visibility: hidden;
   border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
 }
 
 .token-mask {
@@ -101,6 +113,8 @@ img {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
 }
 
 /* Remove the inner mask that may be causing a faint line */
@@ -130,6 +144,8 @@ img {
   box-shadow: none !important;
   mix-blend-mode: normal !important;
   border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
 }
 
 /* Continuous carousel scrolling animation */

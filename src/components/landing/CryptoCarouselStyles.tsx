@@ -17,6 +17,8 @@ export const CarouselStyles: React.FC = () => (
           display: block !important;
           visibility: visible !important;
           opacity: 1 !important;
+          border: none !important;
+          outline: none !important;
         }
       }
 
@@ -42,12 +44,16 @@ export const CarouselStyles: React.FC = () => (
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         border-radius: 0 !important;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
       }
 
       .carousel-item,
       .carousel-item img {
         display: flex !important;
         min-height: 180px !important;
+        border: none !important;
+        outline: none !important;
       }
 
       img {
@@ -60,6 +66,8 @@ export const CarouselStyles: React.FC = () => (
         transform: translateZ(0);
         backface-visibility: hidden;
         border-radius: 0 !important;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
       }
 
       .token-mask {
@@ -77,6 +85,8 @@ export const CarouselStyles: React.FC = () => (
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
       }
 
       /* Remove the inner mask that may be causing the faint line */
@@ -106,6 +116,8 @@ export const CarouselStyles: React.FC = () => (
         box-shadow: none !important;
         mix-blend-mode: normal !important;
         border-radius: 0 !important;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
       }
     `}
   </style>
@@ -139,8 +151,8 @@ export const imageContainerStyle: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  overflow: 'visible', // Changed from 'hidden' to 'visible'
-  borderRadius: '0', // Remove border-radius
+  overflow: 'visible',
+  borderRadius: '0',
   visibility: 'visible',
   opacity: 1,
   border: 'none',
@@ -148,6 +160,8 @@ export const imageContainerStyle: React.CSSProperties = {
   boxShadow: 'none',
   transform: 'translateZ(0)',
   backfaceVisibility: 'hidden',
+  clipPath: 'none',
+  WebkitClipPath: 'none',
 };
 
 export const imageStyle: React.CSSProperties = {
@@ -160,7 +174,7 @@ export const imageStyle: React.CSSProperties = {
   height: '75%',
   objectFit: 'contain',
   display: 'block',
-  mixBlendMode: 'normal' as const, // Ensures TS compatibility
+  mixBlendMode: 'normal' as const,
   position: 'absolute',
   left: '50%',
   top: '50%',
@@ -171,5 +185,7 @@ export const imageStyle: React.CSSProperties = {
   margin: 0,
   imageRendering: '-webkit-optimize-contrast',
   backfaceVisibility: 'hidden',
-  borderRadius: 0, // Remove border-radius
+  borderRadius: 0,
+  clipPath: 'none',
+  WebkitClipPath: 'none',
 };

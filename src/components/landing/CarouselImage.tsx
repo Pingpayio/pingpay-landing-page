@@ -32,9 +32,9 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       ...style,
       backgroundColor: 'transparent',
       background: 'transparent',
-      border: 'none',
-      outline: 'none',
-      boxShadow: 'none',
+      border: 'none !important',
+      outline: 'none !important',
+      boxShadow: 'none !important',
       mixBlendMode: 'normal',
       transform: 'translate3d(0, 0, 0)',
       imageRendering: 'crisp-edges',
@@ -45,6 +45,8 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       WebkitFilter: 'none',
       WebkitMaskImage: 'none',
       borderRadius: 0,
+      clipPath: 'none',
+      WebkitClipPath: 'none',
     }}
     draggable={false}
     decoding="async"

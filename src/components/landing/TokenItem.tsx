@@ -20,8 +20,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
         backgroundColor: 'transparent',
         background: 'transparent',
         boxShadow: 'none',
-        border: 'none',
-        outline: 'none',
+        border: 'none !important',
+        outline: 'none !important',
         padding: 0,
         transform: 'translate3d(0, 0, 0)',
       }}
@@ -33,8 +33,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
           backgroundColor: 'transparent',
           background: 'transparent',
           boxShadow: 'none',
-          border: 'none',
-          outline: 'none',
+          border: 'none !important',
+          outline: 'none !important',
           transform: 'translate3d(0, 0, 0)',
         }}
       >
@@ -48,11 +48,13 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
             backgroundColor: 'transparent',
             background: 'transparent',
             boxShadow: 'none',
-            border: 'none',
-            outline: 'none',
+            border: 'none !important',
+            outline: 'none !important',
             transform: 'translate3d(0, 0, 0)',
-            overflow: 'visible', // Changed from 'hidden' to 'visible'
-            borderRadius: 0, // Remove border-radius
+            overflow: 'visible',
+            borderRadius: 0,
+            clipPath: 'none',
+            WebkitClipPath: 'none',
           }}
         >
           <CarouselImage
@@ -66,12 +68,14 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
               backgroundColor: 'transparent',
               background: 'transparent',
               boxShadow: 'none',
-              border: 'none',
-              outline: 'none',
+              border: 'none !important',
+              outline: 'none !important',
               transform: 'translate3d(0, 0, 0)',
               imageRendering: 'crisp-edges',
               WebkitMaskImage: 'none',
-              borderRadius: 0, // Remove border-radius
+              borderRadius: 0,
+              clipPath: 'none',
+              WebkitClipPath: 'none',
             }}
             width={120}
             height={120}
