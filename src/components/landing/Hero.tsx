@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import ComingSoonButton from "./ComingSoonButton";
 const words = ["Commerce", "AI Agents", "Subscriptions", "Enterprise", "Savings", "Bill Splitting", "Ticketing", "Invoicing", "Freelancing", "Services"];
@@ -81,10 +82,17 @@ const Hero: React.FC = () => {
       <div className="flex flex-col items-center gap-4 mt-6 md:mt-8 justify-center w-full max-w-[340px] md:flex-row md:max-w-full">
         <ComingSoonButton />
       </div>
-      <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
+      <div className="mt-8 md:mt-[60px] px-4 w-full mb-0 relative">
         <img src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true" alt="HyperLend Platform" className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]" style={{
         marginBottom: "-25px"
       }} />
+        
+        {/* Coming Soon Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-[#AB9FF2]/80 text-white px-6 py-3 rounded-lg font-bold text-2xl md:text-4xl shadow-lg transform rotate-[-10deg] animate-pulse-coming-soon">
+            COMING SOON
+          </div>
+        </div>
       </div>
       <style>
         {`
@@ -94,6 +102,13 @@ const Hero: React.FC = () => {
         }
         .animate-blink {
           animation: blink 1s steps(1) infinite;
+        }
+        @keyframes pulse-coming-soon {
+          0%, 100% { opacity: 0.9; transform: rotate(-10deg) scale(1); }
+          50% { opacity: 1; transform: rotate(-10deg) scale(1.05); }
+        }
+        .animate-pulse-coming-soon {
+          animation: pulse-coming-soon 2s ease-in-out infinite;
         }
         `}
       </style>
