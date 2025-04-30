@@ -13,33 +13,33 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
   return (
     <div
       key={`${prefix}-${token.id}`}
-      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item carousel-slide no-border"
+      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item carousel-slide"
       style={{ 
         minWidth: "140px", 
         ...containerStyle,
         backgroundColor: 'transparent',
         background: 'transparent',
-        boxShadow: 'none !important',
-        border: '0 none transparent !important',
-        outline: '0 none transparent !important',
+        boxShadow: 'none',
+        border: 'none',
+        outline: 'none',
         padding: 0,
         transform: 'translate3d(0, 0, 0)',
       }}
     >
       <div
-        className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item carousel-slide no-border"
+        className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item carousel-slide"
         style={{
           ...containerStyle,
           backgroundColor: 'transparent',
           background: 'transparent',
-          boxShadow: 'none !important',
-          border: '0 none transparent !important',
-          outline: '0 none transparent !important',
+          boxShadow: 'none',
+          border: 'none',
+          outline: 'none',
           transform: 'translate3d(0, 0, 0)',
         }}
       >
         <div
-          className="token-mask relative carousel-slide carousel-image-wrapper no-border"
+          className="token-mask relative carousel-slide"
           style={{
             ...imageContainerStyle,
             visibility: "visible",
@@ -47,35 +47,28 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
             display: "flex",
             backgroundColor: 'transparent',
             background: 'transparent',
-            boxShadow: 'none !important',
-            border: '0 none transparent !important',
-            outline: '0 none transparent !important',
+            boxShadow: 'none',
+            border: 'none',
+            outline: 'none',
             transform: 'translate3d(0, 0, 0)',
-            overflow: 'visible',
-            borderRadius: 0,
-            clipPath: 'none',
-            WebkitClipPath: 'none',
           }}
         >
           <CarouselImage
             src={token.imagePath}
             alt={token.id}
-            className="token-image relative z-10 carousel-img no-border"
+            className="token-image relative z-10"
             style={{
               ...imageStyle,
               visibility: "visible",
               opacity: 1,
               backgroundColor: 'transparent',
               background: 'transparent',
-              boxShadow: 'none !important',
-              border: '0 none transparent !important',
-              outline: '0 none transparent !important',
+              boxShadow: 'none',
+              border: 'none',
+              outline: 'none',
               transform: 'translate3d(0, 0, 0)',
-              imageRendering: 'auto',
+              imageRendering: 'crisp-edges',
               WebkitMaskImage: 'none',
-              borderRadius: 0,
-              clipPath: 'none',
-              WebkitClipPath: 'none',
             }}
             width={120}
             height={120}

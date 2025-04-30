@@ -1,19 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import ComingSoonButton from "./ComingSoonButton";
-
 const words = ["Commerce", "AI Agents", "Subscriptions", "Enterprise", "Savings", "Bill Splitting", "Ticketing", "Invoicing", "Freelancing", "Services"];
 const TYPING_SPEED = 70; // ms per character
 const DELETING_SPEED = 100;
 const PAUSE_AFTER_TYPED = 900;
 const PAUSE_AFTER_DELETED = 350;
-
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState("");
   const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const timeoutRef = useRef<number | null>(null);
-
   useEffect(() => {
     const currentWord = words[wordIndex];
     if (phase === "typing") {
@@ -48,11 +45,9 @@ const Hero: React.FC = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [charIndex, phase, wordIndex]);
-
   useEffect(() => {
     if (phase === "typing") setCharIndex(0);
   }, [wordIndex]);
-
   return <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
@@ -86,19 +81,13 @@ const Hero: React.FC = () => {
       <div className="flex flex-col items-center gap-4 mt-6 md:mt-8 justify-center w-full max-w-[340px] md:flex-row md:max-w-full">
         <ComingSoonButton />
       </div>
-      <div className="mt-8 md:mt-[60px] px-4 w-full mb-0 relative">
+      <div className="mt-8 md:mt-[60px] px-4 w-full mb-0">
         <img src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true" alt="HyperLend Platform" className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]" style={{
         marginBottom: "-25px"
       }} />
-        
-        {/* Coming Soon Overlay */}
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <div className="coming-soon-banner bg-[#AB9FF2]/80 backdrop-blur-sm py-3 px-8 rounded-lg transform rotate-[-12deg] shadow-lg border border-white/30">
-            <span className="text-white font-bold text-2xl md:text-4xl tracking-wide">Coming Soon</span>
-          </div>
-        </div>
       </div>
-      <style jsx>{`
+      <style>
+        {`
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
@@ -106,16 +95,8 @@ const Hero: React.FC = () => {
         .animate-blink {
           animation: blink 1s steps(1) infinite;
         }
-        @keyframes pulse {
-          0% { opacity: 0.8; transform: rotate(-12deg) scale(1); }
-          50% { opacity: 1; transform: rotate(-10deg) scale(1.05); }
-          100% { opacity: 0.8; transform: rotate(-12deg) scale(1); }
-        }
-        .coming-soon-banner {
-          animation: pulse 2s ease-in-out infinite;
-        }
-      `}</style>
+        `}
+      </style>
     </header>;
 };
-
 export default Hero;
