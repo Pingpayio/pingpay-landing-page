@@ -1,3 +1,4 @@
+
 import React from "react";
 
 // Paths to logo & icons
@@ -51,13 +52,7 @@ const Footer: React.FC = () => (
             draggable={false}
           />
         </a>
-        <a
-          href="https://app.gitbook.com/o/JZWLv0QExumDT4rlFzE4/s/ping"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Ping on GitBook"
-          className="hover:scale-110 transition-transform"
-        >
+        <span className="cursor-default">
           <img
             src={GITBOOK_ICON}
             alt="GitBook Icon"
@@ -65,7 +60,7 @@ const Footer: React.FC = () => (
             style={{ height: 16, width: 16 }}
             draggable={false}
           />
-        </a>
+        </span>
       </div>
       <div className="flex flex-row gap-5 md:gap-8 mb-2 md:mb-0">
         <button 
