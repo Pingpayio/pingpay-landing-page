@@ -41,6 +41,7 @@ export const CarouselStyles: React.FC = () => (
         backface-visibility: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        border-radius: 0 !important;
       }
 
       .carousel-item,
@@ -58,13 +59,14 @@ export const CarouselStyles: React.FC = () => (
         image-rendering: -webkit-optimize-contrast;
         transform: translateZ(0);
         backface-visibility: hidden;
+        border-radius: 0 !important;
       }
 
       .token-mask {
         width: 180px;
         height: 180px;
-        border-radius: 50%;
-        overflow: hidden;
+        border-radius: 0;
+        overflow: visible;
         display: flex !important;
         align-items: center;
         justify-content: center;
@@ -103,6 +105,7 @@ export const CarouselStyles: React.FC = () => (
         outline: none !important;
         box-shadow: none !important;
         mix-blend-mode: normal !important;
+        border-radius: 0 !important;
       }
     `}
   </style>
@@ -136,8 +139,8 @@ export const imageContainerStyle: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  overflow: 'hidden',
-  borderRadius: '50%',
+  overflow: 'visible', // Changed from 'hidden' to 'visible'
+  borderRadius: '0', // Remove border-radius
   visibility: 'visible',
   opacity: 1,
   border: 'none',
@@ -168,4 +171,5 @@ export const imageStyle: React.CSSProperties = {
   margin: 0,
   imageRendering: '-webkit-optimize-contrast',
   backfaceVisibility: 'hidden',
+  borderRadius: 0, // Remove border-radius
 };
