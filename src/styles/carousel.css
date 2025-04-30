@@ -16,8 +16,8 @@
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    border: none !important;
-    outline: none !important;
+    border: 0 none transparent !important;
+    outline: 0 none transparent !important;
   }
 }
 
@@ -28,11 +28,13 @@
 .carousel-slide,
 .carousel-slide > div,
 .token-mask,
-.token-image {
+.token-image,
+.carousel-img,
+.no-border {
   background-color: transparent !important;
   background: transparent !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -45,6 +47,9 @@
   border-radius: 0 !important;
   clip-path: none !important;
   -webkit-clip-path: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
 /* User-suggested styles for fixing rendering artifacts */
@@ -53,10 +58,10 @@
   width: 100%;
   height: auto;
   background-color: transparent !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0); /* Force GPU rendering */
   -webkit-transform: translate3d(0, 0, 0);
@@ -64,13 +69,16 @@
   border-radius: 0 !important;
   clip-path: none !important;
   -webkit-clip-path: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
 .carousel-slide {
   background-color: transparent !important;
   box-shadow: none !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 !important;
@@ -80,15 +88,15 @@
 .carousel-item img {
   display: flex !important;
   min-height: 180px !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
 }
 
 img {
   background-color: transparent !important;
   mix-blend-mode: normal !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
   image-rendering: -webkit-optimize-contrast;
   transform: translateZ(0);
@@ -99,27 +107,56 @@ img {
 }
 
 /* Remove border from all carousel images */
-.carousel img {
-  border: none !important;
-  outline: none !important;
+.carousel img,
+img.carousel-img,
+img.token-image {
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
   background: transparent !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
 /* Also check parent containers */
-.carousel-item, .carousel-slide, .carousel-image-wrapper {
-  border: none !important;
-  outline: none !important;
+.carousel-item, 
+.carousel-slide, 
+.carousel-image-wrapper,
+.token-mask,
+.no-border {
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
   background: transparent !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 
 /* Optional: Fix image scaling and rendering for clean edges */
-.carousel img {
+.carousel img,
+.carousel-img {
   image-rendering: auto;
   display: block;
   width: 100%;
   height: auto;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Direct targeting of specific tokens that might have issues */
+img[alt="bitcoin"], 
+img[alt="doge"], 
+img[alt="xrp"], 
+img[alt="wif"] {
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .token-mask {
@@ -134,8 +171,8 @@ img {
   position: relative;
   visibility: visible !important;
   opacity: 1 !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
   clip-path: none !important;
   -webkit-clip-path: none !important;
@@ -163,8 +200,8 @@ img {
   opacity: 1 !important;
   display: block !important;
   background-color: transparent !important;
-  border: none !important;
-  outline: none !important;
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
   mix-blend-mode: normal !important;
   border-radius: 0 !important;

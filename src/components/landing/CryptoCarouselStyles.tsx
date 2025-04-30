@@ -17,8 +17,8 @@ export const CarouselStyles: React.FC = () => (
           display: block !important;
           visibility: visible !important;
           opacity: 1 !important;
-          border: none !important;
-          outline: none !important;
+          border: 0 none transparent !important;
+          outline: 0 none transparent !important;
         }
       }
 
@@ -29,11 +29,13 @@ export const CarouselStyles: React.FC = () => (
       .carousel-slide,
       .carousel-slide > div,
       .token-mask,
-      .token-image {
+      .token-image,
+      .carousel-img,
+      .no-border {
         background-color: transparent !important;
         background: transparent !important;
-        border: none !important;
-        outline: none !important;
+        border: 0 none transparent !important;
+        outline: 0 none transparent !important;
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
@@ -52,15 +54,17 @@ export const CarouselStyles: React.FC = () => (
       .carousel-item img {
         display: flex !important;
         min-height: 180px !important;
-        border: none !important;
-        outline: none !important;
+        border: 0 none transparent !important;
+        outline: 0 none transparent !important;
       }
 
-      img {
+      img,
+      .carousel-img,
+      .token-image {
         background-color: transparent !important;
         mix-blend-mode: normal !important;
-        border: none !important;
-        outline: none !important;
+        border: 0 none transparent !important;
+        outline: 0 none transparent !important;
         box-shadow: none !important;
         image-rendering: -webkit-optimize-contrast;
         transform: translateZ(0);
@@ -82,8 +86,8 @@ export const CarouselStyles: React.FC = () => (
         position: relative;
         visibility: visible !important;
         opacity: 1 !important;
-        border: none !important;
-        outline: none !important;
+        border: 0 none transparent !important;
+        outline: 0 none transparent !important;
         box-shadow: none !important;
         clip-path: none !important;
         -webkit-clip-path: none !important;
@@ -111,8 +115,8 @@ export const CarouselStyles: React.FC = () => (
         opacity: 1 !important;
         display: block !important;
         background-color: transparent !important;
-        border: none !important;
-        outline: none !important;
+        border: 0 none transparent !important;
+        outline: 0 none transparent !important;
         box-shadow: none !important;
         mix-blend-mode: normal !important;
         border-radius: 0 !important;
@@ -127,8 +131,8 @@ export const CarouselStyles: React.FC = () => (
 export const containerStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
   background: 'transparent',
-  border: 'none',
-  outline: 'none',
+  border: '0 none transparent',
+  outline: '0 none transparent',
   boxShadow: 'none',
   borderRadius: '0',
   display: 'flex',
@@ -155,8 +159,8 @@ export const imageContainerStyle: React.CSSProperties = {
   borderRadius: '0',
   visibility: 'visible',
   opacity: 1,
-  border: 'none',
-  outline: 'none',
+  border: '0 none transparent',
+  outline: '0 none transparent',
   boxShadow: 'none',
   transform: 'translateZ(0)',
   backfaceVisibility: 'hidden',
@@ -167,8 +171,8 @@ export const imageContainerStyle: React.CSSProperties = {
 export const imageStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
   background: 'transparent',
-  border: 'none',
-  outline: 'none',
+  border: '0 none transparent',
+  outline: '0 none transparent',
   boxShadow: 'none',
   width: '75%',
   height: '75%',
