@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import ComingSoonButton from "./ComingSoonButton";
 const words = ["Commerce", "AI Agents", "Subscriptions", "Enterprise", "Savings", "Bill Splitting", "Ticketing", "Invoicing", "Freelancing", "Services"];
@@ -89,7 +88,7 @@ const Hero: React.FC = () => {
         
         {/* Coming Soon Overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-[#AB9FF2]/80 text-white px-6 py-3 rounded-lg font-bold text-2xl md:text-4xl shadow-lg transform rotate-[-10deg] animate-pulse-coming-soon">
+          <div className="text-white px-6 py-3 font-bold text-2xl md:text-4xl shadow-lg transform rotate-[-10deg] animate-pulse-coming-soon">
             COMING SOON
           </div>
         </div>
