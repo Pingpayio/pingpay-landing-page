@@ -20,8 +20,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
         backgroundColor: 'transparent',
         background: 'transparent',
         boxShadow: 'none',
-        border: 'none !important',
-        outline: 'none !important',
+        border: 'none',
+        outline: 'none',
         padding: 0,
         transform: 'translate3d(0, 0, 0)',
       }}
@@ -33,13 +33,13 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
           backgroundColor: 'transparent',
           background: 'transparent',
           boxShadow: 'none',
-          border: 'none !important',
-          outline: 'none !important',
+          border: 'none',
+          outline: 'none',
           transform: 'translate3d(0, 0, 0)',
         }}
       >
         <div
-          className="token-mask relative carousel-slide"
+          className="token-mask relative carousel-slide carousel-image-wrapper"
           style={{
             ...imageContainerStyle,
             visibility: "visible",
@@ -48,8 +48,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
             backgroundColor: 'transparent',
             background: 'transparent',
             boxShadow: 'none',
-            border: 'none !important',
-            outline: 'none !important',
+            border: 'none',
+            outline: 'none',
             transform: 'translate3d(0, 0, 0)',
             overflow: 'visible',
             borderRadius: 0,
@@ -60,7 +60,7 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
           <CarouselImage
             src={token.imagePath}
             alt={token.id}
-            className="token-image relative z-10"
+            className="token-image relative z-10 carousel-img"
             style={{
               ...imageStyle,
               visibility: "visible",
@@ -68,10 +68,10 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
               backgroundColor: 'transparent',
               background: 'transparent',
               boxShadow: 'none',
-              border: 'none !important',
-              outline: 'none !important',
+              border: 'none',
+              outline: 'none',
               transform: 'translate3d(0, 0, 0)',
-              imageRendering: 'crisp-edges',
+              imageRendering: 'auto',
               WebkitMaskImage: 'none',
               borderRadius: 0,
               clipPath: 'none',

@@ -24,7 +24,7 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
   <img
     src={src}
     alt={alt}
-    className={className}
+    className={`carousel-img ${className}`}
     width={width}
     height={height}
     loading="lazy"
@@ -32,12 +32,12 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       ...style,
       backgroundColor: 'transparent',
       background: 'transparent',
-      border: 'none !important',
-      outline: 'none !important',
-      boxShadow: 'none !important',
+      border: 'none',
+      outline: 'none',
+      boxShadow: 'none',
       mixBlendMode: 'normal',
       transform: 'translate3d(0, 0, 0)',
-      imageRendering: 'crisp-edges',
+      imageRendering: 'auto',
       backfaceVisibility: 'hidden',
       padding: 0,
       margin: 0,
