@@ -88,7 +88,7 @@ const Hero: React.FC = () => {
         
         {/* Coming Soon Overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-white px-6 py-3 font-bold text-2xl md:text-4xl shadow-lg transform rotate-[-10deg] animate-pulse-coming-soon">
+          <div className="text-white px-6 py-3 font-bold text-2xl md:text-4xl shadow-lg animate-pulse-coming-soon">
             COMING SOON
           </div>
         </div>
@@ -103,8 +103,8 @@ const Hero: React.FC = () => {
           animation: blink 1s steps(1) infinite;
         }
         @keyframes pulse-coming-soon {
-          0%, 100% { opacity: 0.9; transform: rotate(-10deg) scale(1); }
-          50% { opacity: 1; transform: rotate(-10deg) scale(1.05); }
+          0%, 100% { opacity: 0.9; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.05); }
         }
         .animate-pulse-coming-soon {
           animation: pulse-coming-soon 2s ease-in-out infinite;
