@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
@@ -54,6 +53,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
         
         // Show appropriate message for duplicate emails
         if (error.code === '23505') { // PostgreSQL unique constraint violation code
+          console.log("Duplicate email detected:", data.email);
           toast({
             title: "Already on the list",
             description: "This email is already on our waitlist.",
@@ -77,13 +77,11 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
       }
       
       // Close modal after showing success for 3 seconds
-      if (setIsSubmitted) {
-        setTimeout(() => {
-          setIsOpen(false);
-          setIsSubmitted(false);
-          form.reset();
-        }, 3000);
-      }
+      setTimeout(() => {
+        setIsOpen(false);
+        setIsSubmitted(false);
+        form.reset();
+      }, 3000);
       
     } catch (error) {
       console.error("Error submitting email:", error);
