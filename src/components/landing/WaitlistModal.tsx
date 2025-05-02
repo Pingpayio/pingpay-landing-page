@@ -10,6 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/ui/use-toast";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { supabase } from "@/integrations/supabase/client";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -41,27 +42,48 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
     setIsLoading(true);
     
     try {
-      // Here you would integrate with your backend service (Supabase, Zapier, etc)
-      // For now we'll simulate a successful submission
-      console.log("Email submitted:", data.email);
+      console.log("Submitting email to Supabase:", data.email);
       
-      // Simulate network request
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Insert email into the waitlist table
+      const { error } = await supabase
+        .from('waitlist')
+        .insert([{ email: data.email }]);
       
-      setIsSubmitted(true);
-      
-      toast({
-        title: "Success!",
-        description: "Thanks! Your email was added.",
-        variant: "default",
-      });
+      if (error) {
+        console.error("Error submitting to waitlist:", error);
+        
+        // Show appropriate message for duplicate emails
+        if (error.code === '23505') { // PostgreSQL unique constraint violation code
+          toast({
+            title: "Already on the list",
+            description: "This email is already on our waitlist.",
+            variant: "default",
+          });
+          
+          // Still consider this a "success" from the user's perspective
+          setIsSubmitted(true);
+        } else {
+          throw error;
+        }
+      } else {
+        console.log("Email added to waitlist successfully");
+        setIsSubmitted(true);
+        
+        toast({
+          title: "Success!",
+          description: "Thanks! Your email was added.",
+          variant: "default",
+        });
+      }
       
       // Close modal after showing success for 3 seconds
-      setTimeout(() => {
-        setIsOpen(false);
-        setIsSubmitted(false);
-        form.reset();
-      }, 3000);
+      if (setIsSubmitted) {
+        setTimeout(() => {
+          setIsOpen(false);
+          setIsSubmitted(false);
+          form.reset();
+        }, 3000);
+      }
       
     } catch (error) {
       console.error("Error submitting email:", error);
