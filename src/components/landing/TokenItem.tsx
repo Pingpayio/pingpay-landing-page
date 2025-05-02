@@ -18,10 +18,11 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
   return (
     <div
       key={`${prefix}-${token.id}`}
-      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item"
+      className="shrink-0 pl-4 inline-flex flex-col items-center will-change-transform"
       style={{ 
-        minWidth: "120px", 
+        minWidth: "140px", 
         maxWidth: "140px",
+        scrollSnapAlign: "start", // For better mobile scrolling
         backgroundColor: 'transparent'
       }}
     >
@@ -31,8 +32,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
         <div
           className="token-mask relative"
           style={{
-            width: "100px",
-            height: "100px",
+            width: "110px",
+            height: "110px",
             borderRadius: "50%",
             overflow: "hidden",
             display: "flex",
