@@ -34,10 +34,10 @@ const CryptoCarousel: React.FC = () => {
         // Additional mobile-specific animation restarting
         if (isMobile) {
           const scrollElements = element.querySelectorAll('.continuous-scroll');
-          scrollElements.forEach((el: Element) => {
+          scrollElements.forEach((el: HTMLElement) => {
             // Force animation restart by toggling className
             el.classList.remove('continuous-scroll');
-            // Force reflow
+            // Force reflow with proper type casting
             void el.offsetWidth;
             // Add class back
             setTimeout(() => {
