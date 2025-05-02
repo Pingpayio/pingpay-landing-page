@@ -17,6 +17,11 @@
     visibility: visible !important;
     opacity: 1 !important;
   }
+  
+  /* Improve mobile scrolling */
+  .continuous-scroll {
+    animation-duration: 60s !important; /* Slower animation on mobile */
+  }
 }
 
 /* Enhanced global carousel styling with GPU acceleration */
@@ -35,11 +40,12 @@
   padding: 0 !important;
   margin: 0 !important;
   -webkit-box-shadow: none !important;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  will-change: transform; /* Hint for browser optimization */
 }
 
 /* User-suggested styles for fixing rendering artifacts */
@@ -50,7 +56,7 @@
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  image-rendering: crisp-edges;
+  image-rendering: auto; /* Better for most devices */
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0); /* Force GPU rendering */
   -webkit-transform: translate3d(0, 0, 0);
@@ -68,7 +74,7 @@
 .carousel-item,
 .carousel-item img {
   display: flex !important;
-  min-height: 180px !important;
+  min-height: 100px !important;
 }
 
 img {
@@ -77,14 +83,14 @@ img {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
 .token-mask {
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
   display: flex !important;
@@ -97,6 +103,14 @@ img {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+}
+
+/* Mobile optimization for token mask */
+@media (max-width: 768px) {
+  .token-mask {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 /* Remove the inner mask that may be causing a faint line */
@@ -127,7 +141,7 @@ img {
   mix-blend-mode: normal !important;
 }
 
-/* Continuous carousel scrolling animation */
+/* Continuous carousel scrolling animation with optimizations */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -138,7 +152,31 @@ img {
 }
 
 .continuous-scroll {
-  animation: scroll 30s linear infinite; /* Slower, consistent speed */
+  animation: scroll 30s linear infinite; /* Base speed */
   transform: translate3d(0, 0, 0); /* Force GPU acceleration */
   will-change: transform; /* Hint for browser optimization */
+}
+
+/* Save battery on devices that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .continuous-scroll {
+    animation-duration: 60s !important;
+  }
+}
+
+/* Prevent layout shifts during loading */
+.use-case-card {
+  min-height: 300px;
+}
+
+/* Optimize touch scrolling for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .continuous-scroll {
+    animation: scroll 45s linear infinite; /* Even slower on touch devices */
+  }
+  
+  /* Enable momentum-based scrolling on touch devices */
+  .use-case-card {
+    scroll-snap-align: start;
+  }
 }

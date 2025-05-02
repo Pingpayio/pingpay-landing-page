@@ -1,16 +1,21 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import ComingSoonButton from "./ComingSoonButton";
+
 const words = ["Commerce", "AI Agents", "Subscriptions", "Enterprise", "Savings", "Bill Splitting", "Ticketing", "Invoicing", "Freelancing", "Services"];
 const TYPING_SPEED = 70; // ms per character
 const DELETING_SPEED = 100;
 const PAUSE_AFTER_TYPED = 900;
 const PAUSE_AFTER_DELETED = 350;
+
 const Hero: React.FC = () => {
   const [displayText, setDisplayText] = useState("");
   const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const timeoutRef = useRef<number | null>(null);
+
   useEffect(() => {
     const currentWord = words[wordIndex];
     if (phase === "typing") {
@@ -45,10 +50,17 @@ const Hero: React.FC = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [charIndex, phase, wordIndex]);
+
   useEffect(() => {
     if (phase === "typing") setCharIndex(0);
   }, [wordIndex]);
-  return <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  return (
+    <header className="flex flex-col items-center p-4 md:p-6 rounded-2xl">
       <h1 className="text-[#000000] text-3xl md:text-[48px] font-bold leading-tight md:leading-[60px] text-center mt-16 md:mt-[140px] max-w-full text-shadow-sm">
         The Payment Layer
         <br className="md:block" />
@@ -82,9 +94,19 @@ const Hero: React.FC = () => {
         <ComingSoonButton />
       </div>
       <div className="mt-8 md:mt-[60px] px-4 w-full mb-0 relative">
-        <img src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true" alt="HyperLend Platform" className="aspect-[1.68] object-contain w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]" style={{
-        marginBottom: "-25px"
-      }} />
+        <div className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <img 
+            src="https://cdn.builder.io/api/v1/image/assets/bbaf03e746c54fdab851e2e8fa65b939/28094319b78a85233278e4f17a4e3e2b46bcc4fe?placeholderIfAbsent=true" 
+            alt="HyperLend Platform" 
+            className="aspect-[1.68] object-contain w-full md:w-[765px] mx-auto h-auto max-h-[calc(100vh*0.45)] md:max-h-[calc(100vh*0.5)]" 
+            style={{
+              marginBottom: "-25px"
+            }}
+            loading="lazy"
+            onLoad={handleImageLoad}
+            fetchPriority="high"
+          />
+        </div>
         
         {/* Coming Soon Overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -111,6 +133,8 @@ const Hero: React.FC = () => {
         }
         `}
       </style>
-    </header>;
+    </header>
+  );
 };
+
 export default Hero;

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
@@ -64,7 +66,7 @@ const UseCasesCarousel: React.FC = () => {
     }
   ];
 
-  // Randomize use cases on component mount
+  // Randomize use cases on component mount and set up visibility observer
   useEffect(() => {
     // Fisher-Yates shuffle algorithm
     const shuffleUseCases = (array: UseCaseCardProps[]): UseCaseCardProps[] => {
@@ -77,6 +79,30 @@ const UseCasesCarousel: React.FC = () => {
     };
 
     setUseCases(shuffleUseCases(allUseCases));
+
+    // Set up Intersection Observer to detect when carousel is in viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          // Once visible, no need to keep observing
+          if (carouselRef.current) {
+            observer.unobserve(carouselRef.current);
+          }
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of element is visible
+    );
+
+    if (carouselRef.current) {
+      observer.observe(carouselRef.current);
+    }
+
+    return () => {
+      if (carouselRef.current) {
+        observer.unobserve(carouselRef.current);
+      }
+    };
   }, []);
 
   // Function to ensure all use case cards have the same height
@@ -114,25 +140,74 @@ const UseCasesCarousel: React.FC = () => {
     };
     
     // Run the adjustment after cards render
-    setTimeout(adjustCardHeights, 100);
-    window.addEventListener('resize', adjustCardHeights);
+    setTimeout(adjustCardHeights, 200);
+    
+    // Add resize listener
+    const debouncedResize = debounce(adjustCardHeights, 250);
+    window.addEventListener('resize', debouncedResize);
     
     return () => {
-      window.removeEventListener('resize', adjustCardHeights);
+      window.removeEventListener('resize', debouncedResize);
     };
-  }, [useCases]);
+  }, [useCases, isVisible]);
+
+  // Pause animations when tab is not visible
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const isHidden = document.hidden;
+      const scrollElements = document.querySelectorAll('.continuous-scroll');
+      
+      scrollElements.forEach(el => {
+        if (isHidden) {
+          (el as HTMLElement).style.animationPlayState = 'paused';
+        } else {
+          (el as HTMLElement).style.animationPlayState = 'running';
+        }
+      });
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  // Simple debounce function
+  function debounce(func: Function, wait: number) {
+    let timeout: number | null = null;
+    return function(...args: any[]) {
+      if (timeout !== null) {
+        window.clearTimeout(timeout);
+      }
+      timeout = window.setTimeout(() => {
+        func.apply(null, args);
+      }, wait);
+    };
+  }
 
   return (
-    <div className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center">
+    <div 
+      className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center" 
+      ref={carouselRef}
+    >
       <div className="relative overflow-hidden w-full">
-        <div className="flex whitespace-nowrap">
+        <div className={`flex whitespace-nowrap transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* First set of use cases */}
-          <div className="flex continuous-scroll" data-set="first">
+          <div 
+            className={`flex ${isVisible ? 'continuous-scroll' : ''}`} 
+            data-set="first"
+            style={{ animationDuration: '45s' }} // Slower animation for better readability
+          >
             {useCases.map((useCase, index) => (
               <div 
                 key={`first-${index}`} 
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "240px", maxWidth: "240px" }}
+                style={{ 
+                  minWidth: "220px", 
+                  maxWidth: "240px",
+                  scrollSnapAlign: "start" // For better mobile scrolling
+                }}
               >
                 <div className="h-full use-case-card">
                   <UseCaseCard
@@ -146,12 +221,20 @@ const UseCasesCarousel: React.FC = () => {
           </div>
 
           {/* Second set of use cases - creates the continuous effect */}
-          <div className="flex continuous-scroll" data-set="second">
+          <div 
+            className={`flex ${isVisible ? 'continuous-scroll' : ''}`} 
+            data-set="second"
+            style={{ animationDuration: '45s' }} // Match the first set
+          >
             {useCases.map((useCase, index) => (
               <div 
                 key={`second-${index}`} 
                 className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ minWidth: "240px", maxWidth: "240px" }}
+                style={{ 
+                  minWidth: "220px", 
+                  maxWidth: "240px",
+                  scrollSnapAlign: "start" // For better mobile scrolling
+                }}
               >
                 <div className="h-full use-case-card">
                   <UseCaseCard
