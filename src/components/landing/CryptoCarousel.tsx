@@ -6,11 +6,13 @@ import TokenCardSet from "./tokens/TokenCardSet";
 import { useCarouselVisibility } from "@/hooks/useCarouselVisibility";
 import { shuffleArray } from "@/utils/carouselUtils";
 import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const CryptoCarousel: React.FC = () => {
   // State to store randomized tokens
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
   const { isVisible, carouselRef } = useCarouselVisibility({ immediatelyVisible: true });
+  const isMobile = useIsMobile();
 
   // Initialize tokens immediately to avoid empty carousel
   useEffect(() => {
@@ -19,6 +21,19 @@ const CryptoCarousel: React.FC = () => {
       setTokens(shuffleArray(allTokens));
     }
   }, [tokens.length]);
+
+  // Force reflow on mobile devices when visibility changes
+  useEffect(() => {
+    if (isMobile && isVisible) {
+      // Force a reflow to trigger animation
+      if (carouselRef.current) {
+        const element = carouselRef.current;
+        // Reading offsetHeight forces a reflow
+        const height = element.offsetHeight;
+        console.log("Forcing reflow on mobile, height:", height);
+      }
+    }
+  }, [isVisible, isMobile]);
 
   return (
     <div 
@@ -31,6 +46,12 @@ const CryptoCarousel: React.FC = () => {
       <div className="relative overflow-hidden">
         <div 
           className={`flex whitespace-nowrap transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+          style={{ 
+            WebkitBackfaceVisibility: 'hidden',
+            WebkitPerspective: '1000',
+            WebkitTransform: 'translate3d(0,0,0)',
+            WebkitTransformStyle: 'preserve-3d'
+          }}
         >
           {/* First set of tokens */}
           <TokenCardSet 
