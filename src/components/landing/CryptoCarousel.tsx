@@ -24,13 +24,27 @@ const CryptoCarousel: React.FC = () => {
 
   // Force reflow on mobile devices when visibility changes
   useEffect(() => {
-    if (isMobile && isVisible) {
+    if (isVisible) {
       // Force a reflow to trigger animation
       if (carouselRef.current) {
         const element = carouselRef.current;
         // Reading offsetHeight forces a reflow
         const height = element.offsetHeight;
-        console.log("Forcing reflow on mobile, height:", height);
+        
+        // Additional mobile-specific animation restarting
+        if (isMobile) {
+          const scrollElements = element.querySelectorAll('.continuous-scroll');
+          scrollElements.forEach((el: Element) => {
+            // Force animation restart by toggling className
+            el.classList.remove('continuous-scroll');
+            // Force reflow
+            void el.offsetWidth;
+            // Add class back
+            setTimeout(() => {
+              el.classList.add('continuous-scroll');
+            }, 10);
+          });
+        }
       }
     }
   }, [isVisible, isMobile]);
@@ -38,7 +52,13 @@ const CryptoCarousel: React.FC = () => {
   return (
     <div 
       className="w-full max-w-[1000px] px-4 md:px-4 mx-auto overflow-hidden" 
-      style={{ backgroundColor: 'transparent' }}
+      style={{ 
+        backgroundColor: 'transparent',
+        transform: 'translate3d(0,0,0)',
+        WebkitTransform: 'translate3d(0,0,0)',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden'
+      }}
       ref={carouselRef}
     >
       <CarouselVisibilityHandler />
@@ -48,9 +68,14 @@ const CryptoCarousel: React.FC = () => {
           className={`flex whitespace-nowrap transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
             WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden',
             WebkitPerspective: '1000',
+            perspective: '1000',
             WebkitTransform: 'translate3d(0,0,0)',
-            WebkitTransformStyle: 'preserve-3d'
+            transform: 'translate3d(0,0,0)',
+            WebkitTransformStyle: 'preserve-3d',
+            transformStyle: 'preserve-3d',
+            willChange: 'transform'
           }}
         >
           {/* First set of tokens */}

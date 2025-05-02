@@ -15,7 +15,9 @@ const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }
       className={`flex ${isVisible ? 'continuous-scroll' : ''}`}
       style={{ 
         animationDuration: '30s', // Faster animation (was 45s)
-        backgroundColor: 'transparent'
+        animationPlayState: 'running',
+        backgroundColor: 'transparent',
+        willChange: 'transform'
       }}
       aria-hidden={!isVisible}
     >
