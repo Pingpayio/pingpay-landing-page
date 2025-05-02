@@ -13,7 +13,7 @@ const UseCaseCardSet: React.FC<UseCaseCardSetProps> = ({ useCases, setId, isVisi
     <div 
       className={`flex ${isVisible ? 'continuous-scroll' : ''}`} 
       data-set={setId}
-      style={{ animationDuration: '45s' }} // Slower animation for better readability
+      style={{ animationDuration: '25s' }} // Faster animation (was 45s)
     >
       {useCases.map((useCase, index) => (
         <div 

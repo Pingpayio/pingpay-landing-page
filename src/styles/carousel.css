@@ -20,7 +20,7 @@
   
   /* Improve mobile scrolling */
   .continuous-scroll {
-    animation-duration: 60s !important; /* Slower animation on mobile */
+    animation-duration: 40s !important; /* Faster animation on mobile (was 60s) */
   }
 }
 
@@ -152,7 +152,7 @@ img {
 }
 
 .continuous-scroll {
-  animation: scroll 30s linear infinite; /* Base speed */
+  animation: scroll 20s linear infinite; /* Base speed - increased from 30s to 20s */
   transform: translate3d(0, 0, 0); /* Force GPU acceleration */
   will-change: transform; /* Hint for browser optimization */
 }
@@ -160,7 +160,7 @@ img {
 /* Save battery on devices that prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .continuous-scroll {
-    animation-duration: 60s !important;
+    animation-duration: 40s !important; /* Was 60s */
   }
 }
 
@@ -172,7 +172,7 @@ img {
 /* Optimize touch scrolling for mobile */
 @media (hover: none) and (pointer: coarse) {
   .continuous-scroll {
-    animation: scroll 45s linear infinite; /* Even slower on touch devices */
+    animation: scroll 35s linear infinite; /* Even faster on touch devices - was 45s */
   }
   
   /* Enable momentum-based scrolling on touch devices */
