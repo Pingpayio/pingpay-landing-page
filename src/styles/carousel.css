@@ -108,8 +108,8 @@ img {
 /* Mobile optimization for token mask */
 @media (max-width: 768px) {
   .token-mask {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
 }
 
@@ -122,10 +122,10 @@ img {
 
 /* Ensure all token images have consistent size */
 .token-image {
-  width: 75% !important;
-  height: 75% !important;
-  max-width: 75% !important;
-  max-height: 75% !important;
+  width: 85% !important;
+  height: 85% !important;
+  max-width: 85% !important;
+  max-height: 85% !important;
   object-fit: contain !important;
   position: absolute !important;
   left: 50% !important;

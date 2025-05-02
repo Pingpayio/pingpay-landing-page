@@ -32,8 +32,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
         <div
           className="token-mask relative"
           style={{
-            width: "110px",
-            height: "110px",
+            width: "140px",
+            height: "140px",
             borderRadius: "50%",
             overflow: "hidden",
             display: "flex",
@@ -47,8 +47,8 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
               src={token.imagePath}
               alt={token.id}
               className="token-image"
-              width={75}
-              height={75}
+              width={100}
+              height={100}
               onLoad={handleImageLoad}
             />
           </div>
