@@ -1,14 +1,15 @@
 
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, X, AlertCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -16,7 +17,9 @@ interface WaitlistModalProps {
 }
 
 const formSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address" }),
+  email: z.string()
+    .email({ message: "Please enter a valid email address" })
+    .min(1, { message: "Email is required" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,6 +34,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
     defaultValues: {
       email: "",
     },
+    mode: "onChange",
   });
 
   const onSubmit = async (data: FormValues) => {
@@ -45,6 +49,12 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       setIsSubmitted(true);
+      
+      toast({
+        title: "Success!",
+        description: "Thanks! Your email was added.",
+        variant: "default",
+      });
       
       // Close modal after showing success for 3 seconds
       setTimeout(() => {
@@ -95,6 +105,9 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
               </div>
               <h3 className="text-xl font-medium mb-2">You're on the list!</h3>
               <p className="text-gray-300">
+                Thanks! Your email was added.
+              </p>
+              <p className="text-gray-300 mt-2">
                 We'll let you know as soon as we're live.
               </p>
             </div>
@@ -104,7 +117,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
                 <FormField
                   control={form.control}
                   name="email"
-                  render={({ field }) => (
+                  render={({ field, fieldState }) => (
                     <FormItem>
                       <FormControl>
                         <Input
@@ -114,14 +127,22 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
                           autoComplete="email"
                         />
                       </FormControl>
+                      {fieldState.invalid && fieldState.error && (
+                        <Alert variant="destructive" className="bg-[#301a2a] border-[#d4346e] mt-2 py-2 flex items-center">
+                          <AlertCircle className="h-4 w-4 mr-2" />
+                          <AlertDescription className="text-sm text-[#ff9eb7]">
+                            {fieldState.error.message}
+                          </AlertDescription>
+                        </Alert>
+                      )}
                     </FormItem>
                   )}
                 />
                 
                 <Button 
                   type="submit" 
-                  disabled={isLoading}
-                  className="w-full bg-[#AB9FF2] hover:bg-[#9B87F5] text-[#3D315E] font-medium h-12 rounded-[30px]"
+                  disabled={isLoading || !form.formState.isValid}
+                  className="w-full bg-[#AB9FF2] hover:bg-[#9B87F5] text-[#3D315E] font-medium h-12 rounded-[30px] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? "Submitting..." : "Submit"}
                 </Button>
