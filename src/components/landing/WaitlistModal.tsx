@@ -128,9 +128,11 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
                         />
                       </FormControl>
                       {fieldState.invalid && fieldState.error && (
-                        <Alert variant="destructive" className="bg-[#301a2a] border-[#AB9FF2] mt-2 py-2 flex items-center">
-                          <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0 my-auto" />
-                          <AlertDescription className="text-sm text-[#E5DEFF]">
+                        <Alert variant="destructive" className="bg-[#301a2a] border-[#AB9FF2] mt-2 py-2 flex items-center justify-start">
+                          <div className="flex items-center h-full">
+                            <AlertCircle className="h-4 w-4 mr-2 text-[#E5DEFF]" />
+                          </div>
+                          <AlertDescription className="text-sm text-[#E5DEFF] flex-1 py-0.5">
                             {fieldState.error.message}
                           </AlertDescription>
                         </Alert>
