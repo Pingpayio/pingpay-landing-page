@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react";
 import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
 
@@ -79,8 +80,13 @@ const UseCasesCarousel: React.FC = () => {
     };
 
     setUseCases(shuffleUseCases(allUseCases));
+    
+    // Set visible immediately if we're past the fold
+    if (window.innerHeight > 800) {
+      setIsVisible(true);
+    }
 
-    // Set up Intersection Observer to detect when carousel is in viewport
+    // Set up Intersection Observer with lower threshold for earlier detection
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -91,7 +97,7 @@ const UseCasesCarousel: React.FC = () => {
           }
         }
       },
-      { threshold: 0.1 } // Trigger when 10% of element is visible
+      { threshold: 0.01, rootMargin: "100px" } // Lower threshold, bigger margin
     );
 
     if (carouselRef.current) {
@@ -172,6 +178,35 @@ const UseCasesCarousel: React.FC = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
+
+  // Force visibility check on mount and window resize
+  useEffect(() => {
+    const checkVisibility = () => {
+      if (carouselRef.current) {
+        const rect = carouselRef.current.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          setIsVisible(true);
+        }
+      }
+    };
+    
+    checkVisibility();
+    window.addEventListener('resize', checkVisibility);
+    window.addEventListener('scroll', checkVisibility);
+    
+    // Safeguard - ensure visibility after 1s if still not visible
+    const timer = setTimeout(() => {
+      if (!isVisible) {
+        setIsVisible(true);
+      }
+    }, 1000);
+    
+    return () => {
+      window.removeEventListener('resize', checkVisibility);
+      window.removeEventListener('scroll', checkVisibility);
+      clearTimeout(timer);
+    };
+  }, [isVisible]);
 
   // Simple debounce function
   function debounce(func: Function, wait: number) {

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react";
 import { TokenInfo } from "@/types/token";
 import { allTokens } from "@/data/tokenData";
@@ -11,7 +12,7 @@ const CryptoCarousel: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Randomize tokens and set up visibility observer on component mount
+  // Initialize tokens immediately to avoid empty carousel
   useEffect(() => {
     // Fisher-Yates shuffle algorithm
     const shuffleTokens = (array: TokenInfo[]): TokenInfo[] => {
@@ -24,8 +25,13 @@ const CryptoCarousel: React.FC = () => {
     };
 
     setTokens(shuffleTokens(allTokens));
+    
+    // Set visible immediately if we're past the fold
+    if (window.innerHeight > 800) {
+      setIsVisible(true);
+    }
 
-    // Set up Intersection Observer to detect when carousel is in viewport
+    // Set up Intersection Observer with lower threshold for earlier detection
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -36,7 +42,7 @@ const CryptoCarousel: React.FC = () => {
           }
         }
       },
-      { threshold: 0.1 } // Trigger when 10% of element is visible
+      { threshold: 0.01, rootMargin: "100px" } // Lower threshold, bigger margin
     );
 
     if (carouselRef.current) {
@@ -71,6 +77,35 @@ const CryptoCarousel: React.FC = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
+
+  // Force visibility check on mount and window resize
+  useEffect(() => {
+    const checkVisibility = () => {
+      if (carouselRef.current) {
+        const rect = carouselRef.current.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          setIsVisible(true);
+        }
+      }
+    };
+    
+    checkVisibility();
+    window.addEventListener('resize', checkVisibility);
+    window.addEventListener('scroll', checkVisibility);
+    
+    // Safeguard - ensure visibility after 1s if still not visible
+    const timer = setTimeout(() => {
+      if (!isVisible) {
+        setIsVisible(true);
+      }
+    }, 1000);
+    
+    return () => {
+      window.removeEventListener('resize', checkVisibility);
+      window.removeEventListener('scroll', checkVisibility);
+      clearTimeout(timer);
+    };
+  }, [isVisible]);
 
   return (
     <>

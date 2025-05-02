@@ -22,10 +22,11 @@ const queryClient = new QueryClient({
 const HomePage = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// Loading fallback
+// Improved loading fallback
 const LoadingFallback = () => (
-  <div className="flex items-center justify-center w-full h-screen bg-gradient-to-br from-[#e5deff] to-[#f3eaff]">
-    <div className="animate-pulse text-2xl font-bold text-[#AB9FF2]">Loading...</div>
+  <div className="flex items-center justify-center w-full h-screen bg-gradient-to-br from-[#e5deff] to-[#f3eaff] flex-col">
+    <div className="w-16 h-16 border-4 border-[#AB9FF2] border-t-transparent rounded-full animate-spin mb-4"></div>
+    <div className="text-xl font-medium text-[#3D315E]">Loading your experience...</div>
   </div>
 );
 
