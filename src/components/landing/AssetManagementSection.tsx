@@ -25,7 +25,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Intuitive APIs & SDKs",
-      description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping helps you easily power Agent-to-Agent payments."
+      description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping makes powering Agent-to-Agent payments simple."
     },
     {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
