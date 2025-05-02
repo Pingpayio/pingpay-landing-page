@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
 
+// Updated path to new Ping logo
+const PING_LOGO = "/lovable-uploads/ee74f7f3-7dd6-4d45-a637-dace4ca34ded.png";
+
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -94,7 +97,7 @@ const Navbar: React.FC = () => {
                 aria-label="Scroll to top"
               >
                 <img
-                  src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
+                  src={PING_LOGO} 
                   alt="Ping Logo"
                   className="h-6" 
                 />

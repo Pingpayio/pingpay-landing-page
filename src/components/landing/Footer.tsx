@@ -1,8 +1,7 @@
-
 import React from "react";
 
-// Paths to logo & icons
-const PING_LOGO = "/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png";
+// Updated paths to logo & icons
+const PING_LOGO = "/lovable-uploads/ee74f7f3-7dd6-4d45-a637-dace4ca34ded.png";
 const X_ICON = "/lovable-uploads/305c55f4-2e66-48de-81d8-26fcf0ac08d7.png";
 const GITBOOK_ICON = "/lovable-uploads/b82a9879-1700-4db3-b219-6012eb839715.png";
 
@@ -48,6 +47,7 @@ const Footer: React.FC = () => {
           </span>
         </div>
       </div>
+      
       {/* Right: Headings + icons with vertical alignment */}
       <div className="flex flex-col-reverse md:flex-col h-full justify-between md:justify-between items-center md:items-end w-full md:w-auto pl-0 md:pl-8 mt-4 md:mt-0">
         {/* Social Icons (aligned horizontally w/ subtext) */}
