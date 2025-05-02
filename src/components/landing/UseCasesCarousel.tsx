@@ -1,13 +1,17 @@
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
+import UseCaseCardSet from "./usecases/UseCaseCardSet";
+import CardHeightAdjuster from "./usecases/CardHeightAdjuster";
+import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
+import { useCarouselVisibility } from "@/hooks/useCarouselVisibility";
+import { shuffleArray } from "@/utils/carouselUtils";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
-  const [isVisible, setIsVisible] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
+  const { isVisible, carouselRef } = useCarouselVisibility();
+  
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
     {
@@ -67,220 +71,35 @@ const UseCasesCarousel: React.FC = () => {
     }
   ];
 
-  // Randomize use cases on component mount and set up visibility observer
+  // Randomize use cases on component mount
   useEffect(() => {
-    // Fisher-Yates shuffle algorithm
-    const shuffleUseCases = (array: UseCaseCardProps[]): UseCaseCardProps[] => {
-      const shuffled = [...array];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      return shuffled;
-    };
-
-    setUseCases(shuffleUseCases(allUseCases));
-    
-    // Set visible immediately if we're past the fold
-    if (window.innerHeight > 800) {
-      setIsVisible(true);
-    }
-
-    // Set up Intersection Observer with lower threshold for earlier detection
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-          // Once visible, no need to keep observing
-          if (carouselRef.current) {
-            observer.unobserve(carouselRef.current);
-          }
-        }
-      },
-      { threshold: 0.01, rootMargin: "100px" } // Lower threshold, bigger margin
-    );
-
-    if (carouselRef.current) {
-      observer.observe(carouselRef.current);
-    }
-
-    return () => {
-      if (carouselRef.current) {
-        observer.unobserve(carouselRef.current);
-      }
-    };
+    setUseCases(shuffleArray(allUseCases));
   }, []);
-
-  // Function to ensure all use case cards have the same height
-  useEffect(() => {
-    const adjustCardHeights = () => {
-      // Reset heights first
-      const cards = document.querySelectorAll('.use-case-card');
-      cards.forEach((card) => {
-        (card as HTMLElement).style.height = 'auto';
-      });
-      
-      // Group cards by their container (first/second set)
-      const firstSet = document.querySelectorAll('[data-set="first"] .use-case-card');
-      const secondSet = document.querySelectorAll('[data-set="second"] .use-case-card');
-      
-      // Find max height in each set
-      let maxHeightFirst = 0;
-      firstSet.forEach((card) => {
-        maxHeightFirst = Math.max(maxHeightFirst, (card as HTMLElement).offsetHeight);
-      });
-      
-      let maxHeightSecond = 0;
-      secondSet.forEach((card) => {
-        maxHeightSecond = Math.max(maxHeightSecond, (card as HTMLElement).offsetHeight);
-      });
-      
-      // Use the overall max height for all cards
-      const maxHeight = Math.max(maxHeightFirst, maxHeightSecond);
-      
-      if (maxHeight > 0) {
-        cards.forEach((card) => {
-          (card as HTMLElement).style.height = `${maxHeight}px`;
-        });
-      }
-    };
-    
-    // Run the adjustment after cards render
-    setTimeout(adjustCardHeights, 200);
-    
-    // Add resize listener
-    const debouncedResize = debounce(adjustCardHeights, 250);
-    window.addEventListener('resize', debouncedResize);
-    
-    return () => {
-      window.removeEventListener('resize', debouncedResize);
-    };
-  }, [useCases, isVisible]);
-
-  // Pause animations when tab is not visible
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      const isHidden = document.hidden;
-      const scrollElements = document.querySelectorAll('.continuous-scroll');
-      
-      scrollElements.forEach(el => {
-        if (isHidden) {
-          (el as HTMLElement).style.animationPlayState = 'paused';
-        } else {
-          (el as HTMLElement).style.animationPlayState = 'running';
-        }
-      });
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
-
-  // Force visibility check on mount and window resize
-  useEffect(() => {
-    const checkVisibility = () => {
-      if (carouselRef.current) {
-        const rect = carouselRef.current.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
-          setIsVisible(true);
-        }
-      }
-    };
-    
-    checkVisibility();
-    window.addEventListener('resize', checkVisibility);
-    window.addEventListener('scroll', checkVisibility);
-    
-    // Safeguard - ensure visibility after 1s if still not visible
-    const timer = setTimeout(() => {
-      if (!isVisible) {
-        setIsVisible(true);
-      }
-    }, 1000);
-    
-    return () => {
-      window.removeEventListener('resize', checkVisibility);
-      window.removeEventListener('scroll', checkVisibility);
-      clearTimeout(timer);
-    };
-  }, [isVisible]);
-
-  // Simple debounce function
-  function debounce(func: Function, wait: number) {
-    let timeout: number | null = null;
-    return function(...args: any[]) {
-      if (timeout !== null) {
-        window.clearTimeout(timeout);
-      }
-      timeout = window.setTimeout(() => {
-        func.apply(null, args);
-      }, wait);
-    };
-  }
 
   return (
     <div 
       className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center" 
       ref={carouselRef}
     >
+      {/* Utility components for side effects */}
+      <CardHeightAdjuster useCases={useCases} isVisible={isVisible} />
+      <CarouselVisibilityHandler />
+      
       <div className="relative overflow-hidden w-full">
         <div className={`flex whitespace-nowrap transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* First set of use cases */}
-          <div 
-            className={`flex ${isVisible ? 'continuous-scroll' : ''}`} 
-            data-set="first"
-            style={{ animationDuration: '45s' }} // Slower animation for better readability
-          >
-            {useCases.map((useCase, index) => (
-              <div 
-                key={`first-${index}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ 
-                  minWidth: "220px", 
-                  maxWidth: "240px",
-                  scrollSnapAlign: "start" // For better mobile scrolling
-                }}
-              >
-                <div className="h-full use-case-card">
-                  <UseCaseCard
-                    title={useCase.title}
-                    description={useCase.description}
-                    imageSrc={useCase.imageSrc}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <UseCaseCardSet 
+            useCases={useCases} 
+            setId="first" 
+            isVisible={isVisible} 
+          />
 
           {/* Second set of use cases - creates the continuous effect */}
-          <div 
-            className={`flex ${isVisible ? 'continuous-scroll' : ''}`} 
-            data-set="second"
-            style={{ animationDuration: '45s' }} // Match the first set
-          >
-            {useCases.map((useCase, index) => (
-              <div 
-                key={`second-${index}`} 
-                className="shrink-0 pl-4 inline-flex flex-col items-center"
-                style={{ 
-                  minWidth: "220px", 
-                  maxWidth: "240px",
-                  scrollSnapAlign: "start" // For better mobile scrolling
-                }}
-              >
-                <div className="h-full use-case-card">
-                  <UseCaseCard
-                    title={useCase.title}
-                    description={useCase.description}
-                    imageSrc={useCase.imageSrc}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <UseCaseCardSet 
+            useCases={useCases} 
+            setId="second" 
+            isVisible={isVisible} 
+          />
         </div>
       </div>
     </div>
