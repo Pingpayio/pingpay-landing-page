@@ -5,12 +5,14 @@ import CardHeightAdjuster from "./usecases/CardHeightAdjuster";
 import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
 import { useCarouselVisibility } from "@/hooks/useCarouselVisibility";
 import { shuffleArray } from "@/utils/carouselUtils";
+import { useIsMobile } from "@/hooks/use-mobile";
 import type { UseCaseCardProps } from "./UseCaseCard";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
   const [useCases, setUseCases] = useState<UseCaseCardProps[]>([]);
   const { isVisible, carouselRef } = useCarouselVisibility();
+  const isMobile = useIsMobile();
   
   // All use cases with consistent background color
   const allUseCases: UseCaseCardProps[] = [
@@ -77,11 +79,46 @@ const UseCasesCarousel: React.FC = () => {
       setUseCases(shuffleArray(allUseCases));
     }
   }, [useCases.length]);
+  
+  // Force reflow on mobile devices when visibility changes
+  useEffect(() => {
+    if (isVisible) {
+      // Force a reflow to trigger animation
+      if (carouselRef.current) {
+        const element = carouselRef.current;
+        // Reading offsetHeight forces a reflow
+        const height = element.offsetHeight;
+        
+        // Additional mobile-specific animation restarting
+        if (isMobile) {
+          const scrollElements = element.querySelectorAll('.continuous-scroll');
+          scrollElements.forEach((el: HTMLElement) => {
+            // Force animation restart by toggling className
+            el.classList.remove('continuous-scroll');
+            // Force reflow with proper type casting
+            void el.offsetWidth;
+            // Add class back
+            setTimeout(() => {
+              el.classList.add('continuous-scroll');
+            }, 10);
+          });
+        }
+      }
+    }
+  }, [isVisible, isMobile]);
 
   return (
     <div 
       className="px-4 md:px-10 w-full max-w-[1000px] mx-auto overflow-hidden flex-grow flex items-center" 
       ref={carouselRef}
+      style={{
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        WebkitPerspective: '1000',
+        perspective: '1000',
+        WebkitTransform: 'translate3d(0,0,0)',
+        transform: 'translate3d(0,0,0)',
+      }}
     >
       {/* Utility components for side effects */}
       <CardHeightAdjuster useCases={useCases} isVisible={isVisible} />

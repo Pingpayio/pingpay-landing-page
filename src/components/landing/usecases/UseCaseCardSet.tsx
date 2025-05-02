@@ -13,7 +13,17 @@ const UseCaseCardSet: React.FC<UseCaseCardSetProps> = ({ useCases, setId, isVisi
     <div 
       className={`flex ${isVisible ? 'continuous-scroll' : ''}`} 
       data-set={setId}
-      style={{ animationDuration: '25s' }} // Faster animation (was 45s)
+      style={{ 
+        animationDuration: '25s',
+        animationPlayState: 'running',
+        willChange: 'transform',
+        transform: 'translate3d(0,0,0)',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        WebkitPerspective: '1000',
+        perspective: '1000'
+      }}
+      aria-hidden={!isVisible}
     >
       {useCases.map((useCase, index) => (
         <div 
@@ -22,7 +32,10 @@ const UseCaseCardSet: React.FC<UseCaseCardSetProps> = ({ useCases, setId, isVisi
           style={{ 
             minWidth: "220px", 
             maxWidth: "240px",
-            scrollSnapAlign: "start" // For better mobile scrolling
+            scrollSnapAlign: "start", // For better mobile scrolling
+            transform: 'translate3d(0,0,0)',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden'
           }}
         >
           <div className="h-full use-case-card">
