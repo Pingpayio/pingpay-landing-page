@@ -1,3 +1,4 @@
+
 import React from "react";
 
 // Updated paths to logo & icons
@@ -42,7 +43,7 @@ const Footer: React.FC = () => {
           </button>
         </div>
         <div>
-          <span className="text-xs md:text-sm text-[#E9DFFC] font-normal select-none block leading-[1.4] whitespace-nowrap overflow-hidden text-ellipsis">
+          <span className="text-xs md:text-sm text-white font-medium select-none block leading-[1.4] whitespace-nowrap overflow-hidden text-ellipsis">
             The Payment Layer for the Future of Commerce
           </span>
         </div>
