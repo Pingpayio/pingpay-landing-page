@@ -36,7 +36,7 @@ export const CarouselStyles: React.FC = () => (
         padding: 0 !important;
         margin: 0 !important;
         -webkit-box-shadow: none !important;
-        image-rendering: -webkit-optimize-contrast;
+        image-rendering: auto;
         transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-font-smoothing: antialiased;
@@ -55,14 +55,14 @@ export const CarouselStyles: React.FC = () => (
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
-        image-rendering: -webkit-optimize-contrast;
+        image-rendering: auto;
         transform: translateZ(0);
         backface-visibility: hidden;
       }
 
       .token-mask {
-        width: 180px;
-        height: 180px;
+        width: 140px;
+        height: 140px;
         border-radius: 50%;
         overflow: hidden;
         display: flex !important;
@@ -86,10 +86,10 @@ export const CarouselStyles: React.FC = () => (
 
       /* Ensure all token images have consistent size */
       .token-image {
-        width: 75% !important;
-        height: 75% !important;
-        max-width: 75% !important;
-        max-height: 75% !important;
+        width: 85% !important;
+        height: 85% !important;
+        max-width: 85% !important;
+        max-height: 85% !important;
         object-fit: contain !important;
         position: absolute !important;
         left: 50% !important;
@@ -131,8 +131,8 @@ export const imageContainerStyle: React.CSSProperties = {
   backgroundColor: 'transparent',
   isolation: 'isolate',
   position: 'relative',
-  width: '180px',
-  height: '180px',
+  width: '140px',
+  height: '140px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -153,8 +153,8 @@ export const imageStyle: React.CSSProperties = {
   border: 'none',
   outline: 'none',
   boxShadow: 'none',
-  width: '75%',
-  height: '75%',
+  width: '85%',
+  height: '85%',
   objectFit: 'contain',
   display: 'block',
   mixBlendMode: 'normal' as const, // Ensures TS compatibility
@@ -166,6 +166,6 @@ export const imageStyle: React.CSSProperties = {
   opacity: 1,
   padding: 0,
   margin: 0,
-  imageRendering: '-webkit-optimize-contrast',
+  imageRendering: 'auto',
   backfaceVisibility: 'hidden',
 };

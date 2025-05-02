@@ -17,6 +17,30 @@
     visibility: visible !important;
     opacity: 1 !important;
   }
+  
+  /* Improve mobile scrolling */
+  .continuous-scroll {
+    animation-duration: 15s !important; /* Even faster animation on mobile (was 20s) */
+    animation-iteration-count: infinite !important;
+    animation-timing-function: linear !important;
+    animation-fill-mode: forwards !important;
+    animation-play-state: running !important;
+    animation-name: scroll !important;
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000px !important;
+    -webkit-perspective: 1000px !important;
+    will-change: transform !important;
+  }
+
+  /* Force use case card animation on mobile */
+  [data-set="first"].continuous-scroll,
+  [data-set="second"].continuous-scroll {
+    animation-play-state: running !important;
+    animation-duration: 15s !important;
+  }
 }
 
 /* Enhanced global carousel styling with GPU acceleration */
@@ -35,11 +59,12 @@
   padding: 0 !important;
   margin: 0 !important;
   -webkit-box-shadow: none !important;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  will-change: transform; /* Hint for browser optimization */
 }
 
 /* User-suggested styles for fixing rendering artifacts */
@@ -50,7 +75,7 @@
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  image-rendering: crisp-edges;
+  image-rendering: auto; /* Better for most devices */
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0); /* Force GPU rendering */
   -webkit-transform: translate3d(0, 0, 0);
@@ -68,7 +93,7 @@
 .carousel-item,
 .carousel-item img {
   display: flex !important;
-  min-height: 180px !important;
+  min-height: 100px !important;
 }
 
 img {
@@ -77,14 +102,14 @@ img {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
 .token-mask {
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
   display: flex !important;
@@ -99,6 +124,14 @@ img {
   box-shadow: none !important;
 }
 
+/* Mobile optimization for token mask */
+@media (max-width: 768px) {
+  .token-mask {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 /* Remove the inner mask that may be causing a faint line */
 .token-mask::after,
 .token-mask::before {
@@ -108,10 +141,10 @@ img {
 
 /* Ensure all token images have consistent size */
 .token-image {
-  width: 75% !important;
-  height: 75% !important;
-  max-width: 75% !important;
-  max-height: 75% !important;
+  width: 85% !important;
+  height: 85% !important;
+  max-width: 85% !important;
+  max-height: 85% !important;
   object-fit: contain !important;
   position: absolute !important;
   left: 50% !important;
@@ -127,7 +160,7 @@ img {
   mix-blend-mode: normal !important;
 }
 
-/* Continuous carousel scrolling animation */
+/* Continuous carousel scrolling animation with optimizations */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -138,7 +171,48 @@ img {
 }
 
 .continuous-scroll {
-  animation: scroll 30s linear infinite; /* Slower, consistent speed */
+  animation: scroll 20s linear infinite; /* Base speed - increased from 30s to 20s */
   transform: translate3d(0, 0, 0); /* Force GPU acceleration */
   will-change: transform; /* Hint for browser optimization */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Apply animation to both carousels */
+[data-set="first"].continuous-scroll,
+[data-set="second"].continuous-scroll,
+[data-prefix="first"].continuous-scroll,
+[data-prefix="second"].continuous-scroll {
+  animation-name: scroll;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+/* Save battery on devices that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .continuous-scroll {
+    animation-duration: 40s !important; /* Was 60s */
+  }
+}
+
+/* Prevent layout shifts during loading */
+.use-case-card {
+  min-height: 300px;
+}
+
+/* Optimize touch scrolling for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .continuous-scroll {
+    animation: scroll 15s linear infinite !important; /* Even faster on touch devices - was 20s */
+    animation-play-state: running !important;
+  }
+  
+  /* Enable momentum-based scrolling on touch devices */
+  .use-case-card {
+    scroll-snap-align: start;
+  }
 }

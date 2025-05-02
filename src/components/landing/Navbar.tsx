@@ -1,7 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
+
+// Updated path to new Ping logo
+const PING_LOGO = "/lovable-uploads/ee74f7f3-7dd6-4d45-a637-dace4ca34ded.png";
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -95,7 +97,7 @@ const Navbar: React.FC = () => {
                 aria-label="Scroll to top"
               >
                 <img
-                  src="/lovable-uploads/1e51f881-cf85-4f9c-929a-501fd222233c.png" 
+                  src={PING_LOGO} 
                   alt="Ping Logo"
                   className="h-6" 
                 />
@@ -104,7 +106,7 @@ const Navbar: React.FC = () => {
             
             <div className="hidden md:flex items-center gap-8 text-white">
               <button 
-                onClick={() => scrollToSection('discover-section', true)} 
+                onClick={() => scrollToSection('asset-management', true)} 
                 className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
               >
                 Features
@@ -144,7 +146,7 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col p-6 h-full">
             <div className="flex flex-col space-y-6 text-white text-lg mt-4">
               <div 
-                onClick={() => scrollToSection('discover-section', true)} 
+                onClick={() => scrollToSection('asset-management', true)} 
                 className="flex items-center justify-between border-b border-white/10 pb-4 cursor-pointer hover:text-[#AB9FF2] transition-colors duration-300"
               >
                 <span className="text-base font-medium">Features</span>

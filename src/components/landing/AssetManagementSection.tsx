@@ -25,7 +25,7 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Intuitive APIs & SDKs",
-      description: "We package our payment solutions into easy to use APIs and SDKs. Focus on your payment use cases, rather than the complexities of the infrastructure."
+      description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping makes powering Agent-to-Agent payments simple."
     },
     {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
@@ -41,13 +41,13 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Onramp",
-      description: "Seamlessly Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Zcash, Gnosis and Blackdragon.",
+      description: "Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Zcash, Gnosis and Blackdragon.",
       comingSoon: true
     },
     {
       icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
       title: "AI Assistant",
-      description: "The personal payment assistant to seamlessly make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
+      description: "The personal payment assistant to make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
       comingSoon: true
     }
   ];

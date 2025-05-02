@@ -1,7 +1,6 @@
 
-import React from 'react';
+import React, { useState, memo } from 'react';
 import { TokenInfo } from '@/types/token';
-import { imageContainerStyle, imageStyle, containerStyle } from './CryptoCarouselStyles';
 import CarouselImage from './CarouselImage';
 
 interface TokenItemProps {
@@ -10,73 +9,54 @@ interface TokenItemProps {
 }
 
 const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <div
       key={`${prefix}-${token.id}`}
-      className="shrink-0 pl-4 inline-flex flex-col items-center carousel-item carousel-slide"
+      className="shrink-0 pl-4 inline-flex flex-col items-center will-change-transform"
       style={{ 
         minWidth: "140px", 
-        ...containerStyle,
-        backgroundColor: 'transparent',
-        background: 'transparent',
-        boxShadow: 'none',
-        border: 'none',
-        outline: 'none',
-        padding: 0,
-        transform: 'translate3d(0, 0, 0)',
+        maxWidth: "140px",
+        scrollSnapAlign: "start", // For better mobile scrolling
+        backgroundColor: 'transparent'
       }}
     >
       <div
-        className="flex flex-col items-center p-4 transition-all duration-300 hover:scale-105 carousel-item carousel-slide"
-        style={{
-          ...containerStyle,
-          backgroundColor: 'transparent',
-          background: 'transparent',
-          boxShadow: 'none',
-          border: 'none',
-          outline: 'none',
-          transform: 'translate3d(0, 0, 0)',
-        }}
+        className="flex flex-col items-center p-2 md:p-4 transition-all duration-300 hover:scale-105"
       >
         <div
-          className="token-mask relative carousel-slide"
+          className="token-mask relative"
           style={{
-            ...imageContainerStyle,
-            visibility: "visible",
-            opacity: 1,
+            width: "140px",
+            height: "140px",
+            borderRadius: "50%",
+            overflow: "hidden",
             display: "flex",
-            backgroundColor: 'transparent',
-            background: 'transparent',
-            boxShadow: 'none',
-            border: 'none',
-            outline: 'none',
-            transform: 'translate3d(0, 0, 0)',
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: 'transparent'
           }}
         >
-          <CarouselImage
-            src={token.imagePath}
-            alt={token.id}
-            className="token-image relative z-10"
-            style={{
-              ...imageStyle,
-              visibility: "visible",
-              opacity: 1,
-              backgroundColor: 'transparent',
-              background: 'transparent',
-              boxShadow: 'none',
-              border: 'none',
-              outline: 'none',
-              transform: 'translate3d(0, 0, 0)',
-              imageRendering: 'crisp-edges',
-              WebkitMaskImage: 'none',
-            }}
-            width={120}
-            height={120}
-          />
+          <div className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <CarouselImage
+              src={token.imagePath}
+              alt={token.id}
+              className="token-image"
+              width={100}
+              height={100}
+              onLoad={handleImageLoad}
+            />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default TokenItem;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(TokenItem);
