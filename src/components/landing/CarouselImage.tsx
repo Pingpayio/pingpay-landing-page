@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { memo } from "react";
 
 interface CarouselImageProps {
   src: string;
@@ -51,19 +51,15 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       style={{
         ...style,
         backgroundColor: 'transparent',
-        background: 'transparent',
         border: 'none',
         outline: 'none',
         boxShadow: 'none',
         mixBlendMode: 'normal',
-        transform: 'translate3d(0, 0, 0)',
+        transform: 'translate3d(0, 0, 0)', // Force GPU acceleration
         imageRendering: 'auto',
         backfaceVisibility: 'hidden',
-        padding: 0,
-        margin: 0,
+        willChange: 'transform', // Hint for browser optimization
         filter: 'none',
-        WebkitFilter: 'none',
-        WebkitMaskImage: 'none',
       }}
       draggable={false}
       decoding="async"
@@ -73,4 +69,5 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
   );
 };
 
-export default CarouselImage;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(CarouselImage);

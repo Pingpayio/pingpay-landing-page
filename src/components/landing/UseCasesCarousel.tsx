@@ -1,11 +1,11 @@
 
-import React, { useState, useEffect } from "react";
-import UseCaseCard, { UseCaseCardProps } from "./UseCaseCard";
+import React, { useState, useEffect, memo } from "react";
 import UseCaseCardSet from "./usecases/UseCaseCardSet";
 import CardHeightAdjuster from "./usecases/CardHeightAdjuster";
 import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
 import { useCarouselVisibility } from "@/hooks/useCarouselVisibility";
 import { shuffleArray } from "@/utils/carouselUtils";
+import type { UseCaseCardProps } from "./UseCaseCard";
 
 const UseCasesCarousel: React.FC = () => {
   // State to store randomized use cases
@@ -71,10 +71,12 @@ const UseCasesCarousel: React.FC = () => {
     }
   ];
 
-  // Randomize use cases on component mount
+  // Randomize use cases on component mount, only if empty
   useEffect(() => {
-    setUseCases(shuffleArray(allUseCases));
-  }, []);
+    if (useCases.length === 0) {
+      setUseCases(shuffleArray(allUseCases));
+    }
+  }, [useCases.length]);
 
   return (
     <div 
@@ -106,4 +108,4 @@ const UseCasesCarousel: React.FC = () => {
   );
 };
 
-export default UseCasesCarousel;
+export default memo(UseCasesCarousel);

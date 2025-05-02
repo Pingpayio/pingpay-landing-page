@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { memo } from "react";
 import UseCaseCard, { UseCaseCardProps } from "../UseCaseCard";
 
 interface UseCaseCardSetProps {
@@ -18,7 +18,7 @@ const UseCaseCardSet: React.FC<UseCaseCardSetProps> = ({ useCases, setId, isVisi
       {useCases.map((useCase, index) => (
         <div 
           key={`${setId}-${index}`} 
-          className="shrink-0 pl-4 inline-flex flex-col items-center"
+          className="shrink-0 pl-4 inline-flex flex-col items-center will-change-transform"
           style={{ 
             minWidth: "220px", 
             maxWidth: "240px",
@@ -38,4 +38,4 @@ const UseCaseCardSet: React.FC<UseCaseCardSetProps> = ({ useCases, setId, isVisi
   );
 };
 
-export default UseCaseCardSet;
+export default memo(UseCaseCardSet);

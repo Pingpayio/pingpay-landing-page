@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { memo } from "react";
 import { TokenInfo } from "@/types/token";
 import TokenItem from "../TokenItem";
 
@@ -13,10 +13,7 @@ const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }
   return (
     <div 
       className={`flex ${isVisible ? 'continuous-scroll' : ''}`}
-      style={{
-        backgroundColor: 'transparent',
-        background: 'transparent'
-      }}
+      style={{ backgroundColor: 'transparent' }}
       aria-hidden={!isVisible}
     >
       {tokens.map((token) => (
@@ -26,4 +23,5 @@ const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }
   );
 };
 
-export default TokenCardSet;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(TokenCardSet);

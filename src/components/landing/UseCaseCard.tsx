@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import CarouselImage from "./CarouselImage";
 
@@ -37,11 +37,6 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
               className="w-[95%] h-[95%] object-contain relative z-10"
               width={160}
               height={160}
-              style={{
-                visibility: "visible",
-                opacity: 1,
-                display: "block"
-              }}
               onLoad={handleImageLoad}
             />
           </div>
@@ -53,4 +48,5 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({
   );
 };
 
-export default UseCaseCard;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(UseCaseCard);
