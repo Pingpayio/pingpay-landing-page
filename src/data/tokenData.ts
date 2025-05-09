@@ -3,8 +3,7 @@ import { TokenInfo } from '@/types/token';
 
 // All tokens including the new ones
 export const allTokens: TokenInfo[] = [
-  // Updated images for Bitcoin (coin1) with borderless version
-  { id: "coin1", imagePath: "/lovable-uploads/14f94bd8-f17a-420d-833c-38912b7878d8.png" },
+  // Removed Bitcoin with borders (coin1)
   { id: "coin2", imagePath: "/lovable-uploads/6d4ff297-c8d2-4651-9da4-14185bef8a7f.png" },
   { id: "coin3", imagePath: "/lovable-uploads/2dd79dd2-c23f-4f1e-b1bd-73afcae0ea29.png" },
   { id: "coin4", imagePath: "/lovable-uploads/b45c55a9-c1d6-485c-8707-54c039d4d5ef.png" },
