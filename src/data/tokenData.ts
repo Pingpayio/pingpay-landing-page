@@ -21,4 +21,3 @@ export const allTokens: TokenInfo[] = [
   { id: "coin20", imagePath: "/lovable-uploads/5248b9e5-d6ed-4e1a-a022-e0ee1aa4e09f.png" }, 
   { id: "coin23", imagePath: "/lovable-uploads/5c1f09b7-82a0-45b2-8b42-a1f94746e556.png" }, 
 ];
-

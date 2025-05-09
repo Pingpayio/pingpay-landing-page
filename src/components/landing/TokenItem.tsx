@@ -15,9 +15,12 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
     setImageLoaded(true);
   };
 
+  // Generate a unique key to prevent caching
+  const uniqueKey = `${prefix}-${token.id}-${Date.now()}`;
+
   return (
     <div
-      key={`${prefix}-${token.id}`}
+      key={uniqueKey}
       className="shrink-0 pl-4 inline-flex flex-col items-center will-change-transform"
       style={{ 
         minWidth: "140px", 
@@ -44,7 +47,7 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
         >
           <div className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
             <CarouselImage
-              src={token.imagePath}
+              src={`${token.imagePath}?v=${Date.now()}`}
               alt={token.id}
               className="token-image"
               width={100}

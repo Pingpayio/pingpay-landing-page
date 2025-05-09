@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TokenInfo } from "@/types/token";
 import { allTokens } from "@/data/tokenData";
 import TokenCardSet from "./tokens/TokenCardSet";
@@ -9,18 +9,23 @@ import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const CryptoCarousel: React.FC = () => {
+  // Use key for forcing re-render
+  const [carouselKey, setCarouselKey] = useState(Date.now());
   // State to store randomized tokens
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
   const { isVisible, carouselRef } = useCarouselVisibility({ immediatelyVisible: true });
   const isMobile = useIsMobile();
-
-  // Initialize tokens immediately to avoid empty carousel
+  
+  // Force a complete refresh of tokens on mount
   useEffect(() => {
-    // Use memo to avoid unnecessary re-renders
-    if (tokens.length === 0) {
+    // Clear any potentially cached tokens and create a new shuffled array
+    setTokens([]);
+    setTimeout(() => {
       setTokens(shuffleArray(allTokens));
-    }
-  }, [tokens.length]);
+      // Update key to force full re-render
+      setCarouselKey(Date.now());
+    }, 50);
+  }, []);
 
   // Force reflow on mobile devices when visibility changes
   useEffect(() => {
@@ -49,8 +54,14 @@ const CryptoCarousel: React.FC = () => {
     }
   }, [isVisible, isMobile]);
 
+  // If no tokens, show nothing until loaded
+  if (tokens.length === 0) {
+    return null;
+  }
+
   return (
     <div 
+      key={carouselKey}
       className="w-full max-w-[1000px] px-4 md:px-4 mx-auto overflow-hidden" 
       style={{ 
         backgroundColor: 'transparent',
