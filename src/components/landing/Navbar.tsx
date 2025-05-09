@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -117,8 +118,14 @@ const Navbar: React.FC = () => {
               >
                 Use Cases
               </button>
-              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Docs</button>
-              <button className="navbar-button hover:text-[#AB9FF2] transition-all duration-300">Community</button>
+              <a 
+                href="https://x.com/pingpay_io" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="navbar-button hover:text-[#AB9FF2] transition-all duration-300"
+              >
+                Community
+              </a>
             </div>
             
             <div className="flex items-center gap-2">
@@ -159,14 +166,15 @@ const Navbar: React.FC = () => {
                 <span className="text-base font-medium">Use Cases</span>
                 <ChevronDown size={18} />
               </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300">
-                <span className="text-base font-medium">Docs</span>
-                <ChevronDown size={18} />
-              </div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300">
+              <a 
+                href="https://x.com/pingpay_io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between border-b border-white/10 pb-4 hover:text-[#AB9FF2] transition-colors duration-300"
+              >
                 <span className="text-base font-medium">Community</span>
                 <ChevronDown size={18} />
-              </div>
+              </a>
             </div>
             
             <div className="mt-auto mb-8">
