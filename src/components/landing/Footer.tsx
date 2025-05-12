@@ -4,7 +4,6 @@ import React from "react";
 // Updated paths to logo & icons
 const PING_LOGO = "/lovable-uploads/ee74f7f3-7dd6-4d45-a637-dace4ca34ded.png";
 const X_ICON = "/lovable-uploads/305c55f4-2e66-48de-81d8-26fcf0ac08d7.png";
-const GITBOOK_ICON = "/lovable-uploads/b82a9879-1700-4db3-b219-6012eb839715.png";
 
 const Footer: React.FC = () => {
   // Function to scroll to the top of the page
@@ -49,10 +48,9 @@ const Footer: React.FC = () => {
         </div>
       </div>
       
-      {/* Right: Headings + icons with vertical alignment */}
-      <div className="flex flex-col-reverse md:flex-col h-full justify-between md:justify-between items-center md:items-end w-full md:w-auto pl-0 md:pl-8 mt-4 md:mt-0">
-        {/* Social Icons (aligned horizontally w/ subtext) */}
-        <div className="flex flex-row gap-4 mb-2 md:mb-0 justify-center md:justify-end items-center" style={{ minHeight: 28 }}>
+      {/* Right: Only X icon with proper alignment */}
+      <div className="flex md:self-center h-full justify-center md:justify-end items-center w-full md:w-auto pl-0 md:pl-8 mt-4 md:mt-0">
+        <div className="flex flex-row justify-center md:justify-end items-center" style={{ minHeight: 28 }}>
           <a
             href="https://x.com/pingpay_io"
             target="_blank"
@@ -68,32 +66,6 @@ const Footer: React.FC = () => {
               draggable={false}
             />
           </a>
-          <span className="cursor-default">
-            <img
-              src={GITBOOK_ICON}
-              alt="GitBook Icon"
-              className="h-4 w-4 md:h-[18px] md:w-[18px] "
-              style={{ height: 16, width: 16 }}
-              draggable={false}
-            />
-          </span>
-        </div>
-        <div className="flex flex-row gap-5 md:gap-8 mb-2 md:mb-0">
-          <button 
-            className="text-xs md:text-sm text-white font-medium select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
-          >
-            Brand Kit
-          </button>
-          <button 
-            className="text-xs md:text-sm text-white font-medium select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
-          >
-            Privacy Policy
-          </button>
-          <button 
-            className="text-xs md:text-sm text-white font-medium select-none navbar-button hover:text-[#AB9FF2] transition-all duration-300"
-          >
-            Terms &amp; Conditions
-          </button>
         </div>
       </div>
     </footer>
