@@ -15,6 +15,9 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
     setImageLoaded(true);
   };
 
+  // Add cache-busting parameter
+  const imagePathWithCacheBust = `${token.imagePath}?v=${Date.now()}`;
+
   return (
     <div
       key={`${prefix}-${token.id}`}
@@ -40,17 +43,25 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            border: "none",
+            outline: "none",
+            boxShadow: "none"
           }}
         >
           <div className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
             <CarouselImage
-              src={token.imagePath}
+              src={imagePathWithCacheBust}
               alt={token.id}
               className="token-image"
               width={100}
               height={100}
               onLoad={handleImageLoad}
+              style={{
+                border: "none",
+                outline: "none",
+                boxShadow: "none"
+              }}
             />
           </div>
         </div>

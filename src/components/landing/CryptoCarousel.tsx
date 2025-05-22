@@ -9,8 +9,9 @@ import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const CryptoCarousel: React.FC = () => {
-  // State to store randomized tokens
+  // State to store randomized tokens and force refreshes
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
+  const [refreshKey, setRefreshKey] = useState(Date.now()); // Add a refresh key
   const { isVisible, carouselRef } = useCarouselVisibility({ immediatelyVisible: true });
   const isMobile = useIsMobile();
 
@@ -22,9 +23,12 @@ const CryptoCarousel: React.FC = () => {
     }
   }, [tokens.length]);
 
-  // Force reflow on mobile devices when visibility changes
+  // Force token refresh when visibility changes
   useEffect(() => {
     if (isVisible) {
+      // Force refresh of tokens to clear any cached images
+      setRefreshKey(Date.now());
+      
       // Force a reflow to trigger animation
       if (carouselRef.current) {
         const element = carouselRef.current;
@@ -60,6 +64,7 @@ const CryptoCarousel: React.FC = () => {
         WebkitBackfaceVisibility: 'hidden'
       }}
       ref={carouselRef}
+      key={`carousel-${refreshKey}`} // Add key to force re-render
     >
       <CarouselVisibilityHandler />
       
