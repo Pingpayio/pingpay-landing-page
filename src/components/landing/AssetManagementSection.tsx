@@ -126,12 +126,7 @@ const AssetManagementSection: React.FC = () => {
     <section 
       id="asset-management" 
       className="w-full py-16 md:py-24 px-4 relative overflow-hidden" 
-      style={{
-        backgroundImage: `linear-gradient(45deg, 
-                  #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
-        backgroundSize: '400% 400%',
-        animation: 'flowing-gradient 15s ease infinite'
-      }}
+      style={{ backgroundColor: '#E5DEFF' }}
       ref={sectionRef}
     >
       <div className="max-w-[1080px] mx-auto relative z-10">
