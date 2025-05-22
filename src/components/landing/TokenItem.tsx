@@ -19,6 +19,7 @@ const TokenItem: React.FC<TokenItemProps> = ({ token, prefix }) => {
     <div
       key={`${prefix}-${token.id}`}
       className="shrink-0 pl-4 inline-flex flex-col items-center will-change-transform"
+      data-token-id={token.id}
       style={{ 
         minWidth: "140px", 
         maxWidth: "140px",
