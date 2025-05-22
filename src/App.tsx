@@ -21,6 +21,7 @@ const queryClient = new QueryClient({
 // Lazy load components for better initial page load
 const HomePage = lazy(() => import("./pages/Index"));
 const AdminPage = lazy(() => import("./pages/Admin"));
+const CoinIdentifier = lazy(() => import("./pages/CoinIdentifier"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Improved loading fallback
@@ -43,6 +44,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/admin" element={<AdminPage />} />
+                <Route path="/coin-identifier" element={<CoinIdentifier />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

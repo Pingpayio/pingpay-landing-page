@@ -7,6 +7,9 @@ import { useCarouselVisibility } from "@/hooks/useCarouselVisibility";
 import { shuffleArray } from "@/utils/carouselUtils";
 import CarouselVisibilityHandler from "./usecases/CarouselVisibilityHandler";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
 
 const CryptoCarousel: React.FC = () => {
   // State to store randomized tokens
@@ -90,6 +93,16 @@ const CryptoCarousel: React.FC = () => {
             isVisible={isVisible} 
           />
         </div>
+      </div>
+      
+      {/* Admin link to coin identifier */}
+      <div className="flex justify-center mt-6">
+        <Button variant="outline" size="sm" asChild>
+          <Link to="/coin-identifier" className="flex items-center text-xs text-gray-500">
+            <Shield className="h-3 w-3 mr-1" />
+            Identify Coins
+          </Link>
+        </Button>
       </div>
     </div>
   );
