@@ -10,12 +10,8 @@ interface TokenCardSetProps {
 }
 
 const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }) => {
-  // Generate a unique key for this render cycle
-  const renderKey = `${prefix}-${Date.now()}`;
-  
   return (
     <div 
-      key={renderKey}
       className={`flex ${isVisible ? 'continuous-scroll' : ''}`}
       style={{ 
         animationDuration: '30s', // Faster animation (was 45s)
@@ -23,15 +19,11 @@ const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }
         backgroundColor: 'transparent',
         willChange: 'transform'
       }}
-      data-prefix={prefix}
+      data-prefix={prefix} // Add data attribute for CSS targeting
       aria-hidden={!isVisible}
     >
-      {tokens.map((token, index) => (
-        <TokenItem 
-          key={`${prefix}-${token.id}-${index}-${renderKey}`} 
-          token={token} 
-          prefix={`${prefix}-${index}`} 
-        />
+      {tokens.map((token) => (
+        <TokenItem key={`${prefix}-${token.id}`} token={token} prefix={prefix} />
       ))}
     </div>
   );
