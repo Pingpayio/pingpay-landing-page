@@ -1,8 +1,7 @@
 
 import { TokenInfo } from '@/types/token';
 
-// All tokens excluding the ones with borders (Bitcoin, Doge, XRP, Zcash, and Dog with hat)
-// and excluding coin4 and coin8
+// All tokens in the carousel including the newly added ones
 export const allTokens: TokenInfo[] = [
   // Keeping all tokens except coin1 (Bitcoin), coin15 & coin21 (Doge variants), coin22 (XRP), coin23 (Zcash)
   { id: "coin2", imagePath: "/lovable-uploads/6d4ff297-c8d2-4651-9da4-14185bef8a7f.png" },
@@ -20,5 +19,12 @@ export const allTokens: TokenInfo[] = [
   { id: "coin17", imagePath: "/lovable-uploads/19b83477-b528-4649-9821-dbd84fbcf0c0.png" }, 
   { id: "coin18", imagePath: "/lovable-uploads/6443065c-4ef1-4166-858a-0b3a3d16152f.png" }, 
   { id: "coin19", imagePath: "/lovable-uploads/f3b935de-e4db-4807-b3fc-c84ba81f8d95.png" }, 
-  { id: "coin20", imagePath: "/lovable-uploads/5248b9e5-d6ed-4e1a-a022-e0ee1aa4e09f.png" }, 
+  { id: "coin20", imagePath: "/lovable-uploads/5248b9e5-d6ed-4e1a-a022-e0ee1aa4e09f.png" },
+  
+  // New tokens (21-25)
+  { id: "coin21", imagePath: "/lovable-uploads/e10bd96a-f18d-453d-b0c2-c10c6be2acab.png" }, // Bitcoin
+  { id: "coin22", imagePath: "/lovable-uploads/57242641-6e28-43f1-91f4-f89a14f5a542.png" }, // Dogecoin
+  { id: "coin23", imagePath: "/lovable-uploads/182bab75-9b47-486e-8168-22930daa126b.png" }, // Dog with beanie
+  { id: "coin24", imagePath: "/lovable-uploads/80bc3638-fe34-4beb-91cf-38dfb4fc5675.png" }, // XRP
+  { id: "coin25", imagePath: "/lovable-uploads/3049042d-ef07-481b-a092-de754d0bb226.png" }, // Zcash
 ];
