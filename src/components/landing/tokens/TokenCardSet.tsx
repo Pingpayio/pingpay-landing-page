@@ -19,7 +19,9 @@ const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }
         backgroundColor: 'transparent',
         willChange: 'transform'
       }}
+      data-prefix={prefix} // Add data attribute for CSS targeting
       aria-hidden={!isVisible}
+      key={`token-set-${prefix}-${tokens.length}`} // Add a key that changes when tokens change
     >
       {tokens.map((token) => (
         <TokenItem key={`${prefix}-${token.id}`} token={token} prefix={prefix} />

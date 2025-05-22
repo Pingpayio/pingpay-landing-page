@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -13,14 +12,19 @@ const AssetManagementSection: React.FC = () => {
       description: "Launch a hosted checkout page for payments from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases."
     },
     {
-      icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Checkout & Product Widgets",
-      description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required."
+      icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Ping Onramp",
+      description: "Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Zcash, Gnosis and Blackdragon."
     },
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Automated Subscriptions",
       description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Our agent will handle payments automatically."
+    },
+    {
+      icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Checkout & Product Widgets",
+      description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required."
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
@@ -36,12 +40,6 @@ const AssetManagementSection: React.FC = () => {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Pay With Card",
       description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents.",
-      comingSoon: true
-    },
-    {
-      icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Ping Onramp",
-      description: "Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Zcash, Gnosis and Blackdragon.",
       comingSoon: true
     },
     {
@@ -128,12 +126,7 @@ const AssetManagementSection: React.FC = () => {
     <section 
       id="asset-management" 
       className="w-full py-16 md:py-24 px-4 relative overflow-hidden" 
-      style={{
-        backgroundImage: `linear-gradient(45deg, 
-                  #AB9FF2 0%, #C4B5FD 25%, #DDD6FE 50%, #EDE9FE 75%, #F5F2FF 100%)`,
-        backgroundSize: '400% 400%',
-        animation: 'flowing-gradient 15s ease infinite'
-      }}
+      style={{ backgroundColor: '#E5DEFF' }}
       ref={sectionRef}
     >
       <div className="max-w-[1080px] mx-auto relative z-10">
