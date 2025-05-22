@@ -14,13 +14,11 @@ const CryptoCarousel: React.FC = () => {
   const { isVisible, carouselRef } = useCarouselVisibility({ immediatelyVisible: true });
   const isMobile = useIsMobile();
 
-  // Initialize tokens immediately to avoid empty carousel
+  // Initialize tokens - updated to run on every render to ensure we get the latest token data
   useEffect(() => {
-    // Use memo to avoid unnecessary re-renders
-    if (tokens.length === 0) {
-      setTokens(shuffleArray(allTokens));
-    }
-  }, [tokens.length]);
+    // Use the latest allTokens data each time
+    setTokens(shuffleArray([...allTokens]));
+  }, [allTokens.length]); // Re-run when the token array length changes
 
   // Force reflow on mobile devices when visibility changes
   useEffect(() => {
@@ -47,7 +45,7 @@ const CryptoCarousel: React.FC = () => {
         }
       }
     }
-  }, [isVisible, isMobile]);
+  }, [isVisible, isMobile, tokens]); // Also reflow when tokens change
 
   return (
     <div 
