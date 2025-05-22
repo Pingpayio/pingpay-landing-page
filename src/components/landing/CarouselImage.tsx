@@ -9,6 +9,7 @@ interface CarouselImageProps {
   height?: number;
   style?: React.CSSProperties;
   onLoad?: () => void;
+  onError?: () => void;
 }
 
 /**
@@ -22,6 +23,7 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
   height,
   style,
   onLoad,
+  onError,
 }) => {
   // Function to get WebP version if available
   const getOptimizedImageSrc = (src: string) => {
@@ -33,6 +35,12 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       // Append format=webp parameter if not already present
       const separator = src.includes('?') ? '&' : '?';
       return `${src}${separator}format=webp`;
+    }
+    
+    // Add cache busting for local images
+    if (src.startsWith('/')) {
+      const separator = src.includes('?') ? '&' : '?';
+      return `${src}${separator}v=${Date.now()}`;
     }
     
     return src;
@@ -65,8 +73,9 @@ const CarouselImage: React.FC<CarouselImageProps> = ({
       }}
       draggable={false}
       decoding="async"
-      fetchPriority="low"
+      fetchPriority="high" // Changed from low to high for critical carousel images
       onLoad={onLoad}
+      onError={onError}
     />
   );
 };

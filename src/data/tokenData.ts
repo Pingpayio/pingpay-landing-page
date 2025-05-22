@@ -1,4 +1,3 @@
-
 import { TokenInfo } from '@/types/token';
 
 // All tokens including the new ones

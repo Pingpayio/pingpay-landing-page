@@ -11,23 +11,38 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const CryptoCarousel: React.FC = () => {
   // State to store randomized tokens and force refreshes
   const [tokens, setTokens] = useState<TokenInfo[]>([]);
-  const [refreshKey, setRefreshKey] = useState(Date.now()); // Add a refresh key
+  const [refreshKey, setRefreshKey] = useState(Date.now());
   const { isVisible, carouselRef } = useCarouselVisibility({ immediatelyVisible: true });
   const isMobile = useIsMobile();
 
+  // Function to force a complete refresh of the carousel
+  const forceRefresh = () => {
+    // Reshuffle tokens 
+    setTokens(shuffleArray(allTokens));
+    // Update refresh key to force re-render
+    setRefreshKey(Date.now());
+  };
+
   // Initialize tokens immediately to avoid empty carousel
   useEffect(() => {
-    // Use memo to avoid unnecessary re-renders
-    if (tokens.length === 0) {
-      setTokens(shuffleArray(allTokens));
-    }
-  }, [tokens.length]);
+    // Always initialize with fresh tokens
+    setTokens(shuffleArray(allTokens));
+    
+    // Set up a periodic refresh to ensure images load correctly
+    const refreshInterval = setInterval(() => {
+      if (isVisible) {
+        forceRefresh();
+      }
+    }, 30000); // Refresh every 30 seconds while visible
+    
+    return () => clearInterval(refreshInterval);
+  }, [isVisible]);
 
   // Force token refresh when visibility changes
   useEffect(() => {
     if (isVisible) {
       // Force refresh of tokens to clear any cached images
-      setRefreshKey(Date.now());
+      forceRefresh();
       
       // Force a reflow to trigger animation
       if (carouselRef.current) {

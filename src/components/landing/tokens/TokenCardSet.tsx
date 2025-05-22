@@ -10,12 +10,12 @@ interface TokenCardSetProps {
 }
 
 const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }) => {
-  // Use a random key to force re-render of the component
-  const refreshKey = `${prefix}-${Date.now()}`;
+  // Generate a unique key for this render cycle
+  const renderKey = `${prefix}-${Date.now()}`;
   
   return (
     <div 
-      key={refreshKey}
+      key={renderKey}
       className={`flex ${isVisible ? 'continuous-scroll' : ''}`}
       style={{ 
         animationDuration: '30s', // Faster animation (was 45s)
@@ -26,8 +26,12 @@ const TokenCardSet: React.FC<TokenCardSetProps> = ({ tokens, prefix, isVisible }
       data-prefix={prefix}
       aria-hidden={!isVisible}
     >
-      {tokens.map((token) => (
-        <TokenItem key={`${prefix}-${token.id}-${refreshKey}`} token={token} prefix={prefix} />
+      {tokens.map((token, index) => (
+        <TokenItem 
+          key={`${prefix}-${token.id}-${index}-${renderKey}`} 
+          token={token} 
+          prefix={`${prefix}-${index}`} 
+        />
       ))}
     </div>
   );
