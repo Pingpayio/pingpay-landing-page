@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -34,7 +32,7 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Intuitive APIs & SDKs",
+      title: "APIs & SDKs",
       description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping makes powering Agent-to-Agent payments simple.",
       comingSoon: true
     },
@@ -179,4 +177,3 @@ const AssetManagementSection: React.FC = () => {
 };
 
 export default AssetManagementSection;
-
