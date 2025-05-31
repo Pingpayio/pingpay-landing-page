@@ -14,16 +14,19 @@ export type Database = {
           created_at: string
           email: string
           id: string
+          wallet_address: string | null
         }
         Insert: {
           created_at?: string
           email: string
           id?: string
+          wallet_address?: string | null
         }
         Update: {
           created_at?: string
           email?: string
           id?: string
+          wallet_address?: string | null
         }
         Relationships: []
       }
