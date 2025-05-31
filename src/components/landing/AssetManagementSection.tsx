@@ -1,4 +1,5 @@
 
+
 import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -27,7 +28,7 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Checkout & Product Widgets",
+      title: "Payment Widgets",
       description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required.",
       comingSoon: true
     },
@@ -178,3 +179,4 @@ const AssetManagementSection: React.FC = () => {
 };
 
 export default AssetManagementSection;
+
