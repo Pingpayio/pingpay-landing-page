@@ -1,5 +1,6 @@
+
 import React, { useEffect, useRef } from "react";
-import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const AssetManagementSection: React.FC = () => {
@@ -9,44 +10,50 @@ const AssetManagementSection: React.FC = () => {
     {
       icon: <LinkIcon className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Links",
-      description: "Launch a hosted checkout page for payments from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases."
+      description: "Launch a hosted checkout page for payments from a Ping Link, in a few clicks. Receive crypto payments online or in person from all chains; curated for your use cases.",
+      comingSoon: false
     },
     {
       icon: <ArrowUpDown className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Onramp",
-      description: "Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Zcash, Gnosis and Blackdragon."
+      description: "Onramp fiat into any NEAR Intents supported currency such as USDC, Bitcoin, Near, Solana, Ethereum, XRP, Doge, Bera, Zcash, Gnosis and Blackdragon.",
+      comingSoon: false
     },
     {
       icon: <Repeat className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Automated Subscriptions",
-      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Our agent will handle payments automatically."
-    },
-    {
-      icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Checkout & Product Widgets",
-      description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required."
-    },
-    {
-      icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Intuitive APIs & SDKs",
-      description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping makes powering Agent-to-Agent payments simple."
+      description: "Offer automated subscriptions/recurring payments without requiring users to pre-fund accounts or approve unlimited spending. Our agent will handle payments automatically.",
+      comingSoon: false
     },
     {
       icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Ping Account",
-      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments to your account."
+      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments to your account.",
+      comingSoon: false
+    },
+    {
+      icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Pay Widgets",
+      description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required.",
+      comingSoon: true
+    },
+    {
+      icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "APIs & SDKs",
+      description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping makes powering Agent-to-Agent payments simple.",
+      comingSoon: true
     },
     {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Pay With Card",
       description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents.",
-      comingSoon: true
+      roadmap: true
     },
     {
       icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
       title: "AI Assistant",
       description: "The personal payment assistant to make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
-      comingSoon: true
+      roadmap: true
     }
   ];
 
@@ -156,6 +163,15 @@ const AssetManagementSection: React.FC = () => {
                       >
                         <Clock className="h-3 w-3" />
                         Coming Soon
+                      </Badge>
+                    )}
+                    {feature.roadmap && (
+                      <Badge 
+                        variant="outline" 
+                        className="bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 flex items-center gap-1 px-2 py-0.5 text-xs font-medium animate-pulse"
+                      >
+                        <MapPin className="h-3 w-3" />
+                        Roadmap
                       </Badge>
                     )}
                   </div>
