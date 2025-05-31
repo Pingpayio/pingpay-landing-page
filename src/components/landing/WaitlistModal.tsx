@@ -1,6 +1,7 @@
+
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, X, AlertCircle } from "lucide-react";
@@ -20,6 +21,7 @@ const formSchema = z.object({
   email: z.string()
     .email({ message: "Please enter a valid email address" })
     .min(1, { message: "Email is required" }),
+  wallet_address: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -33,6 +35,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      wallet_address: "",
     },
     mode: "onChange",
   });
@@ -41,12 +44,17 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
     setIsLoading(true);
     
     try {
-      console.log("Submitting email to Supabase:", data.email);
+      console.log("Submitting to Supabase:", data);
       
-      // Insert email into the waitlist table
+      // Insert email and optional wallet address into the waitlist table
+      const insertData = {
+        email: data.email,
+        ...(data.wallet_address && data.wallet_address.trim() && { wallet_address: data.wallet_address.trim() })
+      };
+      
       const { error } = await supabase
         .from('waitlist')
-        .insert([{ email: data.email }]);
+        .insert([insertData]);
       
       if (error) {
         console.error("Error submitting to waitlist:", error);
@@ -157,6 +165,25 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, setIsOpen }) => {
                           </AlertDescription>
                         </Alert>
                       )}
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="wallet_address"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-300 text-sm">
+                        Wallet Address (Optional)
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your wallet address"
+                          className="bg-[#1a1a1a] border-[#2a1a30] text-white focus:border-[#AB9FF2] focus:ring-[#AB9FF2] h-12"
+                          {...field}
+                        />
+                      </FormControl>
                     </FormItem>
                   )}
                 />
