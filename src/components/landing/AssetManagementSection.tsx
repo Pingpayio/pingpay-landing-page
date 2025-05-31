@@ -1,5 +1,6 @@
+
 import React, { useEffect, useRef } from "react";
-import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
+import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const AssetManagementSection: React.FC = () => {
@@ -169,7 +170,7 @@ const AssetManagementSection: React.FC = () => {
                         variant="outline" 
                         className="bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 flex items-center gap-1 px-2 py-0.5 text-xs font-medium animate-pulse"
                       >
-                        <Clock className="h-3 w-3" />
+                        <MapPin className="h-3 w-3" />
                         Roadmap
                       </Badge>
                     )}
