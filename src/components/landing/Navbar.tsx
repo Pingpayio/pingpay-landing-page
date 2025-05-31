@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Timer } from "lucide-react";
+import WaitlistModal from "./WaitlistModal";
 
 // Updated path to new Ping logo
 const PING_LOGO = "/lovable-uploads/ee74f7f3-7dd6-4d45-a637-dace4ca34ded.png";
@@ -9,6 +9,7 @@ const PING_LOGO = "/lovable-uploads/ee74f7f3-7dd6-4d45-a637-dace4ca34ded.png";
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -31,6 +32,10 @@ const Navbar: React.FC = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const openWaitlistModal = () => {
+    setIsWaitlistModalOpen(true);
   };
 
   /**
@@ -129,8 +134,12 @@ const Navbar: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-2">
-              <button className="bg-[#AB9FF2] text-[#3D315E] text-center px-4 py-1.5 text-sm md:text-base md:px-5 md:py-2 rounded-full hover:opacity-90 transition-opacity">
-                Coming Soon
+              <button 
+                onClick={openWaitlistModal}
+                className="bg-[#AB9FF2] text-[#3D315E] text-center px-4 py-1.5 text-sm md:text-base md:px-5 md:py-2 rounded-full hover:opacity-90 transition-opacity flex items-center gap-2"
+              >
+                <span>Join Waitlist</span>
+                <Timer size={16} className="flex-shrink-0" />
               </button>
               
               {isMobile && (
@@ -185,6 +194,8 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       )}
+      
+      <WaitlistModal isOpen={isWaitlistModalOpen} setIsOpen={setIsWaitlistModalOpen} />
     </>
   );
 };
