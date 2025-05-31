@@ -1,4 +1,5 @@
 
+
 import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,12 @@ const AssetManagementSection: React.FC = () => {
       comingSoon: true
     },
     {
+      icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
+      title: "Ping Account",
+      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments to your account.",
+      comingSoon: true
+    },
+    {
       icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Payment Widgets",
       description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required.",
@@ -35,12 +42,6 @@ const AssetManagementSection: React.FC = () => {
       icon: <Code2 className="h-10 w-10 text-[#AB9FF2]" />,
       title: "APIs & SDKs",
       description: "We package our payment solutions into easy to use APIs and SDKs. Plugging into Ping makes powering Agent-to-Agent payments simple.",
-      comingSoon: true
-    },
-    {
-      icon: <Wallet className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Ping Account",
-      description: "Removing the complexities of crypto payments through chain signatures and NEARs account model. Sign up with email and accept payments to your account.",
       comingSoon: true
     },
     {
@@ -187,3 +188,4 @@ const AssetManagementSection: React.FC = () => {
 };
 
 export default AssetManagementSection;
+
