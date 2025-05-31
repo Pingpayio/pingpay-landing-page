@@ -1,4 +1,3 @@
-
 import { TokenInfo } from '@/types/token';
 
 // All tokens in the carousel including the newly added ones
@@ -27,4 +26,10 @@ export const allTokens: TokenInfo[] = [
   { id: "coin23", imagePath: "/lovable-uploads/182bab75-9b47-486e-8168-22930daa126b.png" }, // Dog with beanie
   { id: "coin24", imagePath: "/lovable-uploads/80bc3638-fe34-4beb-91cf-38dfb4fc5675.png" }, // XRP
   { id: "coin25", imagePath: "/lovable-uploads/3049042d-ef07-481b-a092-de754d0bb226.png" }, // Zcash
+  
+  // New tokens (26-29) - the uploaded images
+  { id: "coin26", imagePath: "/lovable-uploads/7c13116c-9490-4e23-b01a-f1f6c15a39cc.png" }, // Blue water drop token
+  { id: "coin27", imagePath: "/lovable-uploads/3a324cee-7e8b-416e-b42b-8c74e2884b0c.png" }, // Red diamond token
+  { id: "coin28", imagePath: "/lovable-uploads/d90a8cf3-449d-41f2-a242-0bccc983fe78.png" }, // Yellow Binance-style token
+  { id: "coin29", imagePath: "/lovable-uploads/ff6912ad-9961-42d7-8287-200f97af5c14.png" }, // Green triangle token
 ];
