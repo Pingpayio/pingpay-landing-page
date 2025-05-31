@@ -33,7 +33,7 @@ const AssetManagementSection: React.FC = () => {
     },
     {
       icon: <ShoppingCart className="h-10 w-10 text-[#AB9FF2]" />,
-      title: "Payment Widgets",
+      title: "Pay Widgets",
       description: "Embed crypto payments for any use case, into any app or website with Ping's user-friendly, checkout and product widgets with minimal code required.",
       comingSoon: true
     },
