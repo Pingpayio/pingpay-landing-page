@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { LinkIcon, Code2, Repeat, CreditCard, Wallet, MessagesSquare, RefreshCw, ArrowUpDown, ShoppingCart, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -46,13 +47,13 @@ const AssetManagementSection: React.FC = () => {
       icon: <CreditCard className="h-10 w-10 text-[#AB9FF2]" />,
       title: "Pay With Card",
       description: "Accept traditional payments from non-crypto users with Ping. Receive the crypto you want to receive, while they pay with fiat. Powered by NEAR Intents.",
-      comingSoon: true
+      roadmap: true
     },
     {
       icon: <MessagesSquare className="h-10 w-10 text-[#AB9FF2]" />,
       title: "AI Assistant",
       description: "The personal payment assistant to make and manage all of your crypto payments across web2 and web3; from Amazon to Uber to Crypto trading.",
-      comingSoon: true
+      roadmap: true
     }
   ];
 
@@ -162,6 +163,15 @@ const AssetManagementSection: React.FC = () => {
                       >
                         <Clock className="h-3 w-3" />
                         Coming Soon
+                      </Badge>
+                    )}
+                    {feature.roadmap && (
+                      <Badge 
+                        variant="outline" 
+                        className="bg-[#AB9FF2]/20 text-[#4A3A6A] border-[#AB9FF2]/50 flex items-center gap-1 px-2 py-0.5 text-xs font-medium animate-pulse"
+                      >
+                        <Clock className="h-3 w-3" />
+                        Roadmap
                       </Badge>
                     )}
                   </div>
