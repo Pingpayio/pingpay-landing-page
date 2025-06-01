@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -36,7 +35,13 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
   });
 
   const onSubmit = async (data: FormValues) => {
-    const result = await submitToWaitlist(data);
+    // Since email is validated by the form schema, we can safely pass the data
+    const submissionData = {
+      email: data.email,
+      wallet_address: data.wallet_address,
+    };
+    
+    const result = await submitToWaitlist(submissionData);
     if (result.success) {
       onSuccess();
     }
